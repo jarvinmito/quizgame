@@ -1,0 +1,40 @@
+.player {
+  &--right {
+    text-align: right;
+  }
+  
+  &__avatar {
+//    background-color: red;
+    height: 100px;
+    width: 100px;
+    &--left {
+      float: left;
+//      background: url(/assets/images/player-1.png)
+    }
+    &--right {
+      float: right;
+//      background: url(/assets/images/player-2.png)
+    }
+    &--small {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  &__name {
+    margin-top: 3px;
+    margin-bottom: 2px;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 600;
+  }
+  &__badge {
+    margin: 0;
+    font-size: 11px;
+    line-height: 15px;
+  }
+  &__score {
+    margin: 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

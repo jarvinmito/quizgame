@@ -1,0 +1,30 @@
+.ingame {
+  &__options {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+    //    margin-left: 15px;
+    //    margin-right: 15px
+    &--full {
+      flex: 1 100%;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    &--half {
+      //   margin: 10px;
+      flex: 2 40%;
+      margin-right: 15px;
+      &:nth-child(odd) {
+        margin-left: 15px;
+      }
+    }
+  }
+}
