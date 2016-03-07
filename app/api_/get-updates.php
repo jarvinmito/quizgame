@@ -5,23 +5,12 @@ require "init.php";
 $matchid = $_POST['matchid'];
 $currentRound = $_POST['currRound'];
 
-$sql = "SELECT * FROM engage_scoreboard WHERE match_id=$matchid AND score_id=$currentRound";
-$res = mysqli_query($conn, $sql);
-
+$scoreFindDtl=array('match_id'=>$matchid,'round'=>$currentRound);
+$scoreFindUrl='http://admin:1234@192.168.20.75/engage/api/quizsql/findScoreId/';
+$scoreFindDb=curlPost($scoreFindDtl,$scoreFindUrl);
+$row=json_decode($scoreFindDb,TRUE);
 $score = array();
-
-if(mysqli_num_rows($res) != 0){
-	while($row = mysqli_fetch_array($res)){
-		// Create array
-		$score[$row['score_position']] = array('score' => $row['score_value'], 'answer' => $row['score_answer']);
-	}
-	// Yes inserted
-	$status = 'success';
-}
-
-mysqli_close($conn);
-
-// $arr = array('score' => $score);
+$score[$row[0]['score_position']] = array('score' => $row[0]['score_value'], 'answer' => $row[0]['score_answer']);
 echo json_encode($score);
 
 ?>

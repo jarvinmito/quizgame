@@ -3,7 +3,7 @@
 require "init.php";
 
 $matchid = $_GET['matchid'];
-
+/*
 $sql = "SELECT * FROM engage_match WHERE match_id=$matchid";
 $res = mysqli_query($conn, $sql);
 if(mysqli_num_rows($res) != 0){
@@ -11,10 +11,13 @@ if(mysqli_num_rows($res) != 0){
 }
 
 mysqli_close($conn);
-
-$players['a'] = array('name' => $get['match_player_a'], 'badge' => 'Magaling', 'place' => 'a', 'score' => 0);
-$players['b'] = array('name' => $get['match_player_b'], 'badge' => 'Magaling', 'place' => 'b', 'score' => 0);
-
+*/
+$findMatchDtl=array('id'=>$matchid);
+$findMatchUrl='http://admin:1234@192.168.20.75/engage/api/quizsql/findMatchId/';
+$findMatchDb=curlPost($findMatchDtl,$findMatchUrl);
+$get=json_decode($findMatchDb,TRUE);
+$players['a'] = array('name' => $get[0]['match_player_a'], 'badge' => 'Magaling', 'place' => 'a', 'score' => 0);
+$players['b'] = array('name' => $get[0]['match_player_b'], 'badge' => 'Magaling', 'place' => 'b', 'score' => 0);
 $arr = array('players' => $players);
 echo json_encode($arr);
 

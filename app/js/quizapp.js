@@ -24,7 +24,7 @@ var App = (function(){
 				name : 'PLAYER__NAME'
 			},
 			apis : {
-				base : 'http://192.168.20.109/EngageQuiz/app/api/',
+				base : 'http://192.168.20.109/project_engage/app/api/',
 				api : {
 					'find' : 'fm.php',
 					'create' : 'cm.php',
@@ -88,14 +88,16 @@ var App = (function(){
 		// 	localStorage[configMap.plstore.name] = configMap.player.name;
 		// }
 
-		configMap.player.name = localStorage[configMap.plstore.name];
+		// uncomment this if using LOCALSTORAGE
+		// configMap.player.name = localStorage[configMap.plstore.name];
 
-		/*if( !sessionStorage[configMap.plstore.name] ){
+		// if( !sessionStorage[configMap.plstore.name] ){
+			// comment next line if using LOCALSTORAGE
 			configMap.player.name = 'Kalabaw' + Math.random().toString(36).substr(2,5);
-			sessionStorage[configMap.plstore.name] = configMap.player.name;
-		}
+			// sessionStorage[configMap.plstore.name] = configMap.player.name;
+		// }
 
-		configMap.player.name = sessionStorage[configMap.plstore.name];*/
+		// configMap.player.name = sessionStorage[configMap.plstore.name];
 	};
 	// End Module /initSetup/
 
@@ -377,9 +379,10 @@ var App = (function(){
 					configMap.player = players[key];
 					// Set final value for player inside the local storage
 					// include player id here later........
-					localStorage[configMap.plstore.name] = configMap.player.name;
+					// uncomment me later....
+					// localStorage[configMap.plstore.name] = configMap.player.name;
 					// sessionStorage[configMap.plstore.name] = configMap.player.name;
-					// configMap.player.place = players[key].place;
+					configMap.player.place = players[key].place;
 				}else{
 					configMap.playerLocalPos.right = players[key];
 				}

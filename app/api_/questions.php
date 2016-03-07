@@ -1,11 +1,11 @@
 <?php
 // GET QUESTIONS
 require "init.php";
-
+/*
 $questions[] = array(
 	'question' => 'Who is the National Hero of the Philippines?',
-	// 'image' => 'http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png',
-	'options' => array('Jose Rizal', 'Jose Santos', 'Reynier Niebres', 'James Domingo'),
+	'image' => 'http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png',
+	'options' => array('Jack Palad', 'Jose Santos', 'Reynier Niebres', 'James Domingo'),
 	'answer' => 0
 	);
 
@@ -51,6 +51,13 @@ $questions[] = array(
 	'answer' => 0
 	);
 
+//$arr = json_decode(file_get_contents('http://admin:1234@192.168.20.75/engage/api/mchoice/dtl/id/quiz/format/json'),TRUE);
+*/
+$loadQuesDtl=array('type'=>'Quiz');
+$loadQuesUrl='http://admin:1234@192.168.20.75/engage/api/quizsql/loadquestion/';
+$loadQuesDb=curlPost($loadQuesDtl,$loadQuesUrl);
+$questions=json_decode($loadQuesDb,TRUE);
+//$rand_questions = ($questions);//array('questions' => $questions);
 $arr = array('questions' => $questions);
 echo json_encode($arr);
 
