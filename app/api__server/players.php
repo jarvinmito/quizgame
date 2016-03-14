@@ -13,7 +13,7 @@ if(mysqli_num_rows($res) != 0){
 mysqli_close($conn);
 */
 $findMatchDtl=array('id'=>$matchid);
-$findMatchUrl='http://admin:1234@192.168.20.75/engage/api/quizsql/findMatchId/';
+$findMatchUrl='http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/findMatchId/';
 $findMatchDb=curlPost($findMatchDtl,$findMatchUrl);
 $get=json_decode($findMatchDb,TRUE);
 $players['a'] = array('name' => $get[0]['match_player_a'], 'badge' => 'Magaling', 'place' => 'a', 'score' => 0);

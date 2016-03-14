@@ -4,18 +4,18 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 
-$hostname = "localhost";
-$dbname = "engage";
-$dbuser = "root";
-$dbpass = "";
+// $hostname = "localhost";
+// $dbname = "engage_cms";
+// $dbuser = "root";
+// $dbpass = "";
 
-// Create connection
-$conn = mysqli_connect($hostname, $dbuser, $dbpass, $dbname);
+// // Create connection
+// $conn = mysqli_connect($hostname, $dbuser, $dbpass, $dbname);
 
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// // Check connection
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 function curlPost($data,$url)
 {
 	$data_string = json_encode($data);

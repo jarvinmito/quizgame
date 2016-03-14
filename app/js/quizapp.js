@@ -24,7 +24,7 @@ var App = (function(){
 				name : 'PLAYER__NAME'
 			},
 			apis : {
-				base : 'http://192.168.20.109/project_engage/app/api/',
+				base : 'http://192.168.20.16/project_engage/app/api/',
 				api : {
 					'find' : 'fm.php',
 					'create' : 'cm.php',

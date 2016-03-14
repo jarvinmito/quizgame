@@ -10,7 +10,7 @@ $answer = $_POST['answer'];
 $status = 'pending';
 
 $scoreInsertDtl=array('matchid'=>$matchid,'round'=>$round,'position'=>$position,'score'=>$score,'answer'=>$answer);
-$scoreInsertUrl='http://admin:1234@192.168.20.75/engage/api/quizsql/insertScore/';
+$scoreInsertUrl='http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/insertScore/';
 $scoreInsertDb=curlPost($scoreInsertDtl,$scoreInsertUrl);
 $status=($scoreInsertDb==true)?"success":"";
 $arr = array('status' => $status);
