@@ -1,0 +1,153 @@
+//.loading-screen {
+//  
+//
+.loading-screen {
+  &__jeep {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    z-index: 10;
+    width: 40%;
+    margin-left: -50%;
+    animation: jeep-slide 15s linear infinite;
+  }
+  &__sky {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background: url(../assets/images/street_sky.svg) repeat-x;
+    background-size: cover;
+    animation: move 1000s linear infinite;
+  }
+  &__flag {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: -1;
+    height: 75%;
+    margin-left: -5%;
+  }
+  &__cloud-one {
+    position: absolute; 
+    top: 5%;
+    width: 30%;
+    left: 20%;
+    animation: cloud-slide2 30s linear infinite;
+  }
+  
+  &__cloud-two {
+    position: absolute; 
+    top: 20%;
+    z-index: -1;
+    width: 40%;
+    left: 20%;
+    animation: cloud-slide2 20s linear infinite;
+  }
+  &__cloud-three {
+    position: absolute; 
+    top: 35%;
+    z-index: -1;
+    width: 30%;
+    animation: cloud-slide2 80s linear infinite;
+  }
+  &__cloud-four {
+    position: absolute; 
+    top: 45%;
+    z-index: -1;
+    width: 20%;
+    animation: cloud-slide2 30s linear infinite;
+  }
+  &__cloud-five {
+    position: absolute; 
+    top: 30%;
+    z-index: -1;
+    width: 20%;
+    left: 50%;
+    animation: cloud-slide2 30s linear infinite;
+  }
+  &__clouds {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 45%;
+    width: 100%;
+    margin-top: 15%;
+    background: url(../assets/images/clouds.svg) repeat-x;
+    background-size: cover;
+    animation: clouds 100s linear infinite;
+    opacity: 0.7;
+  }
+
+}
+
+
+//@import 'bourbon';
+$swim-size: -4738px; //Change for bigger/smaller swimmers
+$swim-shift: 0-$swim-size;
+//$bg-url: "../assets/images/optimised.svg";
+$bg-url: "../assets/images/street-buildings.svg";
+//html{
+//  height: 100%;
+//}
+
+.loading-screen{
+  height: 100%;
+//  padding-left: 50%;
+  width: 100%;
+  background: url($bg-url) 0px 0px repeat-x;
+  background-size: cover;
+  animation: move 50s linear infinite;
+}
+
+.cloud-1{
+//  width: 300px;
+//  height: 300px;
+//  background: url(../assets/images/cloud-1.svg) repeat-x;
+//  background-size: cover;
+  position: absolute; 
+  top: 20px;;
+  left: 50%;
+  margin-left: -10px;
+  width: 13%;
+  animation: cloud-slide 100s linear infinite;
+}
+
+
+
+@keyframes cloud-slide-test {
+	0% {margin-left: 0;}
+	100% {margin-left: -100%;}
+}
+
+//@keyframes cloud-slide {
+//	0% {margin-left: 100%;}
+//	100% {margin-left: -100%;}
+//}
+
+@keyframes cloud-slide2 {
+	0% {margin-left: 100%;}
+	100% {margin-left: -100%;}
+}
+
+@keyframes clouds{
+  from {background-position: 0px 0px;}
+  to {background-position: 100% 0px;}
+}
+
+
+@keyframes jeep-slide {
+	0% {margin-left: 50%;}
+	100% {margin-left: -100%;}
+}
+
+@keyframes move{
+  from {background-position: 140% 0px;}
+  to {background-position: 0px 0px;}
+}
+//
+//  from {background-position: 0px 0px;}
+//  to {background-position: -50% 0px;}
+
+

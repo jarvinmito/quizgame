@@ -49,7 +49,8 @@ var App = (function(){
 			matchid : 0,
 			matchStatus : 'find', // find, create, wait
 			playStatus : 0, // 0 = waiting a match, 1 = ongoing match, 2 = ended match
-			findMatchTimer : { timing : null, delay : 3000, maxTries : 10, currentTries : 1},
+			waitTimer : { timing : null, delay : 1000, currentTime : 1},
+			findMatchTimer : { timing : null, delay : 3000, maxTries : 30, currentTries : 1},
 			matchTimer : { timing : null, delay : 5000 },
 			roundTimer : { timing : null, delay : 2000 },
 			questTimer : { timing : null, delay : 2000 },
@@ -59,7 +60,14 @@ var App = (function(){
 			currentRound : 1,
 			currentRoundisFin : false,
 			currentScore : {},
-			hasAnswered : false
+			hasAnswered : false,
+			// findmatch - finding a matching
+			// waiting - waiting for other player's response
+			// versus - display the versus page
+			// round - display the current round
+			// question - render players and scores, question and choices
+			// result - display result page
+			currentScreen : 'findmatch'
 		},
 		jqueryMap = {
 			$main : $('.engage'),
@@ -89,11 +97,11 @@ var App = (function(){
 		// }
 
 		// uncomment this if using LOCALSTORAGE
-		// configMap.player.name = localStorage[configMap.plstore.name];
+		configMap.player.name = localStorage[configMap.plstore.name];
 
 		// if( !sessionStorage[configMap.plstore.name] ){
 			// comment next line if using LOCALSTORAGE
-			configMap.player.name = 'Kalabaw' + Math.random().toString(36).substr(2,5);
+			// configMap.player.name = 'Kalabaw' + Math.random().toString(36).substr(2,5);
 			// sessionStorage[configMap.plstore.name] = configMap.player.name;
 		// }
 
@@ -327,9 +335,21 @@ var App = (function(){
 		var players = getPlayerProps(),
 			me = players.me,
 			op = players.op,
-			status = (me.score > op.score) ? 'You Win!' : (me.score == op.score) ? 'Draw' : 'You Lose!' ,
-			playerdata = { me : me, opponent : op, status : status };
+			status = 'Yehey!',
+			result = 'win';
 
+		if(me.score > op.score){
+			status = 'Yehey!';
+			result = 'win';
+		}else if(me.score == op.score){
+			status = 'Awww!';
+			result = 'win';
+		}else{
+			status = 'Boohoo!';
+			result = 'lose';
+		}
+
+		var playerdata = { me : me, opponent : op, status : status, result : result };
 		jqueryMap.$main.html(App.Templates['results']({ player : playerdata }));
 		bind();
 		
@@ -337,6 +357,35 @@ var App = (function(){
 		initSetup();
 	};
 	// End Module /renderResults/
+
+	// Start Module /renderWaiting/
+	// Purpose : Displays the waiting page when the user has sent a challenge request
+	var renderWaiting = function(){
+		console.log('rendering Waiting Page ---->');
+
+		var $container = jqueryMap.$main;
+		var time = configMap.waitTimer.currentTime;
+
+		$container.html(App.Templates['waiting']({time : time}));
+		startTimer(configMap.waitTimer);
+	};
+	// End Module /renderWaiting/
+
+	// Start Module /waitTimer/
+	// Purpose : Increase time and format to minutes
+	var renderTimer = function(){
+		var time = configMap.waitTimer.currentTime;
+		time++;
+		configMap.waitTimer.currentTime = time;
+
+		var $container = jqueryMap.$main;
+		var $timer = $container.find('.waiting-screen__timer');
+
+		$timer.html(App.Templates['waiting-timer']({ time : configMap.waitTimer.currentTime }));
+		endTimer(configMap.waitTimer);
+		startTimer(configMap.waitTimer);
+	};
+	// End Module /waitTimer/
 
 
 	// Start Module /renderBattlefield/
@@ -400,9 +449,8 @@ var App = (function(){
 		console.log('rendering Question ---->');
 		var q = configMap.qs.questions[configMap.currentRound - 1],
 			$container = jqueryMap.$ingame,
-			$question = $container.html($('<div/>').addClass('ingame__question')),
+			$question = (!q.image) ? $container.html($('<div/>').addClass('ingame__question')) : $container.html($('<div/>').addClass('ingame__image')),
 			$options = $container.append($('<div/>').addClass('ingame__options'));
-
 		$container.find('.ingame__question').html(App.Templates['question']({ data : q }));
 		endTimer(configMap.roundTimer);
 		startTimer(configMap.questTimer);
@@ -416,7 +464,10 @@ var App = (function(){
 		console.log('rendering Options ---->');
 		var q = configMap.qs.questions[configMap.currentRound - 1],
 			$container = jqueryMap.$ingame;
-		$container.find('.ingame__options').html(App.Templates['options']({ data : q }));
+
+		var optionClass = (q.image) ? 'ingame__options--half' : 'ingame__options--full';
+
+		$container.find('.ingame__options').addClass(optionClass).html(App.Templates['options']({ data : q }));
 		bind();
 		endTimer(configMap.questTimer);
 		startTimer(configMap.gameTimer);
@@ -699,14 +750,12 @@ var App = (function(){
 			console.log('Start the game......');
 			
 			// Initialize Game
-			initGame();
+			// initGame();
 			// get questions
 			getFile('qs');
 			// get profiles
 			getFile('ps', renderVS);
 			// sh*t pants
-
-
 		}
 
 	};
@@ -715,6 +764,7 @@ var App = (function(){
 	// Start Module /initGame/
 	// Purpose : Initializes our Game
 	var initGame = function(){
+		configMap.waitTimer.callback = renderTimer;
 		configMap.matchTimer.callback = renderBattlefield;
 		configMap.roundTimer.callback = renderQuestion;
 		configMap.questTimer.callback = renderOptions;
@@ -730,15 +780,27 @@ var App = (function(){
 		// initialization code for app here
 		console.log('It\'s alive!!!');
 		initSetup();
+		initGame();
 		// for testing
 		// renderLanding();
 
-		// actual
+		var modes = {
+			'random' : findMatch,
+			'challenger' : renderWaiting,
+			'join' : renderVS
+		}
+
+		var mode = localStorage['OPEN_TYPE'] || 'random';
+
+		modes[mode]();
+
+		console.log(mode);
+		// Actual
 		// localStorage.player.name = {};
-		findMatch();
 	};
 
 	var freeze = function(){
+		endTimer(configMap.waitTimer);
 		endTimer(configMap.roundTimer);
 		endTimer(configMap.matchTimer);
 		endTimer(configMap.questTimer);
@@ -748,10 +810,20 @@ var App = (function(){
 		return false;
 	};
 
+	var setType = function(type){
+		localStorage.setItem('OPEN_TYPE', type);
+	};
+
+	var setUser = function(user){
+		localStorage.setItem('PLAYER__NAME', user);
+	};
+
 
 	return {
 		initModule : initModule,
-		freeze : freeze
+		freeze : freeze,
+		setType : setType,
+		setUser : setUser
 	};
 
 }());

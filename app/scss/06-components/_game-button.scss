@@ -1,25 +1,17 @@
 .game-button {
   position: relative;
-//  height: 10vh;
-  width: 100%;
-//  margin: 0;
-  padding:3vh;
-  margin-bottom: 15px;
+//  width: 100%;
   
-//  padding-top: 12px;
-//  padding-bottom: 12px;
-  
+  padding: 0;
+  background-color: $white;
+  border: 0;
+  border-radius: 5px;
   color: $black;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  
-  background-color: $white;
-  border: 0;
-  border-radius: 5px;
-  
 //  box-sizing: 0;
   &.btn-success{
     background-color: $blue-green;
@@ -41,19 +33,11 @@
   &--light-blue {
     background-color: $light-blue;
   }
-  
-  &--result {
-    max-width: 270px;
-    display: block;
-    
-    margin: 0 auto;
-    margin-bottom: 15px;
-  }
-
   .answer-me, 
   .answer-opponent{
     &::before,
     &::after{
+      content: " ";
       position: absolute;
       top: 50%;
       z-index: 3;
@@ -68,12 +52,13 @@
   .answer-me {
     position: absolute;
     left: 0;
+    top: 50%;
     
     width: 0;
     height: 0;
     display: block;
     
-    margin-top: -23px;
+    margin-top: -12px;
     margin-left: 0px;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
@@ -109,12 +94,13 @@
   .answer-opponent{
     position: absolute;
     right: 0;
+    top: 50%;
     
     width: 0;
     height: 0;
     display: block;
     
-    margin-top: -23px;
+    margin-top: -12px;
     margin-right: 0px;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;

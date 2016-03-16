@@ -1,0 +1,32 @@
+.opponent {
+  flex-direction: row;
+  padding-top: 7vh;
+  padding-bottom: 15px;
+  &__text,
+  &__level-points {
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 11px;
+    }
+  }
+  
+  &__text {
+    p {
+      margin-right: 20px;
+      text-align: right;
+      color: $white;
+    }
+  }
+  &__level-points {
+    p {
+      margin-left: 20px;
+      text-align: left;
+      color: $white;
+    }
+  }
+  &__avatar {
+    width: 45px;
+    height: 45px;
+  }
+}

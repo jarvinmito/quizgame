@@ -1,0 +1,80 @@
+{
+	"questions" : [
+		{
+			"question" : "Who is the National Hero of the Philippines?",
+			"options" : [
+				"Jose Rizal",
+				"Jose Santos",
+				"Reynier Niebres",
+				"James Domingo"
+			],
+			"answer" : 0
+		},
+
+		{
+			"question" : "Who is the greatest Filipino Painter?",
+			"options" : [
+				"Arley Carig",
+				"Ronald Diata",
+				"Juan Luna",
+				"Eden Morales"
+			],
+			"answer" : 2
+		},
+
+		{
+			"question" : "Who is the Founder of the Katipunan?",
+			"options" : [
+				"Don Bencilao",
+				"Andres Bonifacio",
+				"Gabriel Domingo",
+				"Marko Anson"
+			],
+			"answer" : 1
+		},
+
+		{
+			"question" : "What is the color of the 1,000 peso bill?",
+			"options" : [
+				"Fuschia Fink",
+				"Blue",
+				"Green",
+				"Yellow"
+			],
+			"answer" : 1
+		},
+
+		{
+			"question" : "What is the title of the Philippine National Anthem?",
+			"options" : [
+				"Bayang Magiliw",
+				"Ed Sheeran",
+				"Twerk it like maling",
+				"Lupang Hinirang"
+			],
+			"answer" : 3
+		},
+
+		{
+			"question" : "Kilala bilang \"Huseng Batute\"",
+			"options" : [
+				"Apolinario Mabini",
+				"Jose Corazon de Hesus",
+				"Gregorio H. del Pilar",
+				"Melchora Aquino"
+			],
+			"answer" : 1
+		},
+
+		{
+			"question" : "What is the national flower of the Philippines?",
+			"options" : [
+				"Sampaguita",
+				"Rose",
+				"Ilang Ilang",
+				"Daisy"
+			],
+			"answer" : 0
+		}
+	]
+}

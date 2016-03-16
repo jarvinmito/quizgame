@@ -65,6 +65,8 @@
 @import "05-objects/versus";
 @import "05-objects/header";
 @import "05-objects/ingame";
+//@import "05-objects/ingame";
+//@import "05-objects/button-list";
 //@import "05-objects/main-wrap";
 
 /**
@@ -76,7 +78,13 @@
 @import "06-components/game-button";
 @import "06-components/question";
 @import "06-components/points";
-
+@import "06-components/result-page";
+@import "06-components/opponent";
+@import "06-components/main-player";
+@import "06-components/loading-screen";
+@import "06-components/waiting-screen";
+@import "06-components/pop-up";
+//@import "06-components/waiting-screen";
 //@import "06-components/thumbnail-img";
 //@import "06-components/main-nav";
 

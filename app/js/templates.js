@@ -26,13 +26,13 @@ this["App"]["Templates"]["header-points"] = Handlebars.template({"compiler":[7,"
 this["App"]["Templates"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div class=\"header\">\r\n  <div class=\"player__round grid--40 text-align--center\">\r\n"
-    + ((stack1 = container.invokePartial(partials["header-player"],depth0,{"name":"header-player","hash":{"player":((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.left : stack1)},"data":data,"indent":"    ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "  </div>\r\n  <div class=\"grid--20 header__points text-align--center\">\r\n"
-    + ((stack1 = container.invokePartial(partials["header-points"],depth0,{"name":"header-points","hash":{"game":(depth0 != null ? depth0.game : depth0)},"data":data,"indent":"    ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "  </div>\r\n  <div class=\"player__round grid--40 text-align--center\">\r\n"
-    + ((stack1 = container.invokePartial(partials["header-player"],depth0,{"name":"header-player","hash":{"player":((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.right : stack1)},"data":data,"indent":"    ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "  </div>\r\n</div>";
+  return "<div class=\"header clearfix\">\r\n	<div class=\"player__round grid--40 text-align--center\">\r\n"
+    + ((stack1 = container.invokePartial(partials["header-player"],depth0,{"name":"header-player","hash":{"player":((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.left : stack1)},"data":data,"indent":"\t  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "	</div>\r\n	<div class=\"grid--20 header__points text-align--center\">\r\n"
+    + ((stack1 = container.invokePartial(partials["header-points"],depth0,{"name":"header-points","hash":{"game":(depth0 != null ? depth0.game : depth0)},"data":data,"indent":"\t  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "	</div>\r\n	<div class=\"player__round grid--40 text-align--center\">\r\n"
+    + ((stack1 = container.invokePartial(partials["header-player"],depth0,{"name":"header-player","hash":{"player":((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.right : stack1)},"data":data,"indent":"\t  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "	</div>\r\n</div>";
 },"usePartial":true,"useData":true});
 
 this["App"]["Templates"]["landing"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -40,7 +40,7 @@ this["App"]["Templates"]["landing"] = Handlebars.template({"compiler":[7,">= 4.0
 },"useData":true});
 
 this["App"]["Templates"]["loading"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "Finding a match... please wait...";
+    return "<div class=\"loading-screen\"></div>\r\n<div class=\"loading-screen__sky\"></div>\r\n<div class=\"loading-screen__clouds\"></div>\r\n\r\n<img class=\"loading-screen__cloud-one\" src=\"./assets/images/cloud-one.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-two\" src=\"./assets/images/cloud-two.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-three\" src=\"./assets/images/cloud-three.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-four\" src=\"./assets/images/cloud-four.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-five\" src=\"./assets/images/cloud-five.svg\" alt=\"\">\r\n\r\n<img class=\"loading-screen__flag\" src=\"./assets/images/flag.svg\" alt=\"\">\r\n<img class=\"loading-screen__jeep\" src=\"./assets/images/jeepney.svg\" alt=\"\">";
 },"useData":true});
 
 this["App"]["Templates"]["options"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
@@ -52,9 +52,7 @@ this["App"]["Templates"]["options"] = Handlebars.template({"1":function(containe
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
     + "\">"
     + alias4(alias5(depth0, depth0))
-    + "</button>-->\r\n	\r\n	<a href=\"#\" class=\"options game-button ingame__options--"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depths[1] != null ? depths[1].data : depths[1])) != null ? stack1.image : stack1),{"name":"if","hash":{},"fn":container.program(2, data, 0, blockParams, depths),"inverse":container.program(4, data, 0, blockParams, depths),"data":data})) != null ? stack1 : "")
-    + "\" data-value=\""
+    + "</button>-->\r\n	\r\n	<a href=\"#\" class=\"options game-button\" data-value=\""
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
     + "\">"
     + alias4(alias5(depth0, depth0))
@@ -75,45 +73,70 @@ this["App"]["Templates"]["question"] = Handlebars.template({"1":function(contain
   return "<img src=\""
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.image : stack1), depth0))
     + "\" alt=\"Yeah\">\r\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.escapeExpression;
+
+  return "<h1 class=\"question question--"
+    + alias1((helpers.textLength || (depth0 && depth0.textLength) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.question : stack1),{"name":"textLength","hash":{},"data":data}))
+    + "\">"
+    + alias1(container.lambda(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.question : stack1), depth0))
+    + "</h1>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<h1 class=\"question question--short\">"
-    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.question : stack1), depth0))
-    + "</h1>\r\n"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.image : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+  return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.image : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "");
 },"useData":true});
 
 this["App"]["Templates"]["results"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<h1>"
-    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.status : stack1), depth0))
-    + "</h1>\r\n<div>"
-    + ((stack1 = container.invokePartial(partials["header-player"],depth0,{"name":"header-player","hash":{"player":((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.me : stack1)},"data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "</div>\r\n<div>"
-    + ((stack1 = container.invokePartial(partials["header-player"],depth0,{"name":"header-player","hash":{"player":((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.opponent : stack1)},"data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "</div>\r\n<button class=\"game-button game-button--result game-button--red\">Rematch</button>\r\n<button class=\"game-button game-button--result game-button--blue-green\">Another Opponent</button>\r\n<button class=\"game-button game-button--result game-button--light-blue\">Leave</button>";
-},"usePartial":true,"useData":true});
+  return "<div class=\"result-page result-page--"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.result : stack1), depth0))
+    + "\">\r\n  <h1 class=\"result-page__title\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.status : stack1), depth0))
+    + "</h1>\r\n  <div class=\"result-page main-player\" data-id=\"b\">\r\n    <img class=\"main-player__avatar\" src=\"assets/images/player-1.png\" alt=\"\">\r\n    <div class=\"main-player__details ribbon-content\">\r\n      <h4 class=\"main-player__name \">"
+    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.me : stack1)) != null ? stack1.badge : stack1), depth0))
+    + "</h4>\r\n      <!--          <span class=\"result-page__badge\">Magaling</span>-->\r\n      <span class=\"main-player__score\">"
+    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.me : stack1)) != null ? stack1.score : stack1), depth0))
+    + " POINTS</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"result-page opponent\">\r\n    <div class=\"opponent__text\">\r\n      <p>OPPONENT</p>\r\n      <p>DETAILS</p>\r\n    </div>\r\n    <img class=\"opponent__avatar\" src=\"assets/images/player-1.png\" alt=\"\">\r\n    <div class=\"opponent__level-points\">\r\n      <p>LEVEL: "
+    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.opponent : stack1)) != null ? stack1.badge : stack1), depth0))
+    + "</p>\r\n      <p>"
+    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.opponent : stack1)) != null ? stack1.score : stack1), depth0))
+    + " POINTS</p>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"result-page__list\">\r\n    <button class=\"game-button result-page__button game-button--light-blue\">Rematch</button>\r\n    <button class=\"game-button result-page__button game-button--blue-green\">Another Opponent</button>\r\n    <button class=\"game-button result-page__button game-button--red \">Leave</button>\r\n  </div>\r\n</div>";
+},"useData":true});
 
 this["App"]["Templates"]["round"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<div class=\"round text-align--center\">\r\n  <img src=\"assets/images/round-img.png\" alt=\"\">\r\n  <h1>"
+  return "<div class=\"waiting-screen\">\r\n  <img class=\"waiting-screen__logo\" src=\"assets/images/vanamo_logo.png\" alt=\"\">\r\n  <h3 class=\"waiting-screen__topic\">WORD SCRAMBLE</h3>\r\n  <p>"
     + container.escapeExpression(((helper = (helper = helpers.round || (depth0 != null ? depth0.round : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"round","hash":{},"data":data}) : helper)))
-    + "</h1>\r\n</div>";
+    + "</p>\r\n</div>";
 },"useData":true});
 
 this["App"]["Templates"]["versus"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<div class=\"versus\">\r\n\r\n  <div class=\"players__player player clearfix view-width--50\">\r\n    <div>\r\n      <img class=\"player__avatar player__avatar--left\" src=\"assets/images/player-1.png\" alt=\"\">\r\n      <div class=\"player__name\"><b>"
+  return "<div class=\"versus\">\r\n  <div class=\" player__vs\">VS</div>\r\n  <div class=\"versus__one player--one\">\r\n   \r\n      <img class=\"player__avatar player__avatar--left\" src=\"assets/images/player-1.png\" alt=\"\">\r\n      <div class=\"player__details\">\r\n        <div class=\"player__name\"><b>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.left : stack1)) != null ? stack1.name : stack1), depth0))
-    + "</b></div>\r\n      <div class=\"player__badge\"><small>"
+    + "</b></div>\r\n        <div class=\"player__badge\"><small>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.left : stack1)) != null ? stack1.badge : stack1), depth0))
-    + "</small></div>\r\n      <div class=\"player__score\"></div>\r\n    </div>\r\n  </div>\r\n  <!--Seprators-->\r\n<!--\r\n  <div class=\"versus__separator view-height-10\">\r\n    <b>VasdasdasdS</b>\r\n    <svg height=\"100\" width=\"100\">\r\n      <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" />\r\n    </svg>\r\n  </div>\r\n-->\r\n  <!--Player 2-->\r\n  <div class=\"players__player player player--right clearfix view-width--50\">\r\n   <img class=\"player__avatar player__avatar--right\" src=\"assets/images/player-2.png\" alt=\"\">\r\n    <div class=\"player__name\"><b>"
+    + "</small></div>\r\n        <div class=\"player__score\"></div>\r\n      </div>\r\n    \r\n  </div>\r\n\r\n  <div class=\"versus__two player--two\">\r\n    \r\n      <img class=\"player__avatar player__avatar--right\" src=\"assets/images/player-2.png\" alt=\"\">\r\n      <div class=\"player__details\">\r\n        <div class=\"player__name\"><b>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.right : stack1)) != null ? stack1.name : stack1), depth0))
-    + "</b></div>\r\n    <div class=\"player__badge\"><small>"
+    + "</b></div>\r\n        <div class=\"player__badge\"><small>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.right : stack1)) != null ? stack1.badge : stack1), depth0))
-    + "</small></div>\r\n    <div class=\"player__score\"></div>\r\n  </div>\r\n</div>";
+    + "</small></div>\r\n        <div class=\"player__score\"></div>\r\n      </div>\r\n\r\n  </div>\r\n</div>";
 },"useData":true});
+
+this["App"]["Templates"]["waiting-timer"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<span>"
+    + container.escapeExpression((helpers.timeToMinutes || (depth0 && depth0.timeToMinutes) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.time : depth0),{"name":"timeToMinutes","hash":{},"data":data}))
+    + "<span>";
+},"useData":true});
+
+this["App"]["Templates"]["waiting"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"waiting-screen\">\r\n  <img class=\"waiting-screen__logo\" src=\"assets/images/vanamo_logo.png\" alt=\"\">\r\n  <h3 class=\"waiting-screen__topic\"> WORD SCRAMBLE</h3>\r\n  <p>waiting for the player to accept the challenge</p>\r\n  <time class=\"waiting-screen__timer\">"
+    + ((stack1 = container.invokePartial(partials["waiting-timer"],depth0,{"name":"waiting-timer","hash":{"time":(depth0 != null ? depth0.time : depth0)},"data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "</time>\r\n</div>";
+},"usePartial":true,"useData":true});

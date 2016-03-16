@@ -58,11 +58,18 @@
   font-weight: bold;
   font-style: normal; }
 
+/* @font-face kit by Fonts2u (http://www.fonts2u.com) */
+@font-face {
+  font-family: "Brady Bunch";
+  src: url("../fonts/bradybun.eot?") format("eot"), url("../fonts/bradybun.woff") format("woff"), url("../fonts/bradybun.ttf") format("truetype"), url("../fonts/bradybun.svg#BradyBunch") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 /**
  * 02 TOOLS
  * Defualt mixins and functions.
  */
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_clearfix.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_clearfix.scss */
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -71,69 +78,69 @@
   clear: both;
   height: 0; }
 
-/* line 9, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_clearfix.scss */
+/* line 9, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_clearfix.scss */
 .clearfix {
   display: inline-block; }
 
 /* start commented backslash hack \*/
-/* line 11, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_clearfix.scss */
+/* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_clearfix.scss */
 * html .clearfix {
   height: 1%; }
 
-/* line 12, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_clearfix.scss */
+/* line 12, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_clearfix.scss */
 .clearfix {
   display: block; }
 
 /* close commented backslash hack */
-/* line 4, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 4, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--100 {
   height: 100vh; }
 
-/* line 7, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--90 {
   height: 90vh; }
 
-/* line 10, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--80 {
   height: 80vh; }
 
-/* line 13, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 13, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--70 {
   height: 70vh; }
 
-/* line 16, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--60 {
   height: 60vh; }
 
-/* line 19, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--50 {
   height: 50vh; }
 
-/* line 22, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--40 {
   height: 40vh; }
 
-/* line 25, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--30 {
   height: 30vh; }
 
-/* line 28, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--20 {
   height: 20vh; }
 
-/* line 31, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_view-height.scss */
+/* line 31, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_view-height.scss */
 .view-height--10 {
   height: 10vh; }
 
-/* line 2, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_text-align.scss */
+/* line 2, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_text-align.scss */
 .text-align--center {
   text-align: center; }
 
-/* line 5, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_text-align.scss */
+/* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_text-align.scss */
 .text-align--left {
   text-align: left; }
 
-/* line 8, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/02-tools/_text-align.scss */
+/* line 8, C:/xampp/htdocs/projects/engage/quizgame/app/scss/02-tools/_text-align.scss */
 .text-align--right {
   text-align: right; }
 
@@ -147,7 +154,7 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
-/* line 9, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 9, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 html {
   font-family: sans-serif;
   /* 1 */
@@ -159,7 +166,7 @@ html {
 /**
  * Remove default margin.
  */
-/* line 19, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 body {
   margin: 0; }
 
@@ -171,7 +178,7 @@ body {
  * and Firefox.
  * Correct `block` display not defined for `main` in IE 11.
  */
-/* line 45, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 45, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 article,
 aside,
 details,
@@ -191,7 +198,7 @@ summary {
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
-/* line 57, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 57, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 audio,
 canvas,
 progress,
@@ -205,7 +212,7 @@ video {
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
-/* line 67, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 67, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 audio:not([controls]) {
   display: none;
   height: 0; }
@@ -214,7 +221,7 @@ audio:not([controls]) {
  * Address `[hidden]` styling not present in IE 8/9/10.
  * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
  */
-/* line 78, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 78, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 [hidden],
 template {
   display: none; }
@@ -224,7 +231,7 @@ template {
 /**
  * Remove the gray background color from active links in IE 10.
  */
-/* line 89, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 89, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 a {
   background-color: transparent; }
 
@@ -232,7 +239,7 @@ a {
  * Improve readability of focused elements when they are also in an
  * active/hover state.
  */
-/* line 99, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 99, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 a:active,
 a:hover {
   outline: 0; }
@@ -242,14 +249,14 @@ a:hover {
 /**
  * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
  */
-/* line 110, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 110, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 abbr[title] {
   border-bottom: 1px dotted; }
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
  */
-/* line 119, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 119, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 b,
 strong {
   font-weight: bold; }
@@ -257,7 +264,7 @@ strong {
 /**
  * Address styling not present in Safari and Chrome.
  */
-/* line 127, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 127, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 dfn {
   font-style: italic; }
 
@@ -265,7 +272,7 @@ dfn {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari, and Chrome.
  */
-/* line 136, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 136, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0; }
@@ -273,7 +280,7 @@ h1 {
 /**
  * Address styling not present in IE 8/9.
  */
-/* line 145, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 145, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 mark {
   background: #ff0;
   color: #000; }
@@ -281,14 +288,14 @@ mark {
 /**
  * Address inconsistent and variable font size in all browsers.
  */
-/* line 154, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 154, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 small {
   font-size: 80%; }
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
-/* line 163, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 163, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -296,11 +303,11 @@ sup {
   position: relative;
   vertical-align: baseline; }
 
-/* line 170, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 170, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 sup {
   top: -0.5em; }
 
-/* line 174, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 174, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 sub {
   bottom: -0.25em; }
 
@@ -309,14 +316,14 @@ sub {
 /**
  * Remove border when inside `a` element in IE 8/9/10.
  */
-/* line 185, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 185, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 img {
   border: 0; }
 
 /**
  * Correct overflow not hidden in IE 9/10/11.
  */
-/* line 193, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 193, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 svg:not(:root) {
   overflow: hidden; }
 
@@ -325,14 +332,14 @@ svg:not(:root) {
 /**
  * Address margin not present in IE 8/9 and Safari.
  */
-/* line 204, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 204, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 figure {
   margin: 1em 40px; }
 
 /**
  * Address differences between Firefox and other browsers.
  */
-/* line 212, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 212, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 hr {
   box-sizing: content-box;
   height: 0; }
@@ -340,14 +347,14 @@ hr {
 /**
  * Contain overflow in all browsers.
  */
-/* line 221, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 221, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 pre {
   overflow: auto; }
 
 /**
  * Address odd `em`-unit font size rendering in all browsers.
  */
-/* line 232, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 232, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 code,
 kbd,
 pre,
@@ -367,7 +374,7 @@ samp {
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
-/* line 256, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 256, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 button,
 input,
 optgroup,
@@ -383,7 +390,7 @@ textarea {
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
-/* line 266, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 266, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 button {
   overflow: visible; }
 
@@ -393,7 +400,7 @@ button {
  * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
  * Correct `select` style inheritance in Firefox.
  */
-/* line 278, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 278, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 button,
 select {
   text-transform: none; }
@@ -405,7 +412,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-/* line 293, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 293, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 button,
 html input[type="button"], input[type="reset"],
 input[type="submit"] {
@@ -417,7 +424,7 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-/* line 303, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 303, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 button[disabled],
 html input[disabled] {
   cursor: default; }
@@ -425,7 +432,7 @@ html input[disabled] {
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-/* line 312, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 312, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -435,7 +442,7 @@ input::-moz-focus-inner {
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-/* line 322, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 322, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 input {
   line-height: normal; }
 
@@ -446,7 +453,7 @@ input {
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
-/* line 335, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 335, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -459,7 +466,7 @@ input[type="radio"] {
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-/* line 347, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 347, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto; }
@@ -468,7 +475,7 @@ input[type="number"]::-webkit-outer-spin-button {
  * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
  * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
  */
-/* line 356, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 356, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -480,7 +487,7 @@ input[type="search"] {
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-/* line 368, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 368, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -488,7 +495,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Define consistent border, margin, and padding.
  */
-/* line 376, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 376, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
@@ -498,7 +505,7 @@ fieldset {
  * 1. Correct `color` not being inherited in IE 8/9/10/11.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
-/* line 387, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 387, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 legend {
   border: 0;
   /* 1 */
@@ -508,7 +515,7 @@ legend {
 /**
  * Remove default vertical scrollbar in IE 8/9/10/11.
  */
-/* line 396, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 396, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 textarea {
   overflow: auto; }
 
@@ -516,7 +523,7 @@ textarea {
  * Don't inherit the `font-weight` (applied by a rule above).
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
-/* line 405, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 405, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 optgroup {
   font-weight: bold; }
 
@@ -525,103 +532,103 @@ optgroup {
 /**
  * Remove most spacing between table cells.
  */
-/* line 416, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 416, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* line 422, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_normalize.scss */
+/* line 422, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_normalize.scss */
 td,
 th {
   padding: 0; }
 
-/* line 2, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 2, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--100 {
   float: left;
   width: 100%; }
 
-/* line 6, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 6, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--90 {
   float: left;
   width: 90%; }
 
-/* line 10, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--80 {
   float: left;
   width: 80%; }
 
-/* line 14, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--70 {
   float: left;
   width: 70%; }
 
-/* line 18, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--60 {
   float: left;
   width: 60%; }
 
-/* line 22, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--50 {
   float: left;
   width: 50%; }
 
-/* line 26, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 26, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--40 {
   float: left;
   width: 40%; }
 
-/* line 30, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 30, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--30 {
   float: left;
   width: 30%; }
 
-/* line 34, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--20 {
   float: left;
   width: 20%; }
 
-/* line 38, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_grid.scss */
+/* line 38, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_grid.scss */
 .grid--10 {
   float: left;
   width: 10%; }
 
-/* line 4, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 4, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--100 {
   height: 100vh; }
 
-/* line 7, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--90 {
   height: 90vh; }
 
-/* line 10, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--80 {
   height: 80vh; }
 
-/* line 13, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 13, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--70 {
   height: 70vh; }
 
-/* line 16, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--60 {
   height: 60vh; }
 
-/* line 19, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--50 {
   height: 50vh; }
 
-/* line 22, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--40 {
   height: 40vh; }
 
-/* line 25, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--30 {
   height: 30vh; }
 
-/* line 28, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--20 {
   height: 20vh; }
 
-/* line 31, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/03-generic/_view-height.scss */
+/* line 31, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_view-height.scss */
 .view-height--10 {
   height: 10vh; }
 
@@ -629,184 +636,347 @@ th {
  * 04 BASE
  * Unclassed HTML element (type selectors).
  */
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/04-base/_global.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/04-base/_global.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  /* line 5, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/04-base/_global.scss */
+  /* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/04-base/_global.scss */
   * *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
-  /* line 10, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/04-base/_global.scss */
+  /* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/04-base/_global.scss */
   * *:after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
 
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/04-base/_html.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/04-base/_html.scss */
 html {
   height: 100vh;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  background-color: #05042c;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: normal;
   color: #fff;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  background-color: #05042c; }
+  text-rendering: optimizeLegibility; }
 
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/04-base/_body.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/04-base/_body.scss */
 body {
   height: 100%;
+  color: rgba(0, 0, 0, 0.8);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   background-color: #05042c; }
 
 /**
  * 05 OBJECT
  * Cosmetic-free design patterns.
  */
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_engage.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_engage.scss */
 .engage {
+  z-index: 0;
+  position: relative;
   overflow: hidden;
   margin: 0 auto;
   width: 100%;
-  height: 100%; }
-  /* line 9, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_engage.scss */
-  .engage__header {
-    width: 100%;
-    display: inline-block; }
-  /* line 13, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_engage.scss */
-  .engage__body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0; }
-
-/* line 2, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_versus.scss */
-.versus__separator {
-  text-align: center; }
-
-/* line 2, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_header.scss */
-.header__player {
-  margin-top: 20px; }
-
-/* line 2, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_ingame.scss */
-.ingame__options {
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
-  width: 100%;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
+  height: 100%;
   display: flex;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around; }
-  /* line 16, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_ingame.scss */
+  flex-direction: column;
+  flex-wrap: nowrap; }
+  /* line 15, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_engage.scss */
+  .engage__header {
+    flex: 1;
+    display: flex;
+    flex-direction: column; }
+  /* line 21, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_engage.scss */
+  .engage__body {
+    flex: 3;
+    display: flex;
+    flex-direction: column; }
+
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+.versus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%; }
+  /* line 6, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+  .versus__one {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center; }
+  /* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+  .versus__two {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center; }
+  /* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+  .versus__separator {
+    text-align: center; }
+
+/* line 2, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+.header__player {
+  margin-top: 15px;
+  color: #fff; }
+  /* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+  .header__player .player__name {
+    width: auto;
+    margin-bottom: 0;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #59c1ff; }
+  /* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+  .header__player .player__badge {
+    padding: 0;
+    font-size: 11px;
+    color: #eaad2e; }
+  /* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+  .header__player .player__score {
+    padding: 0;
+    font-size: 11px;
+    color: #ece465; }
+
+/* line 2, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+.ingame__question {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+/* line 8, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+.ingame__image {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+  background: wheat;
+  border-radius: 5px;
+  margin-bottom: 30px; }
+  /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+  .ingame__image img {
+    height: auto;
+    width: 100%;
+    max-width: 200px; }
+
+/* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+.ingame__options {
+  display: flex;
+  flex-wrap: wrap; }
+  /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__options--full {
-    flex: 1 100%;
-    margin-left: 15px;
-    margin-right: 15px; }
-  /* line 21, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_ingame.scss */
+    flex: 2;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 15px;
+    padding-bottom: 30px; }
+    /* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+    .ingame__options--full .game-button {
+      flex-direction: column;
+      display: flex;
+      height: 8vh;
+      margin-bottom: 10px;
+      line-height: 8vh; }
+  /* line 45, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__options--half {
-    flex: 2 40%;
-    margin-right: 15px; }
-    /* line 25, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/05-objects/_ingame.scss */
-    .ingame__options--half:nth-child(odd) {
-      margin-left: 15px; }
+    flex: 1;
+    flex-direction: row;
+    align-content: flex-end;
+    padding-right: 15px;
+    padding-bottom: 30px; }
+    /* line 51, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+    .ingame__options--half .game-button {
+      flex: 1 0 calc(50% - 15px);
+      flex-direction: column;
+      display: flex;
+      margin-left: 15px;
+      margin-top: 15px;
+      height: 10vh;
+      line-height: 10vh;
+      font-size: 14px; }
 
 /**
  * 06 COMPONENTS
  * Designed components, Chunk of UI.
  */
-/* line 2, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
-.player--right {
-  text-align: right; }
+/* line 2, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+.player--one {
+  background-color: #eaad2e; }
+  /* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player--one .player__details:before {
+    content: " ";
+    border-top: 1px solid #193a5b; }
+  /* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player--one .player__name {
+    color: #193a5b; }
+  /* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player--one .player__badge {
+    background-color: #193a5b;
+    color: #fff; }
+    /* line 17, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+    .player--one .player__badge:before {
+      content: " ";
+      background-color: #eaad2e; }
+    /* line 21, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+    .player--one .player__badge:after {
+      content: " ";
+      background-color: #eaad2e; }
 
-/* line 6, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
+/* line 27, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+.player--two {
+  background-color: #193a5b; }
+  /* line 30, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player--two .player__details:before {
+    content: " ";
+    border-top: 1px solid #fff; }
+  /* line 35, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player--two .player__name {
+    color: #fff; }
+  /* line 39, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player--two .player__badge {
+    background-color: #fff;
+    color: #000; }
+    /* line 42, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+    .player--two .player__badge:before {
+      content: " ";
+      background-color: #193a5b; }
+    /* line 46, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+    .player--two .player__badge:after {
+      content: " ";
+      background-color: #193a5b; }
+
+/* line 52, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+.player__vs {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  padding: 9px 10px;
+  background: #fff;
+  margin-left: -22px;
+  margin-top: -22px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #193a5b; }
+
+/* line 67, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__avatar {
-  height: 100px;
-  width: 100px; }
-  /* line 10, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
-  .player__avatar--left {
-    float: left; }
-  /* line 14, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
-  .player__avatar--right {
-    float: right; }
-  /* line 18, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
+  height: auto;
+  width: 100px;
+  margin-bottom: 15px; }
+  /* line 71, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
   .player__avatar--small {
     width: 50px;
-    height: 50px; }
+    height: auto; }
 
-/* line 23, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
+/* line 76, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+.player__details {
+  text-align: center; }
+  /* line 78, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player__details:before {
+    content: " ";
+    width: 60px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 5px; }
+
+/* line 86, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__name {
-  margin-top: 3px;
-  margin-bottom: 2px;
-  font-size: 13px;
-  line-height: 13px;
-  font-weight: 600; }
+  width: 140px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: bold;
+  text-transform: uppercase; }
 
-/* line 30, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
+/* line 97, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__badge {
+  position: relative;
   margin: 0;
-  font-size: 11px;
-  line-height: 15px; }
+  display: inline-block;
+  padding: 5px 18px;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase; }
+  /* line 105, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player__badge:before {
+    content: " ";
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    z-index: 2;
+    width: 6px;
+    height: 6px;
+    margin-top: -2px;
+    border-radius: 50%; }
+  /* line 116, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  .player__badge:after {
+    content: " ";
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    z-index: 2;
+    width: 6px;
+    height: 6px;
+    margin-top: -2px;
+    border-radius: 50%; }
 
-/* line 35, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_player.scss */
+/* line 128, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__score {
   margin: 0;
   font-size: 12px;
   line-height: 15px; }
 
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_round.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_round.scss */
 .round {
   margin-top: 15vh; }
 
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
 .game-button {
   position: relative;
-  width: 100%;
-  padding: 3vh;
-  margin-bottom: 15px;
+  padding: 0;
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
   color: #000;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  text-align: center;
-  background-color: #fff;
-  border: 0;
-  border-radius: 5px; }
-  /* line 24, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  text-align: center; }
+  /* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button.btn-success {
     background-color: #3fbe7b; }
-  /* line 28, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  /* line 20, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button.btn-danger {
     background-color: #d23139; }
-  /* line 33, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  /* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button--red {
     background-color: #d23139; }
-  /* line 37, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  /* line 29, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button--blue-green {
     background-color: #3fbe7b; }
-  /* line 41, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  /* line 33, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button--light-blue {
     background-color: #46b7b5; }
-  /* line 45, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
-  .game-button--result {
-    max-width: 270px;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 15px; }
-  /* line 56, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  /* line 39, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-me::before,
   .game-button .answer-me::after,
   .game-button .answer-opponent::before,
   .game-button .answer-opponent::after {
+    content: " ";
     position: absolute;
     top: 50%;
     z-index: 3;
@@ -814,19 +984,20 @@ body {
     content: '';
     width: 0;
     height: 0; }
-  /* line 68, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  /* line 52, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-me {
     position: absolute;
     left: 0;
+    top: 50%;
     width: 0;
     height: 0;
     display: block;
-    margin-top: -23px;
+    margin-top: -12px;
     margin-left: 0px;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-left: 15px solid rgba(0, 0, 0, 0.2); }
-    /* line 83, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+    /* line 68, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-me::before {
       left: 0;
       margin-top: -13px;
@@ -834,7 +1005,7 @@ body {
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
       border-left: 17px solid #ece465; }
-    /* line 94, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+    /* line 79, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-me::after {
       left: 0;
       z-index: 1;
@@ -844,19 +1015,20 @@ body {
       border-top: 5px solid transparent;
       border-bottom: 5px solid transparent;
       border-right: 5px solid #b9a300; }
-  /* line 109, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+  /* line 94, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-opponent {
     position: absolute;
     right: 0;
+    top: 50%;
     width: 0;
     height: 0;
     display: block;
-    margin-top: -23px;
+    margin-top: -12px;
     margin-right: 0px;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-right: 15px solid rgba(0, 0, 0, 0.2); }
-    /* line 122, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+    /* line 108, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-opponent::before {
       right: 0;
       margin-top: -13px;
@@ -864,7 +1036,7 @@ body {
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
       border-right: 17px solid #ece465; }
-    /* line 133, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_game-button.scss */
+    /* line 119, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-opponent::after {
       right: 0;
       z-index: 1;
@@ -875,35 +1047,465 @@ body {
       border-bottom: 5px solid transparent;
       border-left: 5px solid #b9a300; }
 
-/* line 1, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_question.scss */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_question.scss */
 .question {
   text-align: center;
-  font-weight: 600; }
-  /* line 5, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_question.scss */
+  font-weight: 600;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #fff; }
+  /* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_question.scss */
   .question__title {
     text-align: center;
-    font-size: 13px; }
-  /* line 9, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_question.scss */
+    font-size: 13px;
+    color: #fff; }
+  /* line 12, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_question.scss */
   .question--short {
     font-size: 24px; }
-  /* line 12, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_question.scss */
+  /* line 15, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_question.scss */
   .question--long {
-    font-size: 28px; }
+    font-size: 18px; }
 
-/* line 2, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_points.scss */
-.points__value {
-  margin: 0;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600; }
-
-/* line 8, C:/xampp/htdocs/projects/engage/quizgame_api/app/scss/06-components/_points.scss */
+/* line 3, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_points.scss */
 .points__title {
   margin: 0;
   margin-top: 30px;
   text-align: center;
   font-size: 10px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #fff; }
+
+/* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_points.scss */
+.points__value {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #93ce36; }
+
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+.result-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  /* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--win:before {
+    content: " ";
+    background: url("../assets/images/win.svg") top center repeat-x;
+    position: absolute;
+    width: 100%;
+    height: 300px; }
+  /* line 15, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--win .result-page__title {
+    color: #eaad2e; }
+  /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--win .main-player__details {
+    background-color: #93ce36; }
+    /* line 21, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--win .main-player__details:before,
+    .result-page--win .main-player__details:after {
+      content: "";
+      border-color: transparent #5a7f1f transparent; }
+    /* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--win .main-player__details .main-player__name {
+      color: #000; }
+    /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--win .main-player__details .main-player__score {
+      color: #000; }
+  /* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--lose:before {
+    content: " ";
+    background: url("../assets/images/lose.svg") top center no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: -5%; }
+  /* line 42, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--lose .result-page__title {
+    color: #d23139; }
+  /* line 45, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--lose .main-player__details {
+    background-color: #d23139; }
+    /* line 48, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--lose .main-player__details:before,
+    .result-page--lose .main-player__details:after {
+      content: "";
+      border-color: transparent #811c21 transparent; }
+    /* line 53, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--lose .main-player__details .main-player__name {
+      color: #fff; }
+    /* line 56, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--lose .main-player__details .main-player__score {
+      color: #fff; }
+  /* line 61, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page__title {
+    margin-bottom: 10px;
+    font-family: 'Brady Bunch';
+    text-align: center;
+    color: #eaad2e;
+    letter-spacing: 1;
+    font-size: 50px; }
+  /* line 69, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page__list {
+    max-width: 240px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 100%; }
+  /* line 80, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page__button {
+    line-height: 7vh;
+    height: 7vh;
+    margin-bottom: 15px; }
+    /* line 84, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page__button:last-child {
+      margin-bottom: 0; }
+
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_opponent.scss */
+.opponent {
+  flex-direction: row;
+  padding-top: 7vh;
+  padding-bottom: 15px; }
+  /* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_opponent.scss */
+  .opponent__text p,
+  .opponent__level-points p {
+    margin: 0;
+    padding: 0;
+    font-size: 11px; }
+  /* line 15, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_opponent.scss */
+  .opponent__text p {
+    margin-right: 20px;
+    text-align: right;
+    color: #fff; }
+  /* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_opponent.scss */
+  .opponent__level-points p {
+    margin-left: 20px;
+    text-align: left;
+    color: #fff; }
+  /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_opponent.scss */
+  .opponent__avatar {
+    width: 45px;
+    height: 45px; }
+
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+.main-player {
+  display: block;
+  margin: 0 auto;
+  text-align: center; }
+  /* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+  .main-player__avatar {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    background: #46b7b5;
+    display: block;
+    border-radius: 50%;
+    border: 7px solid #46b7b5; }
+    @media (min-width: 350px) {
+      /* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+      .main-player__avatar {
+        width: 200px;
+        height: 200px; } }
+  /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+  .main-player__details {
+    position: relative;
+    width: 180px;
+    margin-top: -40px;
+    padding: 0;
+    background-color: red;
+    text-align: center; }
+    @media (min-width: 350px) {
+      /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+      .main-player__details {
+        width: 220px;
+        margin-top: -50px; } }
+    /* line 31, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+    .main-player__details:before,
+    .main-player__details:after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      display: block;
+      border-style: solid;
+      border-color: transparent #804f7c transparent;
+      top: -3em; }
+    /* line 40, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+    .main-player__details:before {
+      right: 0;
+      border-width: 3em 0 0 3em; }
+    /* line 44, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+    .main-player__details:after {
+      left: 0;
+      border-width: 3em 3em 0 0; }
+  /* line 49, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+  .main-player__score {
+    font-size: 12px; }
+  /* line 52, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+  .main-player__name {
+    margin: 0;
+    color: #000;
+    line-height: 30px;
+    font-size: 36px;
+    font-family: 'Brady Bunch';
+    letter-spacing: 1px;
+    text-transform: uppercase; }
+
+/* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__jeep {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  z-index: 10;
+  width: 40%;
+  margin-left: -50%;
+  animation: jeep-slide 15s linear infinite; }
+
+/* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__sky {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background: url(../assets/images/street_sky.svg) repeat-x;
+  background-size: cover;
+  animation: move 1000s linear infinite; }
+
+/* line 24, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__flag {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  height: 75%;
+  margin-left: -5%; }
+
+/* line 32, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__cloud-one {
+  position: absolute;
+  top: 5%;
+  width: 30%;
+  left: 20%;
+  animation: cloud-slide2 30s linear infinite; }
+
+/* line 40, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__cloud-two {
+  position: absolute;
+  top: 20%;
+  z-index: -1;
+  width: 40%;
+  left: 20%;
+  animation: cloud-slide2 20s linear infinite; }
+
+/* line 48, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__cloud-three {
+  position: absolute;
+  top: 35%;
+  z-index: -1;
+  width: 30%;
+  animation: cloud-slide2 80s linear infinite; }
+
+/* line 55, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__cloud-four {
+  position: absolute;
+  top: 45%;
+  z-index: -1;
+  width: 20%;
+  animation: cloud-slide2 30s linear infinite; }
+
+/* line 62, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__cloud-five {
+  position: absolute;
+  top: 30%;
+  z-index: -1;
+  width: 20%;
+  left: 50%;
+  animation: cloud-slide2 30s linear infinite; }
+
+/* line 70, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen__clouds {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  height: 45%;
+  width: 100%;
+  margin-top: 15%;
+  background: url(../assets/images/clouds.svg) repeat-x;
+  background-size: cover;
+  animation: clouds 100s linear infinite;
+  opacity: 0.7; }
+
+/* line 95, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.loading-screen {
+  height: 100%;
+  width: 100%;
+  background: url("../assets/images/street-buildings.svg") 0px 0px repeat-x;
+  background-size: cover;
+  animation: move 50s linear infinite; }
+
+/* line 104, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
+.cloud-1 {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -10px;
+  width: 13%;
+  animation: cloud-slide 100s linear infinite; }
+
+@keyframes cloud-slide-test {
+  0% {
+    margin-left: 0; }
+  100% {
+    margin-left: -100%; } }
+
+@keyframes cloud-slide2 {
+  0% {
+    margin-left: 100%; }
+  100% {
+    margin-left: -100%; } }
+
+@keyframes clouds {
+  from {
+    background-position: 0px 0px; }
+  to {
+    background-position: 100% 0px; } }
+
+@keyframes jeep-slide {
+  0% {
+    margin-left: 50%; }
+  100% {
+    margin-left: -100%; } }
+
+@keyframes move {
+  from {
+    background-position: 140% 0px; }
+  to {
+    background-position: 0px 0px; } }
+
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+.waiting-screen {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 100%;
+  align-self: center;
+  align-items: center;
+  margin-top: 15%;
+  color: #fff;
+  text-align: center; }
+  /* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  .waiting-screen__logo {
+    width: 180px;
+    height: 180px; }
+  /* line 15, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  .waiting-screen__topic {
+    font-size: 24px;
+    margin-bottom: 10px; }
+  /* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  .waiting-screen__timer {
+    font-size: 80px;
+    color: #93ce36;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center; }
+    /* line 26, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+    .waiting-screen__timer.is-warning {
+      color: #d23139; }
+  /* line 30, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  .waiting-screen p {
+    margin-bottom: 5px;
+    margin-top: 5px; }
+
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+.pop-up {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%; }
+  /* line 8, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up__wrap {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    width: 300px; }
+  /* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up__header {
+    position: relative;
+    background-color: #fff;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%; }
+  /* line 24, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up__title {
+    font-size: 18px;
+    margin-bottom: 10px; }
+  /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up__close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 5;
+    display: block; }
+    /* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    .pop-up__close img {
+      width: 20px; }
+  /* line 38, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up__body {
+    background-color: #fff;
+    width: 100%;
+    padding: 5px 20px 30px; }
+    /* line 42, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    .pop-up__body p {
+      margin-top: 0; }
+  /* line 46, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up__button {
+    background-color: #eaad2e;
+    padding: 10px 10px;
+    width: 100%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: #193a5b;
+    text-decoration: none; }
+    /* line 56, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    .pop-up__button:hover,
+    .pop-up__button:focus,
+    .pop-up__button:active {
+      background-color: #d09315;
+      color: #193a5b; }
+  /* line 61, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up__footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row; }
+    /* line 67, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    .pop-up__footer.is-half .pop-up__button:first-child {
+      border-bottom-right-radius: 0; }
+    /* line 70, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    .pop-up__footer.is-half .pop-up__button:last-child {
+      border-bottom-left-radius: 0; }
+    /* line 73, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    .pop-up__footer.is-half .pop-up__button.is-yellow {
+      background-color: #eaad2e;
+      color: #193a5b; }
+    /* line 77, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    .pop-up__footer.is-half .pop-up__button.is-blue {
+      background-color: #193a5b;
+      color: #fff; }
+      /* line 82, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+      .pop-up__footer.is-half .pop-up__button.is-blue:hover,
+      .pop-up__footer.is-half .pop-up__button.is-blue:focus,
+      .pop-up__footer.is-half .pop-up__button.is-blue:active {
+        background-color: #0e2033;
+        color: #fff; }
 
 /**
  * 07 THEMES

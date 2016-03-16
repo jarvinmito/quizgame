@@ -1,4 +1,24 @@
 .versus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  &__one {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+  }
+  &__two {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+  }
   &__separator {
     text-align: center;
   }

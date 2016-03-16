@@ -1,0 +1,16 @@
+.button-list {
+  display: flex;
+  &--full {
+    
+    > .button-list__item {
+      
+    }
+  }
+  &--half {
+    flex-wrap: wrap;
+    > .button-list__item {
+      float: left;
+      width: 50%;
+    }
+  }
+}

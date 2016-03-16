@@ -1,5 +1,25 @@
 .header {
   &__player {
-    margin-top: 20px;
+    margin-top: 15px;
+    color: $white;
+    .player__name {
+      
+      width: auto;
+      margin-bottom: 0;
+      line-height: 15px;
+      font-size: 12px;
+      font-weight: normal;
+      color: $light-blue--v2;
+    }
+    .player__badge {
+      padding: 0;
+      font-size: 11px;
+      color: $yellow;
+    }
+    .player__score {
+      padding: 0;
+      font-size: 11px;
+      color: $light-yellow;
+    }
   }
 }

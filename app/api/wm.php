@@ -5,24 +5,13 @@ require "init.php";
 $matchid = $_GET['matchid'];
 $isWaiting = true;
 $name = $_GET['name'];
-
-$sql = "SELECT * FROM engage_match WHERE match_id=$matchid";
-$res = mysqli_query($conn, $sql);
-if(mysqli_num_rows($res) != 0){
-	// MY ROOM FOUND
-	// NOW WHAT?
-	$get = mysqli_fetch_array($res);
-	$matchid = $get['match_id'];
-	if($get['match_player_b'] != ''){
-		// START GAME
-		$isWaiting = false;
-	}
-	// WE STILL WAIT...
-}
-
-mysqli_close($conn);
-
+$matchDtl=array('id'=>$matchid);
+$match=curlPost($matchDtl,'http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/findMatchId/');
+$q_match=json_decode($match,TRUE);
+$player=$q_match[0]['match_player_b'];
+if($match)
+{$isWaiting =($player!='')?false:true;}
 $arr = array('matchid' => $matchid, 'isWaiting' => $isWaiting);
-echo json_encode($arr);
+echo json_encode($arr);	
 
 ?>
