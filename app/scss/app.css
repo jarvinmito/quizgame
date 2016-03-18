@@ -632,6 +632,2473 @@ th {
 .view-height--10 {
   height: 10vh; }
 
+/*!
+ * animate.css -http://daneden.me/animate
+ * Version - 3.5.1
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2016 Daniel Eden
+ */
+/* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.animated, .versus__one, .versus__one .player__avatar, .versus__one .player__details, .versus__two, .versus__two .player__avatar, .versus__two .player__details, .versus__vs {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+/* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.animated.infinite, .infinite.versus__one, .versus__one .infinite.player__avatar, .versus__one .infinite.player__details, .infinite.versus__two, .versus__two .infinite.player__avatar, .versus__two .infinite.player__details, .infinite.versus__vs {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+/* line 23, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.animated.hinge, .hinge.versus__one, .versus__one .hinge.player__avatar, .versus__one .hinge.player__details, .hinge.versus__two, .versus__two .hinge.player__avatar, .versus__two .hinge.player__details, .hinge.versus__vs {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s; }
+
+/* line 31, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.animated.flipOutX,
+.flipOutX.versus__one,
+.versus__one .flipOutX.player__avatar,
+.versus__one .flipOutX.player__details,
+.flipOutX.versus__two,
+.versus__two .flipOutX.player__avatar,
+.versus__two .flipOutX.player__details,
+.flipOutX.versus__vs,
+.animated.flipOutY,
+.flipOutY.versus__one,
+.versus__one .flipOutY.player__avatar,
+.versus__one .flipOutY.player__details,
+.flipOutY.versus__two,
+.versus__two .flipOutY.player__avatar,
+.versus__two .flipOutY.player__details,
+.flipOutY.versus__vs,
+.animated.bounceIn,
+.bounceIn.versus__one,
+.versus__one .bounceIn.player__avatar,
+.versus__one .bounceIn.player__details,
+.bounceIn.versus__two,
+.versus__two .bounceIn.player__avatar,
+.versus__two .bounceIn.player__details,
+.bounceIn.versus__vs,
+.animated.bounceOut, .bounceOut.versus__one, .versus__one .bounceOut.player__avatar, .versus__one .bounceOut.player__details, .bounceOut.versus__two, .versus__two .bounceOut.player__avatar, .versus__two .bounceOut.player__details, .bounceOut.versus__vs {
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s; }
+
+@-webkit-keyframes bounce {
+  from, 20%, 53%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  40%, 43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0); }
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0); }
+  90% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0); } }
+
+@keyframes bounce {
+  from, 20%, 53%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  40%, 43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0); }
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0); }
+  90% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0); } }
+
+/* line 92, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom; }
+
+@-webkit-keyframes flash {
+  from, 50%, to {
+    opacity: 1; }
+  25%, 75% {
+    opacity: 0; } }
+
+@keyframes flash {
+  from, 50%, to {
+    opacity: 1; }
+  25%, 75% {
+    opacity: 0; } }
+
+/* line 119, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.flash {
+  -webkit-animation-name: flash;
+  animation-name: flash; }
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+/* line 160, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse; }
+
+@-webkit-keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1); }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1); }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1); }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1); }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+@keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1); }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1); }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1); }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1); }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+/* line 239, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rubberBand {
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand; }
+
+@-webkit-keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0); }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0); } }
+
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0); }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0); } }
+
+/* line 278, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake; }
+
+@-webkit-keyframes headShake {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  6.5% {
+    -webkit-transform: translateX(-6px) rotateY(-9deg);
+    transform: translateX(-6px) rotateY(-9deg); }
+  18.5% {
+    -webkit-transform: translateX(5px) rotateY(7deg);
+    transform: translateX(5px) rotateY(7deg); }
+  31.5% {
+    -webkit-transform: translateX(-3px) rotateY(-5deg);
+    transform: translateX(-3px) rotateY(-5deg); }
+  43.5% {
+    -webkit-transform: translateX(2px) rotateY(3deg);
+    transform: translateX(2px) rotateY(3deg); }
+  50% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+
+@keyframes headShake {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  6.5% {
+    -webkit-transform: translateX(-6px) rotateY(-9deg);
+    transform: translateX(-6px) rotateY(-9deg); }
+  18.5% {
+    -webkit-transform: translateX(5px) rotateY(7deg);
+    transform: translateX(5px) rotateY(7deg); }
+  31.5% {
+    -webkit-transform: translateX(-3px) rotateY(-5deg);
+    transform: translateX(-3px) rotateY(-5deg); }
+  43.5% {
+    -webkit-transform: translateX(2px) rotateY(3deg);
+    transform: translateX(2px) rotateY(3deg); }
+  50% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+
+/* line 347, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.headShake {
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-name: headShake;
+  animation-name: headShake; }
+
+@-webkit-keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg); }
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg); }
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg); }
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg); }
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg); } }
+
+@keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg); }
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg); }
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg); }
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg); }
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg); } }
+
+/* line 408, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.swing {
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-animation-name: swing;
+  animation-name: swing; }
+
+@-webkit-keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  10%, 20% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+@keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  10%, 20% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+/* line 469, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.tada {
+  -webkit-animation-name: tada;
+  animation-name: tada; }
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@-webkit-keyframes wobble {
+  from {
+    -webkit-transform: none;
+    transform: none; }
+  15% {
+    -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% {
+    -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% {
+    -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% {
+    -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes wobble {
+  from {
+    -webkit-transform: none;
+    transform: none; }
+  15% {
+    -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% {
+    -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% {
+    -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% {
+    -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 550, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.wobble {
+  -webkit-animation-name: wobble;
+  animation-name: wobble; }
+
+@-webkit-keyframes jello {
+  from, 11.1%, to {
+    -webkit-transform: none;
+    transform: none; }
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% {
+    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
+    transform: skewX(0.39063deg) skewY(0.39063deg); }
+  88.8% {
+    -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
+    transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
+
+@keyframes jello {
+  from, 11.1%, to {
+    -webkit-transform: none;
+    transform: none; }
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% {
+    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
+    transform: skewX(0.39063deg) skewY(0.39063deg); }
+  88.8% {
+    -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
+    transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
+
+/* line 639, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.jello {
+  -webkit-animation-name: jello;
+  animation-name: jello;
+  -webkit-transform-origin: center;
+  transform-origin: center; }
+
+@-webkit-keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1); }
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03); }
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97); }
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1); }
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03); }
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97); }
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+
+/* line 726, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceIn {
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn; }
+
+@-webkit-keyframes bounceInDown {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -3000px, 0);
+    transform: translate3d(0, -3000px, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 25px, 0);
+    transform: translate3d(0, 25px, 0); }
+  75% {
+    -webkit-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0); }
+  90% {
+    -webkit-transform: translate3d(0, 5px, 0);
+    transform: translate3d(0, 5px, 0); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes bounceInDown {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -3000px, 0);
+    transform: translate3d(0, -3000px, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 25px, 0);
+    transform: translate3d(0, 25px, 0); }
+  75% {
+    -webkit-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0); }
+  90% {
+    -webkit-transform: translate3d(0, 5px, 0);
+    transform: translate3d(0, 5px, 0); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 799, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceInDown {
+  -webkit-animation-name: bounceInDown;
+  animation-name: bounceInDown; }
+
+@-webkit-keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px, 0, 0);
+    transform: translate3d(-3000px, 0, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0);
+    transform: translate3d(25px, 0, 0); }
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0); }
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px, 0, 0);
+    transform: translate3d(-3000px, 0, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0);
+    transform: translate3d(25px, 0, 0); }
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0); }
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 872, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceInLeft, .versus__one .player__avatar {
+  -webkit-animation-name: bounceInLeft;
+  animation-name: bounceInLeft; }
+
+@-webkit-keyframes bounceInRight {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(3000px, 0, 0);
+    transform: translate3d(3000px, 0, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-25px, 0, 0);
+    transform: translate3d(-25px, 0, 0); }
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0); }
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes bounceInRight {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(3000px, 0, 0);
+    transform: translate3d(3000px, 0, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-25px, 0, 0);
+    transform: translate3d(-25px, 0, 0); }
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0); }
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0); }
+  to {
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 945, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceInRight, .versus__two .player__avatar {
+  -webkit-animation-name: bounceInRight;
+  animation-name: bounceInRight; }
+
+@-webkit-keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 3000px, 0);
+    transform: translate3d(0, 3000px, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0); }
+  75% {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0); }
+  90% {
+    -webkit-transform: translate3d(0, -5px, 0);
+    transform: translate3d(0, -5px, 0); }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 3000px, 0);
+    transform: translate3d(0, 3000px, 0); }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0); }
+  75% {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0); }
+  90% {
+    -webkit-transform: translate3d(0, -5px, 0);
+    transform: translate3d(0, -5px, 0); }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+/* line 1018, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceInUp {
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp; }
+
+@-webkit-keyframes bounceOut {
+  20% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9); }
+  50%, 55% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); } }
+
+@keyframes bounceOut {
+  20% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9); }
+  50%, 55% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); } }
+
+/* line 1061, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceOut {
+  -webkit-animation-name: bounceOut;
+  animation-name: bounceOut; }
+
+@-webkit-keyframes bounceOutDown {
+  20% {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0); }
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0);
+    transform: translate3d(0, 2000px, 0); } }
+
+@keyframes bounceOutDown {
+  20% {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0); }
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0);
+    transform: translate3d(0, 2000px, 0); } }
+
+/* line 1104, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceOutDown {
+  -webkit-animation-name: bounceOutDown;
+  animation-name: bounceOutDown; }
+
+@-webkit-keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0); } }
+
+@keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0); } }
+
+/* line 1137, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceOutLeft {
+  -webkit-animation-name: bounceOutLeft;
+  animation-name: bounceOutLeft; }
+
+@-webkit-keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0); } }
+
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0); } }
+
+/* line 1170, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceOutRight {
+  -webkit-animation-name: bounceOutRight;
+  animation-name: bounceOutRight; }
+
+@-webkit-keyframes bounceOutUp {
+  20% {
+    -webkit-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0); }
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0); } }
+
+@keyframes bounceOutUp {
+  20% {
+    -webkit-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0); }
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0); } }
+
+/* line 1213, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.bounceOutUp {
+  -webkit-animation-name: bounceOutUp;
+  animation-name: bounceOutUp; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+/* line 1238, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeIn, .versus__one .player__details, .versus__two .player__details {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1271, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown; }
+
+@-webkit-keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1304, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInDownBig {
+  -webkit-animation-name: fadeInDownBig;
+  animation-name: fadeInDownBig; }
+
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1337, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft; }
+
+@-webkit-keyframes fadeInLeftBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInLeftBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1370, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInLeftBig {
+  -webkit-animation-name: fadeInLeftBig;
+  animation-name: fadeInLeftBig; }
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1403, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight; }
+
+@-webkit-keyframes fadeInRightBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInRightBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1436, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInRightBig {
+  -webkit-animation-name: fadeInRightBig;
+  animation-name: fadeInRightBig; }
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1469, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp; }
+
+@-webkit-keyframes fadeInUpBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0);
+    transform: translate3d(0, 2000px, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInUpBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0);
+    transform: translate3d(0, 2000px, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 1502, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeInUpBig {
+  -webkit-animation-name: fadeInUpBig;
+  animation-name: fadeInUpBig; }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+/* line 1527, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut; }
+
+@-webkit-keyframes fadeOutDown {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0); } }
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0); } }
+
+/* line 1556, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutDown {
+  -webkit-animation-name: fadeOutDown;
+  animation-name: fadeOutDown; }
+
+@-webkit-keyframes fadeOutDownBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0);
+    transform: translate3d(0, 2000px, 0); } }
+
+@keyframes fadeOutDownBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0);
+    transform: translate3d(0, 2000px, 0); } }
+
+/* line 1585, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutDownBig {
+  -webkit-animation-name: fadeOutDownBig;
+  animation-name: fadeOutDownBig; }
+
+@-webkit-keyframes fadeOutLeft {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0); } }
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0); } }
+
+/* line 1614, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutLeft {
+  -webkit-animation-name: fadeOutLeft;
+  animation-name: fadeOutLeft; }
+
+@-webkit-keyframes fadeOutLeftBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0); } }
+
+@keyframes fadeOutLeftBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0); } }
+
+/* line 1643, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutLeftBig {
+  -webkit-animation-name: fadeOutLeftBig;
+  animation-name: fadeOutLeftBig; }
+
+@-webkit-keyframes fadeOutRight {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0); } }
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0); } }
+
+/* line 1672, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutRight {
+  -webkit-animation-name: fadeOutRight;
+  animation-name: fadeOutRight; }
+
+@-webkit-keyframes fadeOutRightBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0); } }
+
+@keyframes fadeOutRightBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0); } }
+
+/* line 1701, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutRightBig {
+  -webkit-animation-name: fadeOutRightBig;
+  animation-name: fadeOutRightBig; }
+
+@-webkit-keyframes fadeOutUp {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); } }
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); } }
+
+/* line 1730, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutUp {
+  -webkit-animation-name: fadeOutUp;
+  animation-name: fadeOutUp; }
+
+@-webkit-keyframes fadeOutUpBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0); } }
+
+@keyframes fadeOutUpBig {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0); } }
+
+/* line 1759, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.fadeOutUpBig {
+  -webkit-animation-name: fadeOutUpBig;
+  animation-name: fadeOutUpBig; }
+
+@-webkit-keyframes flip {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out; }
+  40% {
+    -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out; }
+  50% {
+    -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  80% {
+    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
+    transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; } }
+
+@keyframes flip {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out; }
+  40% {
+    -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out; }
+  50% {
+    -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  80% {
+    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
+    transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; } }
+
+/* line 1838, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.animated.flip, .flip.versus__one, .versus__one .flip.player__avatar, .versus__one .flip.player__details, .flip.versus__two, .versus__two .flip.player__avatar, .versus__two .flip.player__details, .flip.versus__vs {
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+  -webkit-animation-name: flip;
+  animation-name: flip; }
+
+@-webkit-keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+
+@keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+
+/* line 1911, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.flipInX {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+  animation-name: flipInX; }
+
+@-webkit-keyframes flipInY {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+
+@keyframes flipInY {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+
+/* line 1984, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.flipInY {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInY;
+  animation-name: flipInY; }
+
+@-webkit-keyframes flipOutX {
+  from {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); }
+  30% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1; }
+  to {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0; } }
+
+@keyframes flipOutX {
+  from {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); }
+  30% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1; }
+  to {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0; } }
+
+/* line 2029, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.flipOutX {
+  -webkit-animation-name: flipOutX;
+  animation-name: flipOutX;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important; }
+
+@-webkit-keyframes flipOutY {
+  from {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); }
+  30% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+    opacity: 1; }
+  to {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    opacity: 0; } }
+
+@keyframes flipOutY {
+  from {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); }
+  30% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+    opacity: 1; }
+  to {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    opacity: 0; } }
+
+/* line 2074, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.flipOutY {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipOutY;
+  animation-name: flipOutY; }
+
+@-webkit-keyframes lightSpeedIn {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+    transform: translate3d(100%, 0, 0) skewX(-30deg);
+    opacity: 0; }
+  60% {
+    -webkit-transform: skewX(20deg);
+    transform: skewX(20deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: skewX(-5deg);
+    transform: skewX(-5deg);
+    opacity: 1; }
+  to {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+@keyframes lightSpeedIn {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+    transform: translate3d(100%, 0, 0) skewX(-30deg);
+    opacity: 0; }
+  60% {
+    -webkit-transform: skewX(20deg);
+    transform: skewX(20deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: skewX(-5deg);
+    transform: skewX(-5deg);
+    opacity: 1; }
+  to {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+/* line 2133, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.lightSpeedIn {
+  -webkit-animation-name: lightSpeedIn;
+  animation-name: lightSpeedIn;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out; }
+
+@-webkit-keyframes lightSpeedOut {
+  from {
+    opacity: 1; }
+  to {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(30deg);
+    transform: translate3d(100%, 0, 0) skewX(30deg);
+    opacity: 0; } }
+
+@keyframes lightSpeedOut {
+  from {
+    opacity: 1; }
+  to {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(30deg);
+    transform: translate3d(100%, 0, 0) skewX(30deg);
+    opacity: 0; } }
+
+/* line 2164, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.lightSpeedOut {
+  -webkit-animation-name: lightSpeedOut;
+  animation-name: lightSpeedOut;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in; }
+
+@-webkit-keyframes rotateIn {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -200deg);
+    transform: rotate3d(0, 0, 1, -200deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+@keyframes rotateIn {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -200deg);
+    transform: rotate3d(0, 0, 1, -200deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+/* line 2207, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateIn {
+  -webkit-animation-name: rotateIn;
+  animation-name: rotateIn; }
+
+@-webkit-keyframes rotateInDownLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+@keyframes rotateInDownLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+/* line 2248, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateInDownLeft {
+  -webkit-animation-name: rotateInDownLeft;
+  animation-name: rotateInDownLeft; }
+
+@-webkit-keyframes rotateInDownRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+@keyframes rotateInDownRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+/* line 2289, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateInDownRight {
+  -webkit-animation-name: rotateInDownRight;
+  animation-name: rotateInDownRight; }
+
+@-webkit-keyframes rotateInUpLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+@keyframes rotateInUpLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+/* line 2330, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateInUpLeft {
+  -webkit-animation-name: rotateInUpLeft;
+  animation-name: rotateInUpLeft; }
+
+@-webkit-keyframes rotateInUpRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -90deg);
+    transform: rotate3d(0, 0, 1, -90deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+@keyframes rotateInUpRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -90deg);
+    transform: rotate3d(0, 0, 1, -90deg);
+    opacity: 0; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+/* line 2371, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateInUpRight {
+  -webkit-animation-name: rotateInUpRight;
+  animation-name: rotateInUpRight; }
+
+@-webkit-keyframes rotateOut {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, 200deg);
+    transform: rotate3d(0, 0, 1, 200deg);
+    opacity: 0; } }
+
+@keyframes rotateOut {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, 200deg);
+    transform: rotate3d(0, 0, 1, 200deg);
+    opacity: 0; } }
+
+/* line 2408, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateOut {
+  -webkit-animation-name: rotateOut;
+  animation-name: rotateOut; }
+
+@-webkit-keyframes rotateOutDownLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0; } }
+
+@keyframes rotateOutDownLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0; } }
+
+/* line 2445, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateOutDownLeft {
+  -webkit-animation-name: rotateOutDownLeft;
+  animation-name: rotateOutDownLeft; }
+
+@-webkit-keyframes rotateOutDownRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0; } }
+
+@keyframes rotateOutDownRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0; } }
+
+/* line 2482, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateOutDownRight {
+  -webkit-animation-name: rotateOutDownRight;
+  animation-name: rotateOutDownRight; }
+
+@-webkit-keyframes rotateOutUpLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0; } }
+
+@keyframes rotateOutUpLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0; } }
+
+/* line 2519, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateOutUpLeft {
+  -webkit-animation-name: rotateOutUpLeft;
+  animation-name: rotateOutUpLeft; }
+
+@-webkit-keyframes rotateOutUpRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 90deg);
+    opacity: 0; } }
+
+@keyframes rotateOutUpRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    opacity: 1; }
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 90deg);
+    opacity: 0; } }
+
+/* line 2556, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rotateOutUpRight {
+  -webkit-animation-name: rotateOutUpRight;
+  animation-name: rotateOutUpRight; }
+
+@-webkit-keyframes hinge {
+  0% {
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out; }
+  20%, 60% {
+    -webkit-transform: rotate3d(0, 0, 1, 80deg);
+    transform: rotate3d(0, 0, 1, 80deg);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out; }
+  40%, 80% {
+    -webkit-transform: rotate3d(0, 0, 1, 60deg);
+    transform: rotate3d(0, 0, 1, 60deg);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    opacity: 1; }
+  to {
+    -webkit-transform: translate3d(0, 700px, 0);
+    transform: translate3d(0, 700px, 0);
+    opacity: 0; } }
+
+@keyframes hinge {
+  0% {
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out; }
+  20%, 60% {
+    -webkit-transform: rotate3d(0, 0, 1, 80deg);
+    transform: rotate3d(0, 0, 1, 80deg);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out; }
+  40%, 80% {
+    -webkit-transform: rotate3d(0, 0, 1, 60deg);
+    transform: rotate3d(0, 0, 1, 60deg);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    opacity: 1; }
+  to {
+    -webkit-transform: translate3d(0, 700px, 0);
+    transform: translate3d(0, 700px, 0);
+    opacity: 0; } }
+
+/* line 2629, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.hinge {
+  -webkit-animation-name: hinge;
+  animation-name: hinge; }
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@-webkit-keyframes rollIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+    transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes rollIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+    transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+/* line 2664, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rollIn {
+  -webkit-animation-name: rollIn;
+  animation-name: rollIn; }
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@-webkit-keyframes rollOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
+    transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg); } }
+
+@keyframes rollOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
+    transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg); } }
+
+/* line 2695, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.rollOut {
+  -webkit-animation-name: rollOut;
+  animation-name: rollOut; }
+
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+
+/* line 2724, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomIn, .versus__vs {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn; }
+
+@-webkit-keyframes zoomInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+@keyframes zoomInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+/* line 2765, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomInDown {
+  -webkit-animation-name: zoomInDown;
+  animation-name: zoomInDown; }
+
+@-webkit-keyframes zoomInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+@keyframes zoomInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+/* line 2806, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomInLeft {
+  -webkit-animation-name: zoomInLeft;
+  animation-name: zoomInLeft; }
+
+@-webkit-keyframes zoomInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+@keyframes zoomInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+/* line 2847, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomInRight {
+  -webkit-animation-name: zoomInRight;
+  animation-name: zoomInRight; }
+
+@-webkit-keyframes zoomInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+@keyframes zoomInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+/* line 2888, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomInUp {
+  -webkit-animation-name: zoomInUp;
+  animation-name: zoomInUp; }
+
+@-webkit-keyframes zoomOut {
+  from {
+    opacity: 1; }
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  to {
+    opacity: 0; } }
+
+@keyframes zoomOut {
+  from {
+    opacity: 1; }
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  to {
+    opacity: 0; } }
+
+/* line 2925, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomOut {
+  -webkit-animation-name: zoomOut;
+  animation-name: zoomOut; }
+
+@-webkit-keyframes zoomOutDown {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+@keyframes zoomOutDown {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+/* line 2970, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomOutDown {
+  -webkit-animation-name: zoomOutDown;
+  animation-name: zoomOutDown; }
+
+@-webkit-keyframes zoomOutLeft {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.1) translate3d(-2000px, 0, 0);
+    transform: scale(0.1) translate3d(-2000px, 0, 0);
+    -webkit-transform-origin: left center;
+    transform-origin: left center; } }
+
+@keyframes zoomOutLeft {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.1) translate3d(-2000px, 0, 0);
+    transform: scale(0.1) translate3d(-2000px, 0, 0);
+    -webkit-transform-origin: left center;
+    transform-origin: left center; } }
+
+/* line 3007, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomOutLeft {
+  -webkit-animation-name: zoomOutLeft;
+  animation-name: zoomOutLeft; }
+
+@-webkit-keyframes zoomOutRight {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.1) translate3d(2000px, 0, 0);
+    transform: scale(0.1) translate3d(2000px, 0, 0);
+    -webkit-transform-origin: right center;
+    transform-origin: right center; } }
+
+@keyframes zoomOutRight {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.1) translate3d(2000px, 0, 0);
+    transform: scale(0.1) translate3d(2000px, 0, 0);
+    -webkit-transform-origin: right center;
+    transform-origin: right center; } }
+
+/* line 3044, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomOutRight {
+  -webkit-animation-name: zoomOutRight;
+  animation-name: zoomOutRight; }
+
+@-webkit-keyframes zoomOutUp {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+@keyframes zoomOutUp {
+  40% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+
+/* line 3089, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.zoomOutUp {
+  -webkit-animation-name: zoomOutUp;
+  animation-name: zoomOutUp; }
+
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+/* line 3120, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideInDown, .versus__one {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown; }
+
+@-webkit-keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+/* line 3151, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft; }
+
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+/* line 3182, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight; }
+
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+/* line 3213, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideInUp, .versus__two {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp; }
+
+@-webkit-keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0); } }
+
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0); } }
+
+/* line 3244, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideOutDown {
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown; }
+
+@-webkit-keyframes slideOutLeft {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0); } }
+
+@keyframes slideOutLeft {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0); } }
+
+/* line 3275, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideOutLeft {
+  -webkit-animation-name: slideOutLeft;
+  animation-name: slideOutLeft; }
+
+@-webkit-keyframes slideOutRight {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0); } }
+
+@keyframes slideOutRight {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0); } }
+
+/* line 3306, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideOutRight {
+  -webkit-animation-name: slideOutRight;
+  animation-name: slideOutRight; }
+
+@-webkit-keyframes slideOutUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); } }
+
+@keyframes slideOutUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); } }
+
+/* line 3337, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
+.slideOutUp {
+  -webkit-animation-name: slideOutUp;
+  animation-name: slideOutUp; }
+
 /**
  * 04 BASE
  * Unclassed HTML element (type selectors).
@@ -711,7 +3178,13 @@ body {
     align-items: center;
     align-self: stretch;
     justify-content: center; }
-  /* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+    /* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+    .versus__one .player__avatar {
+      animation-delay: 0.5s; }
+    /* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+    .versus__one .player__details {
+      animation-delay: 1s; }
+  /* line 24, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
   .versus__two {
     flex: 1;
     display: flex;
@@ -719,9 +3192,26 @@ body {
     align-items: center;
     align-self: stretch;
     justify-content: center; }
-  /* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
-  .versus__separator {
-    text-align: center; }
+    /* line 32, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+    .versus__two .player__avatar {
+      animation-delay: 0.5s; }
+    /* line 36, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+    .versus__two .player__details {
+      animation-delay: 1s; }
+  /* line 41, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
+  .versus__vs {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    border-radius: 50%;
+    padding: 9px 10px;
+    background: #fff;
+    margin-left: -22px;
+    margin-top: -22px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #193a5b; }
 
 /* line 2, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
 .header__player {
@@ -804,6 +3294,22 @@ body {
       height: 10vh;
       line-height: 10vh;
       font-size: 14px; }
+  /* line 66, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+  .ingame__options--open {
+    align-content: flex-start;
+    flex: 2;
+    flex-direction: row;
+    padding-left: 20px;
+    padding-right: 20px; }
+    /* line 72, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+    .ingame__options--open .game-button {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      padding-top: 2vh;
+      padding-bottom: 2vh;
+      justify-content: center;
+      margin: 5px; }
 
 /**
  * 06 COMPONENTS
@@ -855,34 +3361,20 @@ body {
       content: " ";
       background-color: #193a5b; }
 
-/* line 52, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
-.player__vs {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border-radius: 50%;
-  padding: 9px 10px;
-  background: #fff;
-  margin-left: -22px;
-  margin-top: -22px;
-  font-weight: bold;
-  font-size: 20px;
-  color: #193a5b; }
-
-/* line 67, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+/* line 54, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__avatar {
   height: auto;
   width: 100px;
   margin-bottom: 15px; }
-  /* line 71, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  /* line 58, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
   .player__avatar--small {
     width: 50px;
     height: auto; }
 
-/* line 76, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+/* line 63, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__details {
   text-align: center; }
-  /* line 78, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  /* line 65, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
   .player__details:before {
     content: " ";
     width: 60px;
@@ -890,7 +3382,7 @@ body {
     margin: 0 auto;
     padding-top: 5px; }
 
-/* line 86, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+/* line 73, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__name {
   width: 140px;
   margin-top: 5px;
@@ -901,7 +3393,7 @@ body {
   font-weight: bold;
   text-transform: uppercase; }
 
-/* line 97, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+/* line 84, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__badge {
   position: relative;
   margin: 0;
@@ -910,7 +3402,7 @@ body {
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase; }
-  /* line 105, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  /* line 92, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
   .player__badge:before {
     content: " ";
     position: absolute;
@@ -921,7 +3413,7 @@ body {
     height: 6px;
     margin-top: -2px;
     border-radius: 50%; }
-  /* line 116, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+  /* line 103, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
   .player__badge:after {
     content: " ";
     position: absolute;
@@ -933,7 +3425,7 @@ body {
     margin-top: -2px;
     border-radius: 50%; }
 
-/* line 128, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
+/* line 115, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_player.scss */
 .player__score {
   margin: 0;
   font-size: 12px;
@@ -957,21 +3449,44 @@ body {
   text-decoration: none;
   text-align: center; }
   /* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  .game-button:hover,
+  .game-button:focus {
+    outline: 0; }
+  /* line 20, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button.btn-success {
     background-color: #3fbe7b; }
-  /* line 20, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  /* line 24, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button.btn-danger {
     background-color: #d23139; }
-  /* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  /* line 29, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button--red {
     background-color: #d23139; }
-  /* line 29, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 32, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    .game-button--red:hover,
+    .game-button--red:focus {
+      background-color: #ab252c; }
+  /* line 37, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button--blue-green {
     background-color: #3fbe7b; }
-  /* line 33, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 40, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    .game-button--blue-green:hover,
+    .game-button--blue-green:focus {
+      background-color: #329862; }
+  /* line 46, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button--light-blue {
     background-color: #46b7b5; }
-  /* line 39, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 49, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    .game-button--light-blue:hover,
+    .game-button--light-blue:focus {
+      background-color: #389291; }
+  /* line 54, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  .game-button--yellow {
+    background-color: #eaad2e; }
+    /* line 57, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    .game-button--yellow:hover,
+    .game-button--yellow:focus {
+      background-color: #d09315; }
+  /* line 65, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-me::before,
   .game-button .answer-me::after,
   .game-button .answer-opponent::before,
@@ -984,7 +3499,7 @@ body {
     content: '';
     width: 0;
     height: 0; }
-  /* line 52, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  /* line 78, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-me {
     position: absolute;
     left: 0;
@@ -997,7 +3512,7 @@ body {
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-left: 15px solid rgba(0, 0, 0, 0.2); }
-    /* line 68, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 94, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-me::before {
       left: 0;
       margin-top: -13px;
@@ -1005,7 +3520,7 @@ body {
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
       border-left: 17px solid #ece465; }
-    /* line 79, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 105, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-me::after {
       left: 0;
       z-index: 1;
@@ -1015,7 +3530,7 @@ body {
       border-top: 5px solid transparent;
       border-bottom: 5px solid transparent;
       border-right: 5px solid #b9a300; }
-  /* line 94, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  /* line 120, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-opponent {
     position: absolute;
     right: 0;
@@ -1028,7 +3543,7 @@ body {
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-right: 15px solid rgba(0, 0, 0, 0.2); }
-    /* line 108, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 134, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-opponent::before {
       right: 0;
       margin-top: -13px;
@@ -1036,7 +3551,7 @@ body {
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
       border-right: 17px solid #ece465; }
-    /* line 119, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 145, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-opponent::after {
       right: 0;
       z-index: 1;
@@ -1072,10 +3587,11 @@ body {
   margin-top: 30px;
   text-align: center;
   font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   color: #fff; }
 
-/* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_points.scss */
+/* line 12, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_points.scss */
 .points__value {
   margin: 0;
   text-align: center;
@@ -1092,53 +3608,83 @@ body {
   /* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--win:before {
     content: " ";
-    background: url("../assets/images/win.svg") top center repeat-x;
     position: absolute;
+    z-index: -1;
+    background: url("../assets/images/win.svg") top center repeat-x;
     width: 100%;
     height: 300px; }
-  /* line 15, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--win .result-page__title {
     color: #eaad2e; }
-  /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--win .main-player__details {
-    background-color: #93ce36; }
-    /* line 21, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    background-color: #65b400; }
+    /* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page--win .main-player__details:before,
     .result-page--win .main-player__details:after {
       content: "";
-      border-color: transparent #5a7f1f transparent; }
-    /* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+      border-color: transparent #2c4e00 transparent; }
+    /* line 26, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page--win .main-player__details .main-player__name {
       color: #000; }
-    /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    /* line 29, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page--win .main-player__details .main-player__score {
       color: #000; }
-  /* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 35, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--lose:before {
     content: " ";
-    background: url("../assets/images/lose.svg") top center no-repeat;
     position: absolute;
+    z-index: -1;
+    background: url("../assets/images/lose.svg") top center no-repeat;
     width: 100%;
     height: 100%;
     margin-top: -5%; }
-  /* line 42, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 44, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--lose .result-page__title {
     color: #d23139; }
-  /* line 45, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 47, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--lose .main-player__details {
     background-color: #d23139; }
-    /* line 48, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    /* line 50, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page--lose .main-player__details:before,
     .result-page--lose .main-player__details:after {
       content: "";
       border-color: transparent #811c21 transparent; }
-    /* line 53, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    /* line 54, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page--lose .main-player__details .main-player__name {
       color: #fff; }
-    /* line 56, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    /* line 57, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page--lose .main-player__details .main-player__score {
       color: #fff; }
-  /* line 61, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 65, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--tie:before {
+    content: " ";
+    position: absolute;
+    top: 70px;
+    z-index: -1;
+    background: url("../assets/images/tie-knot.svg") top center no-repeat;
+    width: 100%;
+    height: 100%; }
+  /* line 75, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--tie .result-page__title {
+    color: #d23139;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  /* line 80, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--tie .main-player__details {
+    background-color: #f3ae47; }
+    /* line 83, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--tie .main-player__details:before,
+    .result-page--tie .main-player__details:after {
+      content: "";
+      border-color: transparent #c77c0d transparent; }
+    /* line 88, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--tie .main-player__details .main-player__name {
+      color: #05042c; }
+    /* line 91, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    .result-page--tie .main-player__details .main-player__score {
+      color: #05042c; }
+  /* line 96, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page__title {
     margin-bottom: 10px;
     font-family: 'Brady Bunch';
@@ -1146,7 +3692,7 @@ body {
     color: #eaad2e;
     letter-spacing: 1;
     font-size: 50px; }
-  /* line 69, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 104, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page__list {
     max-width: 240px;
     width: 100%;
@@ -1157,12 +3703,12 @@ body {
     justify-content: center;
     align-content: center;
     height: 100%; }
-  /* line 80, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 115, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page__button {
     line-height: 7vh;
     height: 7vh;
     margin-bottom: 15px; }
-    /* line 84, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    /* line 119, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page__button:last-child {
       margin-bottom: 0; }
 
@@ -1409,7 +3955,7 @@ body {
   /* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
   .waiting-screen__timer {
     font-size: 80px;
-    color: #93ce36;
+    color: #65b400;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -1424,12 +3970,17 @@ body {
 
 /* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
 .pop-up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
   display: flex;
   justify-content: center;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.5);
-  height: 100%; }
-  /* line 8, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  height: 100%;
+  width: 100%; }
+  /* line 13, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__wrap {
     display: flex;
     flex-direction: column;
@@ -1437,36 +3988,36 @@ body {
     align-items: center;
     text-align: center;
     width: 300px; }
-  /* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 21, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__header {
     position: relative;
     background-color: #fff;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     width: 100%; }
-  /* line 24, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 29, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__title {
     font-size: 18px;
     margin-bottom: 10px; }
-  /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 33, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__close {
     position: absolute;
     right: 5px;
     top: 5px;
     z-index: 5;
     display: block; }
-    /* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 39, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__close img {
       width: 20px; }
-  /* line 38, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 43, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__body {
     background-color: #fff;
     width: 100%;
     padding: 5px 20px 30px; }
-    /* line 42, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 47, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__body p {
       margin-top: 0; }
-  /* line 46, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 51, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__button {
     background-color: #eaad2e;
     padding: 10px 10px;
@@ -1475,42 +4026,105 @@ body {
     border-bottom-left-radius: 10px;
     color: #193a5b;
     text-decoration: none; }
-    /* line 56, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 61, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__button:hover,
     .pop-up__button:focus,
     .pop-up__button:active {
       background-color: #d09315;
       color: #193a5b; }
-  /* line 61, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 66, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__footer {
     width: 100%;
     display: flex;
     flex-direction: row; }
-    /* line 67, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 72, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button:first-child {
       border-bottom-right-radius: 0; }
-    /* line 70, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 75, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button:last-child {
       border-bottom-left-radius: 0; }
-    /* line 73, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 78, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button.is-yellow {
       background-color: #eaad2e;
       color: #193a5b; }
-    /* line 77, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 82, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button.is-blue {
       background-color: #193a5b;
       color: #fff; }
-      /* line 82, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+      /* line 87, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
       .pop-up__footer.is-half .pop-up__button.is-blue:hover,
       .pop-up__footer.is-half .pop-up__button.is-blue:focus,
       .pop-up__footer.is-half .pop-up__button.is-blue:active {
         background-color: #0e2033;
         color: #fff; }
 
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_open-ended.scss */
+.open-ended {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin: 20px 20px; }
+  /* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_open-ended.scss */
+  .open-ended__answer {
+    position: absolute;
+    top: -25px;
+    width: 100%;
+    text-align: center;
+    display: none; }
+  /* line 15, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_open-ended.scss */
+  .open-ended__textbox {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #000556;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 30px; }
+    /* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_open-ended.scss */
+    .open-ended__textbox:focus,
+    .open-ended__textbox:active {
+      outline: 0; }
+
 /**
  * 07 THEMES
  * Custom Theming
  */
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+.engage.light {
+  background-color: #cbe0ff; }
+  /* line 5, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .player__name {
+    color: #d23139; }
+  /* line 8, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .player__badge {
+    color: #eaad2e; }
+  /* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .player__score {
+    color: #2c4e00; }
+  /* line 16, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .points__title {
+    color: #000556; }
+  /* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .points__value {
+    color: #2c4e00; }
+  /* line 24, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .question {
+    color: #000556; }
+  /* line 29, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .waiting-screen__topic {
+    color: #000556; }
+  /* line 32, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .waiting-screen__timer {
+    color: #d23139; }
+  /* line 35, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .waiting-screen p {
+    color: #000556; }
+  /* line 44, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage.light .opponent__text p,
+  .engage.light .opponent__level-points p {
+    color: #000556; }
+
 /**
  * 08 TRUMPS
  * (no relation). Helpers and overrides.

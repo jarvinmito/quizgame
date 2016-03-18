@@ -1,0 +1,49 @@
+.engage.light {
+  background-color: $lightiest-blue;
+  //header player details
+  .player {
+    &__name {
+      color: $red;
+    }
+    &__badge {
+      color: $yellow;
+    }
+    &__score {
+      color: darken($green, 20%);
+    }
+  }
+  .points {
+    &__title {
+      color: $blue;
+    }
+    &__value {
+      color: darken($green, 20%);
+    }
+  }
+  
+  .question {
+    color: $blue;
+  }
+  //waiting screen
+  .waiting-screen {
+    &__topic {
+      color: $blue;
+    }
+    &__timer {
+      color: $red;
+    }
+    p {
+      color: $blue;
+    }
+  }
+  
+  //End Result Opponent Details
+  .opponent {
+    &__text,
+    &__level-points{
+      p {
+        color: $blue;
+      }
+    }
+  }
+}

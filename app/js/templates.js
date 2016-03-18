@@ -43,6 +43,16 @@ this["App"]["Templates"]["loading"] = Handlebars.template({"compiler":[7,">= 4.0
     return "<div class=\"loading-screen\"></div>\r\n<div class=\"loading-screen__sky\"></div>\r\n<div class=\"loading-screen__clouds\"></div>\r\n\r\n<img class=\"loading-screen__cloud-one\" src=\"./assets/images/cloud-one.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-two\" src=\"./assets/images/cloud-two.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-three\" src=\"./assets/images/cloud-three.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-four\" src=\"./assets/images/cloud-four.svg\" alt=\"\">\r\n<img class=\"loading-screen__cloud-five\" src=\"./assets/images/cloud-five.svg\" alt=\"\">\r\n\r\n<img class=\"loading-screen__flag\" src=\"./assets/images/flag.svg\" alt=\"\">\r\n<img class=\"loading-screen__jeep\" src=\"./assets/images/jeepney.svg\" alt=\"\">";
 },"useData":true});
 
+this["App"]["Templates"]["modal"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "<div class=\"pop-up\">\r\n  <div class=\"pop-up__wrap\">\r\n    <div class=\"pop-up__header\">\r\n      <h4 class=\"pop-up__title\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.modal : depth0)) != null ? stack1.title : stack1), depth0))
+    + "</h4>\r\n      <a class=\"pop-up__close\" href=\"#\"><img src=\"assets/images/close.svg\" alt=\"\"></a>\r\n    </div>\r\n    <div class=\"pop-up__body\">\r\n      <p>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.modal : depth0)) != null ? stack1.message : stack1), depth0))
+    + "</p>\r\n    </div>\r\n    <div class=\"pop-up__footer\">\r\n      <a class=\"pop-up__button pop-up__exit\" href=\"#\">Back</a>\r\n    </div>\r\n  </div>\r\n</div>";
+},"useData":true});
+
 this["App"]["Templates"]["options"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
@@ -106,17 +116,19 @@ this["App"]["Templates"]["results"] = Handlebars.template({"compiler":[7,">= 4.0
 },"useData":true});
 
 this["App"]["Templates"]["round"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
+    var stack1, helper, alias1=container.escapeExpression;
 
-  return "<div class=\"waiting-screen\">\r\n  <img class=\"waiting-screen__logo\" src=\"assets/images/vanamo_logo.png\" alt=\"\">\r\n  <h3 class=\"waiting-screen__topic\">WORD SCRAMBLE</h3>\r\n  <p>"
-    + container.escapeExpression(((helper = (helper = helpers.round || (depth0 != null ? depth0.round : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"round","hash":{},"data":data}) : helper)))
+  return "<div class=\"waiting-screen\">\r\n  <img class=\"waiting-screen__logo\" src=\"assets/images/vanamo_logo.png\" alt=\"\">\r\n  <h3 class=\"waiting-screen__topic\">"
+    + alias1(container.lambda(((stack1 = (depth0 != null ? depth0.topic : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h3>\r\n  <p>"
+    + alias1(((helper = (helper = helpers.round || (depth0 != null ? depth0.round : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"round","hash":{},"data":data}) : helper)))
     + "</p>\r\n</div>";
 },"useData":true});
 
 this["App"]["Templates"]["versus"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<div class=\"versus\">\r\n  <div class=\" player__vs\">VS</div>\r\n  <div class=\"versus__one player--one\">\r\n   \r\n      <img class=\"player__avatar player__avatar--left\" src=\"assets/images/player-1.png\" alt=\"\">\r\n      <div class=\"player__details\">\r\n        <div class=\"player__name\"><b>"
+  return "<div class=\"versus\">\r\n  <div class=\"versus__vs\">VS</div>\r\n  <div class=\"versus__one player--one\">\r\n   \r\n      <img class=\"player__avatar player__avatar--left\" src=\"assets/images/player-1.png\" alt=\"\">\r\n      <div class=\"player__details\">\r\n        <div class=\"player__name\"><b>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.left : stack1)) != null ? stack1.name : stack1), depth0))
     + "</b></div>\r\n        <div class=\"player__badge\"><small>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.left : stack1)) != null ? stack1.badge : stack1), depth0))
@@ -136,7 +148,9 @@ this["App"]["Templates"]["waiting-timer"] = Handlebars.template({"compiler":[7,"
 this["App"]["Templates"]["waiting"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div class=\"waiting-screen\">\r\n  <img class=\"waiting-screen__logo\" src=\"assets/images/vanamo_logo.png\" alt=\"\">\r\n  <h3 class=\"waiting-screen__topic\"> WORD SCRAMBLE</h3>\r\n  <p>waiting for the player to accept the challenge</p>\r\n  <time class=\"waiting-screen__timer\">"
+  return "<div class=\"waiting-screen\">\r\n  <img class=\"waiting-screen__logo\" src=\"assets/images/vanamo_logo.png\" alt=\"\">\r\n  <h3 class=\"waiting-screen__topic\">"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.topic : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h3>\r\n  <p>waiting for the player to accept the challenge</p>\r\n  <time class=\"waiting-screen__timer\">"
     + ((stack1 = container.invokePartial(partials["waiting-timer"],depth0,{"name":"waiting-timer","hash":{"time":(depth0 != null ? depth0.time : depth0)},"data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + "</time>\r\n</div>";
 },"usePartial":true,"useData":true});

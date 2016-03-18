@@ -12,6 +12,10 @@
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
 //  box-sizing: 0;
   &.btn-success{
     background-color: $blue-green;
@@ -24,14 +28,36 @@
   
   &--red {
     background-color: $red;
+    &:hover,
+    &:focus {
+      background-color: darken($red, 10%);
+    }
   }
   
   &--blue-green {
     background-color: $blue-green;
+    &:hover,
+    &:focus {
+      
+      background-color: darken($blue-green, 10%);
+    }
   }
   
   &--light-blue {
     background-color: $light-blue;
+    &:hover,
+    &:focus {
+      background-color: darken($light-blue, 10%);
+    }
+    
+  }
+  &--yellow {
+    background-color: $yellow;
+    &:hover,
+    &:focus {
+      background-color: darken($yellow, 10%);
+    }
+    
   }
   .answer-me, 
   .answer-opponent{

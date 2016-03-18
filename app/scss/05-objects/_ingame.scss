@@ -62,5 +62,22 @@
         
       }
     }
+    
+    &--open {
+      align-content: flex-start;
+      flex: 2;
+      flex-direction: row;
+      padding-left: 20px;
+      padding-right: 20px;
+      .game-button {
+          display: flex;
+          flex-direction: row;
+          flex: 1;
+          padding-top: 2vh;
+          padding-bottom: 2vh;
+          justify-content: center;
+          margin: 5px;
+        }
+    }
   }
 }

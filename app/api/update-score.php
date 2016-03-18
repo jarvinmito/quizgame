@@ -9,10 +9,14 @@ $score = $_POST['score'];
 $answer = $_POST['answer'];
 $status = 'pending';
 
-$scoreInsertDtl=array('matchid'=>$matchid,'round'=>$round,'position'=>$position,'score'=>$score,'answer'=>$answer);
-$scoreInsertUrl='http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/insertScore/';
-$scoreInsertDb=curlPost($scoreInsertDtl,$scoreInsertUrl);
-$status=($scoreInsertDb==true)?"success":"pending";
+$sql = "INSERT INTO engage_scoreboard VALUES ($matchid, $round, '$position', '$score', '$answer')";
+if(mysqli_query($conn, $sql)){
+	// Yes inserted
+	$status = 'success';
+}
+
+mysqli_close($conn);
+
 $arr = array('status' => $status);
 echo json_encode($arr);
 

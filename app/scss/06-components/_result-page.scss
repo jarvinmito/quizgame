@@ -6,8 +6,9 @@
   &--win {
     &:before {
       content: " ";
-      background: url('../assets/images/win.svg') top center repeat-x;
       position: absolute;
+      z-index: -1;
+      background: url('../assets/images/win.svg') top center repeat-x;
       width: 100%;
       height: 300px;
     }
@@ -33,8 +34,9 @@
   &--lose {
     &:before {
       content: " ";
-      background: url('../assets/images/lose.svg') top center no-repeat;
       position: absolute;
+      z-index: -1;
+      background: url('../assets/images/lose.svg') top center no-repeat;
       width: 100%;
       height: 100%;
       margin-top: -5%;
@@ -47,7 +49,6 @@
       &:before,
       &:after {
         content: "";
-
         border-color: transparent darken($red, 20%) transparent;
       }
       .main-player__name  {
@@ -55,6 +56,40 @@
       }
       .main-player__score  {
         color: $white;
+      }
+    }
+  }
+  
+  
+  &--tie {
+    &:before {
+      content: " ";
+      position: absolute;
+      top: 70px;
+      z-index: -1;
+      background: url('../assets/images/tie-knot.svg') top center no-repeat;
+      width: 100%;
+      height: 100%;
+      
+    }
+    .result-page__title {
+      color: $red;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .main-player__details {
+      background-color: $orange;
+      &:before,
+      &:after {
+        content: "";
+
+        border-color: transparent darken($orange, 20%) transparent;
+      }
+      .main-player__name  {
+        color: $dark-blue;
+      }
+      .main-player__score  {
+        color: $dark-blue;
       }
     }
   }

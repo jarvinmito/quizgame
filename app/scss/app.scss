@@ -46,6 +46,7 @@
 @import "03-generic/normalize";
 @import "03-generic/grid";
 @import "03-generic/view-height";
+@import "03-generic/animate";
 //@import "03-generic/font-awesome";
 
 /**
@@ -84,6 +85,7 @@
 @import "06-components/loading-screen";
 @import "06-components/waiting-screen";
 @import "06-components/pop-up";
+@import "06-components/open-ended";
 //@import "06-components/waiting-screen";
 //@import "06-components/thumbnail-img";
 //@import "06-components/main-nav";
@@ -92,7 +94,7 @@
  * 07 THEMES
  * Custom Theming
  */
-//@import "07-themes/light-theme";
+@import "07-themes/light-theme";
 //@import "07-themes/dark-theme";
 
 /**

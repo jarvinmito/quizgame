@@ -21,10 +21,11 @@ var App = (function(){
 	var configMap = {
 			plstore : {
 				id : 'PLAYER__ID',
-				name : 'PLAYER__NAME'
+				name : 'PLAYER__NAME',
+				match : 'MATCH__DETAILS'
 			},
 			apis : {
-				base : 'http://192.168.20.16/project_engage/app/api/',
+				base : 'http://192.168.20.83/project_engage/app/api/',
 				api : {
 					'find' : 'fm.php',
 					'create' : 'cm.php',
@@ -32,7 +33,8 @@ var App = (function(){
 					'update-score' : 'update-score.php',
 					'get-updates' : 'get-updates.php',
 					'players' : 'players.php',
-					'questions' : 'questions.php'
+					'questions' : 'questions.php',
+					'get-match-status' : 'get-match-status.php'
 				}
 			},
 			// Questions
@@ -41,6 +43,8 @@ var App = (function(){
 			// Players
 			// { players : { a : {name : name, badge : badge, place : place, score : score } } }
 			ps : {},
+			topic : {},
+			match : {},
 			player : {}, //current player
 			playerLocalPos : {}, // location of players locally
 			// Scoreboard
@@ -61,13 +65,23 @@ var App = (function(){
 			currentRoundisFin : false,
 			currentScore : {},
 			hasAnswered : false,
+			modal : {},
 			// findmatch - finding a matching
 			// waiting - waiting for other player's response
 			// versus - display the versus page
 			// round - display the current round
 			// question - render players and scores, question and choices
 			// result - display result page
-			currentScreen : 'findmatch'
+			currentScreen : 'findmatch',
+			audio : {
+				files : {
+					bg_random : ['assets/audio/bg_random2.mp3'],
+					sfx_correct : ['assets/audio/sfx-correct.mp3'],
+					sfx_incorrect : ['assets/audio/sfx-incorrect1.mp3'],
+					sfx_versus : ['assets/audio/sfx-versus1.mp3']
+				},
+				sfx : {}
+			}
 		},
 		jqueryMap = {
 			$main : $('.engage'),
@@ -79,12 +93,111 @@ var App = (function(){
 	// Start Module /initSetup/
 	// Purpose : Defaults all properties in the game
 	var initSetup = function(){
-		configMap.qs = {};
-		configMap.ps = {};
+		var match_details = localStorage[configMap.plstore.match];
+		var match_json = stringToJSON(match_details);
+
+		// Server-Client-side
+		// configMap.qs = match_json.qs;
+		// configMap.ps = match_json.ps;
+		// configMap.topic = match_json.topic;
+		// configMap.match = match_json.match;
+		// configMap.game = match_json.game;
+		configMap.game = {
+			"id" : 1,
+			"name" : "Quiz Game",
+			"type" : "multiple choice"
+		};
+
+		configMap.topic = {
+			"id" : 1,
+			"name" : "Paborito ng mga Pinoy",
+			"icon" : "assets/images/yeah.jpg"
+		};
+
+		configMap.match = {
+			"id" : 1,
+			"status" : "ongoing",
+			"isactive" : {
+			    "a" : true,
+			    "b" : true
+			}
+		};
+
+		configMap.qs = {
+			"questions" : [
+				{
+					"id" : 1,
+					"question" : "Question Text 1?",
+					"options" : ["A" , "B" , "C" , "D"],
+					"answer" : 0
+				},
+				{
+					"id" : 2,
+					"question" : "Question Text 2?",
+					"options" : ["A" , "B" , "C" , "D"],
+					"answer" : 2
+				},
+				{
+					"id" : 3,
+					"question" : "Question Text 3?",
+					"options" : ["A" , "B" , "C" , "D"],
+					"answer" : 1
+				},
+				{
+					"id" : 4,
+					"question" : "Question Text 4?",
+					"options" : ["A" , "B" , "C" , "D"],
+					"answer" : 3
+				},
+				{
+					"id" : 5,
+					"question" : "Question Text 5?",
+					"options" : ["A" , "B" , "C" , "D"],
+					"answer" : 1
+				},
+				{
+					"id" : 6,
+					"question" : "Question Text 6?",
+					"options" : ["A" , "B" , "C" , "D"],
+					"answer" : 2
+				},
+				{
+					"id" : 7,
+					"question" : "Question Text 7?",
+					"options" : ["A" , "B" , "C" , "D"],
+					"answer" : 3
+				}
+			]
+		};
+
+		configMap.ps = {
+			"players" : {
+				"a" : {
+					"id" : 1,
+					"name" : "Kalabaw",
+					"badge" : "Badz",
+					"place" : "a",
+					"score" : 0,
+					"isactive" : true
+				},
+				"b" : {
+					"id" : 2,
+					"name" : "Baka",
+					"badge" : "Despicable",
+					"place" : "b",
+					"score" : 0,
+					"isactive" : true
+				}
+			}
+		};
+
 		configMap.scores = {};
+
+		// Client-side
 		configMap.playerLocalPos = {};
-		configMap.matchid = 0;
-		configMap.matchStatus = 'find';
+		configMap.matchid = configMap.match.id;
+		// configMap.matchStatus = 'find';
+		configMap.matchStatus = configMap.match.status;
 		configMap.currentRound = 1;
 		configMap.currentRoundisFin = false;
 		configMap.hasAnswered = false;
@@ -108,6 +221,16 @@ var App = (function(){
 		// configMap.player.name = sessionStorage[configMap.plstore.name];
 	};
 	// End Module /initSetup/
+
+	// Start Module /resetSetup/
+	// Purpose : resets the App settings
+	var resetSetup = function(){
+		configMap.game = {};
+		configMap.topic = {};
+		configMap.ps = {};
+		configMap.qs = {};
+	};
+	// End Module /resetSetup/
 
 	// Start Module /startTimer/
 	// Purpose : Executes timer function depending on mode / page
@@ -171,6 +294,16 @@ var App = (function(){
 				renderLanding();
 			});
 		}
+
+
+		// Modal Section
+		if( $('.pop-up__exit').length ){
+			$('.pop-up__exit').click(function(){
+				freeze();
+				resetSetup();
+				window.close();
+			});
+		}
 	};
 	// End Module /bind/
 
@@ -197,9 +330,15 @@ var App = (function(){
 		if(pa !== null){
 			if(ga === pa){
 				isCorrect = true;
+				// Play sfx
+				configMap.audio.sfx.sfx_correct.play();
+
 				input.addClass('btn-success');
 			}else{
 				pts = 0;
+
+				// Play sfx
+				configMap.audio.sfx.sfx_incorrect.play();
 				input.addClass('btn-danger');
 			}
 			// indicate my answer
@@ -342,7 +481,7 @@ var App = (function(){
 			status = 'Yehey!';
 			result = 'win';
 		}else if(me.score == op.score){
-			status = 'Awww!';
+			status = 'It\' a tie!';
 			result = 'win';
 		}else{
 			status = 'Boohoo!';
@@ -358,6 +497,17 @@ var App = (function(){
 	};
 	// End Module /renderResults/
 
+	// Start Module /renderModal/
+	// Purpose : Displays an info modal
+	var renderModal = function(){
+		var $container = jqueryMap.$main;
+
+		$container.append(App.Templates['modal']({ modal : configMap.modal }));
+		bind();
+
+	};
+	// End Module /renderModal/
+
 	// Start Module /renderWaiting/
 	// Purpose : Displays the waiting page when the user has sent a challenge request
 	var renderWaiting = function(){
@@ -366,7 +516,7 @@ var App = (function(){
 		var $container = jqueryMap.$main;
 		var time = configMap.waitTimer.currentTime;
 
-		$container.html(App.Templates['waiting']({time : time}));
+		$container.html(App.Templates['waiting']({time : time, topic : configMap.topic }));
 		startTimer(configMap.waitTimer);
 	};
 	// End Module /renderWaiting/
@@ -382,10 +532,65 @@ var App = (function(){
 		var $timer = $container.find('.waiting-screen__timer');
 
 		$timer.html(App.Templates['waiting-timer']({ time : configMap.waitTimer.currentTime }));
+		
+		// Every 2 seconds get an update form server
+		if(time % 2 == 0){
+			getMatchStatus();
+		}
+
 		endTimer(configMap.waitTimer);
 		startTimer(configMap.waitTimer);
 	};
 	// End Module /waitTimer/
+
+	// Start Module /getMatchStatus/
+	// Purpose : To get the match status
+	// Access Mode : Challenger
+	var getMatchStatus = function(){
+		var data = {
+			matchid : configMap.match.id,
+			name : configMap.player.name
+		};
+
+		$.ajax({
+			method : 'post',
+			url : configMap.apis.base + configMap.apis.api['get-match-status'],
+			data : data,
+			success : function(result){
+				console.log(result);
+				if( result.status ){
+					var status = result.status;
+
+					if( status == 'ongoing' ){
+						// Set to local configuration
+						configMap.match.status = status;
+
+						// End Timer
+						endTimer(configMap.waitTimer);
+
+						// Render VS
+						renderVS();
+					}else if( status == 'reject' ){
+
+						// Set to local configuration
+						configMap.match.status = status;
+
+						// End Timer
+						endTimer(configMap.waitTimer);
+
+						// Render Modal
+						configMap.modal.title = "Awww...";
+						configMap.modal.message = "Your opponent did not accept your challenge."
+						renderModal();
+					}
+
+				}else{
+					console.log(result);
+				}
+			}
+		});
+	};
+	// End Module /getMatchStatus/
 
 
 	// Start Module /renderBattlefield/
@@ -398,13 +603,18 @@ var App = (function(){
 			$header = jqueryMap.$header,
 			$ingame = jqueryMap.$ingame,
 			questions = configMap.qs.questions,
+			round = (configMap.currentRound == questions.length) ? 'final' : configMap.currentRound;
 			roundText = (configMap.currentRound == questions.length) ? 'Final Round' : 'Round '+configMap.currentRound;
 		
 		$container.html($header.html(App.Templates['header']({player : configMap.playerLocalPos, game : configMap.gameTimer})));
 		
 		configMap.hasAnswered = false;
 		// render Round
-		$container.append($ingame.html(App.Templates['round']({round : roundText})));
+		$container.append($ingame.html(App.Templates['round']({round : roundText, topic : configMap.topic })));
+		
+		// Play sound
+		roundCaller(round);
+
 		endTimer(configMap.matchTimer);
 		startTimer(configMap.roundTimer);
 	};
@@ -439,6 +649,11 @@ var App = (function(){
 		}
 
 		jqueryMap.$main.html(App.Templates['versus']({player : configMap.playerLocalPos}));
+
+		// Play sfx
+		configMap.audio.sfx.bg_random.stop();
+		configMap.audio.sfx.sfx_versus.play();
+
 		startTimer(configMap.matchTimer);
 	};
 	// End Module /renderVS/
@@ -448,10 +663,17 @@ var App = (function(){
 	var renderQuestion = function(){
 		console.log('rendering Question ---->');
 		var q = configMap.qs.questions[configMap.currentRound - 1],
-			$container = jqueryMap.$ingame,
-			$question = (!q.image) ? $container.html($('<div/>').addClass('ingame__question')) : $container.html($('<div/>').addClass('ingame__image')),
-			$options = $container.append($('<div/>').addClass('ingame__options'));
-		$container.find('.ingame__question').html(App.Templates['question']({ data : q }));
+			$container = jqueryMap.$ingame;
+
+		var $question = $('<div class="ingamge__question" />');
+		var $image = $('<div class="ingame__image" />');
+		var $options = $('<div class="ingame__options" />');
+		var $main = ( !q.image ) ? $question : $image;
+
+		$main.html(App.Templates['question']({ data : q }));
+		$container.html($main);
+		$container.append($options);
+
 		endTimer(configMap.roundTimer);
 		startTimer(configMap.questTimer);
 	};
@@ -661,7 +883,8 @@ var App = (function(){
 		console.log('Find a match ---->');
 		configMap.matchStatus = 'find';
 
-		// jqueryMap.$main.html('Finding a match... please wait...');
+		// Play sound
+		configMap.audio.sfx.bg_random.play();
 		jqueryMap.$main.html(App.Templates['loading']());
 
 		configMap.findMatchTimer.callback = waitCallback;
@@ -769,8 +992,76 @@ var App = (function(){
 		configMap.roundTimer.callback = renderQuestion;
 		configMap.questTimer.callback = renderOptions;
 		configMap.gameTimer.callback = getUpdates;
+
+		// Sounds
+		// BG for Finding a Random Match
+		configMap.audio.sfx.bg_random = new Howl({
+			urls : configMap.audio.files.bg_random,
+			loop: true,
+			volume : 0.25
+		});
+
+		// SFX for Correct Answer
+		configMap.audio.sfx.sfx_correct = new Howl({
+			urls : configMap.audio.files.sfx_correct,
+			volume : 0.5
+		});
+
+		// SFX for Incorrect Answer
+		configMap.audio.sfx.sfx_incorrect = new Howl({
+			urls : configMap.audio.files.sfx_incorrect,
+			volume : 0.5
+		});
+
+		// SFX when displaying Versus Page
+		configMap.audio.sfx.sfx_versus = new Howl({
+			urls : configMap.audio.files.sfx_versus,
+			volume : 0.5
+		});
+
+
+		// street fighter sfx
+		configMap.audio.sfx.sfx_fight = new Howl({ urls : ['assets/audio/street_fighter/56H.wav'] });
+		configMap.audio.sfx.sfx_round = new Howl({
+			urls : ['assets/audio/street_fighter/5FH.wav'],
+			onend : function(){
+				configMap.audio.sfx['sfx_'+configMap.currentRound].play();
+			}
+		});
+		configMap.audio.sfx.sfx_roundx = new Howl({ urls : ['assets/audio/street_fighter/5FH.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_1 = new Howl({ urls : ['assets/audio/street_fighter/60H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_2 = new Howl({ urls : ['assets/audio/street_fighter/61H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_3 = new Howl({ urls : ['assets/audio/street_fighter/62H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_4 = new Howl({ urls : ['assets/audio/street_fighter/63H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_5 = new Howl({ urls : ['assets/audio/street_fighter/64H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_6 = new Howl({ urls : ['assets/audio/street_fighter/65H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_7 = new Howl({ urls : ['assets/audio/street_fighter/66H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_8 = new Howl({ urls : ['assets/audio/street_fighter/67H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_9 = new Howl({ urls : ['assets/audio/street_fighter/68H.wav'], onend : function(){ playFight(); } });
+		configMap.audio.sfx.sfx_final = new Howl({
+			urls : ['assets/audio/street_fighter/69H.wav'],
+			onend : function(){
+				configMap.audio.sfx.sfx_roundx.play();
+			}
+		});
+
+		var playFight = function(){
+			configMap.audio.sfx.sfx_fight.play();
+		};
+
+
+		console.log('Audio has been set');
+
 	};
 	// End Module /initGame/
+
+	var roundCaller = function(round){
+		if( round != "final" ){
+			configMap.audio.sfx['sfx_round'].play();
+		}else{
+			configMap.audio.sfx['sfx_final'].play();
+		}
+	};
 
 	
 	// Start Module /initModule/
@@ -788,7 +1079,7 @@ var App = (function(){
 			'random' : findMatch,
 			'challenger' : renderWaiting,
 			'join' : renderVS
-		}
+		};
 
 		var mode = localStorage['OPEN_TYPE'] || 'random';
 
@@ -799,6 +1090,17 @@ var App = (function(){
 		// localStorage.player.name = {};
 	};
 
+	var stringToJSON = function(str){
+		return eval("(" + str + ")");
+	};
+
+	var jsonToString = function(json){
+		return JSON.stringify(json);
+	};
+
+	// Jarvin utility functions
+	// to be deleted on production
+
 	var freeze = function(){
 		endTimer(configMap.waitTimer);
 		endTimer(configMap.roundTimer);
@@ -806,6 +1108,11 @@ var App = (function(){
 		endTimer(configMap.questTimer);
 		endTimer(configMap.gameTimer);
 		endTimer(configMap.roundEndTimer);
+
+		configMap.audio.sfx.bg_random.stop();
+		configMap.audio.sfx.sfx_correct.stop();
+		configMap.audio.sfx.sfx_incorrect.stop();
+		configMap.audio.sfx.sfx_versus.stop();
 
 		return false;
 	};
@@ -818,12 +1125,32 @@ var App = (function(){
 		localStorage.setItem('PLAYER__NAME', user);
 	};
 
+	var setStorage = function(){
+		var data = {
+			matchid : 0,
+			ps : 'player1',
+			qs : 'questions'
+		};
+
+		localStorage.setItem('ENGAGE__MATCH', JSON.stringify(data));
+	};
+
+	var getStorage = function(){
+		var data = localStorage.getItem('ENGAGE__MATCH');
+		var evaluate = eval("(" + data + ")");
+		var json = JSON.stringify(evaluate);
+
+		return evaluate;
+	};
+
 
 	return {
 		initModule : initModule,
 		freeze : freeze,
 		setType : setType,
-		setUser : setUser
+		setUser : setUser,
+		setStorage : setStorage,
+		getStorage : getStorage
 	};
 
 }());
