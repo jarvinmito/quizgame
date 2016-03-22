@@ -108,7 +108,7 @@ this["App"]["Templates"]["results"] = Handlebars.template({"compiler":[7,">= 4.0
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.me : stack1)) != null ? stack1.badge : stack1), depth0))
     + "</h4>\r\n      <!--          <span class=\"result-page__badge\">Magaling</span>-->\r\n      <span class=\"main-player__score\">"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.me : stack1)) != null ? stack1.score : stack1), depth0))
-    + " POINTS</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"result-page opponent\">\r\n    <div class=\"opponent__text\">\r\n      <p>OPPONENT</p>\r\n      <p>DETAILS</p>\r\n    </div>\r\n    <img class=\"opponent__avatar\" src=\"assets/images/player-1.png\" alt=\"\">\r\n    <div class=\"opponent__level-points\">\r\n      <p>LEVEL: "
+    + " POINTS</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"result-page opponent\">\r\n    <div class=\"opponent__text\">\r\n      <p>OPPONENT</p>\r\n      <p>DETAILS</p>\r\n    </div>\r\n    <div class=\"opponent__avatar\">\r\n      <img class=\"\" src=\"assets/images/player-1.png\" alt=\"\">\r\n    </div>\r\n    <div class=\"opponent__level-points\">\r\n      <p>LEVEL: "
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.opponent : stack1)) != null ? stack1.badge : stack1), depth0))
     + "</p>\r\n      <p>"
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.player : depth0)) != null ? stack1.opponent : stack1)) != null ? stack1.score : stack1), depth0))

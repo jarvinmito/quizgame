@@ -75,7 +75,7 @@ var App = (function(){
 			currentScreen : 'findmatch',
 			audio : {
 				files : {
-					bg_random : ['assets/audio/bg_random2.mp3'],
+					bg_random : ['assets/audio/bg_random1.mp3'],
 					sfx_correct : ['assets/audio/sfx-correct.mp3'],
 					sfx_incorrect : ['assets/audio/sfx-incorrect1.mp3'],
 					sfx_versus : ['assets/audio/sfx-versus1.mp3']
@@ -613,7 +613,7 @@ var App = (function(){
 		$container.append($ingame.html(App.Templates['round']({round : roundText, topic : configMap.topic })));
 		
 		// Play sound
-		roundCaller(round);
+		// roundCaller(round);
 
 		endTimer(configMap.matchTimer);
 		startTimer(configMap.roundTimer);

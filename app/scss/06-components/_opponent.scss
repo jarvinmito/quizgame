@@ -1,5 +1,6 @@
 .opponent {
   flex-direction: row;
+  width: 100%;
   padding-top: 7vh;
   padding-bottom: 15px;
   &__text,
@@ -12,21 +13,27 @@
   }
   
   &__text {
+    flex: 2;
     p {
-      margin-right: 20px;
+      margin-right: 5px;
       text-align: right;
       color: $white;
     }
   }
   &__level-points {
+    flex: 2;
     p {
-      margin-left: 20px;
+      margin-left: 5px;
       text-align: left;
       color: $white;
     }
   }
   &__avatar {
-    width: 45px;
-    height: 45px;
+    flex: 1;
+    text-align: center;
+    img {
+      width: 45px;
+      height: 45px;
+    }
   }
 }

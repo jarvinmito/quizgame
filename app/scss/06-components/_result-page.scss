@@ -7,6 +7,8 @@
     &:before {
       content: " ";
       position: absolute;
+      left: 0;
+      top: 0;
       z-index: -1;
       background: url('../assets/images/win.svg') top center repeat-x;
       width: 100%;
@@ -35,10 +37,12 @@
     &:before {
       content: " ";
       position: absolute;
+      left: 0;
+      top: 0;
       z-index: -1;
       background: url('../assets/images/lose.svg') top center no-repeat;
       width: 100%;
-      height: 100%;
+      height: 30%;
       margin-top: -5%;
     }
     .result-page__title {
@@ -66,6 +70,7 @@
       content: " ";
       position: absolute;
       top: 70px;
+      left: 0;
       z-index: -1;
       background: url('../assets/images/tie-knot.svg') top center no-repeat;
       width: 100%;
@@ -96,10 +101,12 @@
   &__title {
     margin-bottom: 10px;
     font-family: 'Brady Bunch';
+    font-weight: 100;
     text-align: center;
     color: $yellow;
     letter-spacing: 1;
     font-size: 50px;
+    text-transform: uppercase;
   }
   &__list {
     max-width: 240px;
