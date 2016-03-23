@@ -50,7 +50,7 @@ this["App"]["Templates"]["modal"] = Handlebars.template({"compiler":[7,">= 4.0.0
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.modal : depth0)) != null ? stack1.title : stack1), depth0))
     + "</h4>\r\n      <a class=\"pop-up__close\" href=\"#\"><img src=\"assets/images/close.svg\" alt=\"\"></a>\r\n    </div>\r\n    <div class=\"pop-up__body\">\r\n      <p>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.modal : depth0)) != null ? stack1.message : stack1), depth0))
-    + "</p>\r\n    </div>\r\n    <div class=\"pop-up__footer\">\r\n      <a class=\"pop-up__button pop-up__exit\" href=\"#\">Back</a>\r\n    </div>\r\n  </div>\r\n</div>";
+    + "</p>\r\n    </div>\r\n    <div class=\"pop-up__footer\">\r\n      <a class=\"pop-up__button pop-up__exit\" href=\"#\">Go Back</a>\r\n    </div>\r\n  </div>\r\n</div>";
 },"useData":true});
 
 this["App"]["Templates"]["options"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {

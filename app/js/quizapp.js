@@ -22,7 +22,8 @@ var App = (function(){
 			plstore : {
 				id : 'PLAYER__ID',
 				name : 'PLAYER__NAME',
-				match : 'MATCH__DETAILS'
+				match : 'MATCH__DETAILS',
+				mode : 'OPEN__TYPE'
 			},
 			apis : {
 				base : 'http://192.168.20.83/project_engage/app/api/',
@@ -96,100 +97,106 @@ var App = (function(){
 		var match_details = localStorage[configMap.plstore.match];
 		var match_json = stringToJSON(match_details);
 
-		// Server-Client-side
-		// configMap.qs = match_json.qs;
-		// configMap.ps = match_json.ps;
-		// configMap.topic = match_json.topic;
-		// configMap.match = match_json.match;
-		// configMap.game = match_json.game;
-		configMap.game = {
-			"id" : 1,
-			"name" : "Quiz Game",
-			"type" : "multiple choice"
-		};
+		if( configMap.isStatic ){
+			// Static
+			configMap.game = {
+				"id" : 1,
+				"name" : "Quiz Game",
+				"type" : "multiple choice"
+			};
 
-		configMap.topic = {
-			"id" : 1,
-			"name" : "Paborito ng mga Pinoy",
-			"icon" : "assets/images/yeah.jpg"
-		};
+			configMap.topic = {
+				"id" : 1,
+				"name" : "Paborito ng mga Pinoy",
+				"icon" : "assets/images/yeah.jpg"
+			};
 
-		configMap.match = {
-			"id" : 1,
-			"status" : "ongoing",
-			"isactive" : {
-			    "a" : true,
-			    "b" : true
-			}
-		};
-
-		configMap.qs = {
-			"questions" : [
-				{
-					"id" : 1,
-					"question" : "Question Text 1?",
-					"options" : ["A" , "B" , "C" , "D"],
-					"answer" : 0
-				},
-				{
-					"id" : 2,
-					"question" : "Question Text 2?",
-					"options" : ["A" , "B" , "C" , "D"],
-					"answer" : 2
-				},
-				{
-					"id" : 3,
-					"question" : "Question Text 3?",
-					"options" : ["A" , "B" , "C" , "D"],
-					"answer" : 1
-				},
-				{
-					"id" : 4,
-					"question" : "Question Text 4?",
-					"options" : ["A" , "B" , "C" , "D"],
-					"answer" : 3
-				},
-				{
-					"id" : 5,
-					"question" : "Question Text 5?",
-					"options" : ["A" , "B" , "C" , "D"],
-					"answer" : 1
-				},
-				{
-					"id" : 6,
-					"question" : "Question Text 6?",
-					"options" : ["A" , "B" , "C" , "D"],
-					"answer" : 2
-				},
-				{
-					"id" : 7,
-					"question" : "Question Text 7?",
-					"options" : ["A" , "B" , "C" , "D"],
-					"answer" : 3
+			configMap.match = {
+				"id" : 1,
+				"status" : "ongoing",
+				"isactive" : {
+				    "a" : true,
+				    "b" : true
 				}
-			]
-		};
+			};
 
-		configMap.ps = {
-			"players" : {
-				"a" : {
-					"id" : 1,
-					"name" : "Kalabaw",
-					"badge" : "Badz",
-					"place" : "a",
-					"score" : 0,
-					"isactive" : true
-				},
-				"b" : {
-					"id" : 2,
-					"name" : "Baka",
-					"badge" : "Despicable",
-					"place" : "b",
-					"score" : 0,
-					"isactive" : true
+			configMap.qs = {
+				"questions" : [
+					{
+						"id" : 1,
+						"question" : "Question Text 1?",
+						"options" : ["A" , "B" , "C" , "D"],
+						"answer" : 0
+					},
+					{
+						"id" : 2,
+						"question" : "Question Text 2?",
+						"options" : ["A" , "B" , "C" , "D"],
+						"answer" : 2
+					},
+					{
+						"id" : 3,
+						"question" : "Question Text 3?",
+						"options" : ["A" , "B" , "C" , "D"],
+						"answer" : 1
+					},
+					{
+						"id" : 4,
+						"question" : "Question Text 4?",
+						"options" : ["A" , "B" , "C" , "D"],
+						"answer" : 3
+					},
+					{
+						"id" : 5,
+						"question" : "Question Text 5?",
+						"options" : ["A" , "B" , "C" , "D"],
+						"answer" : 1
+					},
+					{
+						"id" : 6,
+						"question" : "Question Text 6?",
+						"options" : ["A" , "B" , "C" , "D"],
+						"answer" : 2
+					},
+					{
+						"id" : 7,
+						"question" : "Question Text 7?",
+						"options" : ["A" , "B" , "C" , "D"],
+						"answer" : 3
+					}
+				]
+			};
+
+			configMap.ps = {
+				"players" : {
+					"a" : {
+						"id" : 1,
+						"name" : "Kalabaw",
+						"badge" : "Badz",
+						"place" : "a",
+						"score" : 0,
+						"isactive" : true
+					},
+					"b" : {
+						"id" : 2,
+						"name" : "Baka",
+						"badge" : "Despicable",
+						"place" : "b",
+						"score" : 0,
+						"isactive" : true
+					}
 				}
-			}
-		};
+			};
+		}else{
+			// Server-Client-side
+			configMap.game = match_json.game;
+			configMap.topic = match_json.topic;
+			configMap.match = match_json.match;
+			configMap.qs = match_json.qs;
+			configMap.ps = match_json.ps;
+		}
+
+		
 
 		configMap.scores = {};
 
@@ -630,31 +637,45 @@ var App = (function(){
 		var players = configMap.ps.players;
 		var player = configMap.player.name;
 
-		// Find current player and set his place/position
-		for(var key in players){
-			if (players.hasOwnProperty(key)){
-				if(players[key].name == player){
-					configMap.playerLocalPos.left = players[key];
-					configMap.player = players[key];
-					// Set final value for player inside the local storage
-					// include player id here later........
-					// uncomment me later....
-					// localStorage[configMap.plstore.name] = configMap.player.name;
-					// sessionStorage[configMap.plstore.name] = configMap.player.name;
-					configMap.player.place = players[key].place;
-				}else{
-					configMap.playerLocalPos.right = players[key];
+		var player_a = configMap.ps.players.a;
+
+		if( player_a.isactive ){
+			// Render 
+
+			// Find current player and set his place/position
+			for(var key in players){
+				if (players.hasOwnProperty(key)){
+					if(players[key].name == player){
+						configMap.playerLocalPos.left = players[key];
+						configMap.player = players[key];
+						// Set final value for player inside the local storage
+						// include player id here later........
+						// uncomment me later....
+						// localStorage[configMap.plstore.name] = configMap.player.name;
+						// sessionStorage[configMap.plstore.name] = configMap.player.name;
+						configMap.player.place = players[key].place;
+					}else{
+						configMap.playerLocalPos.right = players[key];
+					}
 				}
 			}
+
+			jqueryMap.$main.html(App.Templates['versus']({player : configMap.playerLocalPos}));
+
+			// Play sfx
+			configMap.audio.sfx.bg_random.stop();
+			configMap.audio.sfx.sfx_versus.play();
+
+			startTimer(configMap.matchTimer);
 		}
 
-		jqueryMap.$main.html(App.Templates['versus']({player : configMap.playerLocalPos}));
 
-		// Play sfx
-		configMap.audio.sfx.bg_random.stop();
-		configMap.audio.sfx.sfx_versus.play();
-
-		startTimer(configMap.matchTimer);
+		if( !player_a.isactive && localStorage[configMap.plstore.mode] == "join"){
+			// Render Modal
+			configMap.modal.title = "Uh oh...";
+			configMap.modal.message = "Your opponent has left the game."
+			renderModal();
+		}
 	};
 	// End Module /renderVS/
 
@@ -1070,6 +1091,9 @@ var App = (function(){
 		// mainit
 		// initialization code for app here
 		console.log('It\'s alive!!!');
+
+		configMap.isStatic = true;
+
 		initSetup();
 		initGame();
 		// for testing
@@ -1081,7 +1105,7 @@ var App = (function(){
 			'join' : renderVS
 		};
 
-		var mode = localStorage['OPEN_TYPE'] || 'random';
+		var mode = localStorage['OPEN__TYPE'] || 'random';
 
 		modes[mode]();
 
@@ -1118,7 +1142,7 @@ var App = (function(){
 	};
 
 	var setType = function(type){
-		localStorage.setItem('OPEN_TYPE', type);
+		localStorage.setItem('OPEN__TYPE', type);
 	};
 
 	var setUser = function(user){
