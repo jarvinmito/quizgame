@@ -1,0 +1,132 @@
+.engage {
+  &.animate-in {
+    @extend .animated,
+    .fadeIn;
+  }
+  &.animate-out {
+    @extend .animated,
+    .fadeOut;
+  }
+}
+
+//Versus Page
+.versus {
+  &__one {
+    &.animate {
+      &--in {
+        @extend .animated, .slideInDown;
+        .player__avatar {
+          animation-delay: 0.5s;
+          @extend .animated, .bounceInLeft;
+        }
+        .player__details {
+          animation-delay: 1s;
+          @extend .animated, .fadeIn;
+        }
+      }
+      &--out {
+        @extend .animated, .slideOutLeft;
+      }
+    }
+  }
+  &__two {
+    &.animate {
+      &--in {
+        @extend .animated,.slideInUp;
+        .player__avatar {
+          animation-delay: 0.5s;
+          @extend .animated,.bounceInRight;
+        }
+        .player__details {
+          animation-delay: 1s;
+          @extend .animated,.fadeIn;
+        }
+      }
+      &--out {
+        @extend .animated,.slideOutRight;
+      }
+    }
+  }
+  &__vs {
+    &.animate {
+      &--in {
+        @extend .animated,.zoomIn;
+      }
+      &--out {
+        @extend .animated,.zoomOut;
+      }
+    }
+  }
+}
+
+
+// Result Page
+.result-page {
+  
+  &--win {
+    &.animate {
+      &--in {
+        &::before {
+          @extend .animated, .bounceIn;
+        }
+        .result-page__title {
+          @extend .animated, .tada;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  &--lose {
+    &.animate {
+      &--in {
+        &::before {
+          @extend .animated, .zoomIn;
+        }
+        .result-page__title {
+          @extend .animated, .pulse;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  &--tie {
+    &.animate {
+      &--in {
+        &::before {
+          @extend .animated, .fadeIn;
+        }
+        .result-page__title {
+          @extend .animated, .bounce;
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+
+//Open-ended
+.open-ended {
+  &.is-correct::before {
+    @extend .animated, .tada;
+  }
+  &.is-wrong::before {
+    @extend .animated, .wobble;
+  }
+  &__answer {
+    @extend .animated, .fadeInUp;
+  }
+}
+
+//Ingame Option
+.ingame {
+  &__options {
+//    .game-button.is-correct {
+//      @extend .animated, .pulse;
+//    }
+    .answer-me,
+    .answer-opponent {
+      @extend .animated, .bounceIn;
+    }
+  }
+  
+}

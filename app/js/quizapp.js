@@ -35,7 +35,29 @@ var App = (function(){
 					'get-updates' : 'get-updates.php',
 					'players' : 'players.php',
 					'questions' : 'questions.php',
-					'get-match-status' : 'get-match-status.php'
+					'get-match-status' : 'get-match-status.php',
+					'check-statuses' : 'checkStatuses.php'
+				},
+				ch_api : {
+					// Params for API 1
+					// topic_id, game_id, player_a name, player_b name
+					'api1' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/challengePlayer/',
+					
+					// Params for API 2
+					// match_id
+					'api2' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/sendChallenge/',
+
+					// Params for API 3
+					// topic_id, game_id, player_a name, player_b name, match_status = 'ongoing'
+					'api3' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/acceptChallenge/',
+
+					// Params for API 7
+					// match_id, player_a name, player_b name
+					'api7' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/existingRematch/',
+
+					// Params for API 8
+					// player_a name, player_b name
+					'api8' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/searchRematch/'
 				}
 			},
 			// Questions
@@ -54,13 +76,22 @@ var App = (function(){
 			matchid : 0,
 			matchStatus : 'find', // find, create, wait
 			playStatus : 0, // 0 = waiting a match, 1 = ongoing match, 2 = ended match
+			// 1000
 			waitTimer : { timing : null, delay : 1000, currentTime : 1},
+			// 3000
 			findMatchTimer : { timing : null, delay : 3000, maxTries : 30, currentTries : 1},
+			// 5000
 			matchTimer : { timing : null, delay : 5000 },
+			// 2000
 			roundTimer : { timing : null, delay : 2000 },
+			// 2000
 			questTimer : { timing : null, delay : 2000 },
+			// 1000
 			gameTimer : { timing : null, delay : 1000, points : 10 },
+			// 3000
 			roundEndTimer : {timing : null, delay : 3000 },
+			// 2000
+			resultTimer : {timing : null, delay : 2000 },
 			maxScorePerRound : 10,
 			currentRound : 1,
 			currentRoundisFin : false,
@@ -94,8 +125,6 @@ var App = (function(){
 	// Start Module /initSetup/
 	// Purpose : Defaults all properties in the game
 	var initSetup = function(){
-		var match_details = localStorage[configMap.plstore.match];
-		var match_json = stringToJSON(match_details);
 
 		if( configMap.isStatic ){
 			// Static
@@ -188,16 +217,54 @@ var App = (function(){
 				}
 			};
 		}else{
-			// Server-Client-side
-			configMap.game = match_json.game;
-			configMap.topic = match_json.topic;
-			configMap.match = match_json.match;
-			configMap.qs = match_json.qs;
-			configMap.ps = match_json.ps;
+			var match_details = localStorage[configMap.plstore.match];
+			var match_json = stringToJSON(match_details);
+
+			if( match_json ){
+				configMap.game = match_json.game;
+				configMap.topic = match_json.topic;
+				configMap.qs = match_json.qs;
+				configMap.ps = {
+					"players" : match_json.players
+				};
+
+				// if( match_json.match.length == 1 ){
+				// 	configMap.match = {
+				// 		"id" : match_json.match[0].match_id,
+				// 		"status" : match_json.match[0].match_status,
+				// 		"isactive" : {
+				// 			"a" : match_json.match[0].match_player_a_isactive,
+				// 			"b" : match_json.match[0].match_player_b_isactive
+				// 		}
+				// 	}
+				// }else{
+					configMap.match = match_json.match;
+				// }
+
+			}else{
+				configMap.game = {
+					"id" : 1,
+					"name" : "Quiz Game",
+					"type" : "multiple choice"
+				};
+
+				configMap.topic = {
+					"id" : 1,
+					"name" : "Paborito ng mga Pinoy",
+					"icon" : "assets/images/yeah.jpg"
+				};
+
+				configMap.match = {
+					"id" : 0,
+					"isactive" : {
+						"a" : true,
+						"b" : true
+ 					}
+				};
+			}
 		}
 
 		
-
 		configMap.scores = {};
 
 		// Client-side
@@ -226,6 +293,7 @@ var App = (function(){
 		// }
 
 		// configMap.player.name = sessionStorage[configMap.plstore.name];
+		console.log(configMap);
 	};
 	// End Module /initSetup/
 
@@ -282,10 +350,30 @@ var App = (function(){
 			});
 		}
 
-		if( $('.btn__play-random').length ){
-			$('.btn__play-random').click(function(){
+		if( $('.game-button--rematch').length ){
+			$('.game-button--rematch').click(function(){
 				// Match for another random player
-				findMatch();
+				renderWaitingRematch();
+				// initModule();
+			});
+		}
+
+		if( $('.game-button--cancel').length ){
+			$('.game-button--cancel').click(function(){
+				// Cancel Rematch
+				destroyWaitingRematch();
+				renderResultButtons();
+				startTimer(configMap.resultTimer);
+				// Stop waiting
+				// initModule();
+			});
+		}
+
+		if( $('.game-button--random').length ){
+			$('.game-button--random').click(function(){
+				// Match for another random player
+				localStorage[configMap.plstore.mode] = 'random';
+				initModule();
 			});
 		}
 
@@ -309,6 +397,22 @@ var App = (function(){
 				freeze();
 				resetSetup();
 				window.close();
+			});
+		}
+
+		if( $('.pop-up__yes').length ){
+			$('.pop-up__yes').click(function(){
+				// Calls API 3
+				// Updates DB match_status = ongoing
+				// Starts the game
+				callApi3();
+			});
+		}
+
+		if( $('.pop-up__no').length ){
+			$('.pop-up__no').click(function(){
+				// Closes the window
+				// Updates DB match_status = rejected
 			});
 		}
 	};
@@ -500,7 +604,8 @@ var App = (function(){
 		bind();
 		
 		// Reset States here
-		initSetup();
+		// initSetup();
+		startTimer(configMap.resultTimer);
 	};
 	// End Module /renderResults/
 
@@ -515,6 +620,200 @@ var App = (function(){
 	};
 	// End Module /renderModal/
 
+	// Start Module /destroyModal/
+	var destroyModal = function(){
+		var $container = jqueryMap.$main;
+		var $modal = $container.find('.pop-up');
+
+		if( $modal.length ){
+			$modal.fadeOut(250, function(){
+				$(this).remove();
+				configMap.modal = {};
+			});
+		}
+	};
+	// End Module /destroyModal/
+
+	// Start Module /renderResultButtons/
+	var renderResultButtons = function(){
+		var $container = jqueryMap.$main;
+		var $result = $container.find('.result-page--parent');
+		var $rematch = $result.find('rematch');
+		var $buttons = $result.find('result-page__list');
+
+		if( $rematch.length ){
+			$rematch.remove();
+		}
+
+		if( $buttons.length ){
+			$buttons.remove();
+		}
+
+		$result.append(App.Templates['results-buttons']());
+		bind();
+
+	};
+	// End Module /renderResultButtons/
+
+	// Start Module /destroyWaitingRematch/
+	// Purpose : Removes the waiting section inside the Result page
+	var destroyWaitingRematch = function(){
+		console.log('destroying Waiting section');
+
+		var $container = jqueryMap.$main;
+		var $waiting = $container.find('.rematch');
+
+		if( $waiting.length ){
+			endTimer(configMap.waitTimer);
+			$waiting.remove();
+		}
+	};
+	// End Module /destroyWaitingRematch/
+	// Start Module /renderWaitingRematch/
+	// Purpose : Displays the waiting section inside the Result page
+	var renderWaitingRematch = function(){
+		console.log('rendering Waiting section');
+
+		var $container = jqueryMap.$main;
+		var time = configMap.waitTimer.currentTime;
+		var con = $container.find('.result-page--parent');
+		var buttons = con.find('.result-page__list');
+
+
+		buttons.remove();
+		con.append(App.Templates['waiting-rematch']({ time : time }));
+		endTimer(configMap.resultTimer);
+
+
+		// Check if there is an existing rematch request
+		var data = {
+			match_id : configMap.match.id,
+			player_a : configMap.ps.players.a.name,
+			player_b : configMap.ps.players.b.name
+		};
+
+
+		// Call API 7: checking for an existing rematch
+		$.ajax({
+			url : configMap.apis.ch_api['api7'],
+			data : data,
+			method : 'post',
+			success : function(result){
+				console.log(result);
+				if( result.rematch == true){
+					// Set the current match to the rematch id
+					configMap.match = result.match;
+					// then call api3 to accept rematch
+					callApi3();
+				}else{
+					// Call Api1 to create a rematch
+					callApi1();
+				}
+			}
+		});
+
+		
+	};
+	// End Module /renderWaitingRematch/
+
+
+	// Start Module /callApi1/
+	// Purpose : Challenging a player
+	var callApi1 = function(){
+		data = {
+			topic_id : configMap.topic.id,
+			game_id : configMap.game.id,
+			player_a : configMap.ps.players.a.name,
+			player_b : configMap.ps.players.b.name
+		}
+		// Call API 1
+		$.ajax({
+			url : configMap.apis.ch_api['api1'],
+			method : 'post',
+			data : data,
+			success : function(result){
+				// Setup all new data
+				console.log(result);
+
+				localStorage[configMap.plstore.match] = jsonToString(result);
+				localStorage[configMap.plstore.mode] = 'challenger';
+
+				initSetup();
+				bind();
+				startTimer(configMap.waitTimer);
+			}
+		});
+	};
+	// End Module /callApi1/
+
+	// Start Module /callApi3/
+	// Purpose : Accepting a challenge
+	var callApi3 = function(){
+		data = {
+			topic_id : configMap.topic.id,
+			game_id : configMap.game.id,
+			player_a : configMap.ps.players.a.name,
+			player_b : configMap.ps.players.b.name,
+			match_status : 'ongoing',
+			match_id : configMap.match.id
+		};
+
+		// remove Modal
+		destroyModal();
+
+		// Call API 3
+		$.ajax({
+			url : configMap.apis.ch_api['api3'],
+			method : 'post',
+			data : data,
+			success : function(result){
+				// Setup all new data
+				console.log(result);
+
+				localStorage[configMap.plstore.match] = jsonToString(result);
+				localStorage[configMap.plstore.mode] = 'join';
+				
+				// initSetup();
+				initModule();
+				// bind();
+				// startTimer(configMap.waitTimer);
+			}
+		});
+	};
+	// End Module /callApi3/
+
+	// Start Module /callApi4/
+	// Purpose : Rejecting a challenge
+	var callApi4 = function(){
+		data = {
+			match_id : configMap.match.id,
+			match_status : 'reject'
+		};
+
+		// remove Modal
+		destroyModal();
+		// startTimer(configMap.resultTimer);
+
+		// Call API 4
+		$.ajax({
+			url : configMap.apis.ch_api['api4'],
+			method : 'post',
+			data : data,
+			success : function(result){
+				// Setup all new data
+				console.log(result);
+
+				// localStorage[configMap.plstore.match] = jsonToString(result);
+				// localStorage[configMap.plstore.mode] = 'join';
+				
+				// initModule();
+				// bind();
+				// startTimer(configMap.waitTimer);
+			}
+		});
+	};
+	// End Module /callApi3/
+
 	// Start Module /renderWaiting/
 	// Purpose : Displays the waiting page when the user has sent a challenge request
 	var renderWaiting = function(){
@@ -522,6 +821,7 @@ var App = (function(){
 
 		var $container = jqueryMap.$main;
 		var time = configMap.waitTimer.currentTime;
+		var $con = $container;
 
 		$container.html(App.Templates['waiting']({time : time, topic : configMap.topic }));
 		startTimer(configMap.waitTimer);
@@ -536,7 +836,7 @@ var App = (function(){
 		configMap.waitTimer.currentTime = time;
 
 		var $container = jqueryMap.$main;
-		var $timer = $container.find('.waiting-screen__timer');
+		var $timer = $container.find('.waiting-screen__timer, .rematch_time');
 
 		$timer.html(App.Templates['waiting-timer']({ time : configMap.waitTimer.currentTime }));
 		
@@ -550,23 +850,74 @@ var App = (function(){
 	};
 	// End Module /waitTimer/
 
+	// Start Module /checkStatuses/
+	// Purpose : continually checks the statuses of the player
+	var checkStatuses = function(){
+
+		// var matchid = configMap.match.id;
+		var data = {
+			player_a : configMap.ps.players.a.name,
+			player_b : configMap.ps.players.b.name
+		};
+
+		console.log('checking statuses');
+
+		endTimer(configMap.resultTimer);
+
+		// Call api 8
+		$.ajax({
+			method : 'post',
+			url : configMap.apis.ch_api['api8'],
+			// url : configMap.apis.base + configMap.apis.api['check-statuses'],
+			data : data,
+			success : function(result){
+				console.log(result);
+				if( result ){
+					var newMatch = result.match;
+					var rematch = result.rematch;
+
+					if( rematch == "true" ){
+						// Render a modal -- a rematch has been detected
+						configMap.modal.title = "Up for another?";
+						configMap.modal.message = "Your opponent wants a rematch.";
+						configMap.modal.isprompt = true;
+						configMap.modal.buttons = {
+							"no" : { "caption" : "Not now", "class" : "pop-up__no is-yellow" },
+							"yes" : { "caption" : "Rematch", "class" : "pop-up__yes is-blue" }
+						};
+						renderModal();
+					}else{
+						startTimer(configMap.resultTimer);
+					}
+
+				}
+
+			}
+		});
+
+	};
+	// End Module /checkStatuses/
+
+
+	// CALLING API 2
 	// Start Module /getMatchStatus/
 	// Purpose : To get the match status
 	// Access Mode : Challenger
 	var getMatchStatus = function(){
 		var data = {
-			matchid : configMap.match.id,
-			name : configMap.player.name
+			match_id : configMap.match.id//,
+			// name : configMap.player.name
 		};
 
 		$.ajax({
 			method : 'post',
-			url : configMap.apis.base + configMap.apis.api['get-match-status'],
+			url : configMap.apis.ch_api['api2'],
+			// url : configMap.apis.base + configMap.apis.api['get-match-status'],
 			data : data,
 			success : function(result){
-				console.log(result);
-				if( result.status ){
-					var status = result.status;
+				// console.log(data, result, configMap.match);
+				if( result.match.status ){
+					var status = result.match.status;
 
 					if( status == 'ongoing' ){
 						// Set to local configuration
@@ -592,7 +943,7 @@ var App = (function(){
 					}
 
 				}else{
-					console.log(result);
+					// console.log(result);
 				}
 			}
 		});
@@ -637,9 +988,9 @@ var App = (function(){
 		var players = configMap.ps.players;
 		var player = configMap.player.name;
 
-		var player_a = configMap.ps.players.a;
+		var player_a = configMap.match.isactive.a;
 
-		if( player_a.isactive ){
+		if( player_a ){
 			// Render 
 
 			// Find current player and set his place/position
@@ -663,8 +1014,8 @@ var App = (function(){
 			jqueryMap.$main.html(App.Templates['versus']({player : configMap.playerLocalPos}));
 
 			// Play sfx
-			configMap.audio.sfx.bg_random.stop();
-			configMap.audio.sfx.sfx_versus.play();
+			// configMap.audio.sfx.bg_random.stop();
+			// configMap.audio.sfx.sfx_versus.play();
 
 			startTimer(configMap.matchTimer);
 		}
@@ -673,7 +1024,7 @@ var App = (function(){
 		if( !player_a.isactive && localStorage[configMap.plstore.mode] == "join"){
 			// Render Modal
 			configMap.modal.title = "Uh oh...";
-			configMap.modal.message = "Your opponent has left the game."
+			configMap.modal.message = "Your opponent has left the game.";
 			renderModal();
 		}
 	};
@@ -905,8 +1256,10 @@ var App = (function(){
 		configMap.matchStatus = 'find';
 
 		// Play sound
-		configMap.audio.sfx.bg_random.play();
+		// configMap.audio.sfx.bg_random.play();
 		jqueryMap.$main.html(App.Templates['loading']());
+
+		configMap.matchid = 0; 
 
 		configMap.findMatchTimer.callback = waitCallback;
 		startTimer(configMap.findMatchTimer);
@@ -1008,6 +1361,10 @@ var App = (function(){
 	// Start Module /initGame/
 	// Purpose : Initializes our Game
 	var initGame = function(){
+		// Reset Elements
+		$('.engage').html('');
+
+		configMap.resultTimer.callback = checkStatuses;
 		configMap.waitTimer.callback = renderTimer;
 		configMap.matchTimer.callback = renderBattlefield;
 		configMap.roundTimer.callback = renderQuestion;
@@ -1092,7 +1449,7 @@ var App = (function(){
 		// initialization code for app here
 		console.log('It\'s alive!!!');
 
-		configMap.isStatic = true;
+		// configMap.isStatic = true;
 
 		initSetup();
 		initGame();
@@ -1105,7 +1462,7 @@ var App = (function(){
 			'join' : renderVS
 		};
 
-		var mode = localStorage['OPEN__TYPE'] || 'random';
+		var mode = localStorage[configMap.plstore.mode] || 'random';
 
 		modes[mode]();
 
@@ -1132,6 +1489,7 @@ var App = (function(){
 		endTimer(configMap.questTimer);
 		endTimer(configMap.gameTimer);
 		endTimer(configMap.roundEndTimer);
+		endTimer(configMap.resultTimer);
 
 		configMap.audio.sfx.bg_random.stop();
 		configMap.audio.sfx.sfx_correct.stop();

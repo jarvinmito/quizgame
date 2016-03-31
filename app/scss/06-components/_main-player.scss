@@ -3,8 +3,8 @@
   margin: 0 auto;
   text-align: center;
   &__avatar {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
     background: $light-blue;
     display: block;
@@ -18,13 +18,14 @@
   &__details {
     position: relative;
     //        z-index: 10;
-    width: 180px;
+    min-width: 180px;
+    width: 100%;
     margin-top: -40px;
     padding:0;
     background-color: red;
     text-align: center;
     @media (min-width : $sm-device){
-      width: 220px;
+      min-width: 220px;
       margin-top: -50px;
     }
     &:before,

@@ -2,6 +2,12 @@
 //  
 //
 .loading-screen {
+  height: 100%;
+//  padding-left: 50%;
+  width: 100%;
+  background: url($bg-url) 0px 0px repeat-x;
+  background-size: cover;
+  animation: move 50s linear infinite;
   &__jeep {
     position: absolute;
     bottom: 25px;
@@ -87,18 +93,13 @@
 $swim-size: -4738px; //Change for bigger/smaller swimmers
 $swim-shift: 0-$swim-size;
 //$bg-url: "../assets/images/optimised.svg";
-$bg-url: "../assets/images/street-buildings.svg";
+
 //html{
 //  height: 100%;
 //}
 
 .loading-screen{
-  height: 100%;
-//  padding-left: 50%;
-  width: 100%;
-  background: url($bg-url) 0px 0px repeat-x;
-  background-size: cover;
-  animation: move 50s linear infinite;
+
 }
 
 .cloud-1{

@@ -7,8 +7,15 @@
     <div class="pop-up__body">
       <p>{{modal.message}}</p>
     </div>
-    <div class="pop-up__footer">
-      <a class="pop-up__button pop-up__exit" href="#">Go Back</a>
+    <div class="pop-up__footer {{#if modal.isprompt }}is-half{{/if}}">
+    
+      {{#if modal.isprompt }}
+        {{#each modal.buttons }}
+          <a class="pop-up__button {{this.class}}" href="#">{{this.caption}}</a>
+        {{/each}}
+      {{else}}
+          <a class="pop-up__button pop-up__exit" href="#">Go Back</a>
+      {{/if}}
     </div>
   </div>
 </div>

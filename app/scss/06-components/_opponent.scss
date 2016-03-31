@@ -1,5 +1,7 @@
 .opponent {
+  display: flex;
   flex-direction: row;
+  align-items: center;
   width: 100%;
   padding-top: 7vh;
   padding-bottom: 15px;
@@ -32,8 +34,8 @@
     flex: 1;
     text-align: center;
     img {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
     }
   }
 }

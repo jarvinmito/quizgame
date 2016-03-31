@@ -1,11 +1,7 @@
-<div class="header clearfix">
-	<div class="player__round grid--40 text-align--center">
-	  {{> header-player player=player.left }}
-	</div>
-	<div class="grid--20 header__points text-align--center">
+<div class="header">
+	{{> header-player player=player.left }}
+	<div class="header__points">
 	  {{> header-points game=game }}
 	</div>
-	<div class="player__round grid--40 text-align--center">
-	  {{> header-player player=player.right }}
-	</div>
+	{{> header-player player=player.right }}
 </div>

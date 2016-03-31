@@ -77,7 +77,13 @@
         }
         &.is-yellow {
           background-color: $yellow;
-          color: $navy-blue2;
+          color: $white;
+          &:hover,
+          &:focus,
+          &:active {
+          background-color: darken($yellow, 10%);
+            color: $white;
+          }
         }
         &.is-blue {
           background-color: $navy-blue2;

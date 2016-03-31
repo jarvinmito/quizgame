@@ -1,25 +1,48 @@
 .header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 10px;
   &__player {
+    display: flex;
+    flex: 2;
     margin-top: 15px;
     color: $white;
+    overflow: hidden;
+    &:not(:first-child) {
+      justify-content: flex-end;
+      .player__avatar--small {
+        order: 2;
+      }
+      .player__details {
+        order: 1;
+        text-align: right;
+      }
+    }
     .player__name {
-      
       width: auto;
       margin-bottom: 0;
-      line-height: 15px;
-      font-size: 12px;
+      line-height: 13px;
+      font-size: 10px;
       font-weight: normal;
       color: $light-blue--v2;
     }
     .player__badge {
       padding: 0;
-      font-size: 11px;
+      font-size: 9px;
+      line-height: 13px;
       color: $yellow;
     }
     .player__score {
       padding: 0;
-      font-size: 11px;
+      font-size: 9px;
+      line-height: 13px;
       color: $light-yellow;
     }
+  }
+  &__points {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
   }
 }

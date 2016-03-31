@@ -1,4 +1,17 @@
 .player {
+  &--one, 
+  &--two {
+    .player__details {
+      text-align: center;
+      &:before {
+        content: " ";
+        width: 60px;
+        display: block;
+        margin: 0 auto;
+        padding-top: 5px;
+      }
+    }
+  }
   &--one {
     background-color: $yellow;
     .player__details {
@@ -50,24 +63,14 @@
     }
   }
 
-  
   &__avatar {
-    height: auto;
     width: 100px;
+    height: 100px;
     margin-bottom: 15px;
     &--small {
-      width: 50px;
-      height: auto;
-    }
-  }
-  &__details {
-    text-align: center;
-    &:before {
-      content: " ";
-      width: 60px;
-      display: block;
-      margin: 0 auto;
-      padding-top: 5px;
+      width: 45px;
+      height: 45px;
+      margin: 0 5px;
     }
   }
   &__name {

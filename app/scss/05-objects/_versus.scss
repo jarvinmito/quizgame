@@ -4,7 +4,7 @@
   align-items: center;
   height: 100%;
   &__one {
-    @extend .animated, .slideInDown;
+//    @extend .animated, .slideInDown;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -12,17 +12,17 @@
     align-self: stretch;
     justify-content: center;
     .player__avatar {
-      animation-delay: 0.5s;
-      @extend .animated, .bounceInLeft;
+//      animation-delay: 0.5s;
+//      @extend .animated, .bounceInLeft;
       
     }
     .player__details {
-      animation-delay: 1s;
-      @extend .animated, .fadeIn;
+//      animation-delay: 1s;
+//      @extend .animated, .fadeIn;
     }
   }
   &__two {
-    @extend .animated, .slideInUp;
+//    @extend .animated, .slideInUp;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -30,16 +30,16 @@
     align-self: stretch;
     justify-content: center;
     .player__avatar {
-      animation-delay: 0.5s;
-      @extend .animated, .bounceInRight;
+//      animation-delay: 0.5s;
+//      @extend .animated, .bounceInRight;
     }
     .player__details {
-      animation-delay: 1s;
-      @extend .animated, .fadeIn;
+//      animation-delay: 1s;
+//      @extend .animated, .fadeIn;
     }
   }
   &__vs {
-    @extend .animated, .zoomIn;
+//    @extend .animated, .zoomIn;
     position: absolute;
     left: 50%;
     top: 50%;
