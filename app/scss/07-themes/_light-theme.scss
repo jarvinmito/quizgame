@@ -1,48 +1,213 @@
-.engage.light {
-  background-color: $lightiest-blue;
+.engage {
+  background-color: $bg-color;
   //header player details
-  .player {
-    &__name {
-      color: $red;
+  .header {
+    .player {
+      &__avatar {}
+      &__name {
+        color: $blue;
+      }
+      &__badge {
+        color: $blue;
+      }
+      &__score {
+        color: $orange;
+      }
     }
-    &__badge {
-      color: $yellow;
-    }
-    &__score {
-      color: darken($green, 20%);
+    .points {
+      &__title {
+        color: $blue;
+      }
+      &__value {
+        color: $orange;
+      }
     }
   }
-  .points {
-    &__title {
+  //Ingame Question and Image
+  .ingame {
+    &__question {
       color: $blue;
     }
-    &__value {
-      color: darken($green, 20%);
+    &__image {
+//      background-color: $blue;
+      color: $blue;
     }
   }
-  
-  .question {
-    color: $blue;
-  }
-  //waiting screen
+  //Waiting Screen
   .waiting-screen {
     &__topic {
       color: $blue;
     }
-    &__timer {
-      color: $red;
-    }
-    p {
-      color: $blue;
+    &__wrap {
+      color: $green;
+      &.is-warning {
+        color: $red;
+      }
     }
   }
-  
   //End Result Opponent Details
   .opponent {
     &__text,
-    &__level-points{
+    &__level-points {
       p {
         color: $blue;
+      }
+    }
+  }
+  //pop up 
+  .pop-up {
+    &__header {}
+    &__close {
+      svg {
+        fill: $gray;
+      }
+    }
+    &__title {}
+    &__footer {}
+    &__button {
+      background-color: $blue-green;
+      color: $white;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: darken($blue-green, 10%);
+        color: $white;
+      }
+      &.is-yellow {
+        background-color: $yellow;
+        color: $white;
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: darken($yellow, 10%);
+          color: $white;
+        }
+      }
+    }
+  }
+  
+  //Result Page
+  .result-page {
+    &__share {
+      background: $orange;
+      svg {
+        fill: $bg-color;;
+      }
+    }
+    &--win {
+      .result-page__title {
+      color: $green;
+      }
+      .main-player__details {
+        background-color: $light-green;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($light-green, 20%) transparent;
+        }
+        .main-player__name  {
+          color: $black;
+        }
+        .main-player__score  {
+          color: $black;
+        }
+      }
+    }
+    &--lose {
+      .result-page__title {
+      color: $red;
+      }
+      .main-player__details {
+        background-color: $red-light;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($red, 20%) transparent;
+        }
+        .main-player__name  {
+          color: $white;
+        }
+        .main-player__score  {
+          color: $white;
+        }
+      }
+    }
+    &--tie {
+      .result-page__title {
+      color: darken($orange, 5%);
+      }
+      .main-player__details {
+        background-color: $orange-light;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($orange-light, 30%) transparent;
+        }
+        .main-player__name  {
+          color: $dark;
+        }
+        .main-player__score  {
+          color: $dark;
+        }
+      }
+    }
+  }
+  
+  //Versus Page 
+  .versus {
+    
+    &__vs {
+    background: $white;
+    color: $navy-blue2;
+    }
+    .player {
+      &--one {
+        background-color: $blue-green;
+        .player__details {
+          &:before {
+            content: " ";
+            border-top: 1px solid $white;
+          }
+        }
+        .player__name {
+          color: $white;
+        }
+        .player__badge {
+          background-color: $white;
+          color: $blue;
+          &:before {
+            content: " ";
+            background-color: $blue-green;
+          }
+          &:after {
+            content: " ";
+            background-color: $blue-green;
+          }
+        }
+      }
+      &--two {
+        background-color: $yellow;
+        .player__details {
+          &:before {
+            content: " ";
+            border-top: 1px solid $white;
+          }
+        }
+        .player__name {
+          color: $white;
+        }
+        .player__badge {
+          background-color: $white;
+          color: $blue;
+          &:before {
+            content: " ";
+            background-color: $yellow;
+          }
+          &:after {
+            content: " ";
+            background-color: $yellow;
+          }
+        }
       }
     }
   }

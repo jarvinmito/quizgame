@@ -1,5 +1,5 @@
 <div class="result-page__list">
-	<button class="game-button result-page__button game-button--rematch game-button--light-blue">Rematch</button>
-	<button class="game-button result-page__button game-button--random game-button--blue-green">Another Opponent</button>
-	<button class="game-button result-page__button game-button--leave game-button--red ">Leave</button>
+	{{#each buttons}}
+		<button class="game-button result-page__button game-button--{{this.type}} game-button--{{this.color}}">{{this.caption}}</button>
+	{{/each}}
 </div>

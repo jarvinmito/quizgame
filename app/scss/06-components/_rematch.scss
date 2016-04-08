@@ -7,14 +7,12 @@
   height: 100%;
   text-align: center;
   &__title {
-    font-size: 24px;
-    font-weight: 600;
-    color: $white;
+    color: $green;
     margin: 0;
   }
   &__time {
     font-size: 18vw;
-    color: $red;
+    color: $green;
 //    margin-bottom: 20px;
   }
   .game-button {

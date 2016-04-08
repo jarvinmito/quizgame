@@ -3,22 +3,27 @@ $white: #fff;
 $white-light: #eee;
 $white-dark: #ccc;
 $black: #000;
-$blue: #000556;
+$dark: #414141;
+$blue: #2d4d80;
 $navy-blue: #002635;
 $navy-blue2: #193a5b;
-$blue-green: #3fbe7b;
+$blue-green: #15a780;
 $lightiest-blue: #cbe0ff;
-$light-blue: #46b7b5;
-$light-blue--v2: #59c1ff;
+$light-blue: #a0daf2;
+$light-blue2: #259bdb;
+$light-blue--v2: #259bdb;
 $dark-blue: #05042c;
-$yellow: #eaad2e;
+$yellow: #e7a036;
 $light-yellow: #ece465;
 $dark-yellow: #b9a300;
-$green: #65b400;
-$orange: #f3ae47;
-
+$green: #1b8933;
+$light-green: #9cc751;
+$orange: #db5b14;
+$orange-light: #f8c353;
+$gray: #7f8fa8;
 $red: #d23139;
 $red2: #ff1d19;
+$red-light: #f66167;
 
 $lime-green: #93ce36;
 
@@ -34,7 +39,8 @@ $sm-device: 350px;
 //Image Directory
 $bg-url: "../assets/images/street-buildings.svg";
 
-
+//Background Color 
+$bg-color: $light-blue;
 
 
 

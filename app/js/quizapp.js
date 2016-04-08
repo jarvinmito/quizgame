@@ -22,11 +22,11 @@ var App = (function(){
 			plstore : {
 				id : 'PLAYER__ID',
 				name : 'PLAYER__NAME',
-				match : 'MATCH__DETAILS',
+				match : 'ENGAGE__MATCH',
 				mode : 'OPEN__TYPE'
 			},
 			apis : {
-				base : 'http://192.168.20.83/project_engage/app/api/',
+				base : 'http://50.57.237.52/engage_uat/games/quiz_multichoice/api/',
 				api : {
 					'find' : 'fm.php',
 					'create' : 'cm.php',
@@ -41,23 +41,35 @@ var App = (function(){
 				ch_api : {
 					// Params for API 1
 					// topic_id, game_id, player_a name, player_b name
-					'api1' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/challengePlayer/',
+					'api1' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/challengePlayer/',
 					
 					// Params for API 2
 					// match_id
-					'api2' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/sendChallenge/',
+					'api2' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/sendChallenge/',
 
 					// Params for API 3
 					// topic_id, game_id, player_a name, player_b name, match_status = 'ongoing'
-					'api3' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/acceptChallenge/',
+					'api3' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/acceptChallenge/',
+
+					// Params for API 4
+					// match_id, match_status = 'reject'
+					'api4' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/rejectChallenge/',
 
 					// Params for API 7
 					// match_id, player_a name, player_b name
-					'api7' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/existingRematch/',
+					'api7' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/existingRematch/',
 
 					// Params for API 8
 					// player_a name, player_b name
-					'api8' : 'http://admin:1234@192.168.20.75/engage/api/quizsql/searchRematch/'
+					'api8' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/searchRematch/',
+
+					// Params for API 9
+					// match_id, player_id, game_id, topic_id, match_result, xp_points
+					'api9' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/matchLogs/',
+
+					// Params for API 10
+					// match_id, player_id
+					'api10' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/leaveMatch/'
 				}
 			},
 			// Questions
@@ -79,7 +91,7 @@ var App = (function(){
 			// 1000
 			waitTimer : { timing : null, delay : 1000, currentTime : 1},
 			// 3000
-			findMatchTimer : { timing : null, delay : 3000, maxTries : 30, currentTries : 1},
+			findMatchTimer : { timing : null, delay : 3000, maxTries : 60, currentTries : 1},
 			// 5000
 			matchTimer : { timing : null, delay : 5000 },
 			// 2000
@@ -94,12 +106,17 @@ var App = (function(){
 			resultTimer : {timing : null, delay : 2000 },
 			maxScorePerRound : 10,
 			currentRound : 1,
+			currentRoundCount : 1,
 			currentRoundisFin : false,
 			currentScore : {},
 			hasAnswered : false,
 			modal : {},
+			browser : null,
+			bridge : null,
 			// findmatch - finding a matching
-			// waiting - waiting for other player's response
+			// waiting - waiting for other player's response (in random)
+			// waiting-ch - waiting for other player in challenge mode
+			// waiting-rm - waiting for other player in rematch mode
 			// versus - display the versus page
 			// round - display the current round
 			// question - render players and scores, question and choices
@@ -203,6 +220,7 @@ var App = (function(){
 						"name" : "Kalabaw",
 						"badge" : "Badz",
 						"place" : "a",
+						"icon" : "",
 						"score" : 0,
 						"isactive" : true
 					},
@@ -211,6 +229,7 @@ var App = (function(){
 						"name" : "Baka",
 						"badge" : "Despicable",
 						"place" : "b",
+						"icon" : "",
 						"score" : 0,
 						"isactive" : true
 					}
@@ -220,48 +239,41 @@ var App = (function(){
 			var match_details = localStorage[configMap.plstore.match];
 			var match_json = stringToJSON(match_details);
 
+			var gameDefault = {
+				"id" : 1,
+				"name" : "Quiz Game",
+				"type" : "multiple choice"
+			};
+
+			var topicDefault = {
+				"id" : 1,
+				"name" : "Paborito ng mga Pinoy",
+				"icon" : "assets/images/vanamo_logo.png"
+			};
+
+			var matchDefault = {
+				"id" : 0,
+				"isactive" : {
+					"a" : true,
+					"b" : true
+				}
+			};
+
 			if( match_json ){
-				configMap.game = match_json.game;
-				configMap.topic = match_json.topic;
-				configMap.qs = match_json.qs;
+				configMap.game = match_json.game || gameDefault;
+				configMap.topic = match_json.topic || topicDefault;
+				configMap.qs = match_json.qs || {};
 				configMap.ps = {
 					"players" : match_json.players
-				};
-
-				// if( match_json.match.length == 1 ){
-				// 	configMap.match = {
-				// 		"id" : match_json.match[0].match_id,
-				// 		"status" : match_json.match[0].match_status,
-				// 		"isactive" : {
-				// 			"a" : match_json.match[0].match_player_a_isactive,
-				// 			"b" : match_json.match[0].match_player_b_isactive
-				// 		}
-				// 	}
-				// }else{
-					configMap.match = match_json.match;
-				// }
-
+				} || {};
+				configMap.match = match_json.match || matchDefault;
+				configMap.match.result = { a : null, b : null }
 			}else{
-				configMap.game = {
-					"id" : 1,
-					"name" : "Quiz Game",
-					"type" : "multiple choice"
-				};
-
-				configMap.topic = {
-					"id" : 1,
-					"name" : "Paborito ng mga Pinoy",
-					"icon" : "assets/images/yeah.jpg"
-				};
-
-				configMap.match = {
-					"id" : 0,
-					"isactive" : {
-						"a" : true,
-						"b" : true
- 					}
-				};
+				configMap.game = gameDefault;
+				configMap.topic = topicDefault;
+				configMap.match = matchDefault;
 			}
+
 		}
 
 		
@@ -329,37 +341,49 @@ var App = (function(){
 	// Start Module /bind/
 	// Purpose : Binds click on each option
 	var bind = function(){
+
 		// Main Play button
 		if( $('.btn__play').length ){
-			$('.btn__play').click(function(){
+			$('.btn__play').unbind('click');
+			$('.btn__play').click(function(e){
+				e.preventDefault();
 				configMap.player.name =  $('#name').val() || 'Kalabaw' + Math.random().toString(36).substr(2,5);
 				findMatch();
 			});
 		}
 
 		if( $('.options').length ){
-			$('.options').click(function(){
+			$('.options').unbind('click');
+			$('.options').click(function(e){
+				e.preventDefault();
 				checkAnswer($(this));
 			});
 		}
 
 		if( $('.btn__play-again').length ){
-			$('.btn__play-again').click(function(){
+			$('.btn__play-again').unbind('click');
+			$('.btn__play-again').click(function(e){
+				e.preventDefault();
 				// Match for the same players
 				findMatch();
 			});
 		}
 
 		if( $('.game-button--rematch').length ){
-			$('.game-button--rematch').click(function(){
+			$('.game-button--rematch').unbind('click');
+			$('.game-button--rematch').click(function(e){
+				e.preventDefault();
 				// Match for another random player
+				console.log('yeah');
 				renderWaitingRematch();
 				// initModule();
 			});
 		}
 
 		if( $('.game-button--cancel').length ){
-			$('.game-button--cancel').click(function(){
+			$('.game-button--cancel').unbind('click');
+			$('.game-button--cancel').click(function(e){
+				e.preventDefault();
 				// Cancel Rematch
 				destroyWaitingRematch();
 				renderResultButtons();
@@ -370,38 +394,114 @@ var App = (function(){
 		}
 
 		if( $('.game-button--random').length ){
-			$('.game-button--random').click(function(){
+			$('.game-button--random').unbind('click');
+			$('.game-button--random').click(function(e){
+				e.preventDefault();
 				// Match for another random player
 				localStorage[configMap.plstore.mode] = 'random';
+				// Stop all timers
+				freeze();
+				// Initialize the game
 				initModule();
 			});
 		}
 
 		if( $('.btn__stats').length ){
-			$('.btn__stats').click(function(){
+			$('.btn__stats').unbind('click');
+			$('.btn__stats').click(function(e){
+				e.preventDefault();
 				// Displays Statistics page
 				renderStats();
 			});
 		}
 
-		if( $('.btn__leave').length ){
-			$('.btn__leave').click(function(){
-				renderLanding();
+		if( $('.game-button--leave').length ){
+			$('.game-button--leave').unbind('click');
+			$('.game-button--leave').click(function(e){
+				e.preventDefault();
+				callApi10();
+			});
+		}
+
+		if( $('.result-page__share').length ){
+			$('.result-page__share').unbind('click');
+			$('.result-page__share').click(function(e){
+				e.preventDefault();
+				var data = {};
+				var players = getPlayerProps();
+
+				players.me.result = (players.me.score > players.op.score) ? 'win' : (players.me.score == players.op.score) ? 'draw' : 'lose' ;
+				players.op.result = (players.op.score > players.me.score) ? 'win' : (players.op.score == players.me.score) ? 'draw' : 'lose' ;
+
+				data.topic = configMap.topic;
+				data.game = configMap.game;
+				data.match = configMap.match;
+				data.me = players.me;
+				data.op = players.op;
+
+
+				console.log(data);
+				var stringdata = jsonToString(data);
+
+				if( configMap.browser === 'ios' ){
+					// call iOS share method here
+
+				}else{
+					// Call Android share method here
+					Android.share(stringdata);
+				}
+
 			});
 		}
 
 
 		// Modal Section
 		if( $('.pop-up__exit').length ){
-			$('.pop-up__exit').click(function(){
+			$('.pop-up__exit').unbind('click');
+			$('.pop-up__exit').click(function(e){
+				e.preventDefault();
 				freeze();
-				resetSetup();
-				window.close();
+				destroyModal();
+				// resetSetup();
+				// window.close();
+			});
+		}
+
+		if( $('.pop-up__close').length ){
+			$('.pop-up__close').unbind('click');
+			$('.pop-up__close').click(function(e){
+				e.preventDefault();
+				// freeze();
+				destroyModal();
+				// window.close();
+			});
+		}
+
+		if( $('.pop-up__leave--yes').length ){
+			$('.pop-up__leave--yes').unbind('click');
+			$('.pop-up__leave--yes').click(function(e){
+				e.preventDefault();
+				// Calls API 10
+				// Updates DB match_status = cancelled
+				// Updates player isactive status = false
+				// Exit the game
+				callApi10();
+			});
+		}
+
+		if( $('.pop-up__leave--no').length ){
+			$('.pop-up__leave--no').unbind('click');
+			$('.pop-up__leave--no').click(function(e){
+				e.preventDefault();
+				// Remove modal
+				destroyModal();
 			});
 		}
 
 		if( $('.pop-up__yes').length ){
-			$('.pop-up__yes').click(function(){
+			$('.pop-up__yes').unbind('click');
+			$('.pop-up__yes').click(function(e){
+				e.preventDefault();
 				// Calls API 3
 				// Updates DB match_status = ongoing
 				// Starts the game
@@ -410,9 +510,13 @@ var App = (function(){
 		}
 
 		if( $('.pop-up__no').length ){
-			$('.pop-up__no').click(function(){
+			$('.pop-up__no').unbind('click');
+			$('.pop-up__no').click(function(e){
+				e.preventDefault();
 				// Closes the window
 				// Updates DB match_status = rejected
+				callApi4();
+				renderResultButtons(true);
 			});
 		}
 	};
@@ -535,6 +639,10 @@ var App = (function(){
 	// Start Module /endRound/
 	// Purpose : Mark as end round
 	var endRound = function(){
+		console.log('Score recap -->', configMap.scores);
+
+		configMap.currentRoundCount = 1;
+
 		endTimer(configMap.gameTimer);
 		configMap.gameTimer.timing = null;
 
@@ -582,29 +690,50 @@ var App = (function(){
 	// Start Module /renderResults/
 	// Purpose : Displays the result of the match
 	var renderResults = function(){
+
+		// Set screen
+		configMap.currentScreen = 'result';
+
 		var players = getPlayerProps(),
 			me = players.me,
 			op = players.op,
-			status = 'Yehey!',
-			result = 'win';
+			status, result, oresult;
 
 		if(me.score > op.score){
 			status = 'Yehey!';
 			result = 'win';
+			oresult = 'lose';
 		}else if(me.score == op.score){
-			status = 'It\' a tie!';
-			result = 'win';
+			status = 'It\'s a tie!';
+			result = 'draw';
+			oresult = 'draw';
 		}else{
 			status = 'Boohoo!';
 			result = 'lose';
+			oresult = 'win';
 		}
 
 		var playerdata = { me : me, opponent : op, status : status, result : result };
-		jqueryMap.$main.html(App.Templates['results']({ player : playerdata }));
+		var engage = jqueryMap.$main;
+		engage.html(App.Templates['results']({ player : playerdata }));
+		
+		var resultPage = engage.find('.result-page--parent');
+		// var resultButtons = resultPage.find('.result-page__list');
+
+		// if( !resultButtons.length ){
+		renderResultButtons();
+		// }
+
 		bind();
 		
 		// Reset States here
 		// initSetup();
+		// to be safe on refreshing
+		configMap.match.result[me.place] = result;
+		configMap.match.result[op.place] = oresult;
+		localStorage[configMap.plstore.mode] = 'random';
+		
+		callApi9();
 		startTimer(configMap.resultTimer);
 	};
 	// End Module /renderResults/
@@ -613,10 +742,12 @@ var App = (function(){
 	// Purpose : Displays an info modal
 	var renderModal = function(){
 		var $container = jqueryMap.$main;
-
-		$container.append(App.Templates['modal']({ modal : configMap.modal }));
-		bind();
-
+		var $modal = $container.find('.pop-up');
+		
+		if( !$modal.length ){
+			$container.append(App.Templates['modal']({ modal : configMap.modal }));
+			bind();
+		}
 	};
 	// End Module /renderModal/
 
@@ -625,21 +756,23 @@ var App = (function(){
 		var $container = jqueryMap.$main;
 		var $modal = $container.find('.pop-up');
 
+		configMap.modal = {};
+
 		if( $modal.length ){
 			$modal.fadeOut(250, function(){
 				$(this).remove();
-				configMap.modal = {};
 			});
 		}
 	};
 	// End Module /destroyModal/
 
 	// Start Module /renderResultButtons/
-	var renderResultButtons = function(){
+	var renderResultButtons = function(type){
 		var $container = jqueryMap.$main;
 		var $result = $container.find('.result-page--parent');
-		var $rematch = $result.find('rematch');
-		var $buttons = $result.find('result-page__list');
+		var $rematch = $result.find('.rematch');
+		var $buttons = $result.find('.result-page__list');
+		var buttons = [];
 
 		if( $rematch.length ){
 			$rematch.remove();
@@ -649,7 +782,26 @@ var App = (function(){
 			$buttons.remove();
 		}
 
-		$result.append(App.Templates['results-buttons']());
+		if( !type ){
+			buttons.push({
+				type : 'rematch',
+				color : 'light-blue',
+				caption : 'Rematch'
+			});
+		}
+
+		buttons.push({
+			type : 'random',
+			color : 'blue-green',
+			caption : 'Another Opponent'
+		});
+		buttons.push({
+			type : 'leave',
+			color : 'red',
+			caption : 'Leave'
+		});
+
+		$result.append(App.Templates['results-buttons']({ buttons : buttons }));
 		bind();
 
 	};
@@ -674,11 +826,18 @@ var App = (function(){
 	var renderWaitingRematch = function(){
 		console.log('rendering Waiting section');
 
+		// Set screen
+		configMap.currentScreen = 'waiting-rm';
+
 		var $container = jqueryMap.$main;
 		var time = configMap.waitTimer.currentTime;
 		var con = $container.find('.result-page--parent');
 		var buttons = con.find('.result-page__list');
+		var rematch = con.find('.rematch');
 
+		if( rematch.length ){
+			rematch.remove();
+		}
 
 		buttons.remove();
 		con.append(App.Templates['waiting-rematch']({ time : time }));
@@ -711,8 +870,6 @@ var App = (function(){
 				}
 			}
 		});
-
-		
 	};
 	// End Module /renderWaitingRematch/
 
@@ -720,7 +877,7 @@ var App = (function(){
 	// Start Module /callApi1/
 	// Purpose : Challenging a player
 	var callApi1 = function(){
-		data = {
+		var data = {
 			topic_id : configMap.topic.id,
 			game_id : configMap.game.id,
 			player_a : configMap.ps.players.a.name,
@@ -749,7 +906,7 @@ var App = (function(){
 	// Start Module /callApi3/
 	// Purpose : Accepting a challenge
 	var callApi3 = function(){
-		data = {
+		var data = {
 			topic_id : configMap.topic.id,
 			game_id : configMap.game.id,
 			player_a : configMap.ps.players.a.name,
@@ -773,10 +930,8 @@ var App = (function(){
 				localStorage[configMap.plstore.match] = jsonToString(result);
 				localStorage[configMap.plstore.mode] = 'join';
 				
-				// initSetup();
+				destroyModal();
 				initModule();
-				// bind();
-				// startTimer(configMap.waitTimer);
 			}
 		});
 	};
@@ -785,14 +940,13 @@ var App = (function(){
 	// Start Module /callApi4/
 	// Purpose : Rejecting a challenge
 	var callApi4 = function(){
-		data = {
+		var data = {
 			match_id : configMap.match.id,
 			match_status : 'reject'
 		};
 
 		// remove Modal
 		destroyModal();
-		// startTimer(configMap.resultTimer);
 
 		// Call API 4
 		$.ajax({
@@ -800,19 +954,93 @@ var App = (function(){
 			method : 'post',
 			data : data,
 			success : function(result){
-				// Setup all new data
 				console.log(result);
-
-				// localStorage[configMap.plstore.match] = jsonToString(result);
-				// localStorage[configMap.plstore.mode] = 'join';
-				
-				// initModule();
-				// bind();
-				// startTimer(configMap.waitTimer);
 			}
 		});
 	};
-	// End Module /callApi3/
+	// End Module /callApi4/
+
+	// Start Module /callApi9/
+	// Purpose : End of Match
+	var callApi9 = function(){
+		// match_id, player_id, game_id, topic_id, match_result, xp_points
+		var players = getPlayerProps();
+		var me = players.me;
+
+		var data = {
+			match_id : configMap.matchid,
+			player_id : configMap.player.name,
+			game_id : configMap.game.id,
+			topic_id : configMap.topic.id,
+			result : configMap.match.result[me.place],
+			xp_points : me.score
+		};
+
+		// Call API 9
+		$.ajax({
+			url : configMap.apis.ch_api['api9'],
+			method : 'post',
+			data : data,
+			success : function(result){
+				console.log(result);
+			}
+		});
+	};
+	// End Module /callApi9/
+
+	// Start Module /callApi10/
+	// Purpose : Leaving the game
+	var callApi10 = function(){
+		var data = {
+			match_id : configMap.matchid,
+			player_id : configMap.player.name,
+			player_place : configMap.player.place || 'a'
+		};
+
+		var callback = function(browser){
+			if( browser === 'ios' ){
+				// insert ios exit webview here
+				// call ios bridge
+				// console.log(configMap.bridge);
+				configMap.bridge.callHandler('dismissViewController');
+			}else{
+				// call android  leave method
+				Android.leave();
+			}
+		}
+
+		console.log(data);
+		// remove Modal
+		destroyModal();
+
+		if( data.match_id != 0 ){
+			// Call API 10
+			$.ajax({
+				url : configMap.apis.ch_api['api10'],
+				method : 'post',
+				data : data,
+				success : function(result){
+
+					// Call for the Android close webview
+					// Android.leave();
+					freeze();
+					console.log('you have left -- complete details');
+
+					// Call for the iOS close webview
+					// closeWindowFeature;
+					callback(configMap.browser);
+				}
+			});
+		}else{
+			// In the midst of joining a match
+			// no match id yet. so nothing to update
+			freeze();
+			console.log('you have left -- joining');
+			// closeWindowFeature;
+			callback(configMap.browser);
+		}
+	};
+	// End Module /callApi10/
 
 	// Start Module /renderWaiting/
 	// Purpose : Displays the waiting page when the user has sent a challenge request
@@ -822,6 +1050,8 @@ var App = (function(){
 		var $container = jqueryMap.$main;
 		var time = configMap.waitTimer.currentTime;
 		var $con = $container;
+
+		configMap.currentScreen = 'waiting-ch';
 
 		$container.html(App.Templates['waiting']({time : time, topic : configMap.topic }));
 		startTimer(configMap.waitTimer);
@@ -841,7 +1071,7 @@ var App = (function(){
 		$timer.html(App.Templates['waiting-timer']({ time : configMap.waitTimer.currentTime }));
 		
 		// Every 2 seconds get an update form server
-		if(time % 2 == 0){
+		if( time % 2 == 0 ){
 			getMatchStatus();
 		}
 
@@ -883,8 +1113,10 @@ var App = (function(){
 						configMap.modal.isprompt = true;
 						configMap.modal.buttons = {
 							"no" : { "caption" : "Not now", "class" : "pop-up__no is-yellow" },
-							"yes" : { "caption" : "Rematch", "class" : "pop-up__yes is-blue" }
+							"yes" : { "caption" : "Rematch", "class" : "pop-up__yes" }
 						};
+
+						configMap.match = newMatch;
 						renderModal();
 					}else{
 						startTimer(configMap.resultTimer);
@@ -915,7 +1147,7 @@ var App = (function(){
 			// url : configMap.apis.base + configMap.apis.api['get-match-status'],
 			data : data,
 			success : function(result){
-				// console.log(data, result, configMap.match);
+				console.log(data, result, configMap.match);
 				if( result.match.status ){
 					var status = result.match.status;
 
@@ -930,6 +1162,9 @@ var App = (function(){
 						renderVS();
 					}else if( status == 'reject' ){
 
+						// Reset to random for refresh purposes
+						localStorage[configMap.plstore.mode] = 'random';
+
 						// Set to local configuration
 						configMap.match.status = status;
 
@@ -937,9 +1172,12 @@ var App = (function(){
 						endTimer(configMap.waitTimer);
 
 						// Render Modal
+						destroyModal();
 						configMap.modal.title = "Awww...";
 						configMap.modal.message = "Your opponent did not accept your challenge."
 						renderModal();
+						destroyWaitingRematch();
+						renderResultButtons(true);
 					}
 
 				}else{
@@ -956,6 +1194,8 @@ var App = (function(){
 	// Modes : versusDelay, roundDelay, questionDelay, timer
 	var renderBattlefield = function(){
 		console.log('rendering Battlefield --->', configMap.currentRound);
+
+		configMap.currentScreen = 'round';
 		// render Header
 		var $container = jqueryMap.$main,
 			$header = jqueryMap.$header,
@@ -985,14 +1225,22 @@ var App = (function(){
 	var renderVS = function(){
 		console.log('rendering Versus ---->');
 
+		// Set screen
+		configMap.currentScreen = 'versus';
+
 		var players = configMap.ps.players;
 		var player = configMap.player.name;
 
 		var player_a = configMap.match.isactive.a;
+		var player_b = configMap.match.isactive.b;
 
-		if( player_a ){
-			// Render 
-
+		if( player_a !== "true" && player_b !== "true" && localStorage[configMap.plstore.mode] == "join"){
+			// Render Modal
+			configMap.modal.title = "Uh oh...";
+			configMap.modal.message = "Your opponent has left the game.";
+			renderModal();
+		}else{
+			
 			// Find current player and set his place/position
 			for(var key in players){
 				if (players.hasOwnProperty(key)){
@@ -1019,14 +1267,6 @@ var App = (function(){
 
 			startTimer(configMap.matchTimer);
 		}
-
-
-		if( !player_a.isactive && localStorage[configMap.plstore.mode] == "join"){
-			// Render Modal
-			configMap.modal.title = "Uh oh...";
-			configMap.modal.message = "Your opponent has left the game.";
-			renderModal();
-		}
 	};
 	// End Module /renderVS/
 
@@ -1034,16 +1274,18 @@ var App = (function(){
 	// Purpose : displays the Question
 	var renderQuestion = function(){
 		console.log('rendering Question ---->');
+		// Set screen
+		configMap.currentScreen = 'question';
+
 		var q = configMap.qs.questions[configMap.currentRound - 1],
 			$container = jqueryMap.$ingame;
 
-		var $question = $('<div class="ingamge__question" />');
-		var $image = $('<div class="ingame__image" />');
+		//var $question = $('<div class="ingame__question" />');
+		//var $image = $('<div class="ingame__image" />');
 		var $options = $('<div class="ingame__options" />');
-		var $main = ( !q.image ) ? $question : $image;
+		// var $main = ( !q.image ) ? $question : $image;
 
-		$main.html(App.Templates['question']({ data : q }));
-		$container.html($main);
+		$container.html(App.Templates['question']({ data : q }));
 		$container.append($options);
 
 		endTimer(configMap.roundTimer);
@@ -1141,7 +1383,7 @@ var App = (function(){
 				data : udata,
 				dataType : 'json',
 				success : function(result){
-
+					var count = configMap.currentRoundCount;
 
 					configMap.scores[configMap.currentRound] = result;
 					console.log(configMap.matchid, configMap.player.name);
@@ -1151,11 +1393,24 @@ var App = (function(){
 						resLen++;
 					}
 
-					configMap.currentRoundisFin = (resLen == 2) ? true : false;
+					configMap.currentRoundisFin = (resLen == 3) ? true : false;
 					
 					// console.log('results and shit ---->');
 					// console.log(result.score);
 					// console.log(configMap.currentRoundisFin, configMap.scores);
+					if( count >= 8 ){
+						configMap.modal.title = "Uh oh...";
+						configMap.modal.message = "Your opponent has left the game.";
+						configMap.modal.buttons = {
+							"back" : { "caption" : "Go Back", "class" : "pop-up__leave--yes" }
+						};
+
+						renderModal();
+					}
+
+					count++;
+					configMap.currentRoundCount = count;
+
 
 					if( configMap.currentRoundisFin ){
 						// show opponent's answer
@@ -1226,6 +1481,18 @@ var App = (function(){
 			data : data,
 			success : function(result){
 				configMap[mode] = result;
+				if( mode == 'ps' ){
+					configMap.match.isactive = {
+						'a' : result.players.a.isactive,
+						'b' : result.players.b.isactive
+					};
+
+					configMap.match.result = {
+						'a' : null,
+						'b' : null
+					};
+				}
+
 				console.log(mode, configMap[mode]);
 				if(typeof callback == 'function'){
 					callback();
@@ -1343,6 +1610,8 @@ var App = (function(){
 		}else{
 			// Start game
 			configMap.findMatchTimer.currentTries = 1;
+			configMap.match = result.match.match;
+
 			endTimer(configMap.findMatchTimer);
 			console.log('Start the game......');
 			
@@ -1358,12 +1627,108 @@ var App = (function(){
 	};
 	// End Module /ajxCallback/
 
+	// for back button
+	var closeWindow = function(state){
+		var currScreen = configMap.currentScreen;
+		var modal = $('.pop-up');
+
+		console.log('state -->', state);
+
+		// Reset Modal
+		// if( modal.length ){
+		// 	// Close modal
+
+		// }else{
+			if ( state === null ){
+				configMap.modal.title = "Oops..";
+				configMap.modal.message = "Are you sure you want to exit the game?";
+				configMap.modal.isprompt = true;
+				configMap.modal.buttons = {
+					"no" : { "caption" : "Nope", "class" : "pop-up__leave--no is-yellow" },
+					"yes" : { "caption" : "Yep", "class" : "pop-up__leave--yes" }
+				};
+
+				console.log('display Modal --->');
+				renderModal();
+				location.hash = "play";
+			}else{
+				destroyModal();
+				console.log('hide Modal --->');
+			}
+		// }
+		
+	};
+
 	// Start Module /initGame/
 	// Purpose : Initializes our Game
 	var initGame = function(){
+
+		// For the back button
+		var state = 0;
+		// Readying the state push
+		var storeState = function(){
+			state++;
+
+			var Obj = { "state" : state },
+				title = "project engage",
+				url = "#play";
+
+			// Push the state and change the url
+			history.pushState(Obj, title, url);
+
+			// Add a listener
+			window.addEventListener('popstate' , function(e){
+				var s = e.state;
+				closeWindow(s);
+			});
+		};
+
+		// Execute StoreState
+		storeState();
+
+		var closeWindowFeature;
+
+		// Browser Detection
+		var standalone = window.navigator.standalone,
+		    userAgent = window.navigator.userAgent.toLowerCase(),
+		    safari = /safari/.test( userAgent ),
+		    ios = /iphone|ipod|ipad/.test( userAgent );
+
+		if( ios ) {
+			configMap.browser = 'ios';
+
+		    if ( !standalone && safari ) {
+		        //browser
+		        closeWindowFeature = "yeah";
+		    } else if ( standalone && !safari ) {
+		        //standalone
+		    } else if ( !standalone && !safari ) {
+		        //uiwebview
+		        // Insert initialization of iOS features
+		    }
+		} else {
+		    //not iOS
+
+		    // execute android commands
+	    	// closeWindowFeature = Android.leave;
+	    	configMap.browser = 'android';
+		}
+
+
+		// Create Bridge for iOS
+		setupWebViewJavascriptBridge(iOS_callback);
+		// configMap.bridge.registerHandler('jsdismissViewController', function(data, responseCallback) {
+		// 	console.log('ObjC called testJavascriptHandler with', data);
+		// 	var responseData = { 'Javascript Says':'Right back atcha!' };
+		// 	console.log('JS responding with', responseData);
+		// 	responseCallback(responseData);
+	 //    });
+
 		// Reset Elements
 		$('.engage').html('');
 
+
+		// Register Callbacks for each timer
 		configMap.resultTimer.callback = checkStatuses;
 		configMap.waitTimer.callback = renderTimer;
 		configMap.matchTimer.callback = renderBattlefield;
@@ -1428,7 +1793,7 @@ var App = (function(){
 		};
 
 
-		console.log('Audio has been set');
+		// console.log('Audio has been set');
 
 	};
 	// End Module /initGame/
@@ -1450,7 +1815,6 @@ var App = (function(){
 		console.log('It\'s alive!!!');
 
 		// configMap.isStatic = true;
-
 		initSetup();
 		initGame();
 		// for testing
@@ -1464,12 +1828,50 @@ var App = (function(){
 
 		var mode = localStorage[configMap.plstore.mode] || 'random';
 
+
+		// Start
 		modes[mode]();
 
-		console.log(mode);
+		// console.log(mode);
 		// Actual
 		// localStorage.player.name = {};
 	};
+
+
+	// -----------------------------------------------------------------------------
+	// -------------------------- NATIVE Integration -------------------------------
+	// -----------------------------------------------------------------------------
+
+	// For iOS integration
+	// Start Module /setupWebViewJavascriptBridge/
+	var setupWebViewJavascriptBridge = function(callback) {
+	    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+	    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+	    window.WVJBCallbacks = [callback];
+	    var WVJBIframe = document.createElement('iframe');
+	    WVJBIframe.style.display = 'none';
+	    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+	    document.documentElement.appendChild(WVJBIframe);
+	    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0);
+	};
+	// End Module /setupWebViewJavascriptBridge/
+
+	var iOS_callback = function(bridge) {
+
+	    /* Initialize your app here */
+	    bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
+			console.log('ObjC called testJavascriptHandler with', data);
+			var responseData = { 'Javascript Says':'Right back atcha!' }
+			console.log('JS responding with', responseData);
+			responseCallback(responseData);
+		});
+
+	    configMap.bridge = bridge;
+	};
+
+	// var iOS_share = function(bridge){
+	// 	bridge.callHandler('shareViewController');
+	// };
 
 	var stringToJSON = function(str){
 		return eval("(" + str + ")");

@@ -36,7 +36,9 @@
     top: 5px;
     z-index: 5;
     display: block;
-    img {
+   
+    svg {
+      height: 20px;
       width: 20px;
     }
   }
@@ -54,14 +56,16 @@
     width: 100%;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-     color: $navy-blue2;
-     text-decoration: none;
-     &:hover,
-     &:focus,
-     &:active {
-       background-color: darken($yellow, 10%);
-       color: $navy-blue2;
-     }
+    color: $navy-blue2;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($yellow, 10%);
+      color: $navy-blue2;
+    }
   }
   &__footer {
     width: 100%;

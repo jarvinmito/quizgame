@@ -19,35 +19,43 @@
 //  box-sizing: 0;
   &.btn-success{
     background-color: $blue-green;
+    color: $white;
   }
 
   &.btn-danger{
     background-color: $red;
-
+    color: $white;
   }
   
   &--red {
     background-color: $red;
+    color: $white;
+    
     &:hover,
     &:focus {
       background-color: darken($red, 10%);
+      color: $white;
     }
   }
   
   &--blue-green {
     background-color: $blue-green;
+    color: $white;
     &:hover,
     &:focus {
       
       background-color: darken($blue-green, 10%);
+      color: $white;
     }
   }
   
   &--light-blue {
-    background-color: $light-blue;
+    background-color: $light-blue2;
+    color: $white;
     &:hover,
     &:focus {
-      background-color: darken($light-blue, 10%);
+      background-color: darken($light-blue2, 10%);
+      color: $white;
     }
     
   }

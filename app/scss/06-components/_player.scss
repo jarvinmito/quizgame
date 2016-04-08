@@ -12,64 +12,15 @@
       }
     }
   }
-  &--one {
-    background-color: $yellow;
-    .player__details {
-      &:before {
-        content: " ";
-        border-top: 1px solid $navy-blue2;
-      }
-    }
-    .player__name {
-      color: $navy-blue2;
-      
-    }
-    .player__badge {
-      background-color:$navy-blue2;
-      color: $white;
-      &:before {
-        content: " ";
-        background-color: $yellow;
-      }
-      &:after {
-        content: " ";
-        background-color: $yellow;
-      }
-    }
-  }
-  &--two {
-    background-color: $navy-blue2;
-    .player__details {
-      &:before {
-        content: " ";
-        border-top: 1px solid $white;
-      }
-    }
-    .player__name {
-      color: $white;
-      
-    }
-    .player__badge {
-      background-color: $white;
-      color: $black;
-      &:before {
-        content: " ";
-        background-color: $navy-blue2;
-      }
-      &:after {
-        content: " ";
-        background-color: $navy-blue2;
-      }
-    }
-  }
+  
 
   &__avatar {
     width: 100px;
     height: 100px;
     margin-bottom: 15px;
     &--small {
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       margin: 0 5px;
     }
   }

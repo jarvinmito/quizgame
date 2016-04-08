@@ -1,5 +1,5 @@
 <div class="header__player" data-id="{{player.place}}">
-	<img class="player__avatar--small" src="assets/images/player-1.png" alt="">
+	<img class="player__avatar--small" src="{{#ifCond player.icon ""}}assets/images/player-1.png{{else}}{{player.icon}}{{/ifCond}}" alt="">
   <div class="player__details">
 	<h4 class="player__name">{{player.name}}</h4>
 	<p class="player__badge">{{player.badge}}</p>

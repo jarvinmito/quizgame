@@ -1,0 +1,115 @@
+{
+	"game" : {
+		"id" : 1,
+		"name" : "Quiz Game",
+		"type" : "multiple choice"
+	},
+
+	"topic" : {
+		"id" : 1,
+		"name" : "Paborito ng mga Pinoy",
+		"icon" : "assets/images/yeah.jpg"
+	},
+
+	"match" : {
+		"id" : 1,
+		"status" : "waiting",
+		"isactive" : {
+	    "a" : true,
+	    "b" : true
+	  }
+	},
+
+	"qs" : {
+		"questions" : [
+			{
+				"id" : 1,
+				"question" : "Question Text 1?",
+				"options" : ["A" , "B" , "C" , "D"],
+				"answer" : 0
+			},
+			{
+				"id" : 2,
+				"question" : "Question Text 2?",
+				"options" : ["A" , "B" , "C" , "D"],
+				"answer" : 2
+			},
+			{
+				"id" : 3,
+				"question" : "Question Text 3?",
+				"options" : ["A" , "B" , "C" , "D"],
+				"answer" : 1
+			},
+			{
+				"id" : 4,
+				"question" : "Question Text 4?",
+				"options" : ["A" , "B" , "C" , "D"],
+				"answer" : 3
+			},
+			{
+				"id" : 5,
+				"question" : "Question Text 5?",
+				"options" : ["A" , "B" , "C" , "D"],
+				"answer" : 1
+			},
+			{
+				"id" : 6,
+				"question" : "Question Text 6?",
+				"options" : ["A" , "B" , "C" , "D"],
+				"answer" : 2
+			},
+			{
+				"id" : 7,
+				"question" : "Question Text 7?",
+				"options" : ["A" , "B" , "C" , "D"],
+				"answer" : 3
+			}
+		]
+	},
+
+	"ps" : {
+		"players" : {
+			"a" : {
+				"id" : 1,
+				"name" : "Kalabaw",
+				"badge" : "Badz",
+				"place" : "a",
+				"score" : 0,
+				"isactive" : true
+			},
+			"b" : {
+				"id" : 2,
+				"name" : "Baka",
+				"badge" : "Despicable",
+				"place" : "b",
+				"score" : 0,
+				"isactive" : true
+			}
+		}
+	},
+
+	"scores" : [
+		{
+			"qid" : 1,
+			"a" : {
+				"score" : 10,
+				"answer" : 0
+			},
+			"b" : {
+				"score" : 0,
+				"answer" : 3
+			}
+		},
+		{
+			"qid" : 2,
+			"a" : {
+				"score" : 7,
+				"answer" : 2
+			},
+			"b" : {
+				"score" : 5,
+				"answer" : 2
+			}
+		}
+	]
+}
