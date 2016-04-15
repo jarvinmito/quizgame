@@ -641,7 +641,7 @@ th {
  */
 /* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
 .animated, .engage.animate-in, .engage.animate-out, .versus__one.animate--in, .versus__one.animate--in .player__avatar, .versus__one.animate--in .player__details, .versus__one.animate--out, .versus__two.animate--in, .versus__two.animate--in .player__avatar, .versus__two.animate--in .player__details, .versus__two.animate--out, .versus__vs.animate--in, .versus__vs.animate--out, .result-page--win.animate--in::before, .result-page--win.animate--in .result-page__title, .result-page--lose.animate--in::before, .result-page--lose.animate--in .result-page__title, .result-page--tie.animate--in::before, .result-page--tie.animate--in .result-page__title, .open-ended.is-correct::before, .open-ended.is-wrong::before, .open-ended__answer, .ingame__options .answer-me,
-.ingame__options .answer-opponent {
+.ingame__options .answer-opponent, .waiting-screen, .waiting-screen__holder, .pop-up--achievement .pop-up__wrap.animate-in, .pop-up--achievement .pop-up__wrap.animate-out {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
@@ -649,13 +649,13 @@ th {
 
 /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
 .animated.infinite, .infinite.engage.animate-in, .infinite.engage.animate-out, .infinite.versus__one.animate--in, .versus__one.animate--in .infinite.player__avatar, .versus__one.animate--in .infinite.player__details, .infinite.versus__one.animate--out, .infinite.versus__two.animate--in, .versus__two.animate--in .infinite.player__avatar, .versus__two.animate--in .infinite.player__details, .infinite.versus__two.animate--out, .infinite.versus__vs.animate--in, .infinite.versus__vs.animate--out, .infinite.result-page--win.animate--in::before, .result-page--win.animate--in .infinite.result-page__title, .infinite.result-page--lose.animate--in::before, .result-page--lose.animate--in .infinite.result-page__title, .infinite.result-page--tie.animate--in::before, .result-page--tie.animate--in .infinite.result-page__title, .infinite.open-ended.is-correct::before, .infinite.open-ended.is-wrong::before, .infinite.open-ended__answer, .ingame__options .infinite.answer-me,
-.ingame__options .infinite.answer-opponent {
+.ingame__options .infinite.answer-opponent, .infinite.waiting-screen, .infinite.waiting-screen__holder, .pop-up--achievement .infinite.pop-up__wrap.animate-in, .pop-up--achievement .infinite.pop-up__wrap.animate-out {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
 /* line 23, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
 .animated.hinge, .hinge.engage.animate-in, .hinge.engage.animate-out, .hinge.versus__one.animate--in, .versus__one.animate--in .hinge.player__avatar, .versus__one.animate--in .hinge.player__details, .hinge.versus__one.animate--out, .hinge.versus__two.animate--in, .versus__two.animate--in .hinge.player__avatar, .versus__two.animate--in .hinge.player__details, .hinge.versus__two.animate--out, .hinge.versus__vs.animate--in, .hinge.versus__vs.animate--out, .hinge.result-page--win.animate--in::before, .result-page--win.animate--in .hinge.result-page__title, .hinge.result-page--lose.animate--in::before, .result-page--lose.animate--in .hinge.result-page__title, .hinge.result-page--tie.animate--in::before, .result-page--tie.animate--in .hinge.result-page__title, .hinge.open-ended.is-correct::before, .hinge.open-ended.is-wrong::before, .hinge.open-ended__answer, .ingame__options .hinge.answer-me,
-.ingame__options .hinge.answer-opponent {
+.ingame__options .hinge.answer-opponent, .hinge.waiting-screen, .hinge.waiting-screen__holder, .pop-up--achievement .hinge.pop-up__wrap.animate-in, .pop-up--achievement .hinge.pop-up__wrap.animate-out {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
@@ -684,35 +684,57 @@ th {
 .flipOutX.open-ended__answer,
 .ingame__options .flipOutX.answer-me,
 .ingame__options .flipOutX.answer-opponent,
+.flipOutX.waiting-screen,
+.flipOutX.waiting-screen__holder,
+.pop-up--achievement .flipOutX.pop-up__wrap.animate-in,
+.pop-up--achievement .flipOutX.pop-up__wrap.animate-out,
 .animated.flipOutY,
 .flipOutY.engage.animate-in,
-.flipOutY.engage.animate-out,
-.flipOutY.versus__one.animate--in,
-.versus__one.animate--in .flipOutY.player__avatar,
+.engage.animate-in.waiting-screen__holder, .flipOutY.engage.animate-out,
+.engage.animate-out.waiting-screen__holder, .flipOutY.versus__one.animate--in,
+.versus__one.animate--in.waiting-screen__holder, .versus__one.animate--in .flipOutY.player__avatar,
+.versus__one.animate--in .player__avatar.waiting-screen__holder,
 .versus__one.animate--in .flipOutY.player__details,
+.versus__one.animate--in .player__details.waiting-screen__holder,
 .flipOutY.versus__one.animate--out,
-.flipOutY.versus__two.animate--in,
-.versus__two.animate--in .flipOutY.player__avatar,
+.versus__one.animate--out.waiting-screen__holder, .flipOutY.versus__two.animate--in,
+.versus__two.animate--in.waiting-screen__holder, .versus__two.animate--in .flipOutY.player__avatar,
+.versus__two.animate--in .player__avatar.waiting-screen__holder,
 .versus__two.animate--in .flipOutY.player__details,
+.versus__two.animate--in .player__details.waiting-screen__holder,
 .flipOutY.versus__two.animate--out,
-.flipOutY.versus__vs.animate--in,
-.flipOutY.versus__vs.animate--out,
-.flipOutY.result-page--win.animate--in::before,
-.result-page--win.animate--in .flipOutY.result-page__title,
+.versus__two.animate--out.waiting-screen__holder, .flipOutY.versus__vs.animate--in,
+.versus__vs.animate--in.waiting-screen__holder, .flipOutY.versus__vs.animate--out,
+.versus__vs.animate--out.waiting-screen__holder, .flipOutY.result-page--win.animate--in::before,
+.result-page--win.animate--in.waiting-screen__holder::before, .result-page--win.animate--in .flipOutY.result-page__title,
+.result-page--win.animate--in .result-page__title.waiting-screen__holder,
 .flipOutY.result-page--lose.animate--in::before,
-.result-page--lose.animate--in .flipOutY.result-page__title,
+.result-page--lose.animate--in.waiting-screen__holder::before, .result-page--lose.animate--in .flipOutY.result-page__title,
+.result-page--lose.animate--in .result-page__title.waiting-screen__holder,
 .flipOutY.result-page--tie.animate--in::before,
-.result-page--tie.animate--in .flipOutY.result-page__title,
+.result-page--tie.animate--in.waiting-screen__holder::before, .result-page--tie.animate--in .flipOutY.result-page__title,
+.result-page--tie.animate--in .result-page__title.waiting-screen__holder,
 .flipOutY.open-ended.is-correct::before,
-.flipOutY.open-ended.is-wrong::before,
-.flipOutY.open-ended__answer,
+.open-ended.is-correct.waiting-screen__holder::before, .flipOutY.open-ended.is-wrong::before,
+.open-ended.is-wrong.waiting-screen__holder::before, .flipOutY.open-ended__answer,
 .ingame__options .flipOutY.answer-me,
+.ingame__options .answer-me.waiting-screen__holder,
 .ingame__options .flipOutY.answer-opponent,
+.ingame__options .answer-opponent.waiting-screen__holder,
+.flipOutY.waiting-screen,
+.waiting-screen__holder,
+.pop-up--achievement .flipOutY.pop-up__wrap.animate-in,
+.pop-up--achievement .pop-up__wrap.animate-in.waiting-screen__holder,
+.pop-up--achievement .flipOutY.pop-up__wrap.animate-out,
+.pop-up--achievement .pop-up__wrap.animate-out.waiting-screen__holder,
 .animated.bounceIn,
 .bounceIn.engage.animate-in,
-.bounceIn.engage.animate-out,
-.bounceIn.versus__one.animate--in,
-.versus__one.animate--in .bounceIn.player__avatar,
+.engage.animate-in.result-page--win.animate--in::before, .ingame__options .engage.animate-in.answer-me,
+.ingame__options .engage.animate-in.answer-opponent, .bounceIn.engage.animate-out,
+.engage.animate-out.result-page--win.animate--in::before, .ingame__options .engage.animate-out.answer-me,
+.ingame__options .engage.animate-out.answer-opponent, .bounceIn.versus__one.animate--in,
+.versus__one.animate--in.result-page--win::before, .ingame__options .versus__one.animate--in.answer-me,
+.ingame__options .versus__one.animate--in.answer-opponent, .versus__one.animate--in .bounceIn.player__avatar,
 .versus__one.animate--in .player__avatar.result-page--win.animate--in::before,
 .versus__one.animate--in .ingame__options .player__avatar.answer-me,
 .ingame__options .versus__one.animate--in .player__avatar.answer-me,
@@ -723,8 +745,10 @@ th {
 .ingame__options .versus__one.animate--in .player__details.answer-me,
 .versus__one.animate--in .ingame__options .player__details.answer-opponent,
 .ingame__options .versus__one.animate--in .player__details.answer-opponent, .bounceIn.versus__one.animate--out,
-.bounceIn.versus__two.animate--in,
-.versus__two.animate--in .bounceIn.player__avatar,
+.versus__one.animate--out.result-page--win.animate--in::before, .ingame__options .versus__one.animate--out.answer-me,
+.ingame__options .versus__one.animate--out.answer-opponent, .bounceIn.versus__two.animate--in,
+.versus__two.animate--in.result-page--win::before, .ingame__options .versus__two.animate--in.answer-me,
+.ingame__options .versus__two.animate--in.answer-opponent, .versus__two.animate--in .bounceIn.player__avatar,
 .versus__two.animate--in .player__avatar.result-page--win.animate--in::before,
 .versus__two.animate--in .ingame__options .player__avatar.answer-me,
 .ingame__options .versus__two.animate--in .player__avatar.answer-me,
@@ -735,37 +759,55 @@ th {
 .ingame__options .versus__two.animate--in .player__details.answer-me,
 .versus__two.animate--in .ingame__options .player__details.answer-opponent,
 .ingame__options .versus__two.animate--in .player__details.answer-opponent, .bounceIn.versus__two.animate--out,
-.bounceIn.versus__vs.animate--in,
-.bounceIn.versus__vs.animate--out,
-.result-page--win.animate--in::before,
+.versus__two.animate--out.result-page--win.animate--in::before, .ingame__options .versus__two.animate--out.answer-me,
+.ingame__options .versus__two.animate--out.answer-opponent, .bounceIn.versus__vs.animate--in,
+.versus__vs.animate--in.result-page--win::before, .ingame__options .versus__vs.animate--in.answer-me,
+.ingame__options .versus__vs.animate--in.answer-opponent, .bounceIn.versus__vs.animate--out,
+.versus__vs.animate--out.result-page--win.animate--in::before, .ingame__options .versus__vs.animate--out.answer-me,
+.ingame__options .versus__vs.animate--out.answer-opponent, .result-page--win.animate--in::before,
 .result-page--win.animate--in .bounceIn.result-page__title,
 .result-page--win.animate--in .result-page__title.result-page--win.animate--in::before,
 .result-page--win.animate--in .ingame__options .result-page__title.answer-me,
 .ingame__options .result-page--win.animate--in .result-page__title.answer-me,
 .result-page--win.animate--in .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--win.animate--in .result-page__title.answer-opponent, .bounceIn.result-page--lose.animate--in::before,
-.ingame__options .result-page--lose.animate--in.answer-me::before,
+.result-page--lose.animate--in.result-page--win::before, .ingame__options .result-page--lose.animate--in.answer-me::before,
 .ingame__options .result-page--lose.animate--in.answer-opponent::before, .result-page--lose.animate--in .bounceIn.result-page__title,
 .result-page--lose.animate--in .result-page__title.result-page--win.animate--in::before,
 .result-page--lose.animate--in .ingame__options .result-page__title.answer-me,
 .ingame__options .result-page--lose.animate--in .result-page__title.answer-me,
 .result-page--lose.animate--in .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--lose.animate--in .result-page__title.answer-opponent, .bounceIn.result-page--tie.animate--in::before,
-.ingame__options .result-page--tie.animate--in.answer-me::before,
+.result-page--tie.animate--in.result-page--win::before, .ingame__options .result-page--tie.animate--in.answer-me::before,
 .ingame__options .result-page--tie.animate--in.answer-opponent::before, .result-page--tie.animate--in .bounceIn.result-page__title,
 .result-page--tie.animate--in .result-page__title.result-page--win.animate--in::before,
 .result-page--tie.animate--in .ingame__options .result-page__title.answer-me,
 .ingame__options .result-page--tie.animate--in .result-page__title.answer-me,
 .result-page--tie.animate--in .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--tie.animate--in .result-page__title.answer-opponent, .bounceIn.open-ended.is-correct::before,
-.ingame__options .open-ended.is-correct.answer-me::before,
+.open-ended.is-correct.result-page--win.animate--in::before, .ingame__options .open-ended.is-correct.answer-me::before,
 .ingame__options .open-ended.is-correct.answer-opponent::before, .bounceIn.open-ended.is-wrong::before,
-.ingame__options .open-ended.is-wrong.answer-me::before,
+.open-ended.is-wrong.result-page--win.animate--in::before, .ingame__options .open-ended.is-wrong.answer-me::before,
 .ingame__options .open-ended.is-wrong.answer-opponent::before, .bounceIn.open-ended__answer,
-.ingame__options .answer-me,
+.open-ended__answer.result-page--win.animate--in::before, .ingame__options .open-ended__answer.answer-me,
+.ingame__options .open-ended__answer.answer-opponent, .ingame__options .answer-me,
 .ingame__options .answer-opponent,
-.animated.bounceOut, .bounceOut.engage.animate-in, .bounceOut.engage.animate-out, .bounceOut.versus__one.animate--in, .versus__one.animate--in .bounceOut.player__avatar, .versus__one.animate--in .bounceOut.player__details, .bounceOut.versus__one.animate--out, .bounceOut.versus__two.animate--in, .versus__two.animate--in .bounceOut.player__avatar, .versus__two.animate--in .bounceOut.player__details, .bounceOut.versus__two.animate--out, .bounceOut.versus__vs.animate--in, .bounceOut.versus__vs.animate--out, .bounceOut.result-page--win.animate--in::before, .result-page--win.animate--in .bounceOut.result-page__title, .bounceOut.result-page--lose.animate--in::before, .result-page--lose.animate--in .bounceOut.result-page__title, .bounceOut.result-page--tie.animate--in::before, .result-page--tie.animate--in .bounceOut.result-page__title, .bounceOut.open-ended.is-correct::before, .bounceOut.open-ended.is-wrong::before, .bounceOut.open-ended__answer, .ingame__options .bounceOut.answer-me,
-.ingame__options .bounceOut.answer-opponent {
+.bounceIn.waiting-screen,
+.waiting-screen.result-page--win.animate--in::before, .ingame__options .waiting-screen.answer-me,
+.ingame__options .waiting-screen.answer-opponent, .bounceIn.waiting-screen__holder,
+.waiting-screen__holder.result-page--win.animate--in::before, .ingame__options .waiting-screen__holder.answer-me,
+.ingame__options .waiting-screen__holder.answer-opponent, .pop-up--achievement .bounceIn.pop-up__wrap.animate-in,
+.pop-up--achievement .pop-up__wrap.animate-in.result-page--win.animate--in::before,
+.pop-up--achievement .ingame__options .pop-up__wrap.animate-in.answer-me,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-in.answer-me,
+.pop-up--achievement .ingame__options .pop-up__wrap.animate-in.answer-opponent,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-in.answer-opponent, .pop-up--achievement .bounceIn.pop-up__wrap.animate-out,
+.pop-up--achievement .pop-up__wrap.animate-out.result-page--win.animate--in::before,
+.pop-up--achievement .ingame__options .pop-up__wrap.animate-out.answer-me,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-out.answer-me,
+.pop-up--achievement .ingame__options .pop-up__wrap.animate-out.answer-opponent,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-out.answer-opponent, .animated.bounceOut, .bounceOut.engage.animate-in, .bounceOut.engage.animate-out, .bounceOut.versus__one.animate--in, .versus__one.animate--in .bounceOut.player__avatar, .versus__one.animate--in .bounceOut.player__details, .bounceOut.versus__one.animate--out, .bounceOut.versus__two.animate--in, .versus__two.animate--in .bounceOut.player__avatar, .versus__two.animate--in .bounceOut.player__details, .bounceOut.versus__two.animate--out, .bounceOut.versus__vs.animate--in, .bounceOut.versus__vs.animate--out, .bounceOut.result-page--win.animate--in::before, .result-page--win.animate--in .bounceOut.result-page__title, .bounceOut.result-page--lose.animate--in::before, .result-page--lose.animate--in .bounceOut.result-page__title, .bounceOut.result-page--tie.animate--in::before, .result-page--tie.animate--in .bounceOut.result-page__title, .bounceOut.open-ended.is-correct::before, .bounceOut.open-ended.is-wrong::before, .bounceOut.open-ended__answer, .ingame__options .bounceOut.answer-me,
+.ingame__options .bounceOut.answer-opponent, .bounceOut.waiting-screen, .bounceOut.waiting-screen__holder, .pop-up--achievement .bounceOut.pop-up__wrap.animate-in, .pop-up--achievement .bounceOut.pop-up__wrap.animate-out {
   -webkit-animation-duration: .75s;
   animation-duration: .75s; }
 
@@ -1762,7 +1804,7 @@ th {
     transform: none; } }
 
 /* line 1469, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
-.fadeInUp, .open-ended__answer {
+.fadeInUp, .open-ended__answer, .pop-up--achievement .pop-up__wrap.animate-in {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp; }
 
@@ -1804,7 +1846,7 @@ th {
     opacity: 0; } }
 
 /* line 1527, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
-.fadeOut, .engage.animate-out {
+.fadeOut, .engage.animate-out, .waiting-screen {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut; }
 
@@ -1951,7 +1993,7 @@ th {
     transform: translate3d(0, -100%, 0); } }
 
 /* line 1730, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
-.fadeOutUp {
+.fadeOutUp, .pop-up--achievement .pop-up__wrap.animate-out {
   -webkit-animation-name: fadeOutUp;
   animation-name: fadeOutUp; }
 
@@ -2032,7 +2074,7 @@ th {
 
 /* line 1838, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
 .animated.flip, .flip.engage.animate-in, .flip.engage.animate-out, .flip.versus__one.animate--in, .versus__one.animate--in .flip.player__avatar, .versus__one.animate--in .flip.player__details, .flip.versus__one.animate--out, .flip.versus__two.animate--in, .versus__two.animate--in .flip.player__avatar, .versus__two.animate--in .flip.player__details, .flip.versus__two.animate--out, .flip.versus__vs.animate--in, .flip.versus__vs.animate--out, .flip.result-page--win.animate--in::before, .result-page--win.animate--in .flip.result-page__title, .flip.result-page--lose.animate--in::before, .result-page--lose.animate--in .flip.result-page__title, .flip.result-page--tie.animate--in::before, .result-page--tie.animate--in .flip.result-page__title, .flip.open-ended.is-correct::before, .flip.open-ended.is-wrong::before, .flip.open-ended__answer, .ingame__options .flip.answer-me,
-.ingame__options .flip.answer-opponent {
+.ingame__options .flip.answer-opponent, .flip.waiting-screen, .flip.waiting-screen__holder, .pop-up--achievement .flip.pop-up__wrap.animate-in, .pop-up--achievement .flip.pop-up__wrap.animate-out {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
   -webkit-animation-name: flip;
@@ -2204,7 +2246,7 @@ th {
     opacity: 0; } }
 
 /* line 2074, C:/xampp/htdocs/projects/engage/quizgame/app/scss/03-generic/_animate.scss */
-.flipOutY {
+.flipOutY, .waiting-screen__holder {
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
   -webkit-animation-name: flipOutY;
@@ -3221,7 +3263,18 @@ body {
   height: 100%;
   color: rgba(0, 0, 0, 0.8);
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+  user-select: none; }
 
 /**
  * 05 OBJECT
@@ -3248,6 +3301,24 @@ body {
     flex: 5;
     display: flex;
     flex-direction: column; }
+  /* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_engage.scss */
+  .engage .game-exit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px; }
+  /* line 42, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_engage.scss */
+  .engage .game-exit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 9; }
+    /* line 47, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_engage.scss */
+    .engage .game-exit svg {
+      width: 24px;
+      height: 24px;
+      fill: #7f8fa8; }
 
 /* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_versus.scss */
 .versus {
@@ -3293,7 +3364,7 @@ body {
   /* line 6, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
   .header__player {
     display: flex;
-    flex: 2;
+    flex: 4;
     margin-top: 15px;
     overflow: hidden; }
     /* line 11, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
@@ -3318,30 +3389,41 @@ body {
       margin-bottom: 0;
       line-height: 13px;
       font-size: 10px;
-      text-align: left; }
-    /* line 36, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+      text-align: left;
+      word-break: break-all; }
+    /* line 37, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
     .header__player .player__badge {
       padding: 0;
       font-size: 9px;
       line-height: 13px; }
-    /* line 41, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+    /* line 42, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
     .header__player .player__score {
       padding: 0;
       font-size: 12px;
       line-height: 14px; }
-  /* line 48, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+  /* line 49, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
   .header__points {
     display: flex;
     flex: 1;
     flex-direction: column; }
+  /* line 54, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+  .header__back-btn {
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+    /* line 59, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_header.scss */
+    .header__back-btn .game-button {
+      padding: 7px 10px;
+      font-size: 12px; }
 
 /* line 2, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
 .ingame__question {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding-top: 20px; }
   /* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__question p {
@@ -3352,61 +3434,58 @@ body {
 
 /* line 17, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
 .ingame__image {
-  flex: 2;
+  flex: 3;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   position: relative;
-  margin: 50px 15px 15px 15px;
   border-radius: 5px;
-  margin-bottom: 30px; }
-  /* line 27, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+  margin: 0 15px; }
+  /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__image p {
-    z-index: 5;
+    margin-bottom: 5px;
     width: 100%;
     font-size: 16px;
     font-weight: 600;
     text-align: center;
     text-transform: uppercase; }
-  /* line 35, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+  /* line 36, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__image img {
     height: 100%;
     width: 100%;
     max-height: 200px;
     max-width: 300px; }
 
-/* line 43, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+/* line 44, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
 .ingame__img-question {
-  margin-top: -15%;
   line-height: 19px; }
 
-/* line 47, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+/* line 48, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
 .ingame__options {
   display: flex;
   flex-wrap: wrap; }
-  /* line 50, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+  /* line 51, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__options--full {
-    flex: 2;
+    flex: 3;
     flex-direction: column;
     justify-content: flex-end;
     padding: 0 15px;
     padding-bottom: 30px; }
-    /* line 56, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+    /* line 57, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
     .ingame__options--full .game-button {
       flex-direction: column;
       display: flex;
       height: 8vh;
       margin-bottom: 10px;
       line-height: 8vh; }
-  /* line 67, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+  /* line 68, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__options--half {
-    flex: 1;
+    flex: 2;
     flex-direction: row;
-    align-content: flex-end;
-    padding-right: 15px;
-    padding-bottom: 30px; }
-    /* line 73, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+    align-content: center;
+    padding-right: 15px; }
+    /* line 74, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
     .ingame__options--half .game-button {
       flex: 1 0 calc(50% - 15px);
       flex-direction: column;
@@ -3416,14 +3495,14 @@ body {
       height: 10vh;
       line-height: 10vh;
       font-size: 14px; }
-  /* line 88, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+  /* line 89, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
   .ingame__options--open {
     align-content: flex-start;
     flex: 2;
     flex-direction: row;
     padding-left: 20px;
     padding-right: 20px; }
-    /* line 94, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
+    /* line 95, C:/xampp/htdocs/projects/engage/quizgame/app/scss/05-objects/_ingame.scss */
     .ingame__options--open .game-button {
       display: flex;
       flex-direction: row;
@@ -3568,12 +3647,14 @@ body {
       color: #fff; }
   /* line 62, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button--yellow {
-    background-color: #e7a036; }
-    /* line 65, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    background-color: #e7a036;
+    color: #fff; }
+    /* line 66, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button--yellow:hover,
     .game-button--yellow:focus {
-      background-color: #d18719; }
-  /* line 73, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+      background-color: #d18719;
+      color: #fff; }
+  /* line 75, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-me::before,
   .game-button .answer-me::after,
   .game-button .answer-opponent::before,
@@ -3586,7 +3667,7 @@ body {
     content: '';
     width: 0;
     height: 0; }
-  /* line 86, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  /* line 88, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-me {
     position: absolute;
     left: 0;
@@ -3599,7 +3680,7 @@ body {
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-left: 15px solid rgba(0, 0, 0, 0.2); }
-    /* line 102, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 104, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-me::before {
       left: 0;
       margin-top: -13px;
@@ -3607,7 +3688,7 @@ body {
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
       border-left: 17px solid #ece465; }
-    /* line 113, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 115, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-me::after {
       left: 0;
       z-index: 1;
@@ -3617,7 +3698,7 @@ body {
       border-top: 5px solid transparent;
       border-bottom: 5px solid transparent;
       border-right: 5px solid #b9a300; }
-  /* line 128, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+  /* line 130, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
   .game-button .answer-opponent {
     position: absolute;
     right: 0;
@@ -3630,7 +3711,7 @@ body {
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-right: 15px solid rgba(0, 0, 0, 0.2); }
-    /* line 142, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 144, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-opponent::before {
       right: 0;
       margin-top: -13px;
@@ -3638,7 +3719,7 @@ body {
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
       border-right: 17px solid #ece465; }
-    /* line 153, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
+    /* line 155, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_game-button.scss */
     .game-button .answer-opponent::after {
       right: 0;
       z-index: 1;
@@ -3688,11 +3769,12 @@ body {
 
 /* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
 .result-page {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-  /* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 8, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--win:before {
     content: " ";
     position: absolute;
@@ -3702,7 +3784,7 @@ body {
     background: url("../assets/images/win.svg") top center repeat-x;
     width: 100%;
     height: 300px; }
-  /* line 19, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 20, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--lose:before {
     content: " ";
     position: absolute;
@@ -3713,7 +3795,7 @@ body {
     width: 100%;
     height: 30%;
     margin-top: -5%; }
-  /* line 32, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 33, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--tie:before {
     content: " ";
     position: absolute;
@@ -3723,11 +3805,14 @@ body {
     background: url("../assets/images/tie-knot.svg") top center no-repeat;
     width: 100%;
     height: 100%; }
-  /* line 43, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 44, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page--tie .result-page__title {
     margin-top: 20px;
     margin-bottom: 20px; }
-  /* line 49, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 51, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page--solo .main-player__details {
+    padding: 5px; }
+  /* line 56, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page__share {
     position: absolute;
     right: 0;
@@ -3739,13 +3824,19 @@ body {
     border-radius: 50%;
     margin-top: -30px;
     margin-right: -30px; }
-    /* line 61, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    /* line 68, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page__share svg {
       height: 25px;
       width: 25px;
       margin-top: 18px;
       margin-left: 5px; }
-  /* line 68, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 75, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page__main-player {
+    flex: 1; }
+  /* line 78, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page__opponent {
+    flex: 1; }
+  /* line 82, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page__title {
     margin-bottom: 10px;
     font-family: 'Brady Bunch';
@@ -3755,7 +3846,7 @@ body {
     letter-spacing: 1;
     font-size: 50px;
     text-transform: uppercase; }
-  /* line 78, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  /* line 92, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page__list {
     max-width: 240px;
     width: 100%;
@@ -3765,15 +3856,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    height: 100%; }
-  /* line 89, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    height: 100%;
+    flex: 3; }
+  /* line 104, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
   .result-page__button {
     line-height: 7vh;
     height: 7vh;
-    margin-bottom: 15px; }
-    /* line 93, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+    margin-bottom: 10px; }
+    /* line 108, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
     .result-page__button:last-child {
       margin-bottom: 0; }
+  /* line 112, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_result-page.scss */
+  .result-page__rematch {
+    flex: 3; }
 
 /* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_opponent.scss */
 .opponent {
@@ -3781,7 +3876,7 @@ body {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding-top: 7vh;
+  padding-top: 15px;
   padding-bottom: 15px; }
   /* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_opponent.scss */
   .opponent__text p,
@@ -3878,6 +3973,9 @@ body {
     font-weight: 100;
     letter-spacing: 1px;
     text-transform: uppercase; }
+  /* line 63, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_main-player.scss */
+  .main-player__footer {
+    color: #2d4d80; }
 
 /* line 7, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_loading-screen.scss */
 .loading-screen {
@@ -4008,33 +4106,39 @@ body {
 
 /* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
 .waiting-screen {
-  display: flex;
-  flex-direction: column;
-  width: 220px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
   height: 100%;
-  align-self: center;
-  align-items: center;
-  margin-top: 15%;
-  text-align: center; }
-  /* line 10, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  background-color: #a0daf2; }
+  /* line 9, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  .waiting-screen__holder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    margin: -50% 0 0 -50%;
+    text-align: center; }
+  /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
   .waiting-screen__logo {
     width: 180px;
     height: 180px; }
-  /* line 14, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  /* line 22, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
   .waiting-screen__topic {
     font-size: 24px;
     margin-bottom: 10px; }
-  /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  /* line 26, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
   .waiting-screen__wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%; }
-  /* line 24, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+    text-align: center;
+    margin-top: 30px; }
+  /* line 30, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
   .waiting-screen__timer {
     font-size: 80px;
     line-height: 80px; }
-  /* line 28, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
+  /* line 34, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_waiting-screen.scss */
   .waiting-screen p {
     margin-bottom: 5px;
     margin-top: 5px; }
@@ -4052,6 +4156,9 @@ body {
   height: 100%;
   width: 100%; }
   /* line 13, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  .pop-up--achievement .pop-up__wrap {
+    width: 230px; }
+  /* line 17, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__wrap {
     display: flex;
     flex-direction: column;
@@ -4059,37 +4166,37 @@ body {
     align-items: center;
     text-align: center;
     width: 300px; }
-  /* line 21, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 25, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__header {
     position: relative;
     background-color: #fff;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     width: 100%; }
-  /* line 29, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 33, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__title {
     font-size: 18px;
     margin-bottom: 10px; }
-  /* line 33, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 37, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__close {
     position: absolute;
     right: 5px;
     top: 5px;
     z-index: 5;
     display: block; }
-    /* line 40, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 44, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__close svg {
       height: 20px;
       width: 20px; }
-  /* line 45, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 49, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__body {
     background-color: #fff;
     width: 100%;
     padding: 5px 20px 30px; }
-    /* line 49, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 53, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__body p {
       margin-top: 0; }
-  /* line 53, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 57, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__button {
     background-color: #e7a036;
     padding: 10px 10px;
@@ -4100,38 +4207,38 @@ body {
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 600; }
-    /* line 65, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 69, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__button:hover,
     .pop-up__button:focus,
     .pop-up__button:active {
       background-color: #d18719;
       color: #193a5b; }
-  /* line 70, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+  /* line 74, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
   .pop-up__footer {
     width: 100%;
     display: flex;
     flex-direction: row; }
-    /* line 76, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 80, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button:first-child {
       border-bottom-right-radius: 0; }
-    /* line 79, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 83, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button:last-child {
       border-bottom-left-radius: 0; }
-    /* line 82, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 86, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button.is-yellow {
       background-color: #e7a036;
       color: #fff; }
-      /* line 87, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+      /* line 91, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
       .pop-up__footer.is-half .pop-up__button.is-yellow:hover,
       .pop-up__footer.is-half .pop-up__button.is-yellow:focus,
       .pop-up__footer.is-half .pop-up__button.is-yellow:active {
         background-color: #d18719;
         color: #fff; }
-    /* line 92, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+    /* line 96, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
     .pop-up__footer.is-half .pop-up__button.is-blue {
       background-color: #193a5b;
       color: #fff; }
-      /* line 97, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
+      /* line 101, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_pop-up.scss */
       .pop-up__footer.is-half .pop-up__button.is-blue:hover,
       .pop-up__footer.is-half .pop-up__button.is-blue:focus,
       .pop-up__footer.is-half .pop-up__button.is-blue:active {
@@ -4281,28 +4388,27 @@ body {
       vertical-align: top //      float: left;; }
   /* line 71, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_text-twist.scss */
   .text-twist__item {
-    background: red;
-    color: white;
     padding: 6px 12px;
     border-radius: 50%;
     display: block;
     font-size: 18px;
-    text-transform: uppercase;
     font-weight: 600;
+    line-height: 22px;
+    text-transform: uppercase;
     text-align: center;
     text-decoration: none; }
-    /* line 83, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_text-twist.scss */
+    /* line 81, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_text-twist.scss */
     .text-twist__item--small {
       height: 35px;
       width: 35px; }
-  /* line 88, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_text-twist.scss */
+  /* line 86, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_text-twist.scss */
   .text-twist__action {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%; }
-    /* line 94, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_text-twist.scss */
+    /* line 92, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_text-twist.scss */
     .text-twist__action .game-button {
       flex-direction: row;
       flex: 1;
@@ -4310,6 +4416,16 @@ body {
       padding-bottom: 2vh;
       justify-content: center;
       margin: 5px; }
+
+/* line 1, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_achievement.scss */
+.achievement {
+  text-align: center; }
+  /* line 3, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_achievement.scss */
+  .achievement__img {
+    width: 70px; }
+  /* line 9, C:/xampp/htdocs/projects/engage/quizgame/app/scss/06-components/_achievement.scss */
+  .achievement__text {
+    margin: 0; }
 
 /**
  * 07 THEMES
@@ -4480,6 +4596,22 @@ body {
       .engage .versus .player--two .player__badge:after {
         content: " ";
         background-color: #e7a036; }
+  /* line 221, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage .text-twist__output .text-twist__item {
+    background-color: #fff;
+    color: #414141; }
+  /* line 227, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage .text-twist__input .text-twist__item {
+    background-color: #2d4d80;
+    color: #fff; }
+  /* line 235, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage .text-twist.is-wrong .text-twist__output .text-twist__item {
+    background-color: #d23139;
+    color: #fff; }
+  /* line 243, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_light-theme.scss */
+  .engage .text-twist.is-correct .text-twist__output .text-twist__item {
+    background-color: #9cc751;
+    color: #1b8933; }
 
 /* line 18, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_animation.scss */
 .versus__one.animate--in .player__avatar {
@@ -4508,6 +4640,13 @@ body {
 /* line 98, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_animation.scss */
 .result-page--tie.animate--in .result-page__title {
   z-index: -1; }
+
+/* line 135, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_animation.scss */
+.waiting-screen {
+  animation-delay: 1.75s; }
+  /* line 138, C:/xampp/htdocs/projects/engage/quizgame/app/scss/07-themes/_animation.scss */
+  .waiting-screen__holder {
+    animation-delay: 1.25s; }
 
 /**
  * 08 TRUMPS

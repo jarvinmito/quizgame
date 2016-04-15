@@ -2,7 +2,7 @@
 // CREATING A MATCH
 require "init.php";
 
-$matchid = $_GET['matchid'];
+$matchid = $_POST['matchid'];
 /*
 $sql = "SELECT * FROM engage_match WHERE match_id=$matchid";
 $res = mysqli_query($conn, $sql);

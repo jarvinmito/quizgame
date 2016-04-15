@@ -9,7 +9,11 @@
   background-color: rgba($black, 0.5);
   height: 100%;
   width: 100%;
-  
+  &--achievement {
+    .pop-up__wrap {
+      width: 230px;
+    }
+  }
   &__wrap {
     display: flex;
     flex-direction: column;

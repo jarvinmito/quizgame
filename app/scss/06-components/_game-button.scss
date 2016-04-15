@@ -61,9 +61,11 @@
   }
   &--yellow {
     background-color: $yellow;
+    color: $white;
     &:hover,
     &:focus {
       background-color: darken($yellow, 10%);
+      color: $white;
     }
     
   }

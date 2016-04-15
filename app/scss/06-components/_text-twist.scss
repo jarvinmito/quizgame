@@ -49,9 +49,9 @@
       height: 50px;
       width: 50px;
       margin:0 3px 7px 3px;
-          font-size: 25px;
-    line-height: 25px;
-    padding: 12px 12px;
+      font-size: 25px;
+      line-height: 25px;
+      padding: 12px 12px;
     }
 
   }
@@ -69,15 +69,13 @@
     }
   }
   &__item {
-    background: red;
-    color: white;
     padding: 6px 12px;
-    
     border-radius: 50%;
     display: block;
     font-size: 18px;
-    text-transform: uppercase;
     font-weight: 600;
+    line-height: 22px;
+    text-transform: uppercase;
     text-align: center;
     text-decoration: none;
     &--small {
@@ -86,7 +84,7 @@
     }
   }
   &__action {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;

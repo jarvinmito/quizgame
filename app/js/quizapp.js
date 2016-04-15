@@ -15,6 +15,9 @@
 // App Core Functions
 
 var App = (function(){
+	// var apiBasePath = "http://localhost/engage_uat/engage/api/quizsql";
+	var apiBasePath = "http://50.57.237.52/engage_uat/engage/api/quizsql";
+	// var apiBasePath = "../../engage/api/quizsql";
 
 	// Start Setup
 	// Purpose : Holds necessary information about the Game App
@@ -26,7 +29,7 @@ var App = (function(){
 				mode : 'OPEN__TYPE'
 			},
 			apis : {
-				base : 'http://50.57.237.52/engage_uat/games/quiz_multichoice/api/',
+				base : '../quiz_multichoice/api/',
 				api : {
 					'find' : 'fm.php',
 					'create' : 'cm.php',
@@ -41,35 +44,35 @@ var App = (function(){
 				ch_api : {
 					// Params for API 1
 					// topic_id, game_id, player_a name, player_b name
-					'api1' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/challengePlayer/',
+					'api1' : apiBasePath+'/challengePlayer/',
 					
 					// Params for API 2
 					// match_id
-					'api2' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/sendChallenge/',
+					'api2' : apiBasePath+'/sendChallenge/',
 
 					// Params for API 3
 					// topic_id, game_id, player_a name, player_b name, match_status = 'ongoing'
-					'api3' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/acceptChallenge/',
+					'api3' : apiBasePath+'/acceptChallenge/',
 
 					// Params for API 4
 					// match_id, match_status = 'reject'
-					'api4' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/rejectChallenge/',
+					'api4' : apiBasePath+'/rejectChallenge/',
 
 					// Params for API 7
 					// match_id, player_a name, player_b name
-					'api7' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/existingRematch/',
+					'api7' : apiBasePath+'/existingRematch/',
 
 					// Params for API 8
 					// player_a name, player_b name
-					'api8' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/searchRematch/',
+					'api8' : apiBasePath+'/searchRematch/',
 
 					// Params for API 9
 					// match_id, player_id, game_id, topic_id, match_result, xp_points
-					'api9' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/matchLogs/',
+					'api9' : apiBasePath+'/matchLogs/',
 
 					// Params for API 10
 					// match_id, player_id
-					'api10' : 'http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql/leaveMatch/'
+					'api10' : apiBasePath+'/leaveMatch/'
 				}
 			},
 			// Questions
@@ -113,6 +116,7 @@ var App = (function(){
 			modal : {},
 			browser : null,
 			bridge : null,
+			mod_marker : false,
 			// findmatch - finding a matching
 			// waiting - waiting for other player's response (in random)
 			// waiting-ch - waiting for other player in challenge mode
@@ -239,6 +243,8 @@ var App = (function(){
 			var match_details = localStorage[configMap.plstore.match];
 			var match_json = stringToJSON(match_details);
 
+			console.log('match_json --> ', match_json);
+
 			var gameDefault = {
 				"id" : 1,
 				"name" : "Quiz Game",
@@ -342,39 +348,62 @@ var App = (function(){
 	// Purpose : Binds click on each option
 	var bind = function(){
 
-		// Main Play button
-		if( $('.btn__play').length ){
-			$('.btn__play').unbind('click');
-			$('.btn__play').click(function(e){
-				e.preventDefault();
-				configMap.player.name =  $('#name').val() || 'Kalabaw' + Math.random().toString(36).substr(2,5);
-				findMatch();
-			});
+		// disable everything when modal is active
+		if( !configMap.modal.isActive ){
+
+			// Main Play button
+			if( $('.btn__play').length ){
+				$('.btn__play').unbind('click');
+				$('.btn__play').click(function(e){
+					e.preventDefault();
+					configMap.player.name =  $('#name').val() || 'Kalabaw' + Math.random().toString(36).substr(2,5);
+					findMatch();
+				});
+			}
+
+			if( $('.options').length ){
+				$('.options').unbind('click');
+				$('.options').click(function(e){
+					e.preventDefault();
+					checkAnswer($(this));
+				});
+			}
+
+			if( $('.btn__play-again').length ){
+				$('.btn__play-again').unbind('click');
+				$('.btn__play-again').click(function(e){
+					e.preventDefault();
+					// Match for the same players
+					findMatch();
+				});
+			}
+
+			if( $('.btn__stats').length ){
+				$('.btn__stats').unbind('click');
+				$('.btn__stats').click(function(e){
+					e.preventDefault();
+					// Displays Statistics page
+					renderStats();
+				});
+			}
 		}
 
-		if( $('.options').length ){
-			$('.options').unbind('click');
-			$('.options').click(function(e){
+		// START : Semi-Global button
+		if( $('.game-exit').length ){
+			$('.game-exit').unbind('click');;
+			$('.game-exit').click(function(e){
 				e.preventDefault();
-				checkAnswer($(this));
+				history.back();
 			});
 		}
+		// END : Semi-Global button
 
-		if( $('.btn__play-again').length ){
-			$('.btn__play-again').unbind('click');
-			$('.btn__play-again').click(function(e){
-				e.preventDefault();
-				// Match for the same players
-				findMatch();
-			});
-		}
-
+		// START : Results Page Buttons
 		if( $('.game-button--rematch').length ){
 			$('.game-button--rematch').unbind('click');
 			$('.game-button--rematch').click(function(e){
 				e.preventDefault();
 				// Match for another random player
-				console.log('yeah');
 				renderWaitingRematch();
 				// initModule();
 			});
@@ -403,15 +432,6 @@ var App = (function(){
 				freeze();
 				// Initialize the game
 				initModule();
-			});
-		}
-
-		if( $('.btn__stats').length ){
-			$('.btn__stats').unbind('click');
-			$('.btn__stats').click(function(e){
-				e.preventDefault();
-				// Displays Statistics page
-				renderStats();
 			});
 		}
 
@@ -453,7 +473,7 @@ var App = (function(){
 
 			});
 		}
-
+		// END : Results Page Buttons
 
 		// Modal Section
 		if( $('.pop-up__exit').length ){
@@ -546,14 +566,14 @@ var App = (function(){
 			if(ga === pa){
 				isCorrect = true;
 				// Play sfx
-				configMap.audio.sfx.sfx_correct.play();
+				// configMap.audio.sfx.sfx_correct.play();
 
 				input.addClass('btn-success');
 			}else{
 				pts = 0;
 
 				// Play sfx
-				configMap.audio.sfx.sfx_incorrect.play();
+				// configMap.audio.sfx.sfx_incorrect.play();
 				input.addClass('btn-danger');
 			}
 			// indicate my answer
@@ -621,6 +641,7 @@ var App = (function(){
 			url : durl,
 			method : 'post',
 			data : pdata,
+			cache: false,
 			success : function(result){
 				// configMap.currentRoundisFin = (result['score'].length == 2) ? true : false;
 				// console.log('update happened', result);
@@ -691,6 +712,9 @@ var App = (function(){
 	// Purpose : Displays the result of the match
 	var renderResults = function(){
 
+		// Reset Modal
+		configMap.modal = {};
+
 		// Set screen
 		configMap.currentScreen = 'result';
 
@@ -716,15 +740,18 @@ var App = (function(){
 		var playerdata = { me : me, opponent : op, status : status, result : result };
 		var engage = jqueryMap.$main;
 		engage.html(App.Templates['results']({ player : playerdata }));
+
+		applyXButton();
 		
-		var resultPage = engage.find('.result-page--parent');
+		// $('.extra').append('rendered result!<br/>');
+		// var resultPage = engage.find('.result-page--parent');
 		// var resultButtons = resultPage.find('.result-page__list');
 
 		// if( !resultButtons.length ){
 		renderResultButtons();
 		// }
 
-		bind();
+		// bind();
 		
 		// Reset States here
 		// initSetup();
@@ -743,6 +770,9 @@ var App = (function(){
 	var renderModal = function(){
 		var $container = jqueryMap.$main;
 		var $modal = $container.find('.pop-up');
+
+		// to avoid clicking back again
+		history.go(1);
 		
 		if( !$modal.length ){
 			$container.append(App.Templates['modal']({ modal : configMap.modal }));
@@ -801,8 +831,10 @@ var App = (function(){
 			caption : 'Leave'
 		});
 
+
 		$result.append(App.Templates['results-buttons']({ buttons : buttons }));
 		bind();
+		// $('.extra').append('render result buttons<br />');
 
 	};
 	// End Module /renderResultButtons/
@@ -828,6 +860,9 @@ var App = (function(){
 
 		// Set screen
 		configMap.currentScreen = 'waiting-rm';
+
+		// Set time to start
+		configMap.waitTimer.currentTime = 0;
 
 		var $container = jqueryMap.$main;
 		var time = configMap.waitTimer.currentTime;
@@ -857,6 +892,7 @@ var App = (function(){
 			url : configMap.apis.ch_api['api7'],
 			data : data,
 			method : 'post',
+			cache: false,
 			success : function(result){
 				console.log(result);
 				if( result.rematch == true){
@@ -888,11 +924,14 @@ var App = (function(){
 			url : configMap.apis.ch_api['api1'],
 			method : 'post',
 			data : data,
+			cache: false,
 			success : function(result){
 				// Setup all new data
 				console.log(result);
+				var obj = result;
+				var objData = obj.data;
 
-				localStorage[configMap.plstore.match] = jsonToString(result);
+				localStorage[configMap.plstore.match] = jsonToString(objData);
 				localStorage[configMap.plstore.mode] = 'challenger';
 
 				initSetup();
@@ -923,7 +962,9 @@ var App = (function(){
 			url : configMap.apis.ch_api['api3'],
 			method : 'post',
 			data : data,
-			success : function(result){
+			cache: false,
+			success : function(response){
+				var result = response.data;
 				// Setup all new data
 				console.log(result);
 
@@ -953,6 +994,7 @@ var App = (function(){
 			url : configMap.apis.ch_api['api4'],
 			method : 'post',
 			data : data,
+			cache: false,
 			success : function(result){
 				console.log(result);
 			}
@@ -981,6 +1023,7 @@ var App = (function(){
 			url : configMap.apis.ch_api['api9'],
 			method : 'post',
 			data : data,
+			cache: false,
 			success : function(result){
 				console.log(result);
 			}
@@ -998,6 +1041,9 @@ var App = (function(){
 		};
 
 		var callback = function(browser){
+
+			console.log('num of active ajax', $.ajax.active);
+
 			if( browser === 'ios' ){
 				// insert ios exit webview here
 				// call ios bridge
@@ -1007,7 +1053,7 @@ var App = (function(){
 				// call android  leave method
 				Android.leave();
 			}
-		}
+		};
 
 		console.log(data);
 		// remove Modal
@@ -1019,6 +1065,7 @@ var App = (function(){
 				url : configMap.apis.ch_api['api10'],
 				method : 'post',
 				data : data,
+				cache: false,
 				success : function(result){
 
 					// Call for the Android close webview
@@ -1054,6 +1101,8 @@ var App = (function(){
 		configMap.currentScreen = 'waiting-ch';
 
 		$container.html(App.Templates['waiting']({time : time, topic : configMap.topic }));
+		applyXButton();
+
 		startTimer(configMap.waitTimer);
 	};
 	// End Module /renderWaiting/
@@ -1100,6 +1149,7 @@ var App = (function(){
 			url : configMap.apis.ch_api['api8'],
 			// url : configMap.apis.base + configMap.apis.api['check-statuses'],
 			data : data,
+			cache: false,
 			success : function(result){
 				console.log(result);
 				if( result ){
@@ -1115,6 +1165,7 @@ var App = (function(){
 							"no" : { "caption" : "Not now", "class" : "pop-up__no is-yellow" },
 							"yes" : { "caption" : "Rematch", "class" : "pop-up__yes" }
 						};
+						configMap.modal.isActive = true;
 
 						configMap.match = newMatch;
 						renderModal();
@@ -1146,7 +1197,9 @@ var App = (function(){
 			url : configMap.apis.ch_api['api2'],
 			// url : configMap.apis.base + configMap.apis.api['get-match-status'],
 			data : data,
-			success : function(result){
+			cache: false,
+			success : function(response){
+				var result = response.data;
 				console.log(data, result, configMap.match);
 				if( result.match.status ){
 					var status = result.match.status;
@@ -1175,6 +1228,7 @@ var App = (function(){
 						destroyModal();
 						configMap.modal.title = "Awww...";
 						configMap.modal.message = "Your opponent did not accept your challenge."
+						configMap.modal.isActive = true;
 						renderModal();
 						destroyWaitingRematch();
 						renderResultButtons(true);
@@ -1194,6 +1248,9 @@ var App = (function(){
 	// Modes : versusDelay, roundDelay, questionDelay, timer
 	var renderBattlefield = function(){
 		console.log('rendering Battlefield --->', configMap.currentRound);
+
+		// Reset Modal
+		configMap.modal = {};
 
 		configMap.currentScreen = 'round';
 		// render Header
@@ -1225,6 +1282,9 @@ var App = (function(){
 	var renderVS = function(){
 		console.log('rendering Versus ---->');
 
+		// Reset Modal
+		configMap.modal = {};
+		
 		// Set screen
 		configMap.currentScreen = 'versus';
 
@@ -1238,6 +1298,7 @@ var App = (function(){
 			// Render Modal
 			configMap.modal.title = "Uh oh...";
 			configMap.modal.message = "Your opponent has left the game.";
+			configMap.modal.isActive = true;
 			renderModal();
 		}else{
 			
@@ -1382,6 +1443,7 @@ var App = (function(){
 				method : 'post',
 				data : udata,
 				dataType : 'json',
+				cache: false,
 				success : function(result){
 					var count = configMap.currentRoundCount;
 
@@ -1393,7 +1455,7 @@ var App = (function(){
 						resLen++;
 					}
 
-					configMap.currentRoundisFin = (resLen == 3) ? true : false;
+					configMap.currentRoundisFin = (resLen == 2) ? true : false;
 					
 					// console.log('results and shit ---->');
 					// console.log(result.score);
@@ -1404,6 +1466,7 @@ var App = (function(){
 						configMap.modal.buttons = {
 							"back" : { "caption" : "Go Back", "class" : "pop-up__leave--yes" }
 						};
+						configMap.modal.isActive = true;
 
 						renderModal();
 					}
@@ -1465,11 +1528,17 @@ var App = (function(){
 					url : configMap.apis.base + configMap.apis.api.players,
 					udata : {
 						matchid : configMap.matchid
-					} 
+					}
 				},
 				'qs' : {
 					// url : 'http://admin:1234@192.168.20.75/engage/api/mchoice/dtl/id/quiz/format/json',
-					url : configMap.apis.base + configMap.apis.api.questions
+					url : configMap.apis.base + configMap.apis.api.questions,
+					udata : {
+						'topic_id' : configMap.topic.id,
+						'qt_id' : configMap.game.id,
+						'qnum' : 10,
+						'is_solo' : false
+					}
 				}
 			},
 			data = (urls[mode].udata) ? urls[mode].udata : {},
@@ -1477,8 +1546,9 @@ var App = (function(){
 
 		$.ajax({
 			url : url,
-			method : 'get',
+			method : 'post',
 			data : data,
+			cache: false,
 			success : function(result){
 				configMap[mode] = result;
 				if( mode == 'ps' ){
@@ -1516,6 +1586,13 @@ var App = (function(){
 	// };
 	// End Module /createMatch/
 
+	var applyXButton = function(){
+		// Close Button
+		var xbutton = $('<a class="game-exit"></a>').html(App.Templates['button-exit']());
+		jqueryMap.$main.append(xbutton);
+		bind();
+	}
+
 	// Start Module /findMatch/
 	// Purpose : After Clicking play, creates/joins a match
 	var findMatch = function(){
@@ -1525,6 +1602,7 @@ var App = (function(){
 		// Play sound
 		// configMap.audio.sfx.bg_random.play();
 		jqueryMap.$main.html(App.Templates['loading']());
+		applyXButton();
 
 		configMap.matchid = 0; 
 
@@ -1549,21 +1627,28 @@ var App = (function(){
 	var waitCallback = function(){
 		var urls = configMap.apis.api,
 			base = configMap.apis.base,
-			data = {},
+			data = {
+				name : configMap.player.name,
+				matchid : configMap.matchid,
+				topic_id : configMap.topic.id,
+				qt_id : configMap.game.id
+			},
 			timer = configMap.findMatchTimer;
 
-		data.name = configMap.player.name;
-		data.matchid = configMap.matchid;
-
 		// console.log(configMap.player, localStorage.player);
-		console.log(configMap.player.name);
+		console.log(configMap.player.name, 'match_status ' + configMap.matchStatus);
 
 		if(timer.currentTries <= timer.maxTries){
 			$.ajax({
 				url : base + urls[configMap.matchStatus],
-				method : 'get',
+				method : 'POST',
 				data : data,
+				cache: false,
 				success : function(result){
+					if( configMap.matchStatus === 'find' ){
+						// Load Quesitons
+						configMap.qs = result.qs;
+					}
 					ajxCallback(result);
 				},
 				error : function(xhr){
@@ -1618,7 +1703,7 @@ var App = (function(){
 			// Initialize Game
 			// initGame();
 			// get questions
-			getFile('qs');
+			// getFile('qs');
 			// get profiles
 			getFile('ps', renderVS);
 			// sh*t pants
@@ -1632,61 +1717,64 @@ var App = (function(){
 		var currScreen = configMap.currentScreen;
 		var modal = $('.pop-up');
 
-		console.log('state -->', state);
-
+		console.log('state -->', state, (location.hash !== "") ? location.hash : 'yeah wala' );
+		// $('.extra').appen(location.hash);
 		// Reset Modal
 		// if( modal.length ){
 		// 	// Close modal
 
 		// }else{
 			if ( state === null ){
-				configMap.modal.title = "Oops..";
-				configMap.modal.message = "Are you sure you want to exit the game?";
-				configMap.modal.isprompt = true;
-				configMap.modal.buttons = {
-					"no" : { "caption" : "Nope", "class" : "pop-up__leave--no is-yellow" },
-					"yes" : { "caption" : "Yep", "class" : "pop-up__leave--yes" }
-				};
+				if( configMap.mod_marker === true ){
+					configMap.modal.title = "Oops..";
+					configMap.modal.message = "Are you sure you want to exit the game?";
+					configMap.modal.isprompt = true;
+					configMap.modal.buttons = {
+						"no" : { "caption" : "Nope", "class" : "pop-up__leave--no is-yellow" },
+						"yes" : { "caption" : "Yep", "class" : "pop-up__leave--yes" }
+					};
+					configMap.modal.isActive = true;
 
-				console.log('display Modal --->');
-				renderModal();
-				location.hash = "play";
-			}else{
-				destroyModal();
-				console.log('hide Modal --->');
+					// $('.extra').append('display Modal ---><br />');
+					renderModal();
+					// location.hash = "play";
+				}
 			}
+			// else{
+			// 	// if( location.hash != "play" ){
+			// 	destroyModal();
+			// 	// $('.extra').append('hide Modal ---><br />');
+			// 	// }
+			// }
 		// }
 		
+		configMap.mod_marker = true;
 	};
 
 	// Start Module /initGame/
 	// Purpose : Initializes our Game
 	var initGame = function(){
 
+
 		// For the back button
-		var state = 0;
+		// var state = 0;
+		var Obj = { "state" : 1 },
+			title = "project engage",
+			url = "#play";
+
+		// state++;
+		// Push the state and change the url
+		history.pushState(Obj, title, url);
+		console.log('pushState executed --->');
+		history.forward();
 		// Readying the state push
-		var storeState = function(){
-			state++;
+		// var storeState = function(){
+		// };
 
-			var Obj = { "state" : state },
-				title = "project engage",
-				url = "#play";
+		// // Execute StoreState
+		// storeState();
 
-			// Push the state and change the url
-			history.pushState(Obj, title, url);
-
-			// Add a listener
-			window.addEventListener('popstate' , function(e){
-				var s = e.state;
-				closeWindow(s);
-			});
-		};
-
-		// Execute StoreState
-		storeState();
-
-		var closeWindowFeature;
+		// var closeWindowFeature;
 
 		// Browser Detection
 		var standalone = window.navigator.standalone,
@@ -1738,59 +1826,59 @@ var App = (function(){
 
 		// Sounds
 		// BG for Finding a Random Match
-		configMap.audio.sfx.bg_random = new Howl({
-			urls : configMap.audio.files.bg_random,
-			loop: true,
-			volume : 0.25
-		});
+		// configMap.audio.sfx.bg_random = new Howl({
+		// 	urls : configMap.audio.files.bg_random,
+		// 	loop: true,
+		// 	volume : 0.25
+		// });
 
-		// SFX for Correct Answer
-		configMap.audio.sfx.sfx_correct = new Howl({
-			urls : configMap.audio.files.sfx_correct,
-			volume : 0.5
-		});
+		// // SFX for Correct Answer
+		// configMap.audio.sfx.sfx_correct = new Howl({
+		// 	urls : configMap.audio.files.sfx_correct,
+		// 	volume : 0.5
+		// });
 
-		// SFX for Incorrect Answer
-		configMap.audio.sfx.sfx_incorrect = new Howl({
-			urls : configMap.audio.files.sfx_incorrect,
-			volume : 0.5
-		});
+		// // SFX for Incorrect Answer
+		// configMap.audio.sfx.sfx_incorrect = new Howl({
+		// 	urls : configMap.audio.files.sfx_incorrect,
+		// 	volume : 0.5
+		// });
 
-		// SFX when displaying Versus Page
-		configMap.audio.sfx.sfx_versus = new Howl({
-			urls : configMap.audio.files.sfx_versus,
-			volume : 0.5
-		});
+		// // SFX when displaying Versus Page
+		// configMap.audio.sfx.sfx_versus = new Howl({
+		// 	urls : configMap.audio.files.sfx_versus,
+		// 	volume : 0.5
+		// });
 
 
-		// street fighter sfx
-		configMap.audio.sfx.sfx_fight = new Howl({ urls : ['assets/audio/street_fighter/56H.wav'] });
-		configMap.audio.sfx.sfx_round = new Howl({
-			urls : ['assets/audio/street_fighter/5FH.wav'],
-			onend : function(){
-				configMap.audio.sfx['sfx_'+configMap.currentRound].play();
-			}
-		});
-		configMap.audio.sfx.sfx_roundx = new Howl({ urls : ['assets/audio/street_fighter/5FH.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_1 = new Howl({ urls : ['assets/audio/street_fighter/60H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_2 = new Howl({ urls : ['assets/audio/street_fighter/61H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_3 = new Howl({ urls : ['assets/audio/street_fighter/62H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_4 = new Howl({ urls : ['assets/audio/street_fighter/63H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_5 = new Howl({ urls : ['assets/audio/street_fighter/64H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_6 = new Howl({ urls : ['assets/audio/street_fighter/65H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_7 = new Howl({ urls : ['assets/audio/street_fighter/66H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_8 = new Howl({ urls : ['assets/audio/street_fighter/67H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_9 = new Howl({ urls : ['assets/audio/street_fighter/68H.wav'], onend : function(){ playFight(); } });
-		configMap.audio.sfx.sfx_final = new Howl({
-			urls : ['assets/audio/street_fighter/69H.wav'],
-			onend : function(){
-				configMap.audio.sfx.sfx_roundx.play();
-			}
-		});
+		// // street fighter sfx
+		// configMap.audio.sfx.sfx_fight = new Howl({ urls : ['assets/audio/street_fighter/56H.wav'] });
+		// configMap.audio.sfx.sfx_round = new Howl({
+		// 	urls : ['assets/audio/street_fighter/5FH.wav'],
+		// 	onend : function(){
+		// 		configMap.audio.sfx['sfx_'+configMap.currentRound].play();
+		// 	}
+		// });
+		// configMap.audio.sfx.sfx_roundx = new Howl({ urls : ['assets/audio/street_fighter/5FH.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_1 = new Howl({ urls : ['assets/audio/street_fighter/60H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_2 = new Howl({ urls : ['assets/audio/street_fighter/61H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_3 = new Howl({ urls : ['assets/audio/street_fighter/62H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_4 = new Howl({ urls : ['assets/audio/street_fighter/63H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_5 = new Howl({ urls : ['assets/audio/street_fighter/64H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_6 = new Howl({ urls : ['assets/audio/street_fighter/65H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_7 = new Howl({ urls : ['assets/audio/street_fighter/66H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_8 = new Howl({ urls : ['assets/audio/street_fighter/67H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_9 = new Howl({ urls : ['assets/audio/street_fighter/68H.wav'], onend : function(){ playFight(); } });
+		// configMap.audio.sfx.sfx_final = new Howl({
+		// 	urls : ['assets/audio/street_fighter/69H.wav'],
+		// 	onend : function(){
+		// 		configMap.audio.sfx.sfx_roundx.play();
+		// 	}
+		// });
 
-		var playFight = function(){
-			configMap.audio.sfx.sfx_fight.play();
-		};
+		// var playFight = function(){
+		// 	configMap.audio.sfx.sfx_fight.play();
+		// };
 
 
 		// console.log('Audio has been set');
@@ -1836,6 +1924,13 @@ var App = (function(){
 		// Actual
 		// localStorage.player.name = {};
 	};
+
+	// Instantiate popstate listener
+	window.addEventListener('popstate' , function(e){
+		var s = e.state;
+		console.log('popstate changed --->');
+		closeWindow(s);
+	});
 
 
 	// -----------------------------------------------------------------------------
@@ -1893,10 +1988,10 @@ var App = (function(){
 		endTimer(configMap.roundEndTimer);
 		endTimer(configMap.resultTimer);
 
-		configMap.audio.sfx.bg_random.stop();
-		configMap.audio.sfx.sfx_correct.stop();
-		configMap.audio.sfx.sfx_incorrect.stop();
-		configMap.audio.sfx.sfx_versus.stop();
+		// configMap.audio.sfx.bg_random.stop();
+		// configMap.audio.sfx.sfx_correct.stop();
+		// configMap.audio.sfx.sfx_incorrect.stop();
+		// configMap.audio.sfx.sfx_versus.stop();
 
 		return false;
 	};
@@ -1934,7 +2029,8 @@ var App = (function(){
 		setType : setType,
 		setUser : setUser,
 		setStorage : setStorage,
-		getStorage : getStorage
+		getStorage : getStorage,
+		configMap : configMap
 	};
 
 }());

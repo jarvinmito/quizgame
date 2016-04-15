@@ -52,8 +52,12 @@ $questions[] = array(
 	);*/
 
 #$arr = json_decode(file_get_contents('http://admin:1234@192.168.20.75/engage/api/mchoice/dtl/id/quiz/format/json'),TRUE);
+$quiz_type_id = $_POST['type'];
+$topic_id = $_POST['topic_id'];
+$num_of_q = $_POST['qnum'];
+$status = $_POST['status'];
 
-$loadQuesDtl=array('type'=>'Quiz');
+$loadQuesDtl=array('type'=>$quiz_type_id, 'topic_id'=>$topic_id, 'qnum'=>$num_of_q, 'status'=>$status);
 // $loadQuesUrl='http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/loadquestion/';
 $loadQuesUrl=$basePath.'/loadQuestion/';
 $loadQuesDb=curlPost($loadQuesDtl,$loadQuesUrl);

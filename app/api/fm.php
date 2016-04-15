@@ -3,7 +3,9 @@
 require "init.php";
 $matchid = 0;
 $isWaiting = true;
-$name = $_GET['name'];
+$name = $_POST['name'];
+$qt_id = $_POST['qt_id'];
+$topic_id = $_POST['topic_id'];
 // $frRes=json_decode(file_get_contents('http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/findMatch/find/match/format/json'),TRUE);
 $frRes=json_decode(file_get_contents($basePath.'/findMatch/find/match/format/json'),TRUE);
 if($frRes != 0)
@@ -24,16 +26,20 @@ if($frRes != 0)
 	$result = array();
 	$result['match']=$match_result_details;
 
-	$arr = array('matchid' => $matchid, 'match' => $result, 'isWaiting' => $isWaiting);
+	$qs = $q_match;
+
+	$arr = array('matchid' => $matchid, 'match' => $result, 'qs' => $qs, 'isWaiting' => $isWaiting);
 }
 else
 {
-	$createDtl=array('player'=>$name);
+	$createDtl=array('player'=>$name, 'topic_id'=>$topic_id, 'qt_id' => $qt_id);
 	// $createUrl='http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/createMatch/';
 	$createUrl=$basePath.'/createMatch/';
 	$createDb=curlPost($createDtl,$createUrl);
-	$matchid=$createDb;
-	$arr = array('matchid' => $matchid, 'isWaiting' => $isWaiting);
+	$fromdb = json_decode($createDb);
+	$matchid=$fromdb->match_id;
+	$qs = $fromdb->qs;
+	$arr = array('matchid' => $matchid, 'qs' => $qs, 'isWaiting' => $isWaiting);
 }
 
 echo json_encode($arr);

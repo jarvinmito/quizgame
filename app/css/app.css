@@ -564,52 +564,89 @@ th {
  * Copyright (c) 2016 Daniel Eden
  */
 .animated, .engage.animate-in, .engage.animate-out, .versus__one.animate--in, .versus__one.animate--in .player__avatar, .versus__one.animate--in .player__details, .versus__one.animate--out, .versus__two.animate--in, .versus__two.animate--in .player__avatar, .versus__two.animate--in .player__details, .versus__two.animate--out, .versus__vs.animate--in, .versus__vs.animate--out, .result-page--win.animate--in::before, .result-page--win.animate--in .result-page__title, .result-page--lose.animate--in::before, .result-page--lose.animate--in .result-page__title, .result-page--tie.animate--in::before, .result-page--tie.animate--in .result-page__title, .open-ended.is-correct::before, .open-ended.is-wrong::before, .open-ended__answer, .ingame__options .answer-me,
-.ingame__options .answer-opponent {
+.ingame__options .answer-opponent, .waiting-screen, .waiting-screen__holder, .pop-up--achievement .pop-up__wrap.animate-in, .pop-up--achievement .pop-up__wrap.animate-out {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
 
 .animated.infinite, .infinite.engage.animate-in, .infinite.engage.animate-out, .infinite.versus__one.animate--in, .versus__one.animate--in .infinite.player__avatar, .versus__one.animate--in .infinite.player__details, .infinite.versus__one.animate--out, .infinite.versus__two.animate--in, .versus__two.animate--in .infinite.player__avatar, .versus__two.animate--in .infinite.player__details, .infinite.versus__two.animate--out, .infinite.versus__vs.animate--in, .infinite.versus__vs.animate--out, .infinite.result-page--win.animate--in::before, .result-page--win.animate--in .infinite.result-page__title, .infinite.result-page--lose.animate--in::before, .result-page--lose.animate--in .infinite.result-page__title, .infinite.result-page--tie.animate--in::before, .result-page--tie.animate--in .infinite.result-page__title, .infinite.open-ended.is-correct::before, .infinite.open-ended.is-wrong::before, .infinite.open-ended__answer, .ingame__options .infinite.answer-me,
-.ingame__options .infinite.answer-opponent {
+.ingame__options .infinite.answer-opponent, .infinite.waiting-screen, .infinite.waiting-screen__holder, .pop-up--achievement .infinite.pop-up__wrap.animate-in, .pop-up--achievement .infinite.pop-up__wrap.animate-out {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
 .animated.hinge, .hinge.engage.animate-in, .hinge.engage.animate-out, .hinge.versus__one.animate--in, .versus__one.animate--in .hinge.player__avatar, .versus__one.animate--in .hinge.player__details, .hinge.versus__one.animate--out, .hinge.versus__two.animate--in, .versus__two.animate--in .hinge.player__avatar, .versus__two.animate--in .hinge.player__details, .hinge.versus__two.animate--out, .hinge.versus__vs.animate--in, .hinge.versus__vs.animate--out, .hinge.result-page--win.animate--in::before, .result-page--win.animate--in .hinge.result-page__title, .hinge.result-page--lose.animate--in::before, .result-page--lose.animate--in .hinge.result-page__title, .hinge.result-page--tie.animate--in::before, .result-page--tie.animate--in .hinge.result-page__title, .hinge.open-ended.is-correct::before, .hinge.open-ended.is-wrong::before, .hinge.open-ended__answer, .ingame__options .hinge.answer-me,
-.ingame__options .hinge.answer-opponent {
+.ingame__options .hinge.answer-opponent, .hinge.waiting-screen, .hinge.waiting-screen__holder, .pop-up--achievement .hinge.pop-up__wrap.animate-in, .pop-up--achievement .hinge.pop-up__wrap.animate-out {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
 .animated.flipOutX, .flipOutX.engage.animate-in, .flipOutX.engage.animate-out, .flipOutX.versus__one.animate--in, .versus__one.animate--in .flipOutX.player__avatar, .versus__one.animate--in .flipOutX.player__details, .flipOutX.versus__one.animate--out, .flipOutX.versus__two.animate--in, .versus__two.animate--in .flipOutX.player__avatar, .versus__two.animate--in .flipOutX.player__details, .flipOutX.versus__two.animate--out, .flipOutX.versus__vs.animate--in, .flipOutX.versus__vs.animate--out, .flipOutX.result-page--win.animate--in::before, .result-page--win.animate--in .flipOutX.result-page__title, .flipOutX.result-page--lose.animate--in::before, .result-page--lose.animate--in .flipOutX.result-page__title, .flipOutX.result-page--tie.animate--in::before, .result-page--tie.animate--in .flipOutX.result-page__title, .flipOutX.open-ended.is-correct::before, .flipOutX.open-ended.is-wrong::before, .flipOutX.open-ended__answer, .ingame__options .flipOutX.answer-me,
-.ingame__options .flipOutX.answer-opponent,
+.ingame__options .flipOutX.answer-opponent, .flipOutX.waiting-screen, .flipOutX.waiting-screen__holder, .pop-up--achievement .flipOutX.pop-up__wrap.animate-in, .pop-up--achievement .flipOutX.pop-up__wrap.animate-out,
 .animated.flipOutY,
 .flipOutY.engage.animate-in,
+.engage.animate-in.waiting-screen__holder,
 .flipOutY.engage.animate-out,
+.engage.animate-out.waiting-screen__holder,
 .flipOutY.versus__one.animate--in,
+.versus__one.animate--in.waiting-screen__holder,
 .versus__one.animate--in .flipOutY.player__avatar,
+.versus__one.animate--in .player__avatar.waiting-screen__holder,
 .versus__one.animate--in .flipOutY.player__details,
+.versus__one.animate--in .player__details.waiting-screen__holder,
 .flipOutY.versus__one.animate--out,
+.versus__one.animate--out.waiting-screen__holder,
 .flipOutY.versus__two.animate--in,
+.versus__two.animate--in.waiting-screen__holder,
 .versus__two.animate--in .flipOutY.player__avatar,
+.versus__two.animate--in .player__avatar.waiting-screen__holder,
 .versus__two.animate--in .flipOutY.player__details,
+.versus__two.animate--in .player__details.waiting-screen__holder,
 .flipOutY.versus__two.animate--out,
+.versus__two.animate--out.waiting-screen__holder,
 .flipOutY.versus__vs.animate--in,
+.versus__vs.animate--in.waiting-screen__holder,
 .flipOutY.versus__vs.animate--out,
+.versus__vs.animate--out.waiting-screen__holder,
 .flipOutY.result-page--win.animate--in::before,
+.result-page--win.animate--in.waiting-screen__holder::before,
 .result-page--win.animate--in .flipOutY.result-page__title,
+.result-page--win.animate--in .result-page__title.waiting-screen__holder,
 .flipOutY.result-page--lose.animate--in::before,
+.result-page--lose.animate--in.waiting-screen__holder::before,
 .result-page--lose.animate--in .flipOutY.result-page__title,
+.result-page--lose.animate--in .result-page__title.waiting-screen__holder,
 .flipOutY.result-page--tie.animate--in::before,
+.result-page--tie.animate--in.waiting-screen__holder::before,
 .result-page--tie.animate--in .flipOutY.result-page__title,
+.result-page--tie.animate--in .result-page__title.waiting-screen__holder,
 .flipOutY.open-ended.is-correct::before,
+.open-ended.is-correct.waiting-screen__holder::before,
 .flipOutY.open-ended.is-wrong::before,
+.open-ended.is-wrong.waiting-screen__holder::before,
 .flipOutY.open-ended__answer,
 .ingame__options .flipOutY.answer-me,
+.ingame__options .answer-me.waiting-screen__holder,
 .ingame__options .flipOutY.answer-opponent,
+.ingame__options .answer-opponent.waiting-screen__holder,
+.flipOutY.waiting-screen,
+.waiting-screen__holder,
+.pop-up--achievement .flipOutY.pop-up__wrap.animate-in,
+.pop-up--achievement .pop-up__wrap.animate-in.waiting-screen__holder,
+.pop-up--achievement .flipOutY.pop-up__wrap.animate-out,
+.pop-up--achievement .pop-up__wrap.animate-out.waiting-screen__holder,
 .animated.bounceIn,
 .bounceIn.engage.animate-in,
+.engage.animate-in.result-page--win.animate--in::before,
+.ingame__options .engage.animate-in.answer-me,
+.ingame__options .engage.animate-in.answer-opponent,
 .bounceIn.engage.animate-out,
+.engage.animate-out.result-page--win.animate--in::before,
+.ingame__options .engage.animate-out.answer-me,
+.ingame__options .engage.animate-out.answer-opponent,
 .bounceIn.versus__one.animate--in,
+.versus__one.animate--in.result-page--win::before,
+.ingame__options .versus__one.animate--in.answer-me,
+.ingame__options .versus__one.animate--in.answer-opponent,
 .versus__one.animate--in .bounceIn.player__avatar,
 .versus__one.animate--in .player__avatar.result-page--win.animate--in::before,
 .versus__one.animate--in .ingame__options .player__avatar.answer-me,
@@ -625,7 +662,13 @@ th {
 .ingame__options .player__details.answer-opponent,
 .ingame__options .versus__one.animate--in .player__details.answer-opponent,
 .bounceIn.versus__one.animate--out,
+.versus__one.animate--out.result-page--win.animate--in::before,
+.ingame__options .versus__one.animate--out.answer-me,
+.ingame__options .versus__one.animate--out.answer-opponent,
 .bounceIn.versus__two.animate--in,
+.versus__two.animate--in.result-page--win::before,
+.ingame__options .versus__two.animate--in.answer-me,
+.ingame__options .versus__two.animate--in.answer-opponent,
 .versus__two.animate--in .bounceIn.player__avatar,
 .versus__two.animate--in .player__avatar.result-page--win.animate--in::before,
 .versus__two.animate--in .ingame__options .player__avatar.answer-me,
@@ -641,8 +684,17 @@ th {
 .ingame__options .player__details.answer-opponent,
 .ingame__options .versus__two.animate--in .player__details.answer-opponent,
 .bounceIn.versus__two.animate--out,
+.versus__two.animate--out.result-page--win.animate--in::before,
+.ingame__options .versus__two.animate--out.answer-me,
+.ingame__options .versus__two.animate--out.answer-opponent,
 .bounceIn.versus__vs.animate--in,
+.versus__vs.animate--in.result-page--win::before,
+.ingame__options .versus__vs.animate--in.answer-me,
+.ingame__options .versus__vs.animate--in.answer-opponent,
 .bounceIn.versus__vs.animate--out,
+.versus__vs.animate--out.result-page--win.animate--in::before,
+.ingame__options .versus__vs.animate--out.answer-me,
+.ingame__options .versus__vs.animate--out.answer-opponent,
 .result-page--win.animate--in::before,
 .result-page--win.animate--in .bounceIn.result-page__title,
 .result-page--win.animate--in .result-page__title.result-page--win.animate--in::before,
@@ -652,6 +704,7 @@ th {
 .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--win.animate--in .result-page__title.answer-opponent,
 .bounceIn.result-page--lose.animate--in::before,
+.result-page--lose.animate--in.result-page--win::before,
 .ingame__options .result-page--lose.animate--in.answer-me::before,
 .ingame__options .result-page--lose.animate--in.answer-opponent::before,
 .result-page--lose.animate--in .bounceIn.result-page__title,
@@ -662,6 +715,7 @@ th {
 .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--lose.animate--in .result-page__title.answer-opponent,
 .bounceIn.result-page--tie.animate--in::before,
+.result-page--tie.animate--in.result-page--win::before,
 .ingame__options .result-page--tie.animate--in.answer-me::before,
 .ingame__options .result-page--tie.animate--in.answer-opponent::before,
 .result-page--tie.animate--in .bounceIn.result-page__title,
@@ -672,14 +726,41 @@ th {
 .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--tie.animate--in .result-page__title.answer-opponent,
 .bounceIn.open-ended.is-correct::before,
+.open-ended.is-correct.result-page--win.animate--in::before,
 .ingame__options .open-ended.is-correct.answer-me::before,
 .ingame__options .open-ended.is-correct.answer-opponent::before,
 .bounceIn.open-ended.is-wrong::before,
+.open-ended.is-wrong.result-page--win.animate--in::before,
 .ingame__options .open-ended.is-wrong.answer-me::before,
 .ingame__options .open-ended.is-wrong.answer-opponent::before,
 .bounceIn.open-ended__answer,
+.open-ended__answer.result-page--win.animate--in::before,
+.ingame__options .open-ended__answer.answer-me,
+.ingame__options .open-ended__answer.answer-opponent,
 .ingame__options .answer-me,
 .ingame__options .answer-opponent,
+.bounceIn.waiting-screen,
+.waiting-screen.result-page--win.animate--in::before,
+.ingame__options .waiting-screen.answer-me,
+.ingame__options .waiting-screen.answer-opponent,
+.bounceIn.waiting-screen__holder,
+.waiting-screen__holder.result-page--win.animate--in::before,
+.ingame__options .waiting-screen__holder.answer-me,
+.ingame__options .waiting-screen__holder.answer-opponent,
+.pop-up--achievement .bounceIn.pop-up__wrap.animate-in,
+.pop-up--achievement .pop-up__wrap.animate-in.result-page--win.animate--in::before,
+.pop-up--achievement .ingame__options .pop-up__wrap.animate-in.answer-me,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-in.answer-me,
+.pop-up--achievement
+.ingame__options .pop-up__wrap.animate-in.answer-opponent,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-in.answer-opponent,
+.pop-up--achievement .bounceIn.pop-up__wrap.animate-out,
+.pop-up--achievement .pop-up__wrap.animate-out.result-page--win.animate--in::before,
+.pop-up--achievement .ingame__options .pop-up__wrap.animate-out.answer-me,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-out.answer-me,
+.pop-up--achievement
+.ingame__options .pop-up__wrap.animate-out.answer-opponent,
+.ingame__options .pop-up--achievement .pop-up__wrap.animate-out.answer-opponent,
 .animated.bounceOut,
 .bounceOut.engage.animate-in,
 .bounceOut.engage.animate-out,
@@ -703,7 +784,11 @@ th {
 .bounceOut.open-ended.is-wrong::before,
 .bounceOut.open-ended__answer,
 .ingame__options .bounceOut.answer-me,
-.ingame__options .bounceOut.answer-opponent {
+.ingame__options .bounceOut.answer-opponent,
+.bounceOut.waiting-screen,
+.bounceOut.waiting-screen__holder,
+.pop-up--achievement .bounceOut.pop-up__wrap.animate-in,
+.pop-up--achievement .bounceOut.pop-up__wrap.animate-out {
   -webkit-animation-duration: .75s;
   animation-duration: .75s; }
 
@@ -1672,7 +1757,7 @@ th {
     -webkit-transform: none;
     transform: none; } }
 
-.fadeInUp, .open-ended__answer {
+.fadeInUp, .open-ended__answer, .pop-up--achievement .pop-up__wrap.animate-in {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp; }
 
@@ -1712,7 +1797,7 @@ th {
   to {
     opacity: 0; } }
 
-.fadeOut, .engage.animate-out {
+.fadeOut, .engage.animate-out, .waiting-screen {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut; }
 
@@ -1852,7 +1937,7 @@ th {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0); } }
 
-.fadeOutUp {
+.fadeOutUp, .pop-up--achievement .pop-up__wrap.animate-out {
   -webkit-animation-name: fadeOutUp;
   animation-name: fadeOutUp; }
 
@@ -1931,7 +2016,7 @@ th {
     animation-timing-function: ease-in; } }
 
 .animated.flip, .flip.engage.animate-in, .flip.engage.animate-out, .flip.versus__one.animate--in, .versus__one.animate--in .flip.player__avatar, .versus__one.animate--in .flip.player__details, .flip.versus__one.animate--out, .flip.versus__two.animate--in, .versus__two.animate--in .flip.player__avatar, .versus__two.animate--in .flip.player__details, .flip.versus__two.animate--out, .flip.versus__vs.animate--in, .flip.versus__vs.animate--out, .flip.result-page--win.animate--in::before, .result-page--win.animate--in .flip.result-page__title, .flip.result-page--lose.animate--in::before, .result-page--lose.animate--in .flip.result-page__title, .flip.result-page--tie.animate--in::before, .result-page--tie.animate--in .flip.result-page__title, .flip.open-ended.is-correct::before, .flip.open-ended.is-wrong::before, .flip.open-ended__answer, .ingame__options .flip.answer-me,
-.ingame__options .flip.answer-opponent {
+.ingame__options .flip.answer-opponent, .flip.waiting-screen, .flip.waiting-screen__holder, .pop-up--achievement .flip.pop-up__wrap.animate-in, .pop-up--achievement .flip.pop-up__wrap.animate-out {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
   -webkit-animation-name: flip;
@@ -2099,7 +2184,7 @@ th {
     transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     opacity: 0; } }
 
-.flipOutY {
+.flipOutY, .waiting-screen__holder {
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
   -webkit-animation-name: flipOutY;
@@ -3072,7 +3157,17 @@ body {
   height: 100%;
   color: rgba(0, 0, 0, 0.8);
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+  user-select: none; }
 
 /**
  * 05 OBJECT
@@ -3114,6 +3209,21 @@ body {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column; }
+  .engage .game-exit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px; }
+  .engage .game-exit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 9; }
+    .engage .game-exit svg {
+      width: 24px;
+      height: 24px;
+      fill: #7f8fa8; }
 
 .versus {
   display: -webkit-flex;
@@ -3189,9 +3299,9 @@ body {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
+    -webkit-flex: 4;
+        -ms-flex: 4;
+            flex: 4;
     margin-top: 15px;
     overflow: hidden; }
     .header__player:not(:first-child) {
@@ -3216,7 +3326,8 @@ body {
       margin-bottom: 0;
       line-height: 13px;
       font-size: 10px;
-      text-align: left; }
+      text-align: left;
+      word-break: break-all; }
     .header__player .player__badge {
       padding: 0;
       font-size: 9px;
@@ -3235,11 +3346,27 @@ body {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column; }
+  .header__back-btn {
+    -webkit-flex: 4;
+        -ms-flex: 4;
+            flex: 4;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+    .header__back-btn .game-button {
+      padding: 7px 10px;
+      font-size: 12px; }
 
 .ingame__question {
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -3249,9 +3376,9 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   padding-top: 20px; }
   .ingame__question p {
     margin: 0;
@@ -3260,27 +3387,26 @@ body {
     text-transform: uppercase; }
 
 .ingame__image {
-  -webkit-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -webkit-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
-  margin: 50px 15px 15px 15px;
   border-radius: 5px;
-  margin-bottom: 30px; }
+  margin: 0 15px; }
   .ingame__image p {
-    z-index: 5;
+    margin-bottom: 5px;
     width: 100%;
     font-size: 16px;
     font-weight: 600;
@@ -3293,7 +3419,6 @@ body {
     max-width: 300px; }
 
 .ingame__img-question {
-  margin-top: -15%;
   line-height: 19px; }
 
 .ingame__options {
@@ -3304,9 +3429,9 @@ body {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
   .ingame__options--full {
-    -webkit-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
+    -webkit-flex: 3;
+        -ms-flex: 3;
+            flex: 3;
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
@@ -3326,17 +3451,16 @@ body {
       margin-bottom: 10px;
       line-height: 8vh; }
   .ingame__options--half {
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -webkit-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
     -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
-    -webkit-align-content: flex-end;
-        -ms-flex-line-pack: end;
-            align-content: flex-end;
-    padding-right: 15px;
-    padding-bottom: 30px; }
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    padding-right: 15px; }
     .ingame__options--half .game-button {
       -webkit-flex: 1 0 calc(50% - 15px);
           -ms-flex: 1 0 calc(50% - 15px);
@@ -3489,9 +3613,11 @@ body {
       background-color: #1d7cb0;
       color: #fff; }
   .game-button--yellow {
-    background-color: #e7a036; }
+    background-color: #e7a036;
+    color: #fff; }
     .game-button--yellow:hover, .game-button--yellow:focus {
-      background-color: #d18719; }
+      background-color: #d18719;
+      color: #fff; }
   .game-button .answer-me::before, .game-button .answer-me::after,
   .game-button .answer-opponent::before,
   .game-button .answer-opponent::after {
@@ -3591,6 +3717,9 @@ body {
     font-weight: 700; }
 
 .result-page {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -3634,6 +3763,8 @@ body {
   .result-page--tie .result-page__title {
     margin-top: 20px;
     margin-bottom: 20px; }
+  .result-page--solo .main-player__details {
+    padding: 5px; }
   .result-page__share {
     position: absolute;
     right: 0;
@@ -3650,6 +3781,14 @@ body {
       width: 25px;
       margin-top: 18px;
       margin-left: 5px; }
+  .result-page__main-player {
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+  .result-page__opponent {
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
   .result-page__title {
     margin-bottom: 10px;
     font-family: 'Brady Bunch';
@@ -3676,13 +3815,20 @@ body {
     -webkit-align-content: center;
         -ms-flex-line-pack: center;
             align-content: center;
-    height: 100%; }
+    height: 100%;
+    -webkit-flex: 3;
+        -ms-flex: 3;
+            flex: 3; }
   .result-page__button {
     line-height: 7vh;
     height: 7vh;
-    margin-bottom: 15px; }
+    margin-bottom: 10px; }
     .result-page__button:last-child {
       margin-bottom: 0; }
+  .result-page__rematch {
+    -webkit-flex: 3;
+        -ms-flex: 3;
+            flex: 3; }
 
 .opponent {
   display: -webkit-flex;
@@ -3695,7 +3841,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding-top: 7vh;
+  padding-top: 15px;
   padding-bottom: 15px; }
   .opponent__text p, .opponent__level-points p {
     margin: 0;
@@ -3779,6 +3925,8 @@ body {
     font-weight: 100;
     letter-spacing: 1px;
     text-transform: uppercase; }
+  .main-player__footer {
+    color: #2d4d80; }
 
 .loading-screen {
   position: absolute;
@@ -3942,22 +4090,21 @@ body {
             transform: translate3d(100%, 0, 0); } }
 
 .waiting-screen {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 220px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
   height: 100%;
-  -webkit-align-self: center;
-      -ms-flex-item-align: center;
-          align-self: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 15%;
-  text-align: center; }
+  background-color: #a0daf2; }
+  .waiting-screen__holder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    margin: -50% 0 0 -50%;
+    text-align: center; }
   .waiting-screen__logo {
     width: 180px;
     height: 180px; }
@@ -3965,16 +4112,8 @@ body {
     font-size: 24px;
     margin-bottom: 10px; }
   .waiting-screen__wrap {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    height: 100%; }
+    text-align: center;
+    margin-top: 30px; }
   .waiting-screen__timer {
     font-size: 80px;
     line-height: 80px; }
@@ -3999,6 +4138,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%; }
+  .pop-up--achievement .pop-up__wrap {
+    width: 230px; }
   .pop-up__wrap {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -4220,23 +4361,22 @@ body {
       display: inline-block;
       vertical-align: top; }
   .text-twist__item {
-    background: red;
-    color: white;
     padding: 6px 12px;
     border-radius: 50%;
     display: block;
     font-size: 18px;
-    text-transform: uppercase;
     font-weight: 600;
+    line-height: 22px;
+    text-transform: uppercase;
     text-align: center;
     text-decoration: none; }
     .text-twist__item--small {
       height: 35px;
       width: 35px; }
   .text-twist__action {
-    -webkit-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -4260,6 +4400,13 @@ body {
           -ms-flex-pack: center;
               justify-content: center;
       margin: 5px; }
+
+.achievement {
+  text-align: center; }
+  .achievement__img {
+    width: 70px; }
+  .achievement__text {
+    margin: 0; }
 
 /**
  * 07 THEMES
@@ -4375,6 +4522,18 @@ body {
       .engage .versus .player--two .player__badge:after {
         content: " ";
         background-color: #e7a036; }
+  .engage .text-twist__output .text-twist__item {
+    background-color: #fff;
+    color: #414141; }
+  .engage .text-twist__input .text-twist__item {
+    background-color: #2d4d80;
+    color: #fff; }
+  .engage .text-twist.is-wrong .text-twist__output .text-twist__item {
+    background-color: #d23139;
+    color: #fff; }
+  .engage .text-twist.is-correct .text-twist__output .text-twist__item {
+    background-color: #9cc751;
+    color: #1b8933; }
 
 .versus__one.animate--in .player__avatar {
   -webkit-animation-delay: 0.5s;
@@ -4400,6 +4559,13 @@ body {
 
 .result-page--tie.animate--in .result-page__title {
   z-index: -1; }
+
+.waiting-screen {
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s; }
+  .waiting-screen__holder {
+    -webkit-animation-delay: 1.25s;
+            animation-delay: 1.25s; }
 
 /**
  * 08 TRUMPS

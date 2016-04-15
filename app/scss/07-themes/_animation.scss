@@ -130,3 +130,23 @@
   }
   
 }
+
+//Waiting Screen
+.waiting-screen {
+  @extend .animated, .fadeOut;
+  animation-delay: 1.75s;
+  &__holder {
+    @extend .animated, .flipOutY;
+    animation-delay: 1.25s;
+  }
+}
+
+//Pop up Achievements 
+.pop-up--achievement {
+  .pop-up__wrap.animate-in {
+    @extend .animated, .fadeInUp;
+  }
+  .pop-up__wrap.animate-out {
+    @extend .animated, .fadeOutUp;
+  }
+}

@@ -211,4 +211,42 @@
       }
     }
   }
+  
+  
+  
+  //Text Twist
+  .text-twist {
+
+    &__output {
+      .text-twist__item {
+        background-color: $white;
+        color: $dark;
+      }
+    }
+    &__input {
+      .text-twist__item {
+        background-color: $blue;
+        color: $white;
+      }
+    }
+    
+    &.is-wrong {
+      .text-twist__output {
+        .text-twist__item {
+          background-color: $red;
+          color: $white;
+        }
+      }
+    }
+    &.is-correct{
+      .text-twist__output {
+        .text-twist__item {
+          background-color: $light-green;
+          color: $green;
+        }
+      }
+    }
+  }
+  
+  
 }

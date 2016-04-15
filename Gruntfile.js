@@ -269,6 +269,14 @@ module.exports = function (grunt) {
     'clean:tmp'
   ]);
 
+  grunt.registerTask('buildjs', 'Build for js', [
+    'handlebars',
+    'useminPrepare',
+    'concat:generated',
+    'uglify:generated',
+    'usemin'
+  ]);
+
   // default task for developers
   grunt.registerTask('default', ['dev']);
 

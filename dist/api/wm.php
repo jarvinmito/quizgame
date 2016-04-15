@@ -2,9 +2,9 @@
 // CREATING A MATCH
 require "init.php";
 
-$matchid = $_GET['matchid'];
+$matchid = $_POST['matchid'];
 $isWaiting = true;
-$name = $_GET['name'];
+$name = $_POST['name'];
 $matchDtl=array('id'=>$matchid);
 // $match=curlPost($matchDtl,'http://admin:1234@162.209.21.251/engage_cms/engage/api/quizsql/findMatchId/');
 $match=curlPost($matchDtl,$basePath.'/findMatchId/');

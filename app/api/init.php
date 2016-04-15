@@ -4,9 +4,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 
-$basePath = "http://admin:1234@50.57.237.52/engage_uat/engage/api/quizsql";
-
-
+// $basePath = "http://50.57.237.52/engage_uat/engage/api/quizsql";
+$basePath = "http://localhost/engage_uat/engage/api/quizsql";
 
 // $hostname = "localhost";
 // $dbname = "engage_cms";
