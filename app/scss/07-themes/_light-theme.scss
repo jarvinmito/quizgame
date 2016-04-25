@@ -35,9 +35,11 @@
   }
   //Waiting Screen
   .waiting-screen {
-    &__topic {
+    &__topic,
+    &__count{
       color: $blue;
     }
+
     &__wrap {
       color: $green;
       &.is-warning {
@@ -130,9 +132,10 @@
         .main-player__score  {
           color: $white;
         }
+        
       }
     }
-    &--tie {
+    &--draw {
       .result-page__title {
       color: darken($orange, 5%);
       }
@@ -148,6 +151,28 @@
         }
         .main-player__score  {
           color: $dark;
+        }
+      }
+    }
+    &--solo {
+      .result-page__title {
+        color: $green;
+      }
+      .main-player__details {
+        background-color: $light-green;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($light-green, 20%) transparent;
+        }
+        .main-player__name  {
+          color: $black;
+        }
+        .main-player__score  {
+          color: $black;
+        }
+        .main-player__footer  {
+          color: $blue;
         }
       }
     }
@@ -182,6 +207,14 @@
           &:after {
             content: " ";
             background-color: $blue-green;
+          }
+        }
+        &.solo-game {
+          background-color: initial;
+          .player__badge {
+            &:after {
+              background-color: $yellow;
+            }
           }
         }
       }

@@ -1,5 +1,9 @@
 <div class="result-page__list">
 	{{#each buttons}}
-		<button class="game-button result-page__button game-button--{{this.type}} game-button--{{this.color}}">{{this.caption}}</button>
+		{{#ifCond this.type 'parag'}}
+			<p class="{{this.pclass}}">{{this.caption}}</p>
+		{{else}}
+			<button class="game-button result-page__button game-button--{{this.type}} game-button--{{this.color}}">{{this.caption}}</button>
+		{{/ifCond}}
 	{{/each}}
 </div>

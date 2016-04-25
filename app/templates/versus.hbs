@@ -2,7 +2,7 @@
   <div class="versus__vs animate--in">VS</div>
   <div class="versus__one player--one animate--in">
    
-      <img class="player__avatar player__avatar--left" src="assets/images/player-1.png" alt="">
+      <img class="player__avatar player__avatar--left image--hasfallback" src="{{#ifCond player.left.icon ""}}assets/images/player-1.png{{else}}{{player.left.icon}}{{/ifCond}}" alt="">
       <div class="player__details">
         <div class="player__name"><b>{{player.left.name}}</b></div>
         <div class="player__badge"><small>{{player.left.badge}}</small></div>
@@ -13,7 +13,7 @@
 
   <div class="versus__two player--two animate--in">
     
-      <img class="player__avatar player__avatar--right" src="assets/images/player-2.png" alt="">
+      <img class="player__avatar player__avatar--right image--hasfallback" src="{{#ifCond player.right.icon ""}}assets/images/player-1.png{{else}}{{player.right.icon}}{{/ifCond}}" alt="">
       <div class="player__details">
         <div class="player__name"><b>{{player.right.name}}</b></div>
         <div class="player__badge"><small>{{player.right.badge}}</small></div>

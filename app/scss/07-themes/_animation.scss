@@ -11,17 +11,31 @@
 
 //Versus Page
 .versus {
+  .solo-game.animate--in {
+    .player__avatar {
+      @extend .animated, .bounceIn;
+      animation-delay: 0.75s;
+    }
+    .player__details {
+      @extend .animated, .fadeIn;
+      animation-delay: 1s;
+
+    }
+  }
+
   &__one {
     &.animate {
       &--in {
         @extend .animated, .slideInDown;
         .player__avatar {
-          animation-delay: 0.5s;
           @extend .animated, .bounceInLeft;
+          animation-delay: 0.5s;
+          
         }
         .player__details {
-          animation-delay: 1s;
           @extend .animated, .fadeIn;
+          animation-delay: 1s;
+          
         }
       }
       &--out {
@@ -34,12 +48,12 @@
       &--in {
         @extend .animated,.slideInUp;
         .player__avatar {
-          animation-delay: 0.5s;
           @extend .animated,.bounceInRight;
+          animation-delay: 0.5s;
         }
         .player__details {
-          animation-delay: 1s;
           @extend .animated,.fadeIn;
+          animation-delay: 1s;
         }
       }
       &--out {
@@ -63,7 +77,8 @@
 // Result Page
 .result-page {
   
-  &--win {
+  &--win,
+  &--solo{
     &.animate {
       &--in {
         &::before {
@@ -89,7 +104,7 @@
       }
     }
   }
-  &--tie {
+  &--draw {
     &.animate {
       &--in {
         &::before {
@@ -132,14 +147,14 @@
 }
 
 //Waiting Screen
-.waiting-screen {
-  @extend .animated, .fadeOut;
-  animation-delay: 1.75s;
-  &__holder {
-    @extend .animated, .flipOutY;
-    animation-delay: 1.25s;
-  }
-}
+//.waiting-screen {
+//  @extend .animated, .fadeOut;
+//  animation-delay: 1.75s;
+//  &__holder {
+//    @extend .animated, .flipOutY;
+//    animation-delay: 1.25s;
+//  }
+//}
 
 //Pop up Achievements 
 .pop-up--achievement {

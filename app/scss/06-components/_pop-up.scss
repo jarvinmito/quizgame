@@ -13,6 +13,9 @@
     .pop-up__wrap {
       width: 230px;
     }
+    .pop-up__title {
+      padding: 0 10px;
+    }
   }
   &__wrap {
     display: flex;
@@ -33,6 +36,7 @@
   &__title {
     font-size: 18px;
     margin-bottom: 10px;
+    padding: 0 10px;
   }
   &__close {
     position: absolute;

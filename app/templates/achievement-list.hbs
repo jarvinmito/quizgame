@@ -1,0 +1,11 @@
+{{#if list}}
+<ul class="achievement__list">
+	{{#each list}}
+		<li>
+			<h3>{{this.title}}</h3>
+			{{#if this.desc}}
+			<p>{{this.desc}}</p>
+			{{/if}}
+		</li>
+	{{/each}}
+{{/if}}

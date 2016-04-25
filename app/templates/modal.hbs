@@ -1,11 +1,17 @@
-<div class="pop-up">
-  <div class="pop-up__wrap">
+<div class="pop-up {{#if modal.isAchievement}}pop-up--achievement{{/if}}">
+  <div class="pop-up__wrap animate-in">
     <div class="pop-up__header">
       <h4 class="pop-up__title">{{modal.title}}</h4>
+      {{#if modal.hasclosebtn }}
       <a class="pop-up__close" href="javascript:;">{{>button-exit}}</a>
+      {{/if}}
     </div>
-    <div class="pop-up__body">
-      <p>{{modal.message}}</p>
+    <div class="pop-up__body {{#if modal.isAchievement}}achievement{{/if}}">
+      {{#if modal.list}}
+        {{>achievement-list list=modal.list}}
+      {{else}}
+        {{modal.message}}
+      {{/if}}
     </div>
     <div class="pop-up__footer {{#if modal.isprompt }}is-half{{/if}}">
       {{#if modal.buttons }}

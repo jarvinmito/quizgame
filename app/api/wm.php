@@ -11,7 +11,7 @@ $match=curlPost($matchDtl,$basePath.'/findMatchId/');
 $q_match=json_decode($match,TRUE);
 if($q_match){
 	// $rmatch = $q_match;
-	$isWaiting =($q_match[0]['match_player_b']!='') ? false : true;
+	$isWaiting =($q_match['match_player_b']!='') ? false : true;
 }
 
 if($isWaiting === false){
@@ -23,9 +23,9 @@ if($isWaiting === false){
 	$match_player_b_isactive=$q_match->match_player_b_isactive;
 endforeach;*/
 
-	$match_result_details['id']=$q_match[0]['match_id'];
-	$match_result_details['status']=$q_match[0]['match_status'];
-	$match_result_details['isactive']=array('a'=>$q_match[0]['match_player_a_isactive'],'b'=>$q_match[0]['match_player_b_isactive']);
+	$match_result_details['id']=$q_match['match_id'];
+	$match_result_details['status']=$q_match['match_status'];
+	$match_result_details['isactive']=array('a'=>$q_match['match_player_a_isactive'],'b'=>$q_match['match_player_b_isactive']);
 	//$result['rematch']="true";
 	$result = array();
 	$result['match']=$match_result_details;

@@ -563,199 +563,243 @@ th {
  *
  * Copyright (c) 2016 Daniel Eden
  */
-.animated, .engage.animate-in, .engage.animate-out, .versus__one.animate--in, .versus__one.animate--in .player__avatar, .versus__one.animate--in .player__details, .versus__one.animate--out, .versus__two.animate--in, .versus__two.animate--in .player__avatar, .versus__two.animate--in .player__details, .versus__two.animate--out, .versus__vs.animate--in, .versus__vs.animate--out, .result-page--win.animate--in::before, .result-page--win.animate--in .result-page__title, .result-page--lose.animate--in::before, .result-page--lose.animate--in .result-page__title, .result-page--tie.animate--in::before, .result-page--tie.animate--in .result-page__title, .open-ended.is-correct::before, .open-ended.is-wrong::before, .open-ended__answer, .ingame__options .answer-me,
-.ingame__options .answer-opponent, .waiting-screen, .waiting-screen__holder, .pop-up--achievement .pop-up__wrap.animate-in, .pop-up--achievement .pop-up__wrap.animate-out {
+.animated, .engage.animate-in, .engage.animate-out, .versus .solo-game.animate--in .player__avatar, .versus .solo-game.animate--in .player__details, .versus__one.animate--in, .versus__one.animate--in .player__avatar, .versus__one.animate--in .player__details, .versus__one.animate--out, .versus__two.animate--in, .versus__two.animate--in .player__avatar, .versus__two.animate--in .player__details, .versus__two.animate--out, .versus__vs.animate--in, .versus__vs.animate--out, .result-page--win.animate--in::before, .result-page--solo.animate--in::before, .result-page--win.animate--in .result-page__title, .result-page--solo.animate--in .result-page__title, .result-page--lose.animate--in::before, .result-page--lose.animate--in .result-page__title, .result-page--draw.animate--in::before, .result-page--draw.animate--in .result-page__title, .open-ended.is-correct::before, .open-ended.is-wrong::before, .open-ended__answer, .ingame__options .answer-me,
+.ingame__options .answer-opponent, .pop-up--achievement .pop-up__wrap.animate-in, .pop-up--achievement .pop-up__wrap.animate-out {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
 
-.animated.infinite, .infinite.engage.animate-in, .infinite.engage.animate-out, .infinite.versus__one.animate--in, .versus__one.animate--in .infinite.player__avatar, .versus__one.animate--in .infinite.player__details, .infinite.versus__one.animate--out, .infinite.versus__two.animate--in, .versus__two.animate--in .infinite.player__avatar, .versus__two.animate--in .infinite.player__details, .infinite.versus__two.animate--out, .infinite.versus__vs.animate--in, .infinite.versus__vs.animate--out, .infinite.result-page--win.animate--in::before, .result-page--win.animate--in .infinite.result-page__title, .infinite.result-page--lose.animate--in::before, .result-page--lose.animate--in .infinite.result-page__title, .infinite.result-page--tie.animate--in::before, .result-page--tie.animate--in .infinite.result-page__title, .infinite.open-ended.is-correct::before, .infinite.open-ended.is-wrong::before, .infinite.open-ended__answer, .ingame__options .infinite.answer-me,
-.ingame__options .infinite.answer-opponent, .infinite.waiting-screen, .infinite.waiting-screen__holder, .pop-up--achievement .infinite.pop-up__wrap.animate-in, .pop-up--achievement .infinite.pop-up__wrap.animate-out {
+.animated.infinite, .infinite.engage.animate-in, .infinite.engage.animate-out, .versus .solo-game.animate--in .infinite.player__avatar, .versus .solo-game.animate--in .infinite.player__details, .infinite.versus__one.animate--in, .versus__one.animate--in .infinite.player__avatar, .versus__one.animate--in .infinite.player__details, .infinite.versus__one.animate--out, .infinite.versus__two.animate--in, .versus__two.animate--in .infinite.player__avatar, .versus__two.animate--in .infinite.player__details, .infinite.versus__two.animate--out, .infinite.versus__vs.animate--in, .infinite.versus__vs.animate--out, .infinite.result-page--win.animate--in::before, .infinite.result-page--solo.animate--in::before, .result-page--win.animate--in .infinite.result-page__title, .result-page--solo.animate--in .infinite.result-page__title, .infinite.result-page--lose.animate--in::before, .result-page--lose.animate--in .infinite.result-page__title, .infinite.result-page--draw.animate--in::before, .result-page--draw.animate--in .infinite.result-page__title, .infinite.open-ended.is-correct::before, .infinite.open-ended.is-wrong::before, .infinite.open-ended__answer, .ingame__options .infinite.answer-me,
+.ingame__options .infinite.answer-opponent, .pop-up--achievement .infinite.pop-up__wrap.animate-in, .pop-up--achievement .infinite.pop-up__wrap.animate-out {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
-.animated.hinge, .hinge.engage.animate-in, .hinge.engage.animate-out, .hinge.versus__one.animate--in, .versus__one.animate--in .hinge.player__avatar, .versus__one.animate--in .hinge.player__details, .hinge.versus__one.animate--out, .hinge.versus__two.animate--in, .versus__two.animate--in .hinge.player__avatar, .versus__two.animate--in .hinge.player__details, .hinge.versus__two.animate--out, .hinge.versus__vs.animate--in, .hinge.versus__vs.animate--out, .hinge.result-page--win.animate--in::before, .result-page--win.animate--in .hinge.result-page__title, .hinge.result-page--lose.animate--in::before, .result-page--lose.animate--in .hinge.result-page__title, .hinge.result-page--tie.animate--in::before, .result-page--tie.animate--in .hinge.result-page__title, .hinge.open-ended.is-correct::before, .hinge.open-ended.is-wrong::before, .hinge.open-ended__answer, .ingame__options .hinge.answer-me,
-.ingame__options .hinge.answer-opponent, .hinge.waiting-screen, .hinge.waiting-screen__holder, .pop-up--achievement .hinge.pop-up__wrap.animate-in, .pop-up--achievement .hinge.pop-up__wrap.animate-out {
+.animated.hinge, .hinge.engage.animate-in, .hinge.engage.animate-out, .versus .solo-game.animate--in .hinge.player__avatar, .versus .solo-game.animate--in .hinge.player__details, .hinge.versus__one.animate--in, .versus__one.animate--in .hinge.player__avatar, .versus__one.animate--in .hinge.player__details, .hinge.versus__one.animate--out, .hinge.versus__two.animate--in, .versus__two.animate--in .hinge.player__avatar, .versus__two.animate--in .hinge.player__details, .hinge.versus__two.animate--out, .hinge.versus__vs.animate--in, .hinge.versus__vs.animate--out, .hinge.result-page--win.animate--in::before, .hinge.result-page--solo.animate--in::before, .result-page--win.animate--in .hinge.result-page__title, .result-page--solo.animate--in .hinge.result-page__title, .hinge.result-page--lose.animate--in::before, .result-page--lose.animate--in .hinge.result-page__title, .hinge.result-page--draw.animate--in::before, .result-page--draw.animate--in .hinge.result-page__title, .hinge.open-ended.is-correct::before, .hinge.open-ended.is-wrong::before, .hinge.open-ended__answer, .ingame__options .hinge.answer-me,
+.ingame__options .hinge.answer-opponent, .pop-up--achievement .hinge.pop-up__wrap.animate-in, .pop-up--achievement .hinge.pop-up__wrap.animate-out {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
-.animated.flipOutX, .flipOutX.engage.animate-in, .flipOutX.engage.animate-out, .flipOutX.versus__one.animate--in, .versus__one.animate--in .flipOutX.player__avatar, .versus__one.animate--in .flipOutX.player__details, .flipOutX.versus__one.animate--out, .flipOutX.versus__two.animate--in, .versus__two.animate--in .flipOutX.player__avatar, .versus__two.animate--in .flipOutX.player__details, .flipOutX.versus__two.animate--out, .flipOutX.versus__vs.animate--in, .flipOutX.versus__vs.animate--out, .flipOutX.result-page--win.animate--in::before, .result-page--win.animate--in .flipOutX.result-page__title, .flipOutX.result-page--lose.animate--in::before, .result-page--lose.animate--in .flipOutX.result-page__title, .flipOutX.result-page--tie.animate--in::before, .result-page--tie.animate--in .flipOutX.result-page__title, .flipOutX.open-ended.is-correct::before, .flipOutX.open-ended.is-wrong::before, .flipOutX.open-ended__answer, .ingame__options .flipOutX.answer-me,
-.ingame__options .flipOutX.answer-opponent, .flipOutX.waiting-screen, .flipOutX.waiting-screen__holder, .pop-up--achievement .flipOutX.pop-up__wrap.animate-in, .pop-up--achievement .flipOutX.pop-up__wrap.animate-out,
+.animated.flipOutX, .flipOutX.engage.animate-in, .flipOutX.engage.animate-out, .versus .solo-game.animate--in .flipOutX.player__avatar, .versus .solo-game.animate--in .flipOutX.player__details, .flipOutX.versus__one.animate--in, .versus__one.animate--in .flipOutX.player__avatar, .versus__one.animate--in .flipOutX.player__details, .flipOutX.versus__one.animate--out, .flipOutX.versus__two.animate--in, .versus__two.animate--in .flipOutX.player__avatar, .versus__two.animate--in .flipOutX.player__details, .flipOutX.versus__two.animate--out, .flipOutX.versus__vs.animate--in, .flipOutX.versus__vs.animate--out, .flipOutX.result-page--win.animate--in::before, .flipOutX.result-page--solo.animate--in::before, .result-page--win.animate--in .flipOutX.result-page__title, .result-page--solo.animate--in .flipOutX.result-page__title, .flipOutX.result-page--lose.animate--in::before, .result-page--lose.animate--in .flipOutX.result-page__title, .flipOutX.result-page--draw.animate--in::before, .result-page--draw.animate--in .flipOutX.result-page__title, .flipOutX.open-ended.is-correct::before, .flipOutX.open-ended.is-wrong::before, .flipOutX.open-ended__answer, .ingame__options .flipOutX.answer-me,
+.ingame__options .flipOutX.answer-opponent, .pop-up--achievement .flipOutX.pop-up__wrap.animate-in, .pop-up--achievement .flipOutX.pop-up__wrap.animate-out,
 .animated.flipOutY,
 .flipOutY.engage.animate-in,
-.engage.animate-in.waiting-screen__holder,
 .flipOutY.engage.animate-out,
-.engage.animate-out.waiting-screen__holder,
+.versus .solo-game.animate--in .flipOutY.player__avatar,
+.versus .solo-game.animate--in .flipOutY.player__details,
 .flipOutY.versus__one.animate--in,
-.versus__one.animate--in.waiting-screen__holder,
 .versus__one.animate--in .flipOutY.player__avatar,
-.versus__one.animate--in .player__avatar.waiting-screen__holder,
 .versus__one.animate--in .flipOutY.player__details,
-.versus__one.animate--in .player__details.waiting-screen__holder,
 .flipOutY.versus__one.animate--out,
-.versus__one.animate--out.waiting-screen__holder,
 .flipOutY.versus__two.animate--in,
-.versus__two.animate--in.waiting-screen__holder,
 .versus__two.animate--in .flipOutY.player__avatar,
-.versus__two.animate--in .player__avatar.waiting-screen__holder,
 .versus__two.animate--in .flipOutY.player__details,
-.versus__two.animate--in .player__details.waiting-screen__holder,
 .flipOutY.versus__two.animate--out,
-.versus__two.animate--out.waiting-screen__holder,
 .flipOutY.versus__vs.animate--in,
-.versus__vs.animate--in.waiting-screen__holder,
 .flipOutY.versus__vs.animate--out,
-.versus__vs.animate--out.waiting-screen__holder,
 .flipOutY.result-page--win.animate--in::before,
-.result-page--win.animate--in.waiting-screen__holder::before,
+.flipOutY.result-page--solo.animate--in::before,
 .result-page--win.animate--in .flipOutY.result-page__title,
-.result-page--win.animate--in .result-page__title.waiting-screen__holder,
+.result-page--solo.animate--in .flipOutY.result-page__title,
 .flipOutY.result-page--lose.animate--in::before,
-.result-page--lose.animate--in.waiting-screen__holder::before,
 .result-page--lose.animate--in .flipOutY.result-page__title,
-.result-page--lose.animate--in .result-page__title.waiting-screen__holder,
-.flipOutY.result-page--tie.animate--in::before,
-.result-page--tie.animate--in.waiting-screen__holder::before,
-.result-page--tie.animate--in .flipOutY.result-page__title,
-.result-page--tie.animate--in .result-page__title.waiting-screen__holder,
+.flipOutY.result-page--draw.animate--in::before,
+.result-page--draw.animate--in .flipOutY.result-page__title,
 .flipOutY.open-ended.is-correct::before,
-.open-ended.is-correct.waiting-screen__holder::before,
 .flipOutY.open-ended.is-wrong::before,
-.open-ended.is-wrong.waiting-screen__holder::before,
 .flipOutY.open-ended__answer,
 .ingame__options .flipOutY.answer-me,
-.ingame__options .answer-me.waiting-screen__holder,
 .ingame__options .flipOutY.answer-opponent,
-.ingame__options .answer-opponent.waiting-screen__holder,
-.flipOutY.waiting-screen,
-.waiting-screen__holder,
 .pop-up--achievement .flipOutY.pop-up__wrap.animate-in,
-.pop-up--achievement .pop-up__wrap.animate-in.waiting-screen__holder,
 .pop-up--achievement .flipOutY.pop-up__wrap.animate-out,
-.pop-up--achievement .pop-up__wrap.animate-out.waiting-screen__holder,
 .animated.bounceIn,
 .bounceIn.engage.animate-in,
+.versus .solo-game.animate--in .engage.animate-in.player__avatar,
 .engage.animate-in.result-page--win.animate--in::before,
+.engage.animate-in.result-page--solo.animate--in::before,
 .ingame__options .engage.animate-in.answer-me,
 .ingame__options .engage.animate-in.answer-opponent,
 .bounceIn.engage.animate-out,
+.versus .solo-game.animate--in .engage.animate-out.player__avatar,
 .engage.animate-out.result-page--win.animate--in::before,
+.engage.animate-out.result-page--solo.animate--in::before,
 .ingame__options .engage.animate-out.answer-me,
 .ingame__options .engage.animate-out.answer-opponent,
+.versus .solo-game.animate--in .player__avatar,
+.versus .solo-game.animate--in .bounceIn.player__details,
+.versus .solo-game.animate--in .player__details.player__avatar,
+.versus .solo-game.animate--in .player__details.result-page--win.animate--in::before,
+.versus .solo-game.animate--in .player__details.result-page--solo.animate--in::before,
+.versus .solo-game.animate--in .ingame__options .player__details.answer-me,
+.ingame__options .versus .solo-game.animate--in .player__details.answer-me,
+.versus .solo-game.animate--in
+.ingame__options .player__details.answer-opponent,
+.ingame__options .versus .solo-game.animate--in .player__details.answer-opponent,
 .bounceIn.versus__one.animate--in,
+.versus .solo-game.animate--in .versus__one.animate--in.player__avatar,
 .versus__one.animate--in.result-page--win::before,
+.versus__one.animate--in.result-page--solo::before,
 .ingame__options .versus__one.animate--in.answer-me,
 .ingame__options .versus__one.animate--in.answer-opponent,
 .versus__one.animate--in .bounceIn.player__avatar,
+.versus__one.animate--in .versus .solo-game.animate--in .player__avatar,
+.versus .solo-game.animate--in .versus__one.animate--in .player__avatar,
 .versus__one.animate--in .player__avatar.result-page--win.animate--in::before,
+.versus__one.animate--in .player__avatar.result-page--solo.animate--in::before,
 .versus__one.animate--in .ingame__options .player__avatar.answer-me,
 .ingame__options .versus__one.animate--in .player__avatar.answer-me,
 .versus__one.animate--in
 .ingame__options .player__avatar.answer-opponent,
 .ingame__options .versus__one.animate--in .player__avatar.answer-opponent,
 .versus__one.animate--in .bounceIn.player__details,
+.versus__one.animate--in .versus .solo-game.animate--in .player__details.player__avatar,
+.versus .solo-game.animate--in .versus__one.animate--in .player__details.player__avatar,
 .versus__one.animate--in .player__details.result-page--win.animate--in::before,
+.versus__one.animate--in .player__details.result-page--solo.animate--in::before,
 .versus__one.animate--in .ingame__options .player__details.answer-me,
 .ingame__options .versus__one.animate--in .player__details.answer-me,
 .versus__one.animate--in
 .ingame__options .player__details.answer-opponent,
 .ingame__options .versus__one.animate--in .player__details.answer-opponent,
 .bounceIn.versus__one.animate--out,
+.versus .solo-game.animate--in .versus__one.animate--out.player__avatar,
 .versus__one.animate--out.result-page--win.animate--in::before,
+.versus__one.animate--out.result-page--solo.animate--in::before,
 .ingame__options .versus__one.animate--out.answer-me,
 .ingame__options .versus__one.animate--out.answer-opponent,
 .bounceIn.versus__two.animate--in,
+.versus .solo-game.animate--in .versus__two.animate--in.player__avatar,
 .versus__two.animate--in.result-page--win::before,
+.versus__two.animate--in.result-page--solo::before,
 .ingame__options .versus__two.animate--in.answer-me,
 .ingame__options .versus__two.animate--in.answer-opponent,
 .versus__two.animate--in .bounceIn.player__avatar,
+.versus__two.animate--in .versus .solo-game.animate--in .player__avatar,
+.versus .solo-game.animate--in .versus__two.animate--in .player__avatar,
 .versus__two.animate--in .player__avatar.result-page--win.animate--in::before,
+.versus__two.animate--in .player__avatar.result-page--solo.animate--in::before,
 .versus__two.animate--in .ingame__options .player__avatar.answer-me,
 .ingame__options .versus__two.animate--in .player__avatar.answer-me,
 .versus__two.animate--in
 .ingame__options .player__avatar.answer-opponent,
 .ingame__options .versus__two.animate--in .player__avatar.answer-opponent,
 .versus__two.animate--in .bounceIn.player__details,
+.versus__two.animate--in .versus .solo-game.animate--in .player__details.player__avatar,
+.versus .solo-game.animate--in .versus__two.animate--in .player__details.player__avatar,
 .versus__two.animate--in .player__details.result-page--win.animate--in::before,
+.versus__two.animate--in .player__details.result-page--solo.animate--in::before,
 .versus__two.animate--in .ingame__options .player__details.answer-me,
 .ingame__options .versus__two.animate--in .player__details.answer-me,
 .versus__two.animate--in
 .ingame__options .player__details.answer-opponent,
 .ingame__options .versus__two.animate--in .player__details.answer-opponent,
 .bounceIn.versus__two.animate--out,
+.versus .solo-game.animate--in .versus__two.animate--out.player__avatar,
 .versus__two.animate--out.result-page--win.animate--in::before,
+.versus__two.animate--out.result-page--solo.animate--in::before,
 .ingame__options .versus__two.animate--out.answer-me,
 .ingame__options .versus__two.animate--out.answer-opponent,
 .bounceIn.versus__vs.animate--in,
+.versus .solo-game.animate--in .versus__vs.animate--in.player__avatar,
 .versus__vs.animate--in.result-page--win::before,
+.versus__vs.animate--in.result-page--solo::before,
 .ingame__options .versus__vs.animate--in.answer-me,
 .ingame__options .versus__vs.animate--in.answer-opponent,
 .bounceIn.versus__vs.animate--out,
+.versus .solo-game.animate--in .versus__vs.animate--out.player__avatar,
 .versus__vs.animate--out.result-page--win.animate--in::before,
+.versus__vs.animate--out.result-page--solo.animate--in::before,
 .ingame__options .versus__vs.animate--out.answer-me,
 .ingame__options .versus__vs.animate--out.answer-opponent,
 .result-page--win.animate--in::before,
+.result-page--solo.animate--in::before,
 .result-page--win.animate--in .bounceIn.result-page__title,
+.result-page--win.animate--in .versus .solo-game.animate--in .result-page__title.player__avatar,
+.versus .solo-game.animate--in .result-page--win.animate--in .result-page__title.player__avatar,
 .result-page--win.animate--in .result-page__title.result-page--win.animate--in::before,
+.result-page--win.animate--in .result-page__title.result-page--solo.animate--in::before,
 .result-page--win.animate--in .ingame__options .result-page__title.answer-me,
 .ingame__options .result-page--win.animate--in .result-page__title.answer-me,
 .result-page--win.animate--in
 .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--win.animate--in .result-page__title.answer-opponent,
+.result-page--solo.animate--in .bounceIn.result-page__title,
+.result-page--solo.animate--in .versus .solo-game.animate--in .result-page__title.player__avatar,
+.versus .solo-game.animate--in .result-page--solo.animate--in .result-page__title.player__avatar,
+.result-page--solo.animate--in .result-page__title.result-page--win.animate--in::before,
+.result-page--solo.animate--in .result-page__title.result-page--solo.animate--in::before,
+.result-page--solo.animate--in .ingame__options .result-page__title.answer-me,
+.ingame__options .result-page--solo.animate--in .result-page__title.answer-me,
+.result-page--solo.animate--in
+.ingame__options .result-page__title.answer-opponent,
+.ingame__options .result-page--solo.animate--in .result-page__title.answer-opponent,
 .bounceIn.result-page--lose.animate--in::before,
+.versus .solo-game.animate--in .result-page--lose.animate--in.player__avatar::before,
 .result-page--lose.animate--in.result-page--win::before,
+.result-page--lose.animate--in.result-page--solo::before,
 .ingame__options .result-page--lose.animate--in.answer-me::before,
 .ingame__options .result-page--lose.animate--in.answer-opponent::before,
 .result-page--lose.animate--in .bounceIn.result-page__title,
+.result-page--lose.animate--in .versus .solo-game.animate--in .result-page__title.player__avatar,
+.versus .solo-game.animate--in .result-page--lose.animate--in .result-page__title.player__avatar,
 .result-page--lose.animate--in .result-page__title.result-page--win.animate--in::before,
+.result-page--lose.animate--in .result-page__title.result-page--solo.animate--in::before,
 .result-page--lose.animate--in .ingame__options .result-page__title.answer-me,
 .ingame__options .result-page--lose.animate--in .result-page__title.answer-me,
 .result-page--lose.animate--in
 .ingame__options .result-page__title.answer-opponent,
 .ingame__options .result-page--lose.animate--in .result-page__title.answer-opponent,
-.bounceIn.result-page--tie.animate--in::before,
-.result-page--tie.animate--in.result-page--win::before,
-.ingame__options .result-page--tie.animate--in.answer-me::before,
-.ingame__options .result-page--tie.animate--in.answer-opponent::before,
-.result-page--tie.animate--in .bounceIn.result-page__title,
-.result-page--tie.animate--in .result-page__title.result-page--win.animate--in::before,
-.result-page--tie.animate--in .ingame__options .result-page__title.answer-me,
-.ingame__options .result-page--tie.animate--in .result-page__title.answer-me,
-.result-page--tie.animate--in
+.bounceIn.result-page--draw.animate--in::before,
+.versus .solo-game.animate--in .result-page--draw.animate--in.player__avatar::before,
+.result-page--draw.animate--in.result-page--win::before,
+.result-page--draw.animate--in.result-page--solo::before,
+.ingame__options .result-page--draw.animate--in.answer-me::before,
+.ingame__options .result-page--draw.animate--in.answer-opponent::before,
+.result-page--draw.animate--in .bounceIn.result-page__title,
+.result-page--draw.animate--in .versus .solo-game.animate--in .result-page__title.player__avatar,
+.versus .solo-game.animate--in .result-page--draw.animate--in .result-page__title.player__avatar,
+.result-page--draw.animate--in .result-page__title.result-page--win.animate--in::before,
+.result-page--draw.animate--in .result-page__title.result-page--solo.animate--in::before,
+.result-page--draw.animate--in .ingame__options .result-page__title.answer-me,
+.ingame__options .result-page--draw.animate--in .result-page__title.answer-me,
+.result-page--draw.animate--in
 .ingame__options .result-page__title.answer-opponent,
-.ingame__options .result-page--tie.animate--in .result-page__title.answer-opponent,
+.ingame__options .result-page--draw.animate--in .result-page__title.answer-opponent,
 .bounceIn.open-ended.is-correct::before,
+.versus .solo-game.animate--in .open-ended.is-correct.player__avatar::before,
 .open-ended.is-correct.result-page--win.animate--in::before,
+.open-ended.is-correct.result-page--solo.animate--in::before,
 .ingame__options .open-ended.is-correct.answer-me::before,
 .ingame__options .open-ended.is-correct.answer-opponent::before,
 .bounceIn.open-ended.is-wrong::before,
+.versus .solo-game.animate--in .open-ended.is-wrong.player__avatar::before,
 .open-ended.is-wrong.result-page--win.animate--in::before,
+.open-ended.is-wrong.result-page--solo.animate--in::before,
 .ingame__options .open-ended.is-wrong.answer-me::before,
 .ingame__options .open-ended.is-wrong.answer-opponent::before,
 .bounceIn.open-ended__answer,
+.versus .solo-game.animate--in .open-ended__answer.player__avatar,
 .open-ended__answer.result-page--win.animate--in::before,
+.open-ended__answer.result-page--solo.animate--in::before,
 .ingame__options .open-ended__answer.answer-me,
 .ingame__options .open-ended__answer.answer-opponent,
 .ingame__options .answer-me,
 .ingame__options .answer-opponent,
-.bounceIn.waiting-screen,
-.waiting-screen.result-page--win.animate--in::before,
-.ingame__options .waiting-screen.answer-me,
-.ingame__options .waiting-screen.answer-opponent,
-.bounceIn.waiting-screen__holder,
-.waiting-screen__holder.result-page--win.animate--in::before,
-.ingame__options .waiting-screen__holder.answer-me,
-.ingame__options .waiting-screen__holder.answer-opponent,
 .pop-up--achievement .bounceIn.pop-up__wrap.animate-in,
+.pop-up--achievement .versus .solo-game.animate--in .pop-up__wrap.animate-in.player__avatar,
+.versus .solo-game.animate--in .pop-up--achievement .pop-up__wrap.animate-in.player__avatar,
 .pop-up--achievement .pop-up__wrap.animate-in.result-page--win.animate--in::before,
+.pop-up--achievement .pop-up__wrap.animate-in.result-page--solo.animate--in::before,
 .pop-up--achievement .ingame__options .pop-up__wrap.animate-in.answer-me,
 .ingame__options .pop-up--achievement .pop-up__wrap.animate-in.answer-me,
 .pop-up--achievement
 .ingame__options .pop-up__wrap.animate-in.answer-opponent,
 .ingame__options .pop-up--achievement .pop-up__wrap.animate-in.answer-opponent,
 .pop-up--achievement .bounceIn.pop-up__wrap.animate-out,
+.pop-up--achievement .versus .solo-game.animate--in .pop-up__wrap.animate-out.player__avatar,
+.versus .solo-game.animate--in .pop-up--achievement .pop-up__wrap.animate-out.player__avatar,
 .pop-up--achievement .pop-up__wrap.animate-out.result-page--win.animate--in::before,
+.pop-up--achievement .pop-up__wrap.animate-out.result-page--solo.animate--in::before,
 .pop-up--achievement .ingame__options .pop-up__wrap.animate-out.answer-me,
 .ingame__options .pop-up--achievement .pop-up__wrap.animate-out.answer-me,
 .pop-up--achievement
@@ -764,6 +808,8 @@ th {
 .animated.bounceOut,
 .bounceOut.engage.animate-in,
 .bounceOut.engage.animate-out,
+.versus .solo-game.animate--in .bounceOut.player__avatar,
+.versus .solo-game.animate--in .bounceOut.player__details,
 .bounceOut.versus__one.animate--in,
 .versus__one.animate--in .bounceOut.player__avatar,
 .versus__one.animate--in .bounceOut.player__details,
@@ -775,18 +821,18 @@ th {
 .bounceOut.versus__vs.animate--in,
 .bounceOut.versus__vs.animate--out,
 .bounceOut.result-page--win.animate--in::before,
+.bounceOut.result-page--solo.animate--in::before,
 .result-page--win.animate--in .bounceOut.result-page__title,
+.result-page--solo.animate--in .bounceOut.result-page__title,
 .bounceOut.result-page--lose.animate--in::before,
 .result-page--lose.animate--in .bounceOut.result-page__title,
-.bounceOut.result-page--tie.animate--in::before,
-.result-page--tie.animate--in .bounceOut.result-page__title,
+.bounceOut.result-page--draw.animate--in::before,
+.result-page--draw.animate--in .bounceOut.result-page__title,
 .bounceOut.open-ended.is-correct::before,
 .bounceOut.open-ended.is-wrong::before,
 .bounceOut.open-ended__answer,
 .ingame__options .bounceOut.answer-me,
 .ingame__options .bounceOut.answer-opponent,
-.bounceOut.waiting-screen,
-.bounceOut.waiting-screen__holder,
 .pop-up--achievement .bounceOut.pop-up__wrap.animate-in,
 .pop-up--achievement .bounceOut.pop-up__wrap.animate-out {
   -webkit-animation-duration: .75s;
@@ -832,7 +878,7 @@ th {
     -webkit-transform: translate3d(0, -4px, 0);
     transform: translate3d(0, -4px, 0); } }
 
-.bounce, .result-page--tie.animate--in .result-page__title {
+.bounce, .result-page--draw.animate--in .result-page__title {
   -webkit-animation-name: bounce;
   animation-name: bounce;
   -webkit-transform-origin: center bottom;
@@ -1077,7 +1123,7 @@ th {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
-.tada, .result-page--win.animate--in .result-page__title, .open-ended.is-correct::before {
+.tada, .result-page--win.animate--in .result-page__title, .result-page--solo.animate--in .result-page__title, .open-ended.is-correct::before {
   -webkit-animation-name: tada;
   animation-name: tada; }
 
@@ -1242,7 +1288,7 @@ th {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
-.bounceIn, .result-page--win.animate--in::before, .ingame__options .answer-me,
+.bounceIn, .versus .solo-game.animate--in .player__avatar, .result-page--win.animate--in::before, .result-page--solo.animate--in::before, .ingame__options .answer-me,
 .ingame__options .answer-opponent {
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn; }
@@ -1589,7 +1635,7 @@ th {
   to {
     opacity: 1; } }
 
-.fadeIn, .engage.animate-in, .versus__one.animate--in .player__details, .versus__two.animate--in .player__details, .result-page--tie.animate--in::before {
+.fadeIn, .engage.animate-in, .versus .solo-game.animate--in .player__details, .versus__one.animate--in .player__details, .versus__two.animate--in .player__details, .result-page--draw.animate--in::before {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn; }
 
@@ -1797,7 +1843,7 @@ th {
   to {
     opacity: 0; } }
 
-.fadeOut, .engage.animate-out, .waiting-screen {
+.fadeOut, .engage.animate-out {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut; }
 
@@ -2015,8 +2061,8 @@ th {
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in; } }
 
-.animated.flip, .flip.engage.animate-in, .flip.engage.animate-out, .flip.versus__one.animate--in, .versus__one.animate--in .flip.player__avatar, .versus__one.animate--in .flip.player__details, .flip.versus__one.animate--out, .flip.versus__two.animate--in, .versus__two.animate--in .flip.player__avatar, .versus__two.animate--in .flip.player__details, .flip.versus__two.animate--out, .flip.versus__vs.animate--in, .flip.versus__vs.animate--out, .flip.result-page--win.animate--in::before, .result-page--win.animate--in .flip.result-page__title, .flip.result-page--lose.animate--in::before, .result-page--lose.animate--in .flip.result-page__title, .flip.result-page--tie.animate--in::before, .result-page--tie.animate--in .flip.result-page__title, .flip.open-ended.is-correct::before, .flip.open-ended.is-wrong::before, .flip.open-ended__answer, .ingame__options .flip.answer-me,
-.ingame__options .flip.answer-opponent, .flip.waiting-screen, .flip.waiting-screen__holder, .pop-up--achievement .flip.pop-up__wrap.animate-in, .pop-up--achievement .flip.pop-up__wrap.animate-out {
+.animated.flip, .flip.engage.animate-in, .flip.engage.animate-out, .versus .solo-game.animate--in .flip.player__avatar, .versus .solo-game.animate--in .flip.player__details, .flip.versus__one.animate--in, .versus__one.animate--in .flip.player__avatar, .versus__one.animate--in .flip.player__details, .flip.versus__one.animate--out, .flip.versus__two.animate--in, .versus__two.animate--in .flip.player__avatar, .versus__two.animate--in .flip.player__details, .flip.versus__two.animate--out, .flip.versus__vs.animate--in, .flip.versus__vs.animate--out, .flip.result-page--win.animate--in::before, .flip.result-page--solo.animate--in::before, .result-page--win.animate--in .flip.result-page__title, .result-page--solo.animate--in .flip.result-page__title, .flip.result-page--lose.animate--in::before, .result-page--lose.animate--in .flip.result-page__title, .flip.result-page--draw.animate--in::before, .result-page--draw.animate--in .flip.result-page__title, .flip.open-ended.is-correct::before, .flip.open-ended.is-wrong::before, .flip.open-ended__answer, .ingame__options .flip.answer-me,
+.ingame__options .flip.answer-opponent, .pop-up--achievement .flip.pop-up__wrap.animate-in, .pop-up--achievement .flip.pop-up__wrap.animate-out {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
   -webkit-animation-name: flip;
@@ -2184,7 +2230,7 @@ th {
     transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     opacity: 0; } }
 
-.flipOutY, .waiting-screen__holder {
+.flipOutY {
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
   -webkit-animation-name: flipOutY;
@@ -3219,7 +3265,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 9; }
+    z-index: 999; }
     .engage .game-exit svg {
       width: 24px;
       height: 24px;
@@ -3326,8 +3372,7 @@ body {
       margin-bottom: 0;
       line-height: 13px;
       font-size: 10px;
-      text-align: left;
-      word-break: break-all; }
+      text-align: left; }
     .header__player .player__badge {
       padding: 0;
       font-size: 9px;
@@ -3413,13 +3458,17 @@ body {
     text-align: center;
     text-transform: uppercase; }
   .ingame__image img {
-    height: 100%;
-    width: 100%;
-    max-height: 200px;
-    max-width: 300px; }
+    height: 200px;
+    width: 300px;
+    max-height: 100%;
+    max-width: 100%; }
 
 .ingame__img-question {
   line-height: 19px; }
+
+.ingame__count {
+  font-size: 10px;
+  margin-bottom: 5px; }
 
 .ingame__options {
   display: -webkit-flex;
@@ -3521,11 +3570,13 @@ body {
 .player__avatar {
   width: 100px;
   height: 100px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  border-radius: 50%; }
   .player__avatar--small {
     width: 50px;
     height: 50px;
-    margin: 0 5px; }
+    margin: 0 5px;
+    border-radius: 50%; }
 
 .player__name {
   width: 140px;
@@ -3726,9 +3777,9 @@ body {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center; }
@@ -3751,7 +3802,7 @@ body {
     width: 100%;
     height: 30%;
     margin-top: -5%; }
-  .result-page--tie:before {
+  .result-page--draw:before {
     content: " ";
     position: absolute;
     top: 70px;
@@ -3760,9 +3811,22 @@ body {
     background: url("../assets/images/tie-knot.svg") top center no-repeat;
     width: 100%;
     height: 100%; }
-  .result-page--tie .result-page__title {
+  .result-page--draw .result-page__title {
     margin-top: 20px;
     margin-bottom: 20px; }
+  .result-page--solo:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: url("../assets/images/win.svg") top center repeat-x;
+    width: 100%;
+    height: 300px; }
+  .result-page--solo .result-page__main-player {
+    -webkit-flex: 2;
+        -ms-flex: 2;
+            flex: 2; }
   .result-page--solo .main-player__details {
     padding: 5px; }
   .result-page__share {
@@ -3781,14 +3845,6 @@ body {
       width: 25px;
       margin-top: 18px;
       margin-left: 5px; }
-  .result-page__main-player {
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1; }
-  .result-page__opponent {
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1; }
   .result-page__title {
     margin-bottom: 10px;
     font-family: 'Brady Bunch';
@@ -3797,7 +3853,8 @@ body {
     color: #2d4d80;
     letter-spacing: 1;
     font-size: 50px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    width: 100%; }
   .result-page__list {
     max-width: 240px;
     width: 100%;
@@ -3825,6 +3882,14 @@ body {
     margin-bottom: 10px; }
     .result-page__button:last-child {
       margin-bottom: 0; }
+  .result-page__notify {
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 0;
+    color: #2d4d80; }
+    .result-page__notify.is-red {
+      color: #d23139; }
   .result-page__rematch {
     -webkit-flex: 3;
         -ms-flex: 3;
@@ -3841,7 +3906,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding-top: 15px;
+  padding-top: 25px;
   padding-bottom: 15px; }
   .opponent__text p, .opponent__level-points p {
     margin: 0;
@@ -3870,7 +3935,8 @@ body {
     text-align: center; }
     .opponent__avatar img {
       width: 40px;
-      height: 40px; }
+      height: 40px;
+      border-radius: 50%; }
 
 .main-player {
   display: block;
@@ -3884,7 +3950,7 @@ body {
     display: block;
     border-radius: 50%;
     border: 5px solid #db5b14; }
-    @media (min-width: 350px) {
+    @media (min-width: 360px) {
       .main-player__avatar {
         width: 200px;
         height: 200px; } }
@@ -3896,7 +3962,7 @@ body {
     padding: 0;
     background-color: red;
     text-align: center; }
-    @media (min-width: 350px) {
+    @media (min-width: 360px) {
       .main-player__details {
         min-width: 220px;
         margin-top: -50px; } }
@@ -3926,6 +3992,9 @@ body {
     letter-spacing: 1px;
     text-transform: uppercase; }
   .main-player__footer {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 15%;
     color: #2d4d80; }
 
 .loading-screen {
@@ -3967,7 +4036,7 @@ body {
     bottom: 0;
     left: 50%;
     z-index: -1;
-    height: 75%;
+    height: 60%;
     margin-left: -5%; }
   .loading-screen__cloud-one {
     position: absolute;
@@ -4117,6 +4186,9 @@ body {
   .waiting-screen__timer {
     font-size: 80px;
     line-height: 80px; }
+  .waiting-screen__count {
+    font-size: 18px;
+    font-weight: 600; }
   .waiting-screen p {
     margin-bottom: 5px;
     margin-top: 5px; }
@@ -4140,6 +4212,8 @@ body {
   width: 100%; }
   .pop-up--achievement .pop-up__wrap {
     width: 230px; }
+  .pop-up--achievement .pop-up__title {
+    padding: 0 10px; }
   .pop-up__wrap {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -4163,7 +4237,8 @@ body {
     width: 100%; }
   .pop-up__title {
     font-size: 18px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    padding: 0 10px; }
   .pop-up__close {
     position: absolute;
     right: 5px;
@@ -4407,6 +4482,140 @@ body {
     width: 70px; }
   .achievement__text {
     margin: 0; }
+  .achievement__list {
+    text-align: center;
+    list-style: none;
+    padding: 0; }
+    .achievement__list li h3 {
+      margin-bottom: 0;
+      font-size: 20px; }
+
+.solo-game {
+  position: absolute;
+  z-index: 10;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  width: 100%;
+  text-align: center; }
+
+.preloader {
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+              -ms-grid-row-align: center;
+          align-items: center;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
+  height: 100%;
+  width: 100%; }
+
+@-webkit-keyframes loader {
+  0%, 10%, 100% {
+    width: 80px;
+    height: 80px; }
+  65% {
+    width: 150px;
+    height: 150px; } }
+
+@keyframes loader {
+  0%, 10%, 100% {
+    width: 80px;
+    height: 80px; }
+  65% {
+    width: 150px;
+    height: 150px; } }
+
+@-webkit-keyframes loaderBlock {
+  0%, 30% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  55% {
+    background-color: #F37272; }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg); } }
+
+@keyframes loaderBlock {
+  0%, 30% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  55% {
+    background-color: #F37272; }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg); } }
+
+@-webkit-keyframes loaderBlockInverse {
+  0%, 20% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  55% {
+    background-color: #F37272; }
+  100% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg); } }
+
+@keyframes loaderBlockInverse {
+  0%, 20% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  55% {
+    background-color: #F37272; }
+  100% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg); } }
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) translate3d(0, 0, 0);
+          transform: translate(-50%, -50%) rotate(45deg) translate3d(0, 0, 0);
+  -webkit-animation: loader 1.2s infinite ease-in-out;
+          animation: loader 1.2s infinite ease-in-out; }
+  .loader span {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: #EE4040;
+    -webkit-animation: loaderBlock 1.2s infinite ease-in-out both;
+            animation: loaderBlock 1.2s infinite ease-in-out both; }
+    .loader span:nth-child(1) {
+      top: 0;
+      left: 0; }
+    .loader span:nth-child(2) {
+      top: 0;
+      right: 0;
+      -webkit-animation: loaderBlockInverse 1.2s infinite ease-in-out both;
+              animation: loaderBlockInverse 1.2s infinite ease-in-out both; }
+    .loader span:nth-child(3) {
+      bottom: 0;
+      left: 0;
+      -webkit-animation: loaderBlockInverse 1.2s infinite ease-in-out both;
+              animation: loaderBlockInverse 1.2s infinite ease-in-out both; }
+    .loader span:nth-child(4) {
+      bottom: 0;
+      right: 0; }
 
 /**
  * 07 THEMES
@@ -4428,7 +4637,7 @@ body {
     color: #2d4d80; }
   .engage .ingame__image {
     color: #2d4d80; }
-  .engage .waiting-screen__topic {
+  .engage .waiting-screen__topic, .engage .waiting-screen__count {
     color: #2d4d80; }
   .engage .waiting-screen__wrap {
     color: #1b8933; }
@@ -4476,17 +4685,30 @@ body {
       color: #fff; }
     .engage .result-page--lose .main-player__details .main-player__score {
       color: #fff; }
-  .engage .result-page--tie .result-page__title {
+  .engage .result-page--draw .result-page__title {
     color: #c45112; }
-  .engage .result-page--tie .main-player__details {
+  .engage .result-page--draw .main-player__details {
     background-color: #f8c353; }
-    .engage .result-page--tie .main-player__details:before, .engage .result-page--tie .main-player__details:after {
+    .engage .result-page--draw .main-player__details:before, .engage .result-page--draw .main-player__details:after {
       content: "";
       border-color: transparent #ab7607 transparent; }
-    .engage .result-page--tie .main-player__details .main-player__name {
+    .engage .result-page--draw .main-player__details .main-player__name {
       color: #414141; }
-    .engage .result-page--tie .main-player__details .main-player__score {
+    .engage .result-page--draw .main-player__details .main-player__score {
       color: #414141; }
+  .engage .result-page--solo .result-page__title {
+    color: #1b8933; }
+  .engage .result-page--solo .main-player__details {
+    background-color: #9cc751; }
+    .engage .result-page--solo .main-player__details:before, .engage .result-page--solo .main-player__details:after {
+      content: "";
+      border-color: transparent #65872b transparent; }
+    .engage .result-page--solo .main-player__details .main-player__name {
+      color: #000; }
+    .engage .result-page--solo .main-player__details .main-player__score {
+      color: #000; }
+    .engage .result-page--solo .main-player__details .main-player__footer {
+      color: #2d4d80; }
   .engage .versus__vs {
     background: #fff;
     color: #193a5b; }
@@ -4506,6 +4728,10 @@ body {
       .engage .versus .player--one .player__badge:after {
         content: " ";
         background-color: #15a780; }
+    .engage .versus .player--one.solo-game {
+      background-color: initial; }
+      .engage .versus .player--one.solo-game .player__badge:after {
+        background-color: #e7a036; }
   .engage .versus .player--two {
     background-color: #e7a036; }
     .engage .versus .player--two .player__details:before {
@@ -4535,6 +4761,14 @@ body {
     background-color: #9cc751;
     color: #1b8933; }
 
+.versus .solo-game.animate--in .player__avatar {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s; }
+
+.versus .solo-game.animate--in .player__details {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s; }
+
 .versus__one.animate--in .player__avatar {
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s; }
@@ -4551,21 +4785,14 @@ body {
   -webkit-animation-delay: 1s;
           animation-delay: 1s; }
 
-.result-page--win.animate--in .result-page__title {
+.result-page--win.animate--in .result-page__title, .result-page--solo.animate--in .result-page__title {
   z-index: -1; }
 
 .result-page--lose.animate--in .result-page__title {
   z-index: -1; }
 
-.result-page--tie.animate--in .result-page__title {
+.result-page--draw.animate--in .result-page__title {
   z-index: -1; }
-
-.waiting-screen {
-  -webkit-animation-delay: 1.75s;
-          animation-delay: 1.75s; }
-  .waiting-screen__holder {
-    -webkit-animation-delay: 1.25s;
-            animation-delay: 1.25s; }
 
 /**
  * 08 TRUMPS

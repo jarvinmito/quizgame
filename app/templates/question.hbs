@@ -1,12 +1,12 @@
-{{#if data.image}}
-<div class="ingame__image">
-	{{#if data.question}}
-		<p class="ingame__img-question">{{data.question}}</p>
-	{{/if}}
-	<img src="{{data.image}}" alt="Yeah">
+{{#ifCond data.image ""}}
+<div class="ingame__question">
+	<h1 class="question question--{{textLength data.question}}">{{#stripSlashes data.question}}{{/stripSlashes}}</h1>
 </div>
 {{else}}
-<div class="ingame__question">
-	<h1 class="question question--{{textLength data.question}}">{{data.question}}</h1>
+<div class="ingame__image">
+	{{#if data.question}}
+		<p class="ingame__img-question">{{#stripSlashes data.question}}{{/stripSlashes}}</p>
+	{{/if}}
+	<img src="{{imagepath}}{{data.image}}" alt="Yeah">
 </div>
-{{/if}}
+{{/ifCond}}

@@ -17,8 +17,22 @@ $findMatchDtl=array('id'=>$matchid);
 $findMatchUrl=$basePath.'/findMatchId/';
 $findMatchDb=curlPost($findMatchDtl,$findMatchUrl);
 $get=json_decode($findMatchDb,TRUE);
-$players['a'] = array('name' => $get[0]['match_player_a'], 'badge' => 'Magaling', 'place' => 'a', 'score' => 0, 'isactive' => $get[0]['match_player_a_isactive']);
-$players['b'] = array('name' => $get[0]['match_player_b'], 'badge' => 'Magaling', 'place' => 'b', 'score' => 0, 'isactive' => $get[0]['match_player_b_isactive']);
+
+$playera = $get['match_player_a'];
+$playeraa =  $get['match_player_a_isactive'];
+$playera_un =  $get['match_player_username_a'];
+$playeraicon = $get['player_a_photo'];
+$playerabadge = $get['player_a_badge'];
+// $playerabadge = 'Handa';
+$playerb = $get['match_player_b'];
+$playerab =  $get['match_player_b_isactive'];
+$playerb_un =  $get['match_player_username_b'];
+$playerbicon = $get['player_b_photo'];
+$playerbbadge = $get['player_b_badge'];
+// $playerbbadge = 'Handa';
+
+$players['a'] = array('username' => $playera_un , 'name' => $playera, 'icon' => $playeraicon, 'badge' => $playerabadge, 'place' => 'a', 'score' => 0, 'isactive' => $playeraa);
+$players['b'] = array('username' => $playerb_un , 'name' => $playerb, 'icon' => $playerbicon, 'badge' => $playerbbadge, 'place' => 'b', 'score' => 0, 'isactive' => $playerab);
 $arr = array('players' => $players);
 echo json_encode($arr);
 

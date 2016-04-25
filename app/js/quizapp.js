@@ -16,15 +16,19 @@
 
 var App = (function(){
 	// var apiBasePath = "http://localhost/engage_uat/engage/api/quizsql";
-	var apiBasePath = "http://50.57.237.52/engage_uat/engage/api/quizsql";
+	var serverPath = "http://50.57.237.52/engage_uat";
+	var apiBasePath = serverPath+"/engage/api/quizsql";
+	var qimagePath = serverPath+"/engage_cms/mod/engage/images/question/";
 	// var apiBasePath = "../../engage/api/quizsql";
 
 	// Start Setup
 	// Purpose : Holds necessary information about the Game App
 	var configMap = {
+			open_type : null,
 			plstore : {
 				id : 'PLAYER__ID',
 				name : 'PLAYER__NAME',
+				username : 'PLAYER__USERNAME',
 				match : 'ENGAGE__MATCH',
 				mode : 'OPEN__TYPE'
 			},
@@ -94,7 +98,7 @@ var App = (function(){
 			// 1000
 			waitTimer : { timing : null, delay : 1000, currentTime : 1},
 			// 3000
-			findMatchTimer : { timing : null, delay : 3000, maxTries : 60, currentTries : 1},
+			findMatchTimer : { timing : null, delay : 3000, maxTries : 30, currentTries : 1},
 			// 5000
 			matchTimer : { timing : null, delay : 5000 },
 			// 2000
@@ -104,15 +108,16 @@ var App = (function(){
 			// 1000
 			gameTimer : { timing : null, delay : 1000, points : 10 },
 			// 3000
-			roundEndTimer : {timing : null, delay : 3000 },
+			roundEndTimer : { timing : null, delay : 3000 },
 			// 2000
-			resultTimer : {timing : null, delay : 2000 },
+			resultTimer : {timing : null, delay : 20000 },
 			maxScorePerRound : 10,
 			currentRound : 1,
 			currentRoundCount : 1,
 			currentRoundisFin : false,
 			currentScore : {},
 			hasAnswered : false,
+			roundHasEnded : false,
 			modal : {},
 			browser : null,
 			bridge : null,
@@ -134,7 +139,18 @@ var App = (function(){
 					sfx_versus : ['assets/audio/sfx-versus1.mp3']
 				},
 				sfx : {}
-			}
+			},
+			xhrRequests : {
+				'searchRematch' : null,
+				'getUpdates' : null
+			},
+			isRequested : {
+				'challengePlayer' : false,
+				'searchRematch' : false,
+				'acceptChallenge' : false 
+			},
+			req_marker : false,
+			getMatchStatus : null
 		},
 		jqueryMap = {
 			$main : $('.engage'),
@@ -146,7 +162,7 @@ var App = (function(){
 	// Start Module /initSetup/
 	// Purpose : Defaults all properties in the game
 	var initSetup = function(){
-
+		console.log('INITSETUP()');
 		if( configMap.isStatic ){
 			// Static
 			configMap.game = {
@@ -156,7 +172,7 @@ var App = (function(){
 			};
 
 			configMap.topic = {
-				"id" : 1,
+				"id" : 13,
 				"name" : "Paborito ng mga Pinoy",
 				"icon" : "assets/images/yeah.jpg"
 			};
@@ -222,7 +238,8 @@ var App = (function(){
 					"a" : {
 						"id" : 1,
 						"name" : "Kalabaw",
-						"badge" : "Badz",
+						"username" : "kalabaw.23891231",
+						"badge" : "Handa",
 						"place" : "a",
 						"icon" : "",
 						"score" : 0,
@@ -231,7 +248,8 @@ var App = (function(){
 					"b" : {
 						"id" : 2,
 						"name" : "Baka",
-						"badge" : "Despicable",
+						"username" : "baka.123872312",
+						"badge" : "Handa",
 						"place" : "b",
 						"icon" : "",
 						"score" : 0,
@@ -265,20 +283,20 @@ var App = (function(){
 				}
 			};
 
-			if( match_json ){
-				configMap.game = match_json.game || gameDefault;
-				configMap.topic = match_json.topic || topicDefault;
-				configMap.qs = match_json.qs || {};
-				configMap.ps = {
-					"players" : match_json.players
-				} || {};
-				configMap.match = match_json.match || matchDefault;
-				configMap.match.result = { a : null, b : null }
+			configMap.game = (match_json.data) ? match_json.data.game : (match_json.game) ? match_json.game : gameDefault;
+			configMap.topic = (match_json.data) ? match_json.data.topic : (match_json.topic) ? match_json.topic : topicDefault;
+			configMap.qs = (match_json.data) ? match_json.data.qs : (match_json.qs) ? match_json.qs : {};
+			configMap.ps = (match_json.data) ? { "players" : match_json.data.players } : (match_json.players) ? { "players" : match_json.players } : {};
+			
+			if( match_json.data ){
+				configMap.match = match_json.data.match;
+			}else if( match_json.match ){
+				configMap.match = match_json.match;
 			}else{
-				configMap.game = gameDefault;
-				configMap.topic = topicDefault;
 				configMap.match = matchDefault;
 			}
+
+			configMap.match.result = { a : null, b : null };
 
 		}
 
@@ -300,9 +318,19 @@ var App = (function(){
 		// 	configMap.player.name = 'Kalabaw' + Math.random().toString(36).substr(2,5);
 		// 	localStorage[configMap.plstore.name] = configMap.player.name;
 		// }
-
+		var nameStr = localStorage[configMap.plstore.name];
 		// uncomment this if using LOCALSTORAGE
-		configMap.player.name = localStorage[configMap.plstore.name];
+		configMap.player.username = localStorage[configMap.plstore.username];
+		configMap.player.name = nameStr.trim();
+		configMap.player.id = localStorage[configMap.plstore.id];
+		configMap.player.score = 0;
+		// configMap.player.place = 'a';
+
+		configMap.isRequested['challengePlayer'] = false;
+		configMap.isRequested['acceptChallenge'] = false;
+		configMap.isRequested['searchRematch'] = false;
+
+		configMap.req_marker = false;
 
 		// if( !sessionStorage[configMap.plstore.name] ){
 			// comment next line if using LOCALSTORAGE
@@ -311,7 +339,7 @@ var App = (function(){
 		// }
 
 		// configMap.player.name = sessionStorage[configMap.plstore.name];
-		console.log(configMap);
+		console.log(' Current config map ',configMap);
 	};
 	// End Module /initSetup/
 
@@ -390,10 +418,10 @@ var App = (function(){
 
 		// START : Semi-Global button
 		if( $('.game-exit').length ){
-			$('.game-exit').unbind('click');;
+			$('.game-exit').unbind('click');
 			$('.game-exit').click(function(e){
 				e.preventDefault();
-				history.back();
+				history.go(-1);
 			});
 		}
 		// END : Semi-Global button
@@ -404,6 +432,7 @@ var App = (function(){
 			$('.game-button--rematch').click(function(e){
 				e.preventDefault();
 				// Match for another random player
+				configMap.req_marker = true;
 				renderWaitingRematch();
 				// initModule();
 			});
@@ -416,6 +445,8 @@ var App = (function(){
 				// Cancel Rematch
 				destroyWaitingRematch();
 				renderResultButtons();
+				// add exception to api10;
+				callApi10(true);
 				startTimer(configMap.resultTimer);
 				// Stop waiting
 				// initModule();
@@ -427,9 +458,15 @@ var App = (function(){
 			$('.game-button--random').click(function(e){
 				e.preventDefault();
 				// Match for another random player
-				localStorage[configMap.plstore.mode] = 'random';
+				// Reset OPEN__TYPE
+				localStorage.removeItem(configMap.plstore.mode);
+				localStorage.setItem(configMap.plstore.mode, 'random');
+				// localStorage[configMap.plstore.mode] = 'random';
+				configMap.open_type = 'random';
+
 				// Stop all timers
 				freeze();
+				callApi10(true);
 				// Initialize the game
 				initModule();
 			});
@@ -449,6 +486,7 @@ var App = (function(){
 				e.preventDefault();
 				var data = {};
 				var players = getPlayerProps();
+				var sentence = '';
 
 				players.me.result = (players.me.score > players.op.score) ? 'win' : (players.me.score == players.op.score) ? 'draw' : 'lose' ;
 				players.op.result = (players.op.score > players.me.score) ? 'win' : (players.op.score == players.me.score) ? 'draw' : 'lose' ;
@@ -459,16 +497,24 @@ var App = (function(){
 				data.me = players.me;
 				data.op = players.op;
 
+				switch( data.me.result ){
+					case 'win': sentence = 'I just defeated '+data.op.name+' in '+data.topic.name+' ('+data.game.name+')!'; break;
+					case 'draw': sentence = 'I had a tie with '+data.op.name+' in '+data.topic.name+' ('+data.game.name+')!'; break;
+					default : sentence = 'I just lost from '+data.op.name+' in '+data.topic.name+' ('+data.game.name+')!'; break;
+				}
+
+				data.sentence = sentence;
 
 				console.log(data);
 				var stringdata = jsonToString(data);
 
 				if( configMap.browser === 'ios' ){
 					// call iOS share method here
-
+					configMap.bridge.callHandler('share', stringdata);
 				}else{
 					// Call Android share method here
 					Android.share(stringdata);
+					Android.shareCompat(stringdata);
 				}
 
 			});
@@ -480,8 +526,18 @@ var App = (function(){
 			$('.pop-up__exit').unbind('click');
 			$('.pop-up__exit').click(function(e){
 				e.preventDefault();
-				freeze();
 				destroyModal();
+				// If the user is from the waiting screen
+				// Add a screen in the array if exit function is to be executed
+				var screensToExit = ['loading', 'waiting-ch', 'findmatch', 'round', 'question'];
+				if( screensToExit.indexOf(configMap.currentScreen) !== -1 ){
+					// Leave the webview
+					callApi10();
+				}
+
+				if( configMap.currentScreen !== 'result' ){
+					freeze();
+				}
 				// resetSetup();
 				// window.close();
 			});
@@ -541,6 +597,16 @@ var App = (function(){
 		}
 	};
 	// End Module /bind/
+
+	// Start Module /bindImage/
+	var bindImage = function(){
+		if( $('img.image--hasfallback').length ){
+			$('img.image--hasfallback').error(function(){
+				$(this).attr('src', './assets/images/default-img.png');
+			});
+		}
+	};
+	// End Module /bindImage/
 
 	// Start Module /bind/
 	// Purpose : Binds click on each option
@@ -606,14 +672,14 @@ var App = (function(){
 				rounds = configMap.qs.questions.length;
 
 			// Double points if last 2 rounds
-			points = (curRound >= rounds - 1) ? parseInt(points) * 2 : points ;
+			points = (curRound >= rounds - 1) ? parseInt(points, 10) * 2 : points ;
 
 			// for(var key in players){
 			if(players.place == configMap.player.place){
 				configMap.player.score = configMap.player.score + points;
 			}
 			// }
-			console.log(players.place, configMap.player.score);
+			console.log('place -->', players.place, 'score -->', configMap.player.score);
 			// Updates the Score container of the Player
 			// var total = parseInt(player.find('.player__score').html()) + points;
 			player.find('.player__score').html(configMap.player.score);
@@ -646,8 +712,10 @@ var App = (function(){
 				// configMap.currentRoundisFin = (result['score'].length == 2) ? true : false;
 				// console.log('update happened', result);
 			},
-			error: function(xhr){
+			error: function(xhr ,t, m){
 				console.log('error!');
+				// Display error handler
+				errorConnectionHandler(xhr, t, m);
 			}
 		});
 		// update score here -- get score on the other side
@@ -673,9 +741,17 @@ var App = (function(){
 		// This shows the Correct answer
 		$('.options[data-value="'+correctAnswer+'"]').addClass('btn-success');
 		
-		configMap.currentRound++;
+		configMap.currentRound = configMap.currentRound + 1;
+		console.log('END ROUND -->',' Current '+ configMap.currentRound, 'Qlength ' + questions.length);
 		configMap.gameTimer.points = 10;
 		configMap.roundEndTimer.callback = (configMap.currentRound <= questions.length) ? renderBattlefield : renderResults;
+		
+		console.log('CALLBACK -->', configMap.roundEndTimer.callback);
+
+		configMap.roundHasEnded = true;
+		console.log('roundhas ended on roundend', configMap.roundHasEnded);
+
+		console.log('roundhas ended on renderBattlefield', configMap.roundHasEnded);
 		startTimer(configMap.roundEndTimer);
 
 	};
@@ -695,7 +771,7 @@ var App = (function(){
 		return {
 			me : me,
 			op : op
-		}
+		};
 	};
 	// End Module /getPlayerProps/
 
@@ -746,19 +822,25 @@ var App = (function(){
 		// $('.extra').append('rendered result!<br/>');
 		// var resultPage = engage.find('.result-page--parent');
 		// var resultButtons = resultPage.find('.result-page__list');
+		configMap.match.result[me.place] = result;
+		configMap.match.result[op.place] = oresult;
+		// Reset ENGAGE__MATCH
+		localStorage.removeItem(configMap.plstore.mode);
+		localStorage.setItem(configMap.plstore.mode, 'random');
+		// localStorage[configMap.plstore.mode] = 'random';
+		configMap.open_type = 'random';
 
 		// if( !resultButtons.length ){
 		renderResultButtons();
 		// }
+
+		bindImage();
 
 		// bind();
 		
 		// Reset States here
 		// initSetup();
 		// to be safe on refreshing
-		configMap.match.result[me.place] = result;
-		configMap.match.result[op.place] = oresult;
-		localStorage[configMap.plstore.mode] = 'random';
 		
 		callApi9();
 		startTimer(configMap.resultTimer);
@@ -804,6 +886,11 @@ var App = (function(){
 		var $buttons = $result.find('.result-page__list');
 		var buttons = [];
 
+		var players = getPlayerProps(),
+			me = players.me;
+
+		var myResult = configMap.match.result[me.place];
+
 		if( $rematch.length ){
 			$rematch.remove();
 		}
@@ -812,11 +899,24 @@ var App = (function(){
 			$buttons.remove();
 		}
 
-		if( !type ){
+		if( !type && myResult === 'lose'){
 			buttons.push({
 				type : 'rematch',
 				color : 'light-blue',
 				caption : 'Rematch'
+			});
+		}else{
+			var caption = 'Waiting for a rematch...';
+			var resultTitle = $('.result-page__title').text();
+
+			if( resultTitle.toLowerCase() == 'boohoo!' ){
+				caption = 'Opponent has left the game';
+			}
+
+			buttons.push({
+				type : 'parag',
+				caption : caption,
+				pclass : 'result-page__notify'
 			});
 		}
 
@@ -825,10 +925,11 @@ var App = (function(){
 			color : 'blue-green',
 			caption : 'Another Opponent'
 		});
+
 		buttons.push({
 			type : 'leave',
 			color : 'red',
-			caption : 'Leave'
+			caption : 'Leave game'
 		});
 
 
@@ -856,6 +957,10 @@ var App = (function(){
 	// Start Module /renderWaitingRematch/
 	// Purpose : Displays the waiting section inside the Result page
 	var renderWaitingRematch = function(){
+		// Abort search rematch
+		console.log('xhrRequests should be aborted here');
+		// configMap.xhrRequests['searchRematch'].abort();
+
 		console.log('rendering Waiting section');
 
 		// Set screen
@@ -882,8 +987,8 @@ var App = (function(){
 		// Check if there is an existing rematch request
 		var data = {
 			match_id : configMap.match.id,
-			player_a : configMap.ps.players.a.name,
-			player_b : configMap.ps.players.b.name
+			player_a : configMap.ps.players.a.username,
+			player_b : configMap.ps.players.b.username
 		};
 
 
@@ -894,16 +999,23 @@ var App = (function(){
 			method : 'post',
 			cache: false,
 			success : function(result){
-				console.log(result);
-				if( result.rematch == true){
+				// configMap.xhrRequests['searchRematch'].abort();
+				console.log('API 7 existing rematch check -->', result);
+				console.log('Active Ajax -->', $.ajax.active);
+				if( result.rematch === true){
 					// Set the current match to the rematch id
 					configMap.match = result.match;
+					configMap.match.result = { "a" : null, "b" : null };
 					// then call api3 to accept rematch
 					callApi3();
 				}else{
 					// Call Api1 to create a rematch
 					callApi1();
 				}
+			},
+			error : function(xhr, t, m){
+				// Display error handler
+				errorConnectionHandler(xhr, t, m);
 			}
 		});
 	};
@@ -916,9 +1028,14 @@ var App = (function(){
 		var data = {
 			topic_id : configMap.topic.id,
 			game_id : configMap.game.id,
-			player_a : configMap.ps.players.a.name,
-			player_b : configMap.ps.players.b.name
-		}
+			player_a : configMap.ps.players.a.username,
+			player_b : configMap.ps.players.b.username
+		};
+
+		// Set this to say that the challengePlayer has been requested
+		// Currently a countermeasure in the issue of /searchRematch/ activating
+		// even if the resultTimer has been ended.
+		
 		// Call API 1
 		$.ajax({
 			url : configMap.apis.ch_api['api1'],
@@ -927,16 +1044,28 @@ var App = (function(){
 			cache: false,
 			success : function(result){
 				// Setup all new data
-				console.log(result);
+				console.log('API 1 ito!!! ---> ', result);
 				var obj = result;
 				var objData = obj.data;
 
-				localStorage[configMap.plstore.match] = jsonToString(objData);
-				localStorage[configMap.plstore.mode] = 'challenger';
+				result.ps = {
+					'players' : result.players
+				};
+
+				localStorage[configMap.plstore.match] = jsonToString(result);
+				// Reset ENGAGE__MATCH
+				localStorage.removeItem(configMap.plstore.mode);
+				localStorage.setItem(configMap.plstore.mode, 'challenger');
+				// localStorage[configMap.plstore.mode] = 'challenger';
+				configMap.open_type = 'challenger';
 
 				initSetup();
 				bind();
 				startTimer(configMap.waitTimer);
+			},
+			error : function(xhr, t, m){
+				// Display error handler
+				errorConnectionHandler(xhr, t, m);
 			}
 		});
 	};
@@ -948,11 +1077,16 @@ var App = (function(){
 		var data = {
 			topic_id : configMap.topic.id,
 			game_id : configMap.game.id,
-			player_a : configMap.ps.players.a.name,
-			player_b : configMap.ps.players.b.name,
+			player_a : configMap.ps.players.a.username,
+			player_b : configMap.ps.players.b.username,
 			match_status : 'ongoing',
 			match_id : configMap.match.id
 		};
+
+		// Set this to say that the challengePlayer has been requested
+		// Currently a countermeasure in the issue of /searchRematch/ activating
+		// even if the resultTimer has been ended.
+		configMap.isRequested['acceptChallenge'] = true;
 
 		// remove Modal
 		destroyModal();
@@ -964,15 +1098,64 @@ var App = (function(){
 			data : data,
 			cache: false,
 			success : function(response){
-				var result = response.data;
-				// Setup all new data
-				console.log(result);
+				if( response.responsecode == 0){
+					var result = response.data;
+					// Setup all new data
+					console.log('API 3 ito!! ---> ', result);
 
-				localStorage[configMap.plstore.match] = jsonToString(result);
-				localStorage[configMap.plstore.mode] = 'join';
-				
-				destroyModal();
-				initModule();
+					localStorage[configMap.plstore.match] = jsonToString(result);
+					localStorage.removeItem(configMap.plstore.mode);
+					localStorage.setItem(configMap.plstore.mode, 'join');
+					// localStorage[configMap.plstore.mode] = 'join';
+					configMap.open_type = 'join';
+					
+					destroyModal();
+					initModule();
+				}else{
+					// Display error handler
+					// Considered as match has been cancelled
+					configMap.modal.title = "Uh ohh...";
+					configMap.modal.message = "Your opponent cancelled the rematch.";
+					configMap.modal.buttons = {
+						"exit" : { "caption" : "Close", "class" : "pop-up__exit is-yellow" }
+					};
+					configMap.modal.isActive = true;
+					console.log(t,m);
+
+					renderModal();
+
+					var $resultButtons = $('.result-page__list');
+					var $parag = $resultButtons.find('p');
+					var optext = 'Opponent has left the game';
+					if( $parag.length ){
+						$parag.text(optext);
+					}else{
+						$resultButtons.prepend($('<p>'+optext+'</p>'));
+					}
+				}
+			},
+			error : function(xhr, t ,m){
+				// Display error handler
+				// Considered as match has been cancelled
+				configMap.modal.title = "Uh ohh...";
+				configMap.modal.message = "Your opponent cancelled the rematch.";
+				configMap.modal.buttons = {
+					"exit" : { "caption" : "Close", "class" : "pop-up__exit is-yellow" }
+				};
+				configMap.modal.isActive = true;
+				console.log(t,m);
+
+				renderModal();
+
+				var $resultButtons = $('.result-page__list');
+				var $parag = $resultButtons.find('p');
+				var optext = 'Opponent has left the game';
+				if( $parag.length ){
+					$parag.text(optext);
+				}else{
+					$resultButtons.prepend($('<p>'+optext+'</p>'));
+				}
+				//errorConnectionHandler(xhr, t, m);
 			}
 		});
 	};
@@ -1011,11 +1194,12 @@ var App = (function(){
 
 		var data = {
 			match_id : configMap.matchid,
-			player_id : configMap.player.name,
+			player_id : configMap.player.username,
+			player_type : me.place,
 			game_id : configMap.game.id,
 			topic_id : configMap.topic.id,
 			result : configMap.match.result[me.place],
-			xp_points : me.score
+			xp_points : me.score,
 		};
 
 		// Call API 9
@@ -1024,8 +1208,53 @@ var App = (function(){
 			method : 'post',
 			data : data,
 			cache: false,
-			success : function(result){
+			success : function(response){
+				console.log(response);
+				var result = response.data;
 				console.log(result);
+				if( typeof result != 'string'){
+					// Start listing achievements and badges earned
+					var expected = ['achievement_wins', 'achievement_score', 'badge'];
+					var list = [];
+					var ei = 0;
+					var ex_len = expected.length;
+
+					for(ei ; ei < ex_len ; ei++){
+						var currResult = result[expected[ei]];
+						if( currResult ){
+							switch( expected[ei] ){
+								case "badge" :
+									list.push({
+										title : currResult.badge,
+										desc : 'Badge'
+									});
+								break;
+								default:
+									if( !currResult.message ){
+										list.push({
+											title : currResult.name,
+											desc : currResult.description
+										});
+									}
+								break;
+							}
+						}
+					}
+
+					configMap.modal.title = "Achievement Unlocked!";
+					configMap.modal.list = list;
+					configMap.modal.hasclosebtn = true;
+					configMap.modal.isAchievement = true;
+					configMap.modal.buttons = {
+						"ok" : { "caption" : "Close", "class" : "pop-up__leave--no is-yellow" }
+					};
+					configMap.modal.isActive = true;
+					renderModal();
+				}
+			},
+			error : function(xhr, t, m){
+				// Display error handler
+				errorConnectionHandler(xhr, t, m);
 			}
 		});
 	};
@@ -1033,10 +1262,10 @@ var App = (function(){
 
 	// Start Module /callApi10/
 	// Purpose : Leaving the game
-	var callApi10 = function(){
+	var callApi10 = function(exception){
 		var data = {
 			match_id : configMap.matchid,
-			player_id : configMap.player.name,
+			player_id : configMap.player.username,
 			player_place : configMap.player.place || 'a'
 		};
 
@@ -1048,18 +1277,23 @@ var App = (function(){
 				// insert ios exit webview here
 				// call ios bridge
 				// console.log(configMap.bridge);
-				configMap.bridge.callHandler('dismissViewController');
+				configMap.bridge.callHandler('dismissViewController', '{a:"a",b:"b"}');
 			}else{
 				// call android  leave method
 				Android.leave();
+				Android.leaveCompat();
 			}
 		};
 
 		console.log(data);
 		// remove Modal
-		destroyModal();
+		var screens = ['waiting-rm','result'];
 
-		if( data.match_id != 0 ){
+		if( screens.indexOf(configMap.currentScreen) == -1 ){
+			destroyModal();
+		}
+
+		if( data.match_id !== 0 ){
 			// Call API 10
 			$.ajax({
 				url : configMap.apis.ch_api['api10'],
@@ -1075,7 +1309,13 @@ var App = (function(){
 
 					// Call for the iOS close webview
 					// closeWindowFeature;
-					callback(configMap.browser);
+					if(!exception){
+						callback(configMap.browser);
+					}
+				},
+				error : function(xhr, t, m){
+					// Display error handler
+					errorConnectionHandler(xhr, t, m);
 				}
 			});
 		}else{
@@ -1115,14 +1355,17 @@ var App = (function(){
 		configMap.waitTimer.currentTime = time;
 
 		var $container = jqueryMap.$main;
-		var $timer = $container.find('.waiting-screen__timer, .rematch_time');
+		var $timer = $container.find('.waiting-screen__timer, .rematch__time');
 
 		$timer.html(App.Templates['waiting-timer']({ time : configMap.waitTimer.currentTime }));
 		
 		// Every 2 seconds get an update form server
-		if( time % 2 == 0 ){
+		if( time % 2 === 0 ){
 			getMatchStatus();
 		}
+		// else if( configMap.currentScreen == 'waiting-rm' && time % 30 === 0){
+		// 	getMatchStatus();
+		// }
 
 		endTimer(configMap.waitTimer);
 		startTimer(configMap.waitTimer);
@@ -1135,11 +1378,12 @@ var App = (function(){
 
 		// var matchid = configMap.match.id;
 		var data = {
-			player_a : configMap.ps.players.a.name,
-			player_b : configMap.ps.players.b.name
+			player_a : configMap.ps.players.a.username,
+			player_b : configMap.ps.players.b.username
 		};
 
 		console.log('checking statuses');
+		console.log('isrequested', configMap.isRequested);
 
 		endTimer(configMap.resultTimer);
 
@@ -1152,31 +1396,60 @@ var App = (function(){
 			cache: false,
 			success : function(result){
 				console.log(result);
-				if( result ){
-					var newMatch = result.match;
-					var rematch = result.rematch;
+				if( configMap.req_marker === false ){
+					if( result ){
+						var newMatch = result.match;
+						var rematch = result.rematch;
 
-					if( rematch == "true" ){
-						// Render a modal -- a rematch has been detected
-						configMap.modal.title = "Up for another?";
-						configMap.modal.message = "Your opponent wants a rematch.";
-						configMap.modal.isprompt = true;
-						configMap.modal.buttons = {
-							"no" : { "caption" : "Not now", "class" : "pop-up__no is-yellow" },
-							"yes" : { "caption" : "Rematch", "class" : "pop-up__yes" }
-						};
-						configMap.modal.isActive = true;
+						if( rematch == "true" ){
+							// This is viewed by the winner
+							// Render a modal -- a rematch has been detected
+							configMap.modal.title = "Up for another?";
+							configMap.modal.message = "Your opponent wants a rematch.";
+							configMap.modal.isprompt = true;
+							configMap.modal.buttons = {
+								"no" : { "caption" : "No", "class" : "pop-up__no is-yellow" },
+								"yes" : { "caption" : "Yes", "class" : "pop-up__yes" }
+							};
+							configMap.modal.isActive = true;
 
-						configMap.match = newMatch;
-						renderModal();
-					}else{
-						startTimer(configMap.resultTimer);
+							configMap.match = newMatch;
+							configMap.match.result = { "a" : null, "b" : null };
+							renderModal();
+
+							// delete text "waiting for rematch..."
+							var $resultButtons = $('.result-page__list');
+							$resultButtons.find('p').text('');
+
+						}else{
+							// This is viewed by the loser
+							// startTimer(configMap.resultTimer);
+							// Player has left the Game
+							var $rematchBtn = $('.game-button--rematch');
+							var $notify = $('.result-page__notify');
+							var $list = $('.result-page__list');
+							$rematchBtn.unbind('click');
+							$rematchBtn.remove();
+							if( $notify.length ){
+								// $notify.addClass('is-red');
+								$notify.text('Opponent has left the game');
+							}else{
+								$list.prepend('<p class="result-page__notify">Opponent has left the game</p>');
+							}
+
+							// Leave the match
+							callApi10(true);
+						}
 					}
-
 				}
-
+			},
+			error : function(xhr, t, m){
+				// Display error handler
+				// errorConnectionHandler(xhr, t, m);
 			}
 		});
+
+		// configMap.xhrRequests['searchRematch']();
 
 	};
 	// End Module /checkStatuses/
@@ -1187,12 +1460,20 @@ var App = (function(){
 	// Purpose : To get the match status
 	// Access Mode : Challenger
 	var getMatchStatus = function(){
+
 		var data = {
 			match_id : configMap.match.id//,
 			// name : configMap.player.name
 		};
+		
+		// Avoid bubbling ajax calls
+		if( configMap.getMatchStatus !== null ){
+			configMap.getMatchStatus.abort();
+			configMap.getMatchStatus = null;
+		}
 
-		$.ajax({
+
+		configMap.getMatchStatus = $.ajax({
 			method : 'post',
 			url : configMap.apis.ch_api['api2'],
 			// url : configMap.apis.base + configMap.apis.api['get-match-status'],
@@ -1203,7 +1484,7 @@ var App = (function(){
 				console.log(data, result, configMap.match);
 				if( result.match.status ){
 					var status = result.match.status;
-
+					
 					if( status == 'ongoing' ){
 						// Set to local configuration
 						configMap.match.status = status;
@@ -1216,27 +1497,63 @@ var App = (function(){
 					}else if( status == 'reject' ){
 
 						// Reset to random for refresh purposes
-						localStorage[configMap.plstore.mode] = 'random';
+						// Reset ENGAGE__MATCH
+						localStorage.removeItem(configMap.plstore.mode);
+						localStorage.setItem(configMap.plstore.mode, 'random');
+						// localStorage[configMap.plstore.mode] = 'random';
+						configMap.open_type = 'random';
+
+						// End Timer
+						endTimer(configMap.waitTimer);
 
 						// Set to local configuration
 						configMap.match.status = status;
 
-						// End Timer
-						endTimer(configMap.waitTimer);
+						var modalCloseBtn = 'pop-up__leave--no';
+						if( configMap.currentScreen === 'waiting-ch' ){
+							modalCloseBtn = 'pop-up__exit';
+						}
 
 						// Render Modal
 						destroyModal();
 						configMap.modal.title = "Awww...";
 						configMap.modal.message = "Your opponent did not accept your challenge."
 						configMap.modal.isActive = true;
+						configMap.modal.buttons = {
+								"back" : { "caption" : "Close", "class" : modalCloseBtn+" is-yellow" }
+							};
 						renderModal();
+
 						destroyWaitingRematch();
 						renderResultButtons(true);
+					}else{
+						// If 30 secs has past, leave and cancel
+						if( configMap.waitTimer.currentTime >= 30){
+
+							destroyModal();
+
+							configMap.modal.title = "Uh oh...";
+							configMap.modal.message = "Your opponent has left the game.";
+							configMap.modal.isActive = true;
+							configMap.modal.buttons = {
+									"back" : { "caption" : "Close", "class" : "pop-up__leave--no is-yellow" }
+								};
+							renderModal();
+
+							destroyWaitingRematch();
+							renderResultButtons(true);
+
+							callApi10(true);
+						}
 					}
 
 				}else{
-					// console.log(result);
+					console.log(result);
 				}
+			},
+			error : function(xhr, t, m){
+				// Display error handler
+				errorConnectionHandler(xhr, t, m);
 			}
 		});
 	};
@@ -1264,11 +1581,13 @@ var App = (function(){
 		$container.html($header.html(App.Templates['header']({player : configMap.playerLocalPos, game : configMap.gameTimer})));
 		
 		configMap.hasAnswered = false;
+		configMap.roundHasEnded = false;
 		// render Round
 		$container.append($ingame.html(App.Templates['round']({round : roundText, topic : configMap.topic })));
 		
 		// Play sound
 		// roundCaller(round);
+		bindImage();
 
 		endTimer(configMap.matchTimer);
 		startTimer(configMap.roundTimer);
@@ -1281,6 +1600,13 @@ var App = (function(){
 	// First Step that will happen after launching
 	var renderVS = function(){
 		console.log('rendering Versus ---->');
+
+		// Fix badge no result
+		var abadge = configMap.ps.players.a.badge;
+		var bbadge = configMap.ps.players.b.badge;
+		
+		configMap.ps.players.a.badge = (abadge.toLowerCase() == 'no result' ) ? 'Baguhan' : abadge;
+		configMap.ps.players.b.badge = (bbadge.toLowerCase() == 'no result' ) ? 'Baguhan' : bbadge;
 
 		// Reset Modal
 		configMap.modal = {};
@@ -1299,6 +1625,9 @@ var App = (function(){
 			configMap.modal.title = "Uh oh...";
 			configMap.modal.message = "Your opponent has left the game.";
 			configMap.modal.isActive = true;
+			configMap.modal.buttons = {
+				"back" : { "caption" : "Leave game", "class" : "pop-up__exit is-yellow" }
+			};
 			renderModal();
 		}else{
 			
@@ -1306,25 +1635,50 @@ var App = (function(){
 			for(var key in players){
 				if (players.hasOwnProperty(key)){
 					if(players[key].name == player){
+
+						console.log(' LEFT SIDE : ', player);
 						configMap.playerLocalPos.left = players[key];
-						configMap.player = players[key];
+						// configMap.player = players[key];
 						// Set final value for player inside the local storage
 						// include player id here later........
 						// uncomment me later....
 						// localStorage[configMap.plstore.name] = configMap.player.name;
 						// sessionStorage[configMap.plstore.name] = configMap.player.name;
 						configMap.player.place = players[key].place;
+						configMap.player.badge = players[key].badge;
+						configMap.player.icon = players[key].icon;
 					}else{
+						console.log(' RIGHT SIDE : ', players[key]);
 						configMap.playerLocalPos.right = players[key];
 					}
 				}
 			}
+			// var checkMyPos = function(){
+			// 	var me = configMap.player;
+			// 	var op = '';
+
+			// 	for( var p in configMap.ps.players){
+			// 		if( p !== '' ){
+
+			// 		}
+			// 	}
+			// };
+
+			// var players = getPlayerProps();
+			// var me = players.me;
+			// var op = players.op;
+
+			// configMap.playerLocalPos.left = me;
+			// configMap.playerLocalPos.right = op;
+
+			console.log('PLAYERS --> ', configMap.playerLocalPos);
 
 			jqueryMap.$main.html(App.Templates['versus']({player : configMap.playerLocalPos}));
 
 			// Play sfx
 			// configMap.audio.sfx.bg_random.stop();
 			// configMap.audio.sfx.sfx_versus.play();
+			bindImage();
 
 			startTimer(configMap.matchTimer);
 		}
@@ -1346,7 +1700,7 @@ var App = (function(){
 		var $options = $('<div class="ingame__options" />');
 		// var $main = ( !q.image ) ? $question : $image;
 
-		$container.html(App.Templates['question']({ data : q }));
+		$container.html(App.Templates['question']({ data : q, imagepath : qimagePath }));
 		$container.append($options);
 
 		endTimer(configMap.roundTimer);
@@ -1389,7 +1743,7 @@ var App = (function(){
 			for(var rpos in configMap.scores ){
 				for(var ipos in configMap.scores[rpos]){
 					if(cpos == ipos){
-						totalScore = totalScore + parseInt(configMap.scores[rpos][ipos].score);
+						totalScore = totalScore + parseInt(configMap.scores[rpos][ipos].score,10);
 					}
 				}
 			}
@@ -1411,6 +1765,7 @@ var App = (function(){
 	// Purpose : Check server for updates
 	var getUpdates = function(){
 		// console.log('getUpdates ---->', configMap.scores);
+
 		configMap.gameTimer.points = configMap.gameTimer.points - 1;
 
 		endTimer(configMap.gameTimer);
@@ -1419,7 +1774,7 @@ var App = (function(){
 		if (configMap.gameTimer.points >= 0 && configMap.gameTimer.timing !== null){
 			$('.header__points').html(App.Templates['header-points']({ game : configMap.gameTimer }));
 
-			if(configMap.gameTimer.points == 0){
+			if(configMap.gameTimer.points === 0){
 				if(!configMap.hasAnswered){
 					checkAnswer();
 				}
@@ -1429,9 +1784,10 @@ var App = (function(){
 			unbind();
 		}
 
+		console.log('current round!!! --> ', configMap.currentRound );
 
 		// Update from server here
-		if( configMap.gameTimer.points % 2 == 0){
+		if( configMap.gameTimer.points % 2 === 0){
 			var uurl = configMap.apis.base + configMap.apis.api['get-updates'],
 				udata = {};
 
@@ -1445,69 +1801,83 @@ var App = (function(){
 				dataType : 'json',
 				cache: false,
 				success : function(result){
-					var count = configMap.currentRoundCount;
+					console.log('roundhas ended on getupdates', configMap.roundHasEnded);
+					if( configMap.roundHasEnded === false ){
+						var count = configMap.currentRoundCount;
 
-					configMap.scores[configMap.currentRound] = result;
-					console.log(configMap.matchid, configMap.player.name);
+						configMap.scores[configMap.currentRound] = result;
+						console.log(configMap.matchid, configMap.player.name);
 
-					resLen = 0;
-					for(var i in result){
-						resLen++;
-					}
-
-					configMap.currentRoundisFin = (resLen == 2) ? true : false;
-					
-					// console.log('results and shit ---->');
-					// console.log(result.score);
-					// console.log(configMap.currentRoundisFin, configMap.scores);
-					if( count >= 8 ){
-						configMap.modal.title = "Uh oh...";
-						configMap.modal.message = "Your opponent has left the game.";
-						configMap.modal.buttons = {
-							"back" : { "caption" : "Go Back", "class" : "pop-up__leave--yes" }
-						};
-						configMap.modal.isActive = true;
-
-						renderModal();
-					}
-
-					count++;
-					configMap.currentRoundCount = count;
-
-
-					if( configMap.currentRoundisFin ){
-						// show opponent's answer
-						var oppP = configMap.playerLocalPos.right.place,
-							oppA = configMap.scores[configMap.currentRound][oppP].answer,
-							gq = configMap.qs.questions[configMap.currentRound - 1], // GameQuestion
-							ga = gq.answer; // GameAnswer
-
-						if( oppA != ""){
-							var buttonAnswer = $('.options[data-value="'+oppA+'"]');
-							if( ga == oppA ){
-								buttonAnswer.addClass('btn-success');
-							}else{
-								buttonAnswer.addClass('btn-danger');
-							}
-
-							var newAnswer = $('<span/>');
-							newAnswer.addClass('answer-opponent');
-
-							buttonAnswer.append(newAnswer);
+						resLen = 0;
+						for(var i in result){
+							resLen++;
 						}
 
-						// show updated scores
-						renderUpdatedScore();
+						configMap.currentRoundisFin = (resLen == 2) ? true : false;
 						
-						// ends the round and start a new
-						endRound();
-						// console.log('fudge!', configMap.currentRoundisFin);
+						// console.log('results and shit ---->');
+						// console.log(result.score);
+						// console.log(configMap.currentRoundisFin, configMap.scores);
+						// if( count >= (configMap.maxScorePerRound * 1.5) ){
+						if( count >= (configMap.maxScorePerRound * 1) ){
+							configMap.modal.title = "Uh oh...";
+							configMap.modal.message = "Your opponent has left the game.";
+							configMap.modal.buttons = {
+								"back" : { "caption" : "Leave game", "class" : "pop-up__leave--yes is-yellow" }
+							};
+							configMap.modal.isActive = true;
+
+							renderModal();
+						}
+
+						count++;
+						configMap.currentRoundCount = count;
+
+						console.log('scores ------> ', configMap.scores);
+
+						if( configMap.currentRoundisFin ){
+							// show opponent's answer
+							var players = getPlayerProps();
+							
+							console.log('players ----->', players);
+							console.log('score for the round ---->', configMap.scores[configMap.currentRound]);
+
+							var oppP = players.op.place,
+								oppA = configMap.scores[configMap.currentRound][oppP].answer,
+								gq = configMap.qs.questions[configMap.currentRound - 1], // GameQuestion
+								ga = gq.answer; // GameAnswer
+
+							if( oppA !== ""){
+								var buttonAnswer = $('.options[data-value="'+oppA+'"]');
+								if( ga == oppA ){
+									buttonAnswer.addClass('btn-success');
+								}else{
+									buttonAnswer.addClass('btn-danger');
+								}
+
+								var newAnswer = $('<span/>');
+								newAnswer.addClass('answer-opponent');
+
+								buttonAnswer.append(newAnswer);
+							}
+
+							// show updated scores
+							renderUpdatedScore();
+							
+							// ends the round and start a new
+							endRound();
+							// console.log('fudge!', configMap.currentRoundisFin);
+						}
 					}
 				},
-				error : function(xhr){
+				error : function(xhr, t, m){
 					console.log('oh noe!');
+					// Display modal
+					errorConnectionHandler(xhr, t, m);
 				}
 			});
+
+			// configMap.xhrRequests['getUpdates']();
 		}
 	};
 	// End Module /getUpdates/
@@ -1550,8 +1920,9 @@ var App = (function(){
 			data : data,
 			cache: false,
 			success : function(result){
+				console.log('PS has been called', result);
 				configMap[mode] = result;
-				if( mode == 'ps' ){
+				if( mode === 'ps' ){
 					configMap.match.isactive = {
 						'a' : result.players.a.isactive,
 						'b' : result.players.b.isactive
@@ -1568,8 +1939,10 @@ var App = (function(){
 					callback();
 				}
 			},
-			error : function(xhr){
+			error : function(xhr, t, m){
 				console.log('fudge on loading profiles! ', xhr);
+				// Display error handler
+				errorConnectionHandler(xhr, t, m);
 			}
 		});
 	};
@@ -1591,7 +1964,7 @@ var App = (function(){
 		var xbutton = $('<a class="game-exit"></a>').html(App.Templates['button-exit']());
 		jqueryMap.$main.append(xbutton);
 		bind();
-	}
+	};
 
 	// Start Module /findMatch/
 	// Purpose : After Clicking play, creates/joins a match
@@ -1599,6 +1972,7 @@ var App = (function(){
 		console.log('Find a match ---->');
 		configMap.matchStatus = 'find';
 
+		configMap.currentScreen = 'findmatch';
 		// Play sound
 		// configMap.audio.sfx.bg_random.play();
 		jqueryMap.$main.html(App.Templates['loading']());
@@ -1628,15 +2002,16 @@ var App = (function(){
 		var urls = configMap.apis.api,
 			base = configMap.apis.base,
 			data = {
-				name : configMap.player.name,
+				name : configMap.player.username,
+				// name : configMap.player.name,
 				matchid : configMap.matchid,
 				topic_id : configMap.topic.id,
 				qt_id : configMap.game.id
 			},
 			timer = configMap.findMatchTimer;
 
-		// console.log(configMap.player, localStorage.player);
-		console.log(configMap.player.name, 'match_status ' + configMap.matchStatus);
+		console.log('configmap player -->',configMap.player);
+		console.log('username -->', configMap.player.username, 'match_status ' + configMap.matchStatus);
 
 		if(timer.currentTries <= timer.maxTries){
 			$.ajax({
@@ -1651,8 +2026,10 @@ var App = (function(){
 					}
 					ajxCallback(result);
 				},
-				error : function(xhr){
+				error : function(xhr, t, m){
 					console.log('fudge on finding match! ', xhr);
+					// Display error handler
+					errorConnectionHandler(xhr, t, m);
 				}
 			});
 			
@@ -1678,7 +2055,7 @@ var App = (function(){
 
 		if(result.isWaiting){
 			
-			if(result.matchid != 0){
+			if(result.matchid !== 0){
 				// Match is already created
 				if(maxTries > curTries){
 					// not met max tries.. still waiting
@@ -1690,12 +2067,26 @@ var App = (function(){
 					configMap.findMatchTimer.currentTries = 1;
 					console.log('Abort Waiting...');
 					endTimer(configMap.findMatchTimer);
+
+
+					// Display Quit message
+					// saying that the waiting time is too long
+					configMap.modal.title = "Oops..";
+					configMap.modal.message = "Looks like there are no available player for this topic.";
+					configMap.modal.buttons = {
+						"exit" : { "caption" : "Leave game", "class" : "pop-up__exit is-yellow" },
+					};
+					configMap.modal.isActive = true;
+
+					// $('.extra').append('display Modal ---><br />');
+					renderModal();
 				}
 			}
 		}else{
 			// Start game
 			configMap.findMatchTimer.currentTries = 1;
-			configMap.match = result.match.match;
+			configMap.match = result.match;
+			configMap.match.result = { "a" : null, "b" : null };
 
 			endTimer(configMap.findMatchTimer);
 			console.log('Start the game......');
@@ -1729,9 +2120,10 @@ var App = (function(){
 					configMap.modal.title = "Oops..";
 					configMap.modal.message = "Are you sure you want to exit the game?";
 					configMap.modal.isprompt = true;
+					configMap.modal.hasclosebtn = true;
 					configMap.modal.buttons = {
-						"no" : { "caption" : "Nope", "class" : "pop-up__leave--no is-yellow" },
-						"yes" : { "caption" : "Yep", "class" : "pop-up__leave--yes" }
+						"no" : { "caption" : "No", "class" : "pop-up__leave--no is-yellow" },
+						"yes" : { "caption" : "Yes", "class" : "pop-up__leave--yes" }
 					};
 					configMap.modal.isActive = true;
 
@@ -1754,27 +2146,28 @@ var App = (function(){
 	// Start Module /initGame/
 	// Purpose : Initializes our Game
 	var initGame = function(){
+		// Instantiate popstate listener
+		if( !window.popstate ){
 
+			window.addEventListener('popstate' , function(e){
+				var s = e.state;
+				console.log('popstate changed --->');
+				closeWindow(s);
+			});
+			// For the back button
+			// var state = 0;
+			var Obj = { "state" : 1 },
+				title = "project engage",
+				url = "#play";
 
-		// For the back button
-		// var state = 0;
-		var Obj = { "state" : 1 },
-			title = "project engage",
-			url = "#play";
+			// state++;
+			// Push the state and change the url
+			self.location.href = '#play';
+			history.pushState(Obj, title, url);
+			history.go(1);
 
-		// state++;
-		// Push the state and change the url
-		history.pushState(Obj, title, url);
-		console.log('pushState executed --->');
-		history.forward();
-		// Readying the state push
-		// var storeState = function(){
-		// };
-
-		// // Execute StoreState
-		// storeState();
-
-		// var closeWindowFeature;
+			console.log('pushState executed --->', history);
+		}
 
 		// Browser Detection
 		var standalone = window.navigator.standalone,
@@ -1813,8 +2206,11 @@ var App = (function(){
 	 //    });
 
 		// Reset Elements
-		$('.engage').html('');
-
+		var main = $('.engage');
+		main.html('');
+		if( main.hasClass('preloader') ){
+			main.removeClass('preloader');
+		}
 
 		// Register Callbacks for each timer
 		configMap.resultTimer.callback = checkStatuses;
@@ -1886,6 +2282,39 @@ var App = (function(){
 	};
 	// End Module /initGame/
 
+	var errorConnectionHandler = function(x, t, m){
+		var caption = "Leave game";
+
+		configMap.modal.title = "Uh ohh...";
+		switch( t ){
+			case "timeout" :
+				configMap.modal.message = "It looks like the server takes too long to respond.";
+			break;
+			// case "error" :
+			// 	configMap.modal.message = "There has been an error from the server!";
+			// break;
+			// case "abort" :
+			// 	configMap.modal.message = "Server connection has been aborted!";
+			// break;
+			default:
+				configMap.modal.message = "Something went wrong, Please check your internet connection.";
+			break;
+		}
+		
+		var screens = ['result', 'waiting-rm'];
+		if( screens.indexOf(configMap.currentScreen) !== -1){
+			caption = "close";
+		}
+
+		configMap.modal.buttons = {
+			"exit" : { "caption" : caption, "class" : "pop-up__exit is-yellow" }
+		};
+		configMap.modal.isActive = true;
+		console.log(t,m);
+
+		renderModal();
+	};
+
 	var roundCaller = function(round){
 		if( round != "final" ){
 			configMap.audio.sfx['sfx_round'].play();
@@ -1901,36 +2330,38 @@ var App = (function(){
 		// mainit
 		// initialization code for app here
 		console.log('It\'s alive!!!');
+		console.log('INITMODULE()');
 
-		// configMap.isStatic = true;
-		initSetup();
-		initGame();
-		// for testing
-		// renderLanding();
+		var init = function(){
+			console.log('interval running....');
+			// console.log(localStorage[configMap.plstore.match]);
 
-		var modes = {
-			'random' : findMatch,
-			'challenger' : renderWaiting,
-			'join' : renderVS
+			if( localStorage[configMap.plstore.match] ){
+
+				// For debugging
+				// configMap.isStatic = true;
+				initSetup();
+				initGame();
+
+				var modes = {
+					'random' : findMatch,
+					'challenger' : renderWaiting,
+					'join' : renderVS
+				};
+
+				var mode = ( configMap.open_type === null ) ? localStorage[configMap.plstore.mode] : configMap.open_type;
+				// var mode = localStorage[configMap.plstore.mode] || 'random';
+
+				// Start
+				modes[mode]();
+
+				clearInterval(t);
+			}
 		};
 
-		var mode = localStorage[configMap.plstore.mode] || 'random';
-
-
-		// Start
-		modes[mode]();
-
-		// console.log(mode);
-		// Actual
-		// localStorage.player.name = {};
+		var t = setInterval(init, 1000);
+		
 	};
-
-	// Instantiate popstate listener
-	window.addEventListener('popstate' , function(e){
-		var s = e.state;
-		console.log('popstate changed --->');
-		closeWindow(s);
-	});
 
 
 	// -----------------------------------------------------------------------------
@@ -1958,6 +2389,13 @@ var App = (function(){
 			console.log('ObjC called testJavascriptHandler with', data);
 			var responseData = { 'Javascript Says':'Right back atcha!' }
 			console.log('JS responding with', responseData);
+			responseCallback(responseData);
+		});
+
+		bridge.registerHandler('callbackfromJS', function(data, responseCallback){
+			console.log('Ojbc called callbackfromJS with ',data);
+			var responseData = { 'Webview said' : 'Such wow!' };
+			console.log('JS responds with ', responseData);
 			responseCallback(responseData);
 		});
 

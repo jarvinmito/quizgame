@@ -6,24 +6,26 @@
 <!--    <div class="result-page result-page--lose animate--in">-->
   <h1 class="result-page__title">{{player.status}}</h1>
   <div class="result-page__main-player main-player" data-id="{{player.me.place}}" >
-    <img class="main-player__avatar" src="{{#ifCond player.me.icon ""}}assets/images/player-1.png{{else}}{{player.me.icon}}{{/ifCond}}" alt="{{player.me.name}}">
+    <img class="main-player__avatar image--hasfallback" src="{{#ifCond player.me.icon ""}}assets/images/player-1.png{{else}}{{player.me.icon}}{{/ifCond}}" alt="{{player.me.name}}">
     <div class="main-player__details ribbon-content">
       <h4 class="main-player__name ">{{player.me.badge}}</h4>
       <!--          <span class="result-page__badge">Magaling</span>-->
       <span class="main-player__score">{{player.me.score}} POINTS</span>
     </div>
   </div>
+
   <div class="result-page__opponent opponent">
     <div class="opponent__text">
       <p>OPPONENT</p>
       <p>DETAILS</p>
     </div>
     <div  class="opponent__avatar">
-      <img src="{{#ifCond player.opponent.icon ""}}assets/images/player-1.png{{else}}{{player.opponent.icon}}{{/ifCond}}" alt="{{player.me.name}}">
+      <img class="image--hasfallback" src="{{#ifCond player.opponent.icon ""}}assets/images/player-1.png{{else}}{{player.opponent.icon}}{{/ifCond}}" alt="{{player.me.name}}">
     </div>
     <div class="opponent__level-points">
       <p>LEVEL: {{player.opponent.badge}}</p>
       <p>{{player.opponent.score}} POINTS</p>
     </div>
   </div>
+
 </div>
