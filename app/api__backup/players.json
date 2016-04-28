@@ -1,0 +1,17 @@
+{
+	"players" : {
+	"a" : {
+			"name" : "Brynjolf",
+			"badge" : "Master Thief",
+			"place" : "a",
+			"score" : 0
+		},
+
+	"b" : {
+			"name" : "Jarl Balgruuf",
+			"badge" : "Whiterun",
+			"place" : "b",
+			"score" : 0
+		}
+	}
+}

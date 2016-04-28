@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 
 // $basePath = "http://50.57.237.52/engage_uat/engage/api/quizsql";
-$basePath = "http://localhost/engage_dev/engage/api/quizsql";
+$basePath = "http://localhost/engage_uat/engage/api/quizsql";
 
 // $hostname = "localhost";
 // $dbname = "engage_cms";

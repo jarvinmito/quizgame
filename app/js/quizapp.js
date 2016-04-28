@@ -16,9 +16,9 @@
 
 var App = (function(){
 	// var apiBasePath = "http://localhost/engage_uat/engage/api/quizsql";
-	var serverPath = "http://50.57.237.52/engage_uat";
-	var apiBasePath = serverPath+"/engage/api/quizsql";
-	var qimagePath = serverPath+"/engage_cms/mod/engage/images/question/";
+	var serverPath = config.serverPath;
+	var apiBasePath = config.serverPath+config.apiBasePath;
+	var qimagePath = config.serverPath+config.qimagePath;
 	// var apiBasePath = "../../engage/api/quizsql";
 
 	// Start Setup
@@ -1120,7 +1120,7 @@ var App = (function(){
 						"exit" : { "caption" : "Close", "class" : "pop-up__exit is-yellow" }
 					};
 					configMap.modal.isActive = true;
-					console.log(t,m);
+					// console.log(t,m);
 
 					renderModal();
 
